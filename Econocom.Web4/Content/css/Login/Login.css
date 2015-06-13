@@ -1,0 +1,175 @@
+﻿/* ---------------- CSS DE LOGIN (CONNEXION) ---------------------*/
+
+ ::-webkit-input-placeholder { /* WebKit browsers */
+        color:    black;
+        font-weight: bold;
+    }
+    
+     .ui-corner-all 
+        {
+            -webkit-border-radius: 0px !important;
+            border-radius: 0px !important;
+        }
+    
+/*DIV*/
+
+div .MainLoginContentDiv {
+  margin-top:15px; margin-left:0px; width:600px
+}
+
+div .LoginContentDiv {
+    width:400px; height:60px;float: left;padding-top: 6px;
+
+}
+div .LoginContentOne {
+    height:35px; width: 30px; float:left; margin-top:20px
+}
+
+div .selectLanguageDiv {
+    float: left;  width:120px
+}
+
+div .Div_Image_Pays {
+    height: 40px
+}
+
+div .LanguagesDiv {
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+div .LoginContentTwo {
+    height: 20px; float: right;width: 364px;text-align: right;
+}
+
+
+div.ContenuPays {
+    width: 165px; height: 25px
+}
+
+div.ContenuPaysLibelle {
+    color:#000!important;border-bottom:1px solid #EFEEEF;text-align:left; padding-bottom: 2px;background-color: white;
+    height: 25px; font-weight: bold
+}
+div.ContenuPaysLibelle > a{ color:#000!important;} 
+div .ContenuPaysFlag {
+    width: 30px; float: left;height: 25px
+}
+
+
+
+/*ANCHOR */
+a.MotsDePasseAnchor {
+    color: black; font-family: sans-serif; font-size: 12px; font-weight: bold;text-decoration: underline !important;
+}
+
+/* CREDENTIAL */
+
+input[type="text"].Credential_Identifiant {
+    float:left; width:128px; height: 28px
+}
+
+input[type="password"].Credential_MotsDePasse {
+    float:left; width:128px; height: 28px; margin-left:5px
+}
+
+.Credential_Connexion {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cde77f;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cde77f;
+	box-shadow:inset 0px 1px 0px 0px #cde77f;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a8d62b), color-stop(1, #5ea303) );
+	background:-moz-linear-gradient( center top, #a8d62b 5%, #5ea303 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a8d62b', endColorstr='#5ea303');
+	background-color:#a8d62b;
+	-webkit-border-top-left-radius:4px!important;
+	-moz-border-radius-topleft:4px!important;
+	border-top-left-radius:4px!important;
+	-webkit-border-top-right-radius:4px!important;
+	-moz-border-radius-topright:4px!important;
+	border-top-right-radius:4px!important;
+	-webkit-border-bottom-right-radius:4px!important;
+	-moz-border-radius-bottomright:4px!important;
+	border-bottom-right-radius:4px!important;
+	-webkit-border-bottom-left-radius:4px!important;
+	-moz-border-radius-bottomleft:4px!important;
+	border-bottom-left-radius:4px!important;
+	text-indent:0px;
+	border:1px solid #518e01;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	font-style:normal;
+	height:30px;
+	line-height:30px;
+	width:90px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 2px #3b7349;
+    padding: 0px 4px!important;
+}
+
+.Credential_Connexion:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5ea303), color-stop(1, #a8d62b) );
+	background:-moz-linear-gradient( center top, #5ea303 5%, #a8d62b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5ea303', endColorstr='#a8d62b');
+	background-color:#5ea303;
+}
+
+.Credential_Connexion:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+input[type="submit"].Credential_Deconnexion {
+	-moz-box-shadow:inset 0px 1px 0px 0px #b1b1b1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b1b1b1;
+	box-shadow:inset 0px 1px 0px 0px #b1b1b1;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7d7d7d), color-stop(1, #575656) );
+	background:-moz-linear-gradient( center top, #7d7d7d 5%, #575656 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d7d7d', endColorstr='#575656');
+	background-color:#7d7d7d;
+	-webkit-border-top-left-radius:4px!important;
+	-moz-border-radius-topleft:4px!important;
+	border-top-left-radius:4px!important;
+	-webkit-border-top-right-radius:4px!important;
+	-moz-border-radius-topright:4px!important;
+	border-top-right-radius:4px!important;
+	-webkit-border-bottom-right-radius:4px!important;
+	-moz-border-radius-bottomright:4px!important;
+	border-bottom-right-radius:4px!important;
+	-webkit-border-bottom-left-radius:4px!important;
+	-moz-border-radius-bottomleft:4px!important;
+	border-bottom-left-radius:4px!important;
+	text-indent:0px;
+	border:1px solid #393939;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	font-style:normal;
+	height:30px;
+	line-height:30px;
+	width:110px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 2px #474646;
+	padding: 0px 4px!important;
+	margin-top: 19px;
+    float: right;
+}
+input[type="submit"].Credential_Deconnexion:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #575656), color-stop(1, #7d7d7d) );
+	background:-moz-linear-gradient( center top, #575656 5%, #7d7d7d 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#575656', endColorstr='#7d7d7d');
+	background-color:#575656;
+}
+input[type="submit"].Credential_Deconnexion:active {
+	position:relative;
+	top:1px;
+}

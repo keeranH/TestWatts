@@ -1,0 +1,89 @@
+﻿@model Econocom.Model.Models.Benchmark.ADRESSE
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ADRESSE</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDADRESSE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IDADRESSE)
+            @Html.ValidationMessageFor(model => model.IDADRESSE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDPAYS, "PAY")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("IDPAYS", String.Empty)
+            @Html.ValidationMessageFor(model => model.IDPAYS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADRESSE1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADRESSE1)
+            @Html.ValidationMessageFor(model => model.ADRESSE1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADRESSE2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADRESSE2)
+            @Html.ValidationMessageFor(model => model.ADRESSE2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADRESSE3)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADRESSE3)
+            @Html.ValidationMessageFor(model => model.ADRESSE3)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CODEPOSTAL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CODEPOSTAL)
+            @Html.ValidationMessageFor(model => model.CODEPOSTAL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.REGION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.REGION)
+            @Html.ValidationMessageFor(model => model.REGION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VILLE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VILLE)
+            @Html.ValidationMessageFor(model => model.VILLE)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

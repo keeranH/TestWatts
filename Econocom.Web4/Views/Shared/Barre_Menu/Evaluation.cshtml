@@ -1,0 +1,80 @@
+﻿@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "Estimation";
+    <script type="text/javascript">
+        $(document).ready(function () {
+//            document.getElementById("rapport_sub").style.display = 'none';
+
+            $('#mesRapports').click(function () {
+                $('#rapport_sub').toggle();
+            });
+        });
+
+        function AffichePopUp() {
+            document.getElementById('dialog').innerHTML = "Disponible que pour l'option payant";
+            $("#dialog").dialog();
+        }
+
+    </script>
+    
+    <link href="@Url.Content("~/Content/css/Maquette/BarreMenu.css")" rel="stylesheet" type="text/css"/>
+}
+
+<div>
+    
+  <div align="right" class="topMenu">
+    
+      <div class="topMenuContentDiv">
+          @*<a href="@Url.Action("Index", "Help")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent">@Traduction.Aide</span>
+          </a>*@
+
+          <a href="@Url.Action("Index", "Faq")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent">@Traduction.Faq</span>
+          </a>
+          
+          <a href="@Url.Action("Index", "ContactezNous")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent">@Traduction.ContactezNous</span>
+          </a>
+          
+
+      </div>
+   </div>
+
+    <div  id="mainMenu" class="bottomMenu">
+   
+        <div class="AccueilMenu" style="text-align: center">
+            <a href="@Url.Action("Index", "Home")"> <img src="~/Content/images/Menu/Navigateur/icone_hp.png" /></a>
+        </div>
+        
+        @{ var idClient = HttpContext.Current.Session["idClient"]; }
+
+        <div class="EvaluationMenuOne">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+             <div class="NavTitleDiv link" style="text-align: center"><a href="@Url.Action("Index", "Consommation", new {id = idClient})" class="NavTitle">@Traduction.MonEstimation</a></div>
+        </div>
+    
+        <div class="EvaluationMenuTwo">
+            <div id="dialog" title="Pour Info"></div>
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center"><a href="@Url.Action("Info", "Evaluation")" class="NavTitleGrise" style="color: grey">@Traduction.MaPersonnalisation</a></div>
+        </div>
+
+
+        <div class="EvaluationMenuThree">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center"><a href="@Url.Action("Info", "Evaluation")" class="NavTitleGrise" style="color: grey">@Traduction.MesSimulations</a></div>
+        </div>
+
+        <div class="EvaluationMenuFour">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center"><a href="@Url.Action("Info", "Evaluation")" class="NavTitleGrise" style="color: grey">@Traduction.MesRapports</a></div>
+        </div>
+
+    </div>  
+
+</div>

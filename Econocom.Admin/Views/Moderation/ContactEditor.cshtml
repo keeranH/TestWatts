@@ -1,0 +1,63 @@
+﻿@model Econocom.Model.ViewModel.ContactViewModel
+@using Econocom.Web4.Extension
+@using ContactResources = Econocom.Resource.Traduction
+               
+
+
+ @using (Html.BeginCollectionItem("Contacts"))
+ {
+     <div id="majorDiv"  style="width: 1150px; min-height: 250px;">
+         
+          <div style="width: 300px;"><legend>CONTACT DETAILS</legend></div>
+         <div id="accountInfo" style="float: left; min-width:450px;min-height:200px;">
+               @Html.HiddenFor(model => model.Id)
+               @Html.HiddenFor(model => model.ClientId)
+               @Html.HiddenFor(model => model.TypeContactId)
+             <div id="addCustomerSurname">
+
+                 @Html.EditorFor(model => model.NomContact,ContactResources.Surname)
+                 @Html.ValidationMessageFor(model => model.NomContact)
+             </div>
+
+
+
+             <div id="addCustomerForename">
+                 @Html.EditorFor(model => model.PrenomContact, ContactResources.Forename)
+                 @Html.ValidationMessageFor(model => model.PrenomContact)
+             </div>
+
+             <div id="addCustomerPhone">
+                 @Html.EditorFor(model => model.NumeroPhone, ContactResources.Phone)
+                 @Html.ValidationMessageFor(model => model.NumeroPhone)
+             </div>
+
+             
+
+         </div>
+
+     
+         <div id="personalInfo" style="float: left;min-width:420px;min-height:200px;">
+         
+         <div id="addCustomerMobile">
+                 @Html.EditorFor(model => model.NumeroGSM, ContactResources.Mobile)
+                 @Html.ValidationMessageFor(model => model.NumeroGSM)
+             </div>
+
+             <div id="addCustomerJobTitle">
+                 @Html.EditorFor(model => model.Fonction, ContactResources.JobTitle)
+                 @Html.ValidationMessageFor(model => model.Fonction)
+             </div>
+
+             <div id="addCustomerEmail">
+                 @Html.EditorFor(model => model.Email,ContactResources.Email)
+                 @Html.ValidationMessageFor(model => model.Email)
+             </div>
+
+         </div>
+
+     </div>
+ }
+
+   
+       
+

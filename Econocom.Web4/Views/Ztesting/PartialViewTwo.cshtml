@@ -1,0 +1,34 @@
+﻿@model Econocom.Model.ViewModel.ContactViewModel
+   
+
+
+
+@{
+    ViewBag.Title = "PartialViewTwo";
+}
+
+<div id="mainDiv">
+ 
+        <div align="right" style="width:850px; height: 30px;">
+        @Ajax.ActionLink("Sauvegarder", "PartialViewOne", "Ztesting",
+                         new
+                             {
+                            
+                             },
+                         new AjaxOptions { UpdateTargetId = "contentDivPartial" })
+
+    </div>
+    
+
+    
+    <div style="width:850px; height: 470px; border: 1px solid gray">
+        
+       <div class="editor-field">
+            @Html.EditorFor(model => model.NomContact) 
+           
+        </div>
+
+    </div>
+    
+
+</div>

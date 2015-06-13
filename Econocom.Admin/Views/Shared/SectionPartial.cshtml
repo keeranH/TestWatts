@@ -1,0 +1,29 @@
+﻿@model Econocom.Model.Models.CMS.Section
+
+<script type="text/javascript">
+    function ConfirmerSuppressionSection() {
+        var x = confirm("Êtes-vous sûr de vouloir supprimer cette section?");
+        if (x) 
+            return true;
+        else
+            return false;
+    }
+</script>
+
+<div>
+    <li>
+        <div style="min-width: 300px; height:20px; width:auto">
+            <div style="float: left; vertical-align: text-top; margin-right:10px;"> @Model.Nom</div>
+            <div style="float: left; width: 40px; height: 10px; "> @Html.ActionLink("+S", "Edit", "Section", new { id = @Model.Id }, new { @class = "editLink", style = "width:30px" })</div>
+            <div style="float: left; width: 40px; height: 10px; "> @Html.ActionLink("+Pg", "AddPage", "Section", new { id = @Model.Id }, new { @class = "editLink", style = "width:30px" })</div>
+            <div style="float: left; width: 40px; height: 10px; "> @Html.ActionLink("-S", "SupprimerSection", "Section", new { id = @Model.Id }, new { onclick = "ConfirmerSuppressionSection();", @class = "editLink", style = "width:30px" })</div>
+        </div>
+
+    </li>
+
+    @if (Model.Pages != null)
+    {
+        @Html.Partial("PagesPartial", Model.Pages)
+        
+    }
+</div>

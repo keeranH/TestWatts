@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8D2F0067-4FEF-4754-8D3B-A96459783DB5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FichierImportService</RootNamespace>
+    <AssemblyName>FichierImportService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.11.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\packages\Quartz.2.3.1\lib\net40-client\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImportJob.cs" />
+    <Compile Include="ImportService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ImportService.Designer.cs">
+      <DependentUpon>ImportService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITaskScheduler.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceUtility.cs" />
+    <Compile Include="TaskScheduler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ImportService.resx">
+      <DependentUpon>ImportService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Econocom.Business.csproj">
+      <Project>{7B04EE70-1A39-47FA-BCAC-C5E0267D374A}</Project>
+      <Name>Econocom.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Econocom.Data.csproj">
+      <Project>{3961B58F-0778-40DE-B8CD-8D85FD2C8B09}</Project>
+      <Name>Econocom.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Calculateur\Econocom.Calculateur.csproj">
+      <Project>{48005BE3-2E7D-44EA-8222-75D814B9BA78}</Project>
+      <Name>Econocom.Calculateur</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Helper\Econocom.Helper.csproj">
+      <Project>{57F8996C-5DA2-4C1D-94CA-E4401C7833ED}</Project>
+      <Name>Econocom.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Resource\Econocom.Resources.csproj">
+      <Project>{AC70D204-0271-4224-B9BB-43709B7CCB90}</Project>
+      <Name>Econocom.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Econocom.Model.csproj">
+      <Project>{441917B4-5B39-4FBD-AACC-5DC5D46F414A}</Project>
+      <Name>Econocom.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Econocom.Security.csproj">
+      <Project>{1116C43B-FE24-4476-B31B-E0837BEEB89E}</Project>
+      <Name>Econocom.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

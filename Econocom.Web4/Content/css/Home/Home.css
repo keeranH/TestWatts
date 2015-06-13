@@ -1,0 +1,75 @@
+﻿/* ---------------- CSS OF HOME ---------------------*/
+
+/*DIV*/
+
+div .homeContentDiv {
+    width:870px; /*height:1100px;*/background-color: #fff;
+}
+
+div .homeOptionsDiv {
+    height: 100px; 
+}
+
+div .evaluerDivSection {
+    width:435px; height:90px; background-color: #83b81A; float:left; text-align: center;
+}
+
+div .evaluerDiv {
+}
+
+div .souscrireDivSection {
+    width:435px; height:90px; background-color: #535353; float:left; text-align: center;
+}
+
+div .souscrireDiv {
+    margin-top: 20px;
+}
+
+div .homePublishedContentDiv {
+    width: 870px; 
+}
+
+div .publishedContent {
+    height: 400px; width:270px;float: left;
+}
+
+div .publishedContent2 {
+    height: 400px; width:270px;float: left;margin-left: 30px;
+}
+
+div .publishedContentTitleDiv {
+    border-bottom: 1px solid gray;
+}
+
+/*SPAN*/
+
+.sliderText {
+    font-size: 24pt; font-family: sans-serif
+}
+
+.EvaluerBoutonVert {
+ display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-left:100px; margin-top:30px;
+}
+
+.SouscrireBoutonGris {
+    display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-left:100px; margin-top:30px;
+}
+
+.erreurSpan {
+    color: red
+}
+
+.publishedContentTitle {
+    
+}
+
+/*IMAGE */
+
+.hpVisuelDiv {
+    width:870px; height:360px
+}
+
+.visuelPublishedDiv {
+    width: 270px;
+    height:150px
+}

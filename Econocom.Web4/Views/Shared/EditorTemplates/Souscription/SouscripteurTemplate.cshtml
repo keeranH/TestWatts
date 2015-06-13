@@ -1,0 +1,68 @@
+﻿@model Econocom.Model.ViewModel.ContactSouscriptionViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "ContactTemplate";
+    Layout = "~/Views/Shared/Souscription_Layout/SouscripteurSouscription_Layout.cshtml";
+    
+    <style type="text/css">
+        .souscripteurLabelFor {
+            font-family: "Times New Roman";
+        }
+    </style>
+}
+
+@section option2{
+    @if (ViewBag.subscribeType != "start")
+    {
+        <div align="left" style="width: 200px; float: left">
+            <span style="font-size: 1.5em">@Traduction.Souscripteur</span>
+        </div>
+
+        <div style="width: 300px">
+            <input type="submit" value="@Traduction.Sauvegarder"/>
+        </div>
+    }
+}
+
+@Html.HiddenFor(model => Model.ClientId)
+
+@section Nom2{
+    <div>
+        <div style="width: 51px; float:left"> @Html.LabelFor(model => model.Nom, Traduction.Nom, new { @class = "souscripteurLabelFor" })</div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+    </div>
+    @Html.TextBoxFor(model => Model.Nom)
+}
+
+@section Fonction2{
+     <div>
+        <div style="width: 70px; float:left"> @Html.LabelFor(model => model.Fonction, Traduction.Fonction, new { @class = "souscripteurLabelFor" })</div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+    </div>
+    @Html.TextBoxFor(model => Model.Fonction)
+}
+
+@section AdresseMail2{
+     <div>
+        <div style="width: 110px; float:left"> @Html.LabelFor(model => model.Email, Traduction.AddresseMail, new { @class = "souscripteurLabelFor" }) </div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+    </div>
+    @Html.TextBoxFor(model => Model.Email)
+}
+
+@section Prenom2{
+    <div>
+        <div style="width: 60px; float:left">  @Html.LabelFor(model => model.Prenom, Traduction.Prenom, new { @class = "souscripteurLabelFor" }) </div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+    </div>
+    @Html.TextBoxFor(model => Model.Prenom)
+}
+
+@section Telephone2{
+    <div>
+        <div style="width: 80px; float: left"> @Html.LabelFor(model => model.Telephone, Traduction.Telephone, new {@class = "souscripteurLabelFor"}) </div>
+        <div style="width: 20px; float: left"><span style="color: #83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+    </div>
+    @Html.TextBoxFor(model => Model.Telephone) 
+}

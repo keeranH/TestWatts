@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Tooltip";
+    
+    <link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />   
+    <link href="@Url.Content("~/Content/tooltip/demo.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+    
+
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            changePosition();
+        });
+
+
+        function changePosition() {
+            jQuery('#pp').tooltip({
+                position: "right"
+            });
+        }
+    </script>
+     
+}
+
+<div id="pp" class="easyui-panel easyui-tooltip" title="This is the tooltip message." style="width:100px;padding:5px">Hover Me</div>
+<h2>Tooltip Position</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click the drop-down list below to change where the tooltip appears.</div>
+	</div>
+	<div style="margin:10px 0;"></div>
+	<span>Select position:</span>
+	<select onchange="changePosition(this.value)">
+		<option value="bottom">Bottom</option>
+		<option value="top">Top</option>
+		<option value="left">Left</option>
+		<option value="right">Right</option>
+	</select>
+	<div style="padding:10px 200px">
+	<div id="pp" class="easyui-panel easyui-tooltip" title="This is the tooltip message." style="width:100px;padding:5px">Hover Me</div>
+	</div>
+

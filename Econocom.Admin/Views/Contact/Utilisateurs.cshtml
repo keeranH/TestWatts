@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Econocom.Model.ViewModel.ContactViewModel>
+
+@using Econocom.Admin.Controllers.GestionContact
+@using Econocom.Resource
+
+@using (Ajax.BeginForm("Liste", "Contact", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+{
+
+    <div id="resultat">
+        @{
+            var grid = new WebGrid(canPage: true, rowsPerPage: ContactController.PageSize, canSort: true, ajaxUpdateContainerId: "grid");
+            grid.Bind(Model, rowCount: @ViewBag.Total, autoSortAndPage: false);
+            grid.Pager(WebGridPagerModes.All);
+            @MvcHtmlString.Create(grid.GetHtml(htmlAttributes: new { id = "grid" },
+                      mode: WebGridPagerModes.All,
+                                                     previousText: " < ",
+                                                     nextText: " > ",
+                                                     lastText: " >> ",
+                                                     firstText: " << ",
+                                               columns: grid.Columns(
+                                            grid.Column(columnName: "CodeInterneWattsGreen", header: "Code Interne WattsGreen"),
+                                               grid.Column(columnName: "Profil", header: "Profil"),
+                                               grid.Column(columnName: "Email", header: "Email"),
+                                               grid.Column(columnName: "NomContact", header: "Nom Contact"),
+                                               grid.Column(columnName: "PrenomContact", header: "Prenom Contact"),
+                                            grid.Column(columnName: "Fonction", header: "Fonction"),
+                                               grid.Column(columnName: "DatePremiereConnexion", header: "Date Premiere Connexion", format: (item) => item.DatePremiereConnexion != null ? string.Format("{0:dd/MM/yyyy}", item.DatePremiereConnexion) : ""),
+                                            grid.Column(columnName: "Question", header: "Question ", canSort: false),
+                                            grid.Column(columnName: "Reponse", header: "Reponse", canSort: false)),
+                                               tableStyle: "webgrid",
+                                               headerStyle: "webgrid-header",
+                                               footerStyle: "webgrid-footer",
+                                               alternatingRowStyle: "webgrid-alternating-row",
+                                               selectedRowStyle: "webgrid-selected-row",
+                                               rowStyle: "webgrid-row-style").ToString());
+        };
+    </div>
+}

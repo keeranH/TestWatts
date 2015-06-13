@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Econocom.Model.Models.Benchmark.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+       var grid = new WebGrid(source: Model,
+          defaultSort: "Name",
+          rowsPerPage: 3);
+   }
+<h2>Index</h2>
+@grid.GetHtml(
+     tableStyle: "grid",
+       headerStyle: "head",
+       alternatingRowStyle: "alt",
+       columns: grid.Columns(
+          grid.Column("Name"),
+           grid.Column("Surname")
+      )
+    )
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            RaisonSocial
+        </th>
+        <th>
+            Address1
+        </th>
+        <th>
+            ComplementAddress
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Group
+        </th>
+        <th>
+            Sector
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Forename
+        </th>
+        <th>
+            JobTitle
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Mobile
+        </th>
+        <th>
+            NumberOfEmployees
+        </th>
+        <th>
+            EmployeeDeviceRatio
+        </th>
+        <th>
+            CompanyReturn
+        </th>
+        <th>
+            NumberOfSite
+        </th>
+        <th>
+            AveragePricePerKWatt
+        </th>
+        <th>
+            TotalKWattPerYear
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaisonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplementAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sector.Label)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfEmployees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeDeviceRatio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyReturn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AveragePricePerKWatt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalKWattPerYear)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

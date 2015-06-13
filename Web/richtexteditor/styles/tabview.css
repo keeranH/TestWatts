@@ -1,0 +1,14 @@
+﻿body
+{
+	margin:1px;
+}
+body,table
+{
+	font:normal 12px Arial;
+}
+p,div
+{
+	font:inherits;
+}
+
+

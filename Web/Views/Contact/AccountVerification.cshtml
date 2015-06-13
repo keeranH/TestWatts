@@ -1,0 +1,55 @@
+﻿@model Econocom.Model.ViewModel.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+   
+}
+
+<h2>Password Entry</h2>
+
+
+    <div>
+        @using (Html.BeginForm()) 
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                @Html.HiddenFor(model => model.ClientId)            
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ConfirmPassword)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.ConfirmPassword)
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.QuestionId, "Question")
+                </div>
+
+                <div>
+                    @Html.DropDownList("QuestionId", " - Select a Question - ")
+                    @Html.ValidationMessageFor(model => model.QuestionId)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Answer)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Answer)
+                    @Html.ValidationMessageFor(model => model.Answer)
+                </div>
+
+                <p>
+                    <input type="submit" value="Log On" />
+                </p>
+            </fieldset>
+        }
+    </div>

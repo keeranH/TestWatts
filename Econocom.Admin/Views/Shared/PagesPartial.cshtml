@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Econocom.Model.Models.CMS.Page>
+
+<script type="text/javascript">
+    function ConfirmerSuppressionPage() {
+        var x = confirm("Êtes-vous sûr de vouloir supprimer cette page?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+
+
+@foreach (var item in Model)
+{
+    <div style="width:300px; height:10px; padding-bottom:15px; margin-left:10px;">
+        <div style="float: left">@Ajax.ActionLink(@item.Nom,"ModifierPage","Section",
+                            new
+                                {
+                                    nomDePage = @item.Nom,
+                                    lien = @item.Lien,
+                                    idLangue = 1,
+                                    idPage = @item.Id
+                                },
+                            new AjaxOptions { UpdateTargetId = "contentDivPartial" })
+        </div>
+        <div style="float: left; width: 40px; height: 10px; "> @Html.ActionLink("-Pg", "SupprimerPage", "Section", new { pageId = @item.Id }, new { Onclick = "ConfirmerSuppressionPage();", @class = "editLink", style = "width:30px" })</div>
+    </div>
+}

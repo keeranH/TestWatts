@@ -1,0 +1,76 @@
+﻿@using Econocom.Resource
+@model Econocom.Model.ViewModel.EvaluationEntrepriseViewModel
+
+@{
+    <link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />   
+    <link href="@Url.Content("~/Content/css/Evaluation/Evaluation.css")" rel="stylesheet" type="text/css"/>
+     <link href="@Url.Content("~/Content/css/Tooltip/Tooltip.css")" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.easyui.min.js"></script>
+        
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            changePosition();
+        });
+        
+        function changePosition() {
+            jQuery('.infoEquipment').tooltip({
+                position: "top"
+            });
+
+            jQuery('.infoSites').tooltip({
+                position: "top"
+            });
+        }
+    </script>
+}
+
+<div>
+    <span class="EvaluationTitreLabel">@Traduction.SecteurActivite</span><span class="asterisqueSpan"> *</span>
+    <br/>
+    @if (Model.ListeSecteurActivite.Count > 0)
+    {
+        @Html.DropDownListFor(m => m.SecteurActiviteId, new SelectList(Model.ListeSecteurActivite, "Id", "LibelleSecteurActivite"), Traduction.ChoisirSecteurActivite, new { @class = "dropDown" })
+    }
+</div>
+
+<div>
+    <br/>
+    <span class="EvaluationTitreLabel">@Traduction.Effectif</span><span class="asterisqueSpan"> *</span>
+    <br/>
+    @Html.TextBoxFor(model => Model.Effectifs, new { @class = "fieldTxt" })
+    <br/>
+</div>
+
+<div>
+    <br/>
+    <span class="EvaluationTitreLabel"> @Traduction.TauxEquipments</span><span class="asterisqueSpan"> *</span>
+    <span class="infoEquipment" title="<font style='color:white'>@Traduction.BulleTitle1</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+    <br/>
+    @Html.TextBoxFor(model => Model.TauxEquipement, new { @class = "fieldTxt" })
+    <span> %</span>
+    <br/>
+</div>
+
+<div>
+    <br/>
+    <span class="EvaluationTitreLabel">@Traduction.NombreSites</span><span class="asterisqueSpan"> *</span>
+    <span class="infoSites" title="<font style='color:white'>@Traduction.BulleTitle2</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+    <br/>
+    @Html.TextBoxFor(model => Model.NombreSites, new { @class = "fieldTxt" })
+    <br/>
+</div>
+
+<div>
+    <br/>
+   <span class="EvaluationTitreLabel"> @Traduction.PrixMoyenKwatt</span>@*<span class="asterisqueSpan"> *</span>*@
+    <br/>
+    @Html.TextBoxFor(model => Model.PrixMoyenKwatt, new { @style = "width : 120px; padding-bottom: 3px;" })
+    
+    @if (Model.ListeDevise.Count > 0)
+    {
+        @Html.DropDownListFor(m => m.DeviseId, new SelectList(Model.ListeDevise, "Id", "Libelle"), Traduction.ChoisirDevise, new { @style = "width: 185px; height:24px; margin-left: 15px" })
+    }
+</div>

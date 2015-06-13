@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "_ConsommationAnnuellePartial";
+}
+
+
+
+<div style="border: 1px solid gray; width: 700px; height: 200px">
+    
+    <div style=" float: left; width: 180px; height: 190px">
+        @RenderSection("barGraph", required: false)
+    </div>
+
+    <div style="border-right: gray solid 1px; float: left; width: 280px; height: 190px">
+        <div style=" width: 280px; height: 40px; border-bottom: solid gray 1px">
+            @RenderSection("dateConsommation", required: false)
+        </div>
+
+        <div style=" width: 280px; height: 140px">
+            <div style="height: 65px">
+                <div style=" width: 50px; height: 65px; float: left">
+                    <img src="~/Images/Demo/Icon_Consommation/energyConsommation.jpg"/>
+                </div>
+                <div style=" float: left; width: 220px; height: 65px;">
+                    <span STYLE="color: black; font-size: 18pt">
+                        @RenderSection("kwh", required: false) kWh
+                    </span>
+                </div>
+            </div>
+
+            <div style="height: 65px">
+                <div style=" width: 50px; height: 65px; float: left">
+                    <img src="~/Images/Demo/Icon_Consommation/percentageConsommation.jpg"/>
+                </div>
+                <div style=" float: left; width: 220px; height: 65px">
+                    <span STYLE="color: black; font-size: 18pt">
+                        @RenderSection("percentage", required: false) %
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style=" float: left; width: 230px; height: 190px">
+        @RenderSection("deviceImage", required: false)
+    </div>
+</div>
+@RenderBody()

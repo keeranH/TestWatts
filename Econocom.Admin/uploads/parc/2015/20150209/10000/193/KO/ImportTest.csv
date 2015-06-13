@@ -1,0 +1,2 @@
+IdRse;NumeroDossier;RaisonSociale;TypeSociete;Groupe;Adresse;CodePostal;Ville;Pays;ChiffreAffaires;SecteurActivite;NombreSites;PrixMoyenKWH;CoefficientCO2;Effectifs;TauxEquipement;Devise;NomAdministrateur;PrenomAdministrateur;AdresseMailAdministrateur;CodeCategorie;CodeFamille;CodeSousFamille;RefECS;CodeProcesseur;Taille;UniteTaille;Vitesse;UniteVitesse;Poids;UnitePoids;Age;Quantite
+123;999;Raison Sociale;1;Groupe;Adresse;444;Ville;13;555;1;200;5;0.085;300;0.5;1;Nom;Prenom;test@test.com;;_;_;_;_;0;_;0;_;0;_;0;0

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+@if(ViewBag.Error!=null)
+{
+<h2>ViewBag.Error</h2>
+}
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        Select file
+        <input type="file" name="file" />&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="Upload file" name="Command" /><br />
+    </div>
+    <div>
+    </div>
+}

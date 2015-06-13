@@ -1,0 +1,38 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.ClientDeviceTypeViewModel
+@using Conso = Econocom.Resource.Traduction
+
+@{
+    ViewBag.Title = @Conso.TitrePgConsommation;
+}
+
+
+<script type="text/javascript" src="~/Scripts/collapsible/jquery.nestedAccordion.js"></script>
+<script type="text/javascript" src="~/Scripts/collapsible/expand.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      //  console.log("MQD ready");
+        var idParent = "@ViewBag.IdParent";
+        var typeAffichage = "@ViewBag.TypeAffichage";        
+        showLoading();
+        $("#contentDivPartial").load("@Url.Action("AfficherQuantiteDevice", "Consommation")", { 'idCategorie': idParent, 'typeAffichage': typeAffichage }, function(response, status, xhr) {
+           
+        });
+    });         
+    
+//    $(window).bind('beforeunload', function(){
+//        return 'Enregistrer vos modifs';
+//    });
+    
+    
+     
+</script>
+
+<div style="border: solid 1px white;position:relative;width:870px;">
+    
+    <div id="contentDivPartial" style="width:870px; margin-top: 10px; margin-left: 0px; margin-bottom: 20px;">
+            
+    </div>
+
+</div>

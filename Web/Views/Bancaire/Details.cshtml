@@ -1,0 +1,50 @@
+﻿@model Econocom.Model.Models.Benchmark.IDENTITEBANCAIRE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>IDENTITEBANCAIRE</legend>
+
+    <div class="display-label">IDIDENTITEBANCAIRE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDIDENTITEBANCAIRE)
+    </div>
+
+    <div class="display-label">CODEBANQUE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CODEBANQUE)
+    </div>
+
+    <div class="display-label">GUICHET</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GUICHET)
+    </div>
+
+    <div class="display-label">NUMCOMPTE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NUMCOMPTE)
+    </div>
+
+    <div class="display-label">CLERIB</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CLERIB)
+    </div>
+
+    <div class="display-label">IBAN</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IBAN)
+    </div>
+
+    <div class="display-label">BIC</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BIC)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/Content/superfish/superfish.css">
+<link rel="stylesheet" href="/Content/superfish/superfish-vertical.css">
+<link rel="stylesheet" href="/Content/superfish/superfish-navbar.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+        if ($('.selected')) {
+            var selectedid = $(".selected").attr('id');
+            //alert(selectedid);
+            var parentid = $('.selected').parent().parent().attr('id');
+            //alert(parentid);
+
+            $('.selected').parent().parent().addClass('selected');
+            $('#selectedid').val(selectedid);
+            $('#parentid').val(parentid);
+
+
+        }
+
+        $('#menuvertical ul').bind('mouseenter', function () {
+            //alert("atr id = "+$(this).html());
+            //alert("get parent id = "+$('#parentid').attr('value'));
+            if ($(this).attr('id') != $('#parentid').attr('value')) {
+                $(".selected").removeClass("selected");
+            }
+        });
+
+        $('#menuvertical ul li').bind('mouseleave', function () {
+            //alert("2 x="+$('#selectedid').attr('value'));
+        });
+
+
+        $('#menuvertical li').bind('mouseleave', function () {
+            //alert("l x="+$('#selectedid').attr('value'));
+            var x = $('#selectedid').attr('value');
+            //alert("reseting child = " + x);
+            var sa = "#" + x;
+            $(sa).addClass("selected");
+            var parent = $('#parentid').attr('value');
+            var parentLi = "#" + parent;
+            //alert("reseting parent = "+ parent);
+            $(parentLi).addClass("selected");
+        });
+
+
+        $('#menuvertical li').bind('mouseenter', function () {
+            //alert("3 atr id = "+$(this).html());
+            //alert("3 get parent id = "+$('#parentid').attr('value'));
+            var dd = $(this).find("ul").attr('id');
+            //alert("dd"+dd);
+            if (dd != $('#parentid').attr('value')) {
+                $(".selected").removeClass("selected");
+            }
+        });
+
+
+    });
+
+</script>
+  <style>
+p { background:yellow; font-weight:bold; cursor:pointer;
+padding:5px; }
+p.over { background: #ccc; }
+span { color:red; }
+
+
+.sf-menu a 
+{
+	border-left:none;
+	border-top:none;
+	padding: 1px 10px 0px 0px;
+}
+
+.sf-vertical {
+	width: 6em;
+	height: 6em;
+}
+
+.sf-menu li {
+	background: #82b81a;
+	border-bottom:solid 1px #437e00;		
+	height:6em;
+	width:6em;
+}
+
+
+.sf-menu li.sfHover 
+{
+	background: #82b81a;
+	background: none;
+	-webkit-transition: none;
+	transition: none;
+}
+
+.sf-menu li:hover
+{
+	background: #82b81a;
+	-webkit-transition: none;
+	transition: none;
+}
+.sf-menu ul {
+	box-shadow: none;
+	 @*min-width: 4em;	*@
+          min-width: 10px;
+}
+
+.sf-menu ul li {
+	background: #acd82d;
+	border-bottom:solid 1px #7b9c19;		
+	height:6em;
+	width:6em;
+}
+
+.sf-menu ul li:hover
+{
+	background: #acd82d;
+	-webkit-transition: none;
+	transition: none;
+}
+
+ul.selected
+{
+	display:block;
+}
+
+.selected
+{
+	display:block;
+}
+
+a:link,a:visited
+{
+	color:#FFFFFF;
+	text-align:center;
+	text-decoration:none;
+}
+a:hover,a:active
+{
+	
+}
+
+.firstarrow
+{
+	float:left;
+	margin-top:37px;
+	width:1px;
+	height:1px;
+	border-top:solid 10px #acd82d;
+	border-bottom:solid 10px #acd82d;
+	border-left:solid 10px #82b81a;
+	border-right:solid 10px #acd82d;
+}
+
+.secondarrow
+{
+	float:left;
+	margin-top:35px;
+	width:1px;
+	height:1px;
+	border-top:solid 10px white;
+	border-bottom:solid 10px white;
+	border-left:solid 10px #acd82d;
+	border-right:solid 0px white;
+}
+
+.icon
+{
+	margin-top:20px;
+}
+
+.mainsecondicon
+{	
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+.secondicon
+{	
+	margin-top:20px;
+	margin-left:20px;
+}
+
+.center
+{
+	text-align:center;
+}
+</style>
+  
+</head>
+<body>
+
+<div  style="width:68.7em;padding-top:10px; margin:auto;"> 				
+		<div style="width:20.9em;float:right;color:white; height:25px">
+			<div style="height:20px">
+			dasdas
+			</div>
+			<div style="height:5px; background-color:#82b81a">
+			
+			</div>
+		</div>
+		<div style="width:20.9em;float:right;color:white; height:25px">
+			<div style="height:20px">
+			dasdas
+			</div>
+			<div style="height:5px; background-color:#acd82d">
+			
+			</div>
+		</div>	
+		<div style="width:20.9em;float:right;color:white; height:25px">
+			<div style="height:20px">
+			dasdas
+			</div>
+			<div style="height:5px; background-color:rgb(6, 165, 187)">
+			
+			</div>
+		</div>		
+	</div>	
+	<div  style="width:1100px;margin:auto;"> 				
+		<div style="width:1100px; margin:auto">			
+			<div style="width: 1100px; margin: auto;"> 				
+				<div id="examples"  style="width:6em; min-width:6em; height:100%; min-height:800px;float:left;margin-top:25px;">  
+					<div style="height:6em; border-right:solid 0px #82b81a;">
+					
+					</div>
+					<div id="samples"  style="float:left;width:6em; min-width:6em; border-top:solid 0px black; height:24.5em;">                   	
+						<input type="hidden" id="selectedid"/>
+						<input type="hidden" id="parentid"/>
+						<div id="sample3" class="sampleTabContent"  style="float:left;width:6em; min-width:6em;">			
+							<ul id="menuvertical" class="sf-menu sf-vertical">
+								<li class="current center">
+									<img class="icon" src="/Images/superfish/circle.png"/>
+									<a href="#" style="width:6em; ">Menu1</a>
+									<ul id="child1">
+										<li class="center">
+											<img class="icon" style="margin-left:-20px;" src="/Images/superfish/circle2.png"/>
+											<span class="firstarrow"></span>
+											<a href="#aa" style="width:6em; ">Fixe1</a>
+											<ul id="sa11" class="selected">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>
+										<li class="center">
+											<img class="icon" src="/Images/superfish/circle2.png"/>
+											<a href="#aa" style="width:6em; ">Mobile1</a>
+											<ul id="sa12">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>	
+                                        <li class="center">
+											<img class="icon" src="/Images/superfish/circle2.png"/>
+											<a href="#aa" style="width:6em; ">Mobile1</a>
+											<ul id="sa12">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>							
+									</ul>
+								</li>
+								<li class="center">
+									<img class="icon" src="/Images/superfish/circle.png"/>
+									<a href="#" style="width:6em; ">Menu2</a>
+									<ul id="child2">
+										<li class="center">
+											<img class="icon" style="margin-left:-20px;" src="/Images/superfish/circle2.png"/>
+											<span class="firstarrow"></span>
+											<a href="#aa" style="width:6em; ">Fixe2</a>
+											<ul id="sa21">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>
+									    <li class="center">
+									        <img class="icon" src="/Images/superfish/circle2.png"/>
+									        <a href="#aa" style="width:6em; ">Mobile2</a>
+									        <ul id="sa22" >
+									            <li style="width:10px;background:none;border:none;">
+									                <span class="secondarrow"></span>
+									            </li>
+									        </ul>
+									    </li>
+                                        <li class="center">
+											<img class="icon" src="/Images/superfish/circle2.png"/>
+											<a href="#aa" style="width:6em; ">Mobile1</a>
+											<ul id="sa12">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>								
+									</ul>
+								</li>
+								<li class="center">
+									<img class="icon" src="/Images/superfish/circle.png"/>
+									<a href="#" style="width:6em; ">Menu3</a>
+									<ul id="child3">
+										<li class="center">
+											<img class="icon" style="margin-left:-20px;" src="/Images/superfish/circle2.png"/>
+											<span class="firstarrow"></span>
+											<a href="#aa" style="width:6em; ">Fixe3</a>
+											<ul id="sa31">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>
+										<li class="center">
+											<img class="icon" src="/Images/superfish/circle2.png"/>
+											<a href="#aa" style="width:6em; ">Mobile3</a>
+											<ul id="sa32">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>								
+									</ul>
+								</li>
+								<li class="center">
+									<img class="icon" src="/Images/superfish/circle.png"/>
+									<a href="#" style="width:6em; ">Menu4</a>
+									<ul id="child3">
+										<li class="center">
+											<img class="icon" style="margin-left:-20px;" src="/Images/superfish/circle2.png"/>
+											<span class="firstarrow"></span>
+											<a href="#aa" style="width:6em; ">Fixe4</a>
+											<ul id="sa41">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>
+										<li class="center">
+											<img class="icon" src="/Images/superfish/circle2.png"/>
+											<a href="#aa" style="width:6em; ">Mobile4</a>
+											<ul id="sa42">
+												<li style="width:10px;background:none;border:none;">
+													<span class="secondarrow"></span>
+												</li>
+											</ul>
+										</li>								
+									</ul>
+								</li>
+							</ul>				
+						</div>          
+					</div>
+					<div style="height:254px; float:right;">
+						<div style="height:254px; border-right:solid 0px #82b81a;float:right">
+					 
+						</div>
+					</div>
+				</div>  
+				<div style="float:left;margin-left:110px; background-color:white; width:55.7em; min-width:450px; min-height:800px">
+					
+							@RenderBody()
+
+			    </div>
+			</div> 
+		</div>
+	</div> <!-- main -->
+	
+</body>
+</html>

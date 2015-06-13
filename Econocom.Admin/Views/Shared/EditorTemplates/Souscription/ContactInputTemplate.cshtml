@@ -1,0 +1,38 @@
+﻿@model Econocom.Model.ViewModel.ContactViewModel
+
+@{
+    ViewBag.Title = "Saisie Contact";
+    Layout = "~/Views/Shared/Maquette/Souscription/Contact_Layout.cshtml";
+}
+
+@section option{
+
+@Ajax.ActionLink("Sauvegarder", "ContactAffichage", "Souscription",
+new
+    {
+                            
+    },
+    new AjaxOptions { UpdateTargetId = "ContactContentDiv" })
+}
+
+@section Nom{
+    @Html.EditorFor(model => model.NomContact) 
+}
+
+@section Fonction{
+    @Html.EditorFor(model => model.Fonction) 
+}
+
+@section AdresseMail{
+    @Html.EditorFor(model => model.Email) 
+}
+
+@section Prenom{
+    @Html.EditorFor(model => model.PrenomContact) 
+}
+
+@section Telephone{
+    @Html.EditorFor(model => model.NumeroPhone) 
+}
+
+

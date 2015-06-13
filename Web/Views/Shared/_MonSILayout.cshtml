@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "_MonSILayout";
+}
+@RenderBody()
+<h2 align="center">Mon SI</h2>
+
+<div id="main" style="height:100%; width:100%; border:1px solid blue;">
+    
+    <div id="content" style="width:100%; height:50%">
+        <div id="partialView" style="border:2px solid RED;">
+            @{
+                Html.RenderAction("Details", "MonSi");
+            }
+        </div>
+    </div>
+    <div>
+        
+        <div style="border:1px solid pink; height:20%" >
+            <img src="/Content/images/MonSI/Details.jpg"/> 
+
+        </div>
+        
+        <div style="border:1px solid brown;height:20%" >
+            <img src="/Content/images/MonSI/Telecharger.jpg"/> 
+
+        </div>
+        
+        </div>
+    </div>
+
+
+

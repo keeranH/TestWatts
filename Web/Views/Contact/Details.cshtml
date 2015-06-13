@@ -1,0 +1,45 @@
+﻿@model Econocom.Model.Models.Benchmark.CONTACT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Contact</legend>
+
+    <div class="display-label">Surname</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surname)
+    </div>
+
+    <div class="display-label">Forename</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Forename)
+    </div>
+
+    <div class="display-label">JobTitle</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JobTitle)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">Mobile</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

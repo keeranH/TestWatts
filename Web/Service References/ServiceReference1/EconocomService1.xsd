@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Econocom.Service" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel" />
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" />
+  <xs:element name="GetPeople">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPeopleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Econocom.Service" minOccurs="0" name="GetPeopleResult" nillable="true" type="q1:ArrayOfPerson" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPeopleWithOutCicularReferencing">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPeopleWithOutCicularReferencingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Econocom.Service" minOccurs="0" name="GetPeopleWithOutCicularReferencingResult" nillable="true" type="q2:ArrayOfPerson" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListePays">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListePaysResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="ListePaysResult" nillable="true" type="q3:ArrayOfPAYS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeLangues">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeLanguesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ListeLanguesResult" nillable="true" type="q4:ArrayOfLangue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeConsoWattHeur">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeConsoWattHeurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="ListeConsoWattHeurResult" nillable="true" type="q5:ArrayOfCONSOWATTHEUR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="contact" nillable="true" type="q6:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetContactResult" nillable="true" type="q7:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="client" nillable="true" type="q8:CLIENT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="SetClientResult" nillable="true" type="q9:CLIENT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentUpload">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="documentName" nillable="true" type="xs:string" />
+  <xs:element name="UploadResult">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Error" nillable="true" type="xs:string" />
+  <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="ErrorLines" nillable="true" type="q10:ArrayOfstring" />
+  <xs:element name="Status" type="xs:boolean" />
+  <xs:element name="FileUpload">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/Message" name="Data" type="q11:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileName" nillable="true" type="xs:string" />
+  <xs:element name="SauveGardeClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="client" nillable="true" type="q12:CLIENT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SauveGardeClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SauveGardeClientResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeContenuPublier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomDePage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cultureDeLangue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeContenuPublierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ListeContenuPublierResult" nillable="true" type="q13:ArrayOfContenuModere" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContenuPublier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomDePage" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContenuPublierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="GetContenuPublierResult" nillable="true" type="q14:ContenuModere" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualiserClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="client" nillable="true" type="q15:CLIENT" />
+        <xs:element minOccurs="0" name="btnStatus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualiserClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualiserClientResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListePage">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListePageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ListePageResult" nillable="true" type="q16:ArrayOfPage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualiserContenuPublier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="publishedContent" nillable="true" type="q17:ContenuModere" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualiserContenuPublierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ActualiserContenuPublierResult" nillable="true" type="q18:ContenuModere" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientNonModerer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientNonModererResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetClientNonModererResult" nillable="true" type="q19:ArrayOfCLIENT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientParId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientParIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetClientParIdResult" nillable="true" type="q20:CLIENT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPays">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaysResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetPaysResult" nillable="true" type="q21:ArrayOfPAYS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeSection">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeSectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ListeSectionResult" nillable="true" type="q22:ArrayOfSection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContactParVerificationCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContactParVerificationCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetContactParVerificationCodeResult" nillable="true" type="q23:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetQuestionsResult" nillable="true" type="q24:ArrayOfQUESTION" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionParId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionParIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="GetQuestionParIdResult" nillable="true" type="q25:QUESTION" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MAJContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="contact" nillable="true" type="q26:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MAJContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="MAJContactResult" nillable="true" type="q27:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificationCompte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel" minOccurs="0" name="enregistrementModel" nillable="true" type="q28:RegisterViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificationCompteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="VerificationCompteResult" nillable="true" type="q29:CONTACT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SauvegardeSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" minOccurs="0" name="sectionViewModel" nillable="true" type="q30:SectionViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SauvegardeSectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SauvegardeSectionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SauvegardePage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" minOccurs="0" name="pageViewModel" nillable="true" type="q31:PageViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SauvegardePageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SauvegardePageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeModele">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListeModeleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" minOccurs="0" name="ListeModeleResult" nillable="true" type="q32:ArrayOfModele" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

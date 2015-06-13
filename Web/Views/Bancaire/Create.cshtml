@@ -1,0 +1,81 @@
+﻿@model Econocom.Model.Models.Benchmark.IDENTITEBANCAIRE
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>IDENTITEBANCAIRE</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDIDENTITEBANCAIRE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IDIDENTITEBANCAIRE)
+            @Html.ValidationMessageFor(model => model.IDIDENTITEBANCAIRE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CODEBANQUE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CODEBANQUE)
+            @Html.ValidationMessageFor(model => model.CODEBANQUE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUICHET)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GUICHET)
+            @Html.ValidationMessageFor(model => model.GUICHET)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NUMCOMPTE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NUMCOMPTE)
+            @Html.ValidationMessageFor(model => model.NUMCOMPTE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CLERIB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CLERIB)
+            @Html.ValidationMessageFor(model => model.CLERIB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IBAN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IBAN)
+            @Html.ValidationMessageFor(model => model.IBAN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BIC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BIC)
+            @Html.ValidationMessageFor(model => model.BIC)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

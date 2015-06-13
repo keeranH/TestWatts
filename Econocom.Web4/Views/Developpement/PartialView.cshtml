@@ -1,0 +1,17 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgDevDurable;
+}
+
+<div id="mainDiv" style="margin-top: 50px">
+    
+    <div>
+        @if (@ViewBag.ContenuModere != null)
+        {
+            @Html.Raw(@ViewBag.ContenuModere.Contenu)
+        }
+    </div>
+
+</div>
+

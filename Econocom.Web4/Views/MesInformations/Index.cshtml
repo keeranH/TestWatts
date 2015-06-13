@@ -1,0 +1,411 @@
+﻿@model Econocom.Model.ViewModel.MesInformationsViewModel
+@using Econocom.Model.Enum
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgSouscription;
+    Layout = "~/Views/Shared/Maquette/_Layout_Client.cshtml";
+
+    Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    Response.AppendHeader("Pragma", "no-cache");
+    Response.AppendHeader("Expires", "0");  
+}
+
+@{
+    <link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />   
+    <link href="@Url.Content("~/Content/css/Souscription/Souscription.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/Tooltip/Tooltip.css")" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.easyui.min.js"></script>
+        
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            changePosition();
+            hideLoading();
+        });
+
+        function changePosition() {
+            jQuery('.infoEquipment').tooltip({
+                position: "top"
+            });
+
+            jQuery('.infoSites').tooltip({
+                position: "top"
+            });
+        }
+    </script>
+}
+
+<style>
+    .spanDisplay {
+        font-family: sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+    }
+</style>
+
+
+<div align="center" style="width: 870px; border: solid 1px white;">
+    
+    <div align="left" style="width: 730px; height: 90px; border: solid 1px transparent">
+        <div style="margin-top: 50px">
+            <span class="FirstTitle">@Traduction.MesInformations</span><br/>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Index", "MesInformations"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="ErrorMessage_Div" align="left">
+            @if (@ViewBag.Erreur == "ErrorRequired")
+            {
+                <span class="Message_Error_Span">@Traduction.MsgErreurObligatoire</span>
+            }
+            
+            @if (@ViewBag.Erreur == "ErrorRange")
+            {
+                <span class="Message_Error_Span">@Traduction.Err_Message_Incorrecte</span>
+            }
+
+            @if (@ViewBag.Erreur == "ErrorMail")
+            {
+                <span class="Message_Error_Span">@Traduction.MsgErreurFormatMail</span>
+            }
+             
+            @if (@ViewBag.Erreur == "ErrorIdentique")
+            {
+                <span class="Message_Error_Span">@Traduction.MsgErreurMailIdentique</span>
+            }
+             
+            @if (@ViewBag.Erreur == "ErrorExistant")
+            {
+                <span class="Message_Error_Span">@Traduction.MsgErreurMailExistant</span>
+            }
+            
+            @if (@ViewBag.Erreur == "ErrorFormat")
+            {
+                <span class="Message_Error_Span">@Traduction.MsgErreurFormat</span>
+                
+            }
+             
+            <span style="color: green;">@ViewBag.MsgModification</span>
+        </div>
+        
+        <div align="center" style="width: 735px; height: 600px;">
+            
+            <div style="height: 25px">
+                <div style="float: left;">
+                    <img src="~/Content/images/Numero_Rond/rond_1.png" />
+                </div>
+                <div>
+                    <span style="font-size: 1.7em; font-family: sans-serif; float: left; margin-top: 5px; margin-left: 15px;">@Traduction.Societe</span>
+                </div>
+            </div>
+             
+            <br/>
+
+            <div align="left" style="margin-top:1px">
+                <span>@Traduction.TitreSociete</span>
+            </div>
+
+            <br/>  
+
+            <div style="height: 280px">
+                <br/>
+                <div align="left" style="float: left; width: 365px; ">
+                    <div>
+                        <span class="spanDisplay">@Traduction.RaisonSociale <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span><br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.RaisonSociale, new { @style = "width : 320px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.RaisonSociale, new { @style = "width : 320px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+    
+                    <div>
+                        <span class="spanDisplay">@Traduction.Adresse <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span><br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextAreaFor(model => Model.SocieteSouscriptionViewModel.Addresse, new { @style = "width : 320px; height:90px; background: white;" }) : Html.TextAreaFor(model => Model.SocieteSouscriptionViewModel.Addresse, new { @style = "width : 320px; height:90px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+    
+                    <div>
+                        <span class="spanDisplay">@Traduction.CP <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <span class="spanDisplay" style="margin-left: 65px">@Traduction.Ville <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <br/>  
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.CodePostal, new { @style = "width : 80px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.CodePostal, new { @style = "width : 80px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.Ville, new { @style = "width : 220px; height:30px; margin-left:15px; background: white;" }) : Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.Ville, new { @style = "width : 220px; height:30px; margin-left:15px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+    
+                    <div>
+                        <br/>
+                        <span class="spanDisplay">@Traduction.SecteurActivite <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span><br/>
+                        @if (Model.DetailsEntrepriseViewModel.ListeSecteurActivite.Count > 0)
+                        {
+                            @(@ViewBag.TypeContact == "Admin" ? Html.DropDownListFor(m => m.DetailsEntrepriseViewModel.SecteurActiviteId, new SelectList(Model.DetailsEntrepriseViewModel.ListeSecteurActivite, "Id", "LibelleSecteurActivite"), Traduction.ChoisirSecteurActivite, new { style = "width: 320px; height: 30px; margin-top: 5px; background: white; margin-bottom: 8px" }) : Html.DropDownListFor(m => m.DetailsEntrepriseViewModel.SecteurActiviteId, new SelectList(Model.DetailsEntrepriseViewModel.ListeSecteurActivite, "Id", "LibelleSecteurActivite"), Traduction.ChoisirSecteurActivite, new { style = "width: 320px; height: 30px; margin-top: 5px; background: white; margin-bottom: 8px", @disabled = "disabled" }))
+                            @Html.HiddenFor(m => m.DetailsEntrepriseViewModel.SecteurActiviteId)
+                        }
+                    </div>
+                     
+                    <div>
+                        <span class="spanDisplay">@Traduction.NombreSites <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <span class="infoSites" title="<font style='color:white'>@Traduction.BulleTitle2</font>"><img style="margin-bottom: -4px;" src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                        <br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.NombreSites, new { @style = "width : 80px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.NombreSites, new { @style = "width : 80px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                        <br/>
+                    </div>
+                     
+                    <div>
+                        <span class="spanDisplay">@Traduction.PrixMoyenKwatt <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.PrixMoyenKwatt, new { @style = "width : 80px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.PrixMoyenKwatt, new { @style = "width : 80px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                        <br/>
+                    </div>
+                    
+                    <div>
+                        <span class="spanDisplay">@Traduction.CoefficientCO2 <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.CoefficientCO2, new { @style = "width : 80px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.CoefficientCO2, new { @style = "width : 80px; height:30px; background: white;" }))
+                        </span>
+                        <br/>
+                    </div>
+                </div>
+
+                <div align="left" style="float: right; width: 365px;">
+                    <div style="margin-left: 45px">
+                        <span class="spanDisplay">@Traduction.Groupe</span><br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.Groupe, new { @style = "width : 320px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.Groupe, new { @style = "width : 320px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+            
+                    <div style="margin-left: 45px">
+                        <span class="spanDisplay">@Traduction.Pays <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span><br/>
+                        <span>
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.DropDownListFor(m => m.SocieteSouscriptionViewModel.PaysId, new SelectList(Model.SocieteSouscriptionViewModel.ListPays, "Id", "LibellePays"), Traduction.ChoisirPays, new { style = "width: 320px; height: 30px; margin-top: 5px; background: white;" }) : Html.DropDownListFor(m => m.SocieteSouscriptionViewModel.PaysId, new SelectList(Model.SocieteSouscriptionViewModel.ListPays, "Id", "LibellePays"), Traduction.ChoisirPays, new { style = "width: 320px; height: 30px; margin-top: 5px; background: white;", @disabled = "disabled" }))
+                            @Html.HiddenFor(model => Model.SocieteSouscriptionViewModel.LibellePays)
+                            @Html.HiddenFor(m => m.SocieteSouscriptionViewModel.PaysId)
+                        </span>
+                    </div>
+            
+                    <div style="margin-left: 45px; margin-top: 68px">
+                        <span class="spanDisplay">@Traduction.ChiffreAffaires</span><br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.ChiffresAffaires, new { @style = "width: 320px; height: 30px; background: white;" }) : Html.TextBoxFor(model => Model.SocieteSouscriptionViewModel.ChiffresAffaires, new { @style = "width: 320px; height: 30px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+
+                    <div style="margin-left: 45px">
+                        <br/>
+                        <span class="spanDisplay">@Traduction.Effectif <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span><br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.Effectifs, new { @style = "width : 320px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.Effectifs, new { @style = "width : 320px; height:30px; background: white;", @readonly = true }))
+                        </span>
+                    </div>
+                     
+                    <div style="margin-left: 45px">
+                        <span class="spanDisplay">@Traduction.TauxEquipments <span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <span class="infoEquipment" title="<font style='color:white'>@Traduction.BulleTitle1</font>"><img style="margin-bottom: -4px;" src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                        <br/>
+                        <span class="spanDisplay">
+                            @(@ViewBag.TypeContact == "Admin" && Model.TypeClient == (int)TypeClient.Econocom ? Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.TauxEquipement, new { @style = "width : 80px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.DetailsEntrepriseViewModel.TauxEquipement, new { @style = "width : 80px; height:30px; background: white;", @readonly = true }))
+                            %
+                        </span>
+                        <br/>
+                    </div>
+                     
+                    <div style="margin-left: 45px">
+                        <span class="spanDisplay">@Traduction.Devise<span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></span>
+                        <br/>
+                        @if (Model.DetailsEntrepriseViewModel.ListeDevise.Count > 0)
+                        {
+                            @(@ViewBag.TypeContact == "Admin" ? Html.DropDownListFor(m => m.DetailsEntrepriseViewModel.DeviseId, new SelectList(Model.DetailsEntrepriseViewModel.ListeDevise, "Id", "Libelle"), Traduction.ChoisirDevise, new { @style = "width: 320px; height: 30px; margin-top: 5px; background: white;" }) : Html.DropDownListFor(m => m.DetailsEntrepriseViewModel.DeviseId, new SelectList(Model.DetailsEntrepriseViewModel.ListeDevise, "Id", "Libelle"), "- Choisissez votre devise -", new { @style = "width: 320px; height: 30px; margin-top: 5px; background: white;", @disabled = "disabled" }))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style=" border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3); width: 730px; margin-bottom: 35px;"/>
+
+         <div style="width: 730px; height: 520px;">
+             <div style="height: 25px">
+                 <div style="float: left;">
+                     <img src="~/Content/images/Numero_Rond/rond_4.png" />
+                 </div>
+                 <div>
+                     <span style="font-size: 1.7em; font-family: sans-serif; float: left; margin-top: 5px; margin-left: 15px;">@Traduction.Utilisateurs</span>
+                 </div>
+             </div>
+             
+             <br/>
+
+             <div align="left" style="margin-top:1px">
+                 <span>@Traduction.TitreUtilisateur1</span><br/>
+                 <span>@Traduction.TitreUtilisateur2</span>
+             </div>
+
+             <br/>
+             
+             <table width=730 style='table-layout:fixed;'>
+                 <col width=70>
+                 <col width=200>
+                 <col width=200>
+                 <col width=200>
+                 <col width=90/>
+
+                 <tr>
+                     <td></td>
+                     <td class="spanDisplay" align="center">@Traduction.Nom</td>
+                     <td class="spanDisplay" align="center">@Traduction.Prenom</td>
+                     <td class="spanDisplay" align="center">@Traduction.AddresseMail</td>
+                     <td class="spanDisplay" align="center">@Traduction.GenererMotDePasse</td>
+                 </tr>
+        
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.Admin</span></td>
+                     <td><span class="spanDisplay">@Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[0].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true })</span></td>
+                     <td><span class="spanDisplay">@Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[0].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true })</span></td>
+                     <td><span class="spanDisplay">@Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[0].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true })</span></td>
+                     <td><span>@Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[0].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" })</span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[0].id)
+                 </tr>
+
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 1</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[1].id)
+                 </tr>
+        
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 2</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[2].id)
+                 </tr>
+        
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 3</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[3].id)
+                 </tr>
+        
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 4</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[4].id)
+                 </tr>
+                 
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 5</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[5].id)
+                 </tr>
+                 
+                 <tr>
+                     <td><span class="spanDisplay">@Traduction.User 6</span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Nom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Nom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Prenom, new { @style = "width : 195px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Prenom, new { @style = "width : 195px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span class="spanDisplay">
+                             @(@ViewBag.TypeContact == "Admin" ? Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Email, new { @style = "width : 200px; height:30px; background: white;" }) : Html.TextBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].Email, new { @style = "width : 200px; height:30px; background: white;", @readonly = true }))
+                         </span></td>
+                     <td><span>
+                             @(@ViewBag.TypeContact == "Admin" ? Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;" }) : Html.CheckBoxFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].GenereMDP, new { style = "vertical-align:middle; margin-left: 30px;", @disabled = "disabled" }))
+                         </span></td>
+                     @Html.HiddenFor(model => Model.UtilisateurSouscriptionViewModel.ListeUtilisateurs[6].id)
+                 </tr>
+
+             </table>
+         </div>
+        
+        <div style="padding-top: 50px;">
+            
+            <span><hr style=" border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3); width: 730px;"/></span>
+                    
+            <div id="BoutonDiv">
+                @if (@ViewBag.TypeContact == "Admin")
+                {
+                    <input type="submit" class="boutonPayant link" style="padding: 0px 5px 0px 5px; width: 175px; margin-top: -15px; border-radius: 5px !important;" value="@Traduction.LibelleBouton"/>
+                }
+                else
+                {
+                    <span style="background-image: url('@Url.Content("~/Content/images/Button/b_gris_small.png")'); display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-top:-16px; color: white; font-size: 14px; font-weight: bold;">@Traduction.Valider</span>
+                }
+            </div>
+                    
+            <br/>
+        </div>
+        
+        <div align="left" class="Reglement_Div">
+             @Traduction.ChampsObligatoires1 (*) @Traduction.ChampsObligatoires2
+        </div>
+    }
+</div>

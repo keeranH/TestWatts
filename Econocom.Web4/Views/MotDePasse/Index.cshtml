@@ -1,0 +1,16 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgGestionMdp;
+}
+
+<div>
+    @if (Request.IsAuthenticated)
+    {   
+         @Html.Partial("MenuPartial/_MotDePasseModifierPartial")
+    }
+    else
+    {
+        @Html.Partial("MenuPartial/_MotDePasseOubliePartial")
+    }
+</div>

@@ -1,0 +1,76 @@
+﻿@using  Econocom.Web4.Extension
+@model Econocom.Model.ViewModel.AdresseViewModel
+        
+
+<div id="majorDiv" align="left" style="width:1150px;min-height:300px;">
+        <div style="float:left;min-width:571px;min-height:300px; border: 1px solid">
+
+           <div class="editor-label">
+            @Html.LabelFor(model => model.Adresse1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse1)
+            @Html.ValidationMessageFor(model => model.Adresse1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adresse2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse2)
+            @Html.ValidationMessageFor(model => model.Adresse2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adresse3)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse3)
+            @Html.ValidationMessageFor(model => model.Adresse3)
+        </div>
+
+      </div>
+     
+             <div  style="float:right;min-width:571px;height:130px">
+                    
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CodePostal)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CodePostal)
+                        @Html.ValidationMessageFor(model => model.CodePostal)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Region)
+                    </div>
+                 <div class="editor-field">
+                     @Html.EditorFor(model => model.Region)
+                     @Html.ValidationMessageFor(model => model.Region)
+                 </div>
+                 
+                 
+                 
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Ville)
+                    </div>
+                 <div class="editor-field">
+                     @Html.EditorFor(model => model.Ville)
+                     @Html.ValidationMessageFor(model => model.Ville)
+                 </div>
+                 
+                 <div class="editor-label">
+                    @Html.LabelFor(model => model.PaysId, "PAY")
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("PaysIds", String.Empty)
+                    @Html.ValidationMessageFor(model => model.PaysId)
+                </div>
+
+             </div>
+
+</div>
+
+   
+       
+

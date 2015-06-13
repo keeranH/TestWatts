@@ -1,0 +1,317 @@
+﻿@using Econocom.Resource
+@model Econocom.Model.ViewModel.PdfConsoViewModel
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Rotativa.cshtml";
+}
+     
+<style type="text/css">
+    .container
+    {
+        position:relative;
+        width:870px;
+        height:auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 35px;
+        margin-top: 20px;
+    }
+    
+   
+    .divGraph 
+    {
+        float:none !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+<div align="center" style="border: solid 1px white; position:relative; display:block; height:auto; width:870px;">   
+    <div id="titre" style="border: solid 0px gainsboro; margin-bottom: 30px; width: 870px">
+       
+        <div align="left" style="position: relative; margin-top: 10px; height:25px;">
+            
+            <span style="font-size: 25px; margin-top: -8px; width: 350px; float: left">@Model.TotalConsoTexte</span>
+                  
+                    
+            @if (@Model.TypeUtilisateur == "Demo")
+            {
+                <span style="font-size: 25px; float: left; margin-top: 20px; margin-left: -350px; color: #4EB4B6;">@Model.FamilleLibelleActuel . @Model.CategorieLibelleActuel</span>
+                <span style="float:right; color: #4EB4B6; font-size: 40px; margin-left: 75px;width:417px; background-position:0 50%; text-align:right; background-repeat: no-repeat; padding-left:10px; background-image:url('@Model.LienSeparateurVertical')">@Model.TotalConso @Traduction.ParAn</span>
+            }
+            @if (@Model.TypeUtilisateur == "Payant")
+            {
+                <span style="font-size: 25px; float: left; margin-top: 20px; margin-left: -350px; color: #83B81A;">@Model.FamilleLibelleActuel . @Model.CategorieLibelleActuel</span>
+                <span style="float:right; color: #83B81A; font-size: 40px; margin-left: 75px;width:417px; background-position:0 50%; text-align:right; background-repeat: no-repeat; padding-left:10px; background-image:url('@Model.LienSeparateurVertical')">@Model.TotalConso @Traduction.ParAn</span>
+            }
+            @if (@Model.TypeUtilisateur == "Simulation")
+            {
+                <span style="font-size: 25px; float: left; margin-top: 20px; margin-left: -350px; color: #377A37;">@Model.FamilleLibelleActuel . @Model.CategorieLibelleActuel</span>
+                <span style="float:right; color: #377A37; font-size: 40px; margin-left: 75px; width:417px; background-position:0 50%; text-align:right; background-repeat: no-repeat; padding-left:10px; background-image:url('@Model.LienSeparateurVertical')">@Model.TotalConso @Traduction.ParAn</span>
+            }
+        </div>
+    </div>
+
+    <br/> <br/> <br/>
+    
+     <div id="main" class="divMain" style="width: 870px; min-height:800px; background-color: white; margin-left: 0px; display:block; position:relative;">
+       
+        <div id="divPic" align="center" style="border: solid 1px transparent; width: 870px; height: 100px; border: solid 1px gainsboro">
+            <div >
+                <img style="margin-top: 5px" src="@Url.Content(@Model.LienImageCategorieActuel)" alt=""/>
+            </div>
+            <div>
+                <span>@Model.CategorieLibelleActuel</span>
+            </div>
+        </div>       
+        
+        
+        <div class="divGraph" style="width: 870px; padding-top: 10px; padding-bottom: 5px; float:right; height:auto; border:solid 1px gainsboro; display:block; position:relative;">
+            <div>
+                &nbsp;
+                <table style="width: 860px; margin-top: 20px">
+                    &nbsp;
+                    @foreach (var item in Model.ConsoViewModels)
+                    {
+                        var largeurTotale = item.LongueurGrapheTotale + "px";
+                        var largeurMilieu = item.LongueurGrapheMilieu + "px";
+                            
+                        <tr>
+                            @*libellelibellelibellelibellelibelle_libellelibelle_libelle_libelle_libellelibellelibelle*@
+                            <td style="width: 250px; padding-left: 5px">
+                                <div style="width: 250px; word-wrap: break-word;">
+                                    <span>
+                                        @*@Html.Raw(HttpUtility.HtmlDecode(item.Libeller))*@
+                                        @item.Libeller
+                                    </span>
+                                </div>
+                            </td>
+                            <td style="border: solid 1px transparent;">
+                                <div style="border: solid 2px gainsboro; padding-top: 3px; padding-bottom: 3px; width: 506px">
+                                    @if (@Model.TypeUtilisateur == "Demo")
+                                    {
+                                        <div style="width: @largeurMilieu; background-color: #4EB4B6; height: 20px; margin-left: 3px; margin-right: 3px"><span style="width: 250px; margin-left: 160px; display: inline-block">@item.Consommation.ValeurAfficher @item.Consommation.Measure</span></div>
+                                    }
+                                    @if (@Model.TypeUtilisateur == "Payant")
+                                    {
+                                        <div style="width: @largeurMilieu; background-color: #83B81A; height: 20px; margin-left: 3px; margin-right: 3px"><span style="width: 250px; margin-left: 160px; display: inline-block">@item.Consommation.ValeurAfficher @item.Consommation.Measure</span></div>
+                                    }
+                                    @if (@Model.TypeUtilisateur == "Simulation")
+                                    {
+                                        <div style="width: @largeurMilieu; background-color: #377A37; height: 20px; margin-left: 3px; margin-right: 3px"><span style="width: 250px; margin-left: 160px; display: inline-block">@item.Consommation.ValeurAfficher @item.Consommation.Measure</span></div>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td>
+                            <div style="float: right;">
+                                <span style="color: gainsboro"> w </span>
+                            </div>
+                        </td>
+                        <td>
+                            @for (int i = 0; i <= 100; i += 10)
+                            {
+                                if (i == 0)
+                                {
+                                    <div style="width: 50px; float: left; margin-left: 5px;">
+                                        <span style="color: gainsboro">@i</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div style="width: 50px; float: left;">
+                                        <span style="color: gainsboro">@i</span>
+                                    </div>
+                                }
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+            
+            @* <div class="divGraph" style="width: 750px; padding-top: 10px; padding-bottom: 5px; float:right; height:auto; border:solid 0px yellow; display:block; position:relative;">
+            
+            <table style="table-layout: fixed; width: 850px; border: solid 1px transparent; border-spacing: 10px 0; margin-top:0px;">
+                @for (int z = 0; z < Model.ConsoViewModels.Count(); z += 3)
+                {
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                <td align="center" valign="middle" class="tdBorderLeftRightTop">
+                                        
+                                    <div align="center" style="height: 50px; width: 180px; padding-bottom: 5px;" >
+                                        <img style="padding-top: 10px;" src= "@Url.Content(@Model.ConsoViewModels.ElementAt(x).LienImage)" alt="IMAGES" />
+                                    </div>
+                                        
+                                </td>
+                            }
+                            <td> </td>
+                        }    
+                    </tr>
+
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                <td align="center" valign="middle" class="tdBorderLeftRight">
+                                        
+                                    <div align="center" style="height: 50px; width: 180px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 30px;">
+                                        @if (@Model.TypeUtilisateur == "Demo")
+                                        {
+                                            <span style="color: #4EB4B6; font-size: 20px;">@Model.ConsoViewModels.ElementAt(x).Libeller</span>
+                                        }
+                                        @if (@Model.TypeUtilisateur == "Payant")
+                                        {
+                                            <span style="color: #83B81A; font-size: 20px;">@Model.ConsoViewModels.ElementAt(x).Libeller</span>
+                                        }
+                                        @if (@Model.TypeUtilisateur == "Simulation")
+                                        {
+                                            <span style="color: #377A37; font-size: 20px;">@Model.ConsoViewModels.ElementAt(x).Libeller</span>
+                                        }
+                                    </div>
+                                </td>
+                            }
+                            <td> </td>
+                        }
+                    </tr>
+
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                var heightTotale = @Model.ConsoViewModels.ElementAt(x).LongueurGrapheTotale + "px";
+                                var heightMilieu = @Model.ConsoViewModels.ElementAt(x).LongueurGrapheMilieu + "px";
+                                <td align="center" valign="middle" style="vertical-align: bottom; height: 475px" class="tdBorderLeftRight">
+                                        
+                                    <div style="height: @heightTotale; position: relative; float: left; width: 50px">
+                                        <div style="border: solid 0px transparent; position: absolute; bottom: 0px">
+                                            @{
+                                                int valeurConso = (int)(float.Parse(Model.ConsoViewModels.ElementAt(x).Consommation.Valeur));
+
+                                                valeurConso = valeurConso / 1000;
+
+                                                int j = valeurConso + 10;
+
+                                                int k = valeurConso % 10;
+
+                                                if ((valeurConso % 10) != 0)
+                                                {
+                                                    valeurConso = valeurConso + (10 - k);
+                                                }
+                                            }
+                                                       
+                                            @for (int i = 0; i <= 100; i += 10)
+                                            {
+                                                int w = 100 - i;
+                                                                
+                                                <span class="scale" style="height:50px; color: white; font-weight: bold; padding-left: 4px; border: solid 0px green; ">
+                                                    <!--[if !IE]>--><span style="display:block; margin-top:33px;color:white;">@w</span><!--<![endif]-->
+                                                    <!--[if IE]><span style="display:block; margin-top:30px;color:white;">@w</span> <![endif]-->                                                
+                                                </span>
+                                            }
+                                                                                                    
+                                        </div>
+                                        
+                                        @if (Model.ConsoViewModels.ElementAt(x).LongueurGrapheTotale >= 0 && Model.ConsoViewModels.ElementAt(x).Consommation.Valeur != "0")
+                                        {
+                                            if (Model.ConsoViewModels.ElementAt(x).LongueurGrapheMilieu < -5)
+                                            {
+                                                <div style="height: 4px; width: 82px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 60px; background-image: url('@Model.LienGrapheBas');"></div>                                                
+                                            }
+                                            else if (Model.ConsoViewModels.ElementAt(x).LongueurGrapheMilieu > -5 && Model.ConsoViewModels.ElementAt(x).LongueurGrapheMilieu <= 0)
+                                            {
+                                                <div style="height: 5px; width: 82px; float: left; display: block; position: relative; margin-left: 60px; background-image: url('@Model.LienGrapheHaut');"> </div>
+                                                <div style="height: 4px; width: 81px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 60px; background-image: url('@Model.LienGrapheBas');"></div>
+                                            }
+                                            else if (Model.ConsoViewModels.ElementAt(x).LongueurGrapheMilieu > 0)
+                                            {
+                                                <div style="height: 5px; width: 82px; float: left; display: block; position: relative; margin-left: 60px; background-image: url('@Model.LienGrapheHaut');"> </div>
+                                                <a href="@Url.Action("Naviguer", "Consommation", new { idClient = @Model.ConsoViewModels.ElementAt(x).IdClient, idFamille = @Model.ConsoViewModels.ElementAt(x).IdFamille, idCategorie = @Model.ConsoViewModels.ElementAt(x).IdCategorie, idTypeDevice = @Model.ConsoViewModels.ElementAt(x).IdTypeDevice }, null)">
+                                                    <div style="background-image: url('@Model.LienGrapheMilieu'); height: @heightMilieu; width: 82px; bottom: 4px; position: absolute; float: left; display: block; margin-left: 60px;"></div>
+                                                </a>
+                                                <div style="height: 4px; width: 81px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 60px; background-image: url('@Model.LienGrapheBas');"></div>
+                                            }
+                                        }            
+                                       			
+                                    </div>
+                                        
+                                </td>
+                            }
+                            <td> </td>
+                        }
+                    </tr>
+
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                <td align="center" valign="middle" class="tdBorderLeftRight">
+                                        
+                                    <div style="width: 180px; margin-bottom: 5px;">
+                                        <span style="color: #EEEEEE; font-weight: bold;">txt</span>
+                                    </div>
+
+                                     <div align="center" style="height: 50px; width: 175px; margin-left: 0px; margin-right: 5px; background-color: #EEEEEE; background-image:url('@Model.LienImageTypeAffichage'); background-repeat:no-repeat; background-position:right;">
+                                   
+                                        <div align="right" style="display: inline-table; width:180px; margin-top:12px; padding-right:22px;">
+                                            <span style="font-size: 20px; font-weight: bold;">@Model.ConsoViewModels.ElementAt(x).Consommation.ValeurAfficher</span>
+                                                <span style="margin-left: 5px; font-size: 18px;">@Model.ConsoViewModels.ElementAt(x).Consommation.Measure</span>
+                                          
+                                        </div>                                                   
+                                    </div>
+                                </td>
+                            }
+                            <td></td>
+                        }
+                    </tr>
+
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                <td align="center" valign="middle" class="tdBorderLeftRight">
+                                        
+                                    <div align="center" style="height: 50px; width: 175px; margin-left: 0px; margin-right: 5px; background-color: #EEEEEE; background-image:url('@Model.LienImagePourcentage'); background-repeat:no-repeat; background-position:right;">
+                                        <div style="border: solid 1px transparent; position: relative; width: 28px; top: 7px; font-size: 21px; font-weight: bold; float: left; text-align:right">@Model.ConsoViewModels.ElementAt(x).Pourcentage.ValeurAfficher</div>
+                                        <div style="border: solid 1px transparent; position: relative; width: 20px; top: 7px; font-size: 21px; float: left; margin-left: 1px;"> y </div>
+                                        <div style="border: solid 1px transparent; position: relative; width: 92px; bottom: 16px; font-size: 13px; float: left; text-align: left; margin-left: 4px; top: 0px; word-wrap: break-word;line-height:15px;">
+                                           @(@Model.TypeAffichage == "ShowPrix" ? Traduction.CoutITAnnuelle : Traduction.ConsoIT)
+                                        </div>                                                    
+                                    </div>
+                                        
+                                </td>
+                            }
+                            <td> </td>
+                        }
+                    </tr>
+                        
+                    <tr>
+                        @for (int x = z; x < z + 3; x++)
+                        {
+                            if (x < Model.ConsoViewModels.Count() && @Model.ConsoViewModels.ElementAt(x) != null)
+                            {
+                                <td align="center" valign="middle" class="tdBorderLeftRightBottom">
+                                        
+                                   
+                                </td>
+                            }
+                            <td> </td>
+                        }
+                    </tr>
+                     
+                }
+            </table>
+        </div>*@
+         </div>
+</div>

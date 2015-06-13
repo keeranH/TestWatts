@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Econocom.Model.Models.Benchmark.TARIF>
+           
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+    function UpdateSuccess(data) {
+        alert(data);
+    }
+</script>
+    
+
+<div style="height: 300px">
+    <table>
+        <tr>
+            <th>
+                Tranches de collaborateurs
+            </th>
+            <th>
+                Abonnement annuel
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LIBELLETARIF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TARIFMENSUEL)
+                </td>
+                <td>
+                    @Html.RadioButtonFor(modelItem => item.TARIFMENSUEL, item.TARIFMENSUEL, new { @onclick = "Update(item.TARIFMENSUEL)" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div style="height: 200px">
+    Formulaire de commande n° : Id formulaire
+    Monsieur « nom », « prénom », représentant la Société « raison sociale » 
+    a passé commande d’un abonnement DD le JJ/MM/AA pour un montant annuel de 5 880 €.
+    <div id="d1">
+        
+    </div>
+
+    <br/>
+    <br/>
+
+    <div>
+         @Html.ActionLink("Telechargez en pdf", "Index")
+         @Html.ActionLink("Accepter", "Index")
+         @Html.ActionLink("Refuser", "Index")
+    </div>
+</div>
+
+<div style="height: 100px">
+    @Html.ActionLink("Suivant", "Index")
+</div>

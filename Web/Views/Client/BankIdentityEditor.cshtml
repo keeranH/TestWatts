@@ -1,0 +1,74 @@
+﻿@using Web.Extension
+@model Econocom.Model.Models.Benchmark.IDENTITEBANCAIRE
+
+               
+
+<div id="majorDiv" align="left" style="width:1150px;min-height:300px;">
+    
+    <div id="accountInfo" style="float:left;min-width:571px;min-height:300px">
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDIDENTITEBANCAIRE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IDIDENTITEBANCAIRE)
+            @Html.ValidationMessageFor(model => model.IDIDENTITEBANCAIRE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CODEBANQUE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CODEBANQUE)
+            @Html.ValidationMessageFor(model => model.CODEBANQUE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUICHET)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GUICHET)
+            @Html.ValidationMessageFor(model => model.GUICHET)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NUMCOMPTE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NUMCOMPTE)
+            @Html.ValidationMessageFor(model => model.NUMCOMPTE)
+        </div>
+    </div>
+    
+     <div id="personalInfo" style="float:right;min-width:571px;height:130px">
+
+    <div class="editor-label">
+                @Html.LabelFor(model => model.CLERIB)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CLERIB)
+                @Html.ValidationMessageFor(model => model.CLERIB)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.IBAN)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IBAN)
+                @Html.ValidationMessageFor(model => model.IBAN)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BIC)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.BIC)
+                @Html.ValidationMessageFor(model => model.BIC)
+            </div>
+
+       </div>
+</div>
+
+   
+       
+

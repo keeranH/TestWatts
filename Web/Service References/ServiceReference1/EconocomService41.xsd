@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfLangue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Langue" nillable="true" type="tns:Langue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLangue" nillable="true" type="tns:ArrayOfLangue" />
+  <xs:complexType name="Langue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContenuModeres" nillable="true" type="tns:ArrayOfContenuModere" />
+      <xs:element minOccurs="0" name="ContenuNonModeres" nillable="true" type="tns:ArrayOfContenuNonModere" />
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstLocalise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstParDefaut" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HistoriqueContenus" nillable="true" type="tns:ArrayOfHistoriqueContenu" />
+      <xs:element minOccurs="0" name="IdLangue" type="xs:int" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pays" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Routages" nillable="true" type="tns:ArrayOfRoutage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Langue" nillable="true" type="tns:Langue" />
+  <xs:complexType name="ArrayOfContenuModere">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContenuModere" nillable="true" type="tns:ContenuModere" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContenuModere" nillable="true" type="tns:ArrayOfContenuModere" />
+  <xs:complexType name="ContenuModere">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CleModele" nillable="true" type="tns:CleModele" />
+      <xs:element minOccurs="0" name="Contenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateDeCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCleModele" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdContenuModere" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLangue" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Langue" nillable="true" type="tns:Langue" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContenuModere" nillable="true" type="tns:ContenuModere" />
+  <xs:complexType name="CleModele">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContenuModeres" nillable="true" type="tns:ArrayOfContenuModere" />
+      <xs:element minOccurs="0" name="ContenuNonModeres" nillable="true" type="tns:ArrayOfContenuNonModere" />
+      <xs:element minOccurs="0" name="HistoriqueContenus" nillable="true" type="tns:ArrayOfHistoriqueContenu" />
+      <xs:element minOccurs="0" name="IdCleModele" type="xs:int" />
+      <xs:element minOccurs="0" name="IdModele" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Modele" nillable="true" type="tns:Modele" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CleModele" nillable="true" type="tns:CleModele" />
+  <xs:complexType name="ArrayOfContenuNonModere">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContenuNonModere" nillable="true" type="tns:ContenuNonModere" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContenuNonModere" nillable="true" type="tns:ArrayOfContenuNonModere" />
+  <xs:complexType name="ContenuNonModere">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CleModele" nillable="true" type="tns:CleModele" />
+      <xs:element minOccurs="0" name="Contenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateDeCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateDeModification" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCleModele" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdContenuNonModere" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLangue" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Langue" nillable="true" type="tns:Langue" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContenuNonModere" nillable="true" type="tns:ContenuNonModere" />
+  <xs:complexType name="Page">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContenuModeres" nillable="true" type="tns:ArrayOfContenuModere" />
+      <xs:element minOccurs="0" name="ContenuNonModeres" nillable="true" type="tns:ArrayOfContenuNonModere" />
+      <xs:element minOccurs="0" name="HistoriqueContenus" nillable="true" type="tns:ArrayOfHistoriqueContenu" />
+      <xs:element minOccurs="0" name="IdModeleModere" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdModeleNonModere" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSection" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LienRelatif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModeleModere" nillable="true" type="tns:Modele" />
+      <xs:element minOccurs="0" name="ModeleNonModere" nillable="true" type="tns:Modele" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Routages" nillable="true" type="tns:ArrayOfRoutage" />
+      <xs:element minOccurs="0" name="Section" nillable="true" type="tns:Section" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Page" nillable="true" type="tns:Page" />
+  <xs:complexType name="ArrayOfHistoriqueContenu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoriqueContenu" nillable="true" type="tns:HistoriqueContenu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoriqueContenu" nillable="true" type="tns:ArrayOfHistoriqueContenu" />
+  <xs:complexType name="HistoriqueContenu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CleModele" nillable="true" type="tns:CleModele" />
+      <xs:element minOccurs="0" name="Contenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateDeCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCleModele" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdHistoriqueContenu" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLangue" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Langue" nillable="true" type="tns:Langue" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoriqueContenu" nillable="true" type="tns:HistoriqueContenu" />
+  <xs:complexType name="Modele">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CleModeles" nillable="true" type="tns:ArrayOfCleModele" />
+      <xs:element minOccurs="0" name="HistoriqueModelePages" nillable="true" type="tns:ArrayOfHistoriqueModelePage" />
+      <xs:element minOccurs="0" name="IdModele" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pages" nillable="true" type="tns:ArrayOfPage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Modele" nillable="true" type="tns:Modele" />
+  <xs:complexType name="ArrayOfCleModele">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CleModele" nillable="true" type="tns:CleModele" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCleModele" nillable="true" type="tns:ArrayOfCleModele" />
+  <xs:complexType name="ArrayOfHistoriqueModelePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoriqueModelePage" nillable="true" type="tns:HistoriqueModelePage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoriqueModelePage" nillable="true" type="tns:ArrayOfHistoriqueModelePage" />
+  <xs:complexType name="HistoriqueModelePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateDeCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdHistoriqueModelePage" type="xs:int" />
+      <xs:element minOccurs="0" name="IdModele" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Modele" nillable="true" type="tns:Modele" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoriqueModelePage" nillable="true" type="tns:HistoriqueModelePage" />
+  <xs:complexType name="ArrayOfPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPage" nillable="true" type="tns:ArrayOfPage" />
+  <xs:complexType name="ArrayOfRoutage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Routage" nillable="true" type="tns:Routage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoutage" nillable="true" type="tns:ArrayOfRoutage" />
+  <xs:complexType name="Routage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdLangue" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdRoutage" type="xs:int" />
+      <xs:element minOccurs="0" name="Langue" nillable="true" type="tns:Langue" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="tns:Page" />
+      <xs:element minOccurs="0" name="ValeurActuelle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValeurTraduite" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Routage" nillable="true" type="tns:Routage" />
+  <xs:complexType name="Section">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdParent" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSection" type="xs:int" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pages" nillable="true" type="tns:ArrayOfPage" />
+      <xs:element minOccurs="0" name="Parent" nillable="true" type="tns:Section" />
+      <xs:element minOccurs="0" name="Sections" nillable="true" type="tns:ArrayOfSection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Section" nillable="true" type="tns:Section" />
+  <xs:complexType name="ArrayOfSection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Section" nillable="true" type="tns:Section" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSection" nillable="true" type="tns:ArrayOfSection" />
+  <xs:complexType name="ArrayOfModele">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Modele" nillable="true" type="tns:Modele" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModele" nillable="true" type="tns:ArrayOfModele" />
+</xs:schema>

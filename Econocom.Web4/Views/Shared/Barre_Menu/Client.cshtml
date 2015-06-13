@@ -1,0 +1,104 @@
+﻿@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "Abonner";
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //document.getElementById("rapport_sub").style.display = 'none';
+            $('#rapport_sub').hide();
+            $('#rapport').mouseover(function () {
+                $('#rapport_sub').show();
+            });
+
+            $('#rapport').mouseout(function () {
+                $('#rapport_sub').hide();
+            });
+
+            $('#rapport_sub').mouseover(function () {
+                $('#rapport_sub').show();
+            });
+
+            $('#rapport_sub').mouseout(function () {
+                $('#rapport_sub').hide();
+            });
+        });
+
+    </script>
+    
+     <link href="@Url.Content("~/Content/css/Maquette/BarreMenu.css")" rel="stylesheet" type="text/css"/>
+}
+
+<div>
+    
+  <div align="right" class="topMenu">
+    
+      <div class="topMenuContentDiv">
+          
+          <a href="@Url.Action("Index", "MesInformations")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent link">@Traduction.MesInformations</span>
+          </a>
+
+          <a href="@Url.Action("Index", "Help")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent link">@Traduction.Aide</span>
+          </a>
+
+          <a href="@Url.Action("Index", "Faq")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent link">@Traduction.Faq</span>
+          </a>
+          
+          <a href="@Url.Action("Index", "ContactezNous")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent link">@Traduction.ContactezNous</span>
+          </a>
+          
+
+      </div>
+   </div>
+
+    <div  id="mainMenu" class="bottomMenu">
+   
+       @* <div class="AccueilMenu" style="text-align: center">
+           <a href="@Url.Action("Index", "Home")"> <img src="~/Content/images/Menu/Navigateur/icone_hp.png" /></a>           
+        </div>*@
+    
+        @{ 
+            var idClient = HttpContext.Current.Session["idClient"];
+            var typeContact = (string)HttpContext.Current.Session["typeContact"];
+         }
+        
+
+        <div class="ClientMenuOne">
+            @*<div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>*@
+            <div class="NavTitleDiv" style="text-align: center"><a href="@Url.Action("MaPersonnalisation", "Consommation")"  class="NavTitle link">@Traduction.MaPersonnalisation</a></div>
+        </div>
+
+        <div class="ClientMenuTwo">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            
+            @if (typeContact == "Admin" || @ViewBag.TypeContact == "Admin")
+            {
+                <div class="NavTitleDiv" style="text-align: center"><a href="@Url.Action("VerifierSimulation", "Simulation")"  class="NavTitle link">@Traduction.MesSimulations</a></div>
+            }
+            else
+            {
+                <div class="NavTitleDiv" style="text-align: center"><a class="NavTitleGrise">@Traduction.MesSimulations</a></div>
+            }
+        </div>
+
+        <div class="ClientMenuThree">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center"><a id="rapport"  class="NavTitle">@Traduction.MesRapports
+                                                  
+                                     </a></div>
+            <div id="rapport_sub" style="text-align:left; display:none; color: white; width: 240px;height: 87px;background-color: green;z-index: 1;position: relative;float: right;border-top: solid 10px #434343;">
+                <a class="link" href="@Url.Action("Personalisation", "Rapport", new { id = idClient })" style="padding-top: 12px;padding-left:30px;height: 30px;display: block;color: white; border-bottom:solid 1px #000; background: url('/Content/images/v_ouvrir.png') no-repeat 5px 10px;">@Traduction.RapportMaPersonnalisation</a>
+                <a class="link" href="@Url.Action("Simulations", "Rapport", new { id = idClient })" style="padding-top: 12px;padding-left:30px;height: 30px;display: block;color: white; background: url('/Content/images/v_ouvrir.png') no-repeat 5px 10px;">@Traduction.RapportMesSimulations</a>
+            </div> 
+        </div>
+
+    </div>  
+
+</div>

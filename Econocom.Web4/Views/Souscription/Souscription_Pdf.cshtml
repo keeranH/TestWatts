@@ -1,0 +1,291 @@
+﻿@model Econocom.Model.ViewModel.SouscriptionViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgSouscription;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+            <chunk style="font-weight:bold;">@Traduction.Societe</chunk>
+        </paragraph>
+
+        <table width="100%" cellpadding="2.5" cellspacing="2.5" widths="25;25;25;25" borderwidth="0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.RaisonSociale :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.RaisonSociale)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Groupe :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.Groupe)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Adresse :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.Addresse)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Pays :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.LibellePays)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.CP :  </chunk>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.CodePostal)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Ville :  </chunk>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.Ville)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.IdentificationNational :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.IdentificationNational)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.TVA :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.Tva)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.ChiffreAffaires :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.ChiffresAffaires)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.ClientEconocom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.LibelleClientEconocom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.ContactEconocom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SocieteInputSouscriptionViewModel.VotreContacte)</chunk>
+                </cell>
+            </row>
+        </table>
+        
+        <hr style=" border: 0; height: 1px; background: #333; background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -moz-linear-gradient(left, #ccc, #333, #ccc); background-image: -ms-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -o-linear-gradient(left, #ccc, #333, #ccc); "/>
+        
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+            <chunk style="font-weight:bold; color: white">-</chunk>
+        </paragraph>
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+            <chunk style="font-weight:bold;">@Traduction.Souscripteur</chunk>
+        </paragraph>
+
+        <table width="100%" cellpadding="2.5" cellspacing="2.5" widths="25;25;25;25" borderwidth="0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Nom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SouscripteurInputSouscriptionViewModel.Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Prenom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SouscripteurInputSouscriptionViewModel.Prenom)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Fonction :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SouscripteurInputSouscriptionViewModel.Fonction)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.AddresseMail :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SouscripteurInputSouscriptionViewModel.Email)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Telephone :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.SouscripteurInputSouscriptionViewModel.Telephone)</chunk>
+                </cell>
+            </row>
+        </table>
+        
+         <hr style=" border: 0; height: 1px; background: #333; background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -moz-linear-gradient(left, #ccc, #333, #ccc); background-image: -ms-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -o-linear-gradient(left, #ccc, #333, #ccc); "/>
+        
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+            <chunk style="font-weight:bold; color: white">-</chunk>
+        </paragraph>
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+	        <chunk style="font-weight:bold;">@Traduction.Administrateur</chunk>
+        </paragraph>
+
+        <table width="100%" cellpadding="2.5" cellspacing="2.5" widths="25;25;25;25" borderwidth="0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Nom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.AdministrationInputSouscriptionViewModel.Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Prenom :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.AdministrationInputSouscriptionViewModel.Prenom)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Fonction :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.AdministrationInputSouscriptionViewModel.Fonction)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.AddresseMail :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.AdministrationInputSouscriptionViewModel.Email)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Telephone :</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.AdministrationInputSouscriptionViewModel.Telephone)</chunk>
+                </cell>
+            </row>
+        </table>
+        
+         <hr style=" border: 0; height: 1px; background: #333; background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -moz-linear-gradient(left, #ccc, #333, #ccc); background-image: -ms-linear-gradient(left, #ccc, #333, #ccc); 
+            background-image: -o-linear-gradient(left, #ccc, #333, #ccc); "/>
+        
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+            <chunk style="font-weight:bold; color: white">-</chunk>
+        </paragraph>
+        <paragraph style="font-family:Helvetica;font-size:15px;font-style:italic;">
+	        <chunk style="font-weight:bold;">@Traduction.Utilisateurs</chunk>
+        </paragraph>
+
+        <table width="100%" cellpadding="2.5" cellspacing="2.5" widths="25;25;25;25" borderwidth="0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;"></chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.Nom</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="font-weight:bold;">@Traduction.Prenom</chunk>
+                </cell>
+                <cell>
+                    <chunk style="font-weight:bold;">@Traduction.AddresseMail</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">User 1</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[0].Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[0].Prenom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[0].Email)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">User 2</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[1].Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[1].Prenom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[1].Email)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">User 3</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[2].Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[2].Prenom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[2].Email)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">User 4</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[3].Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[3].Prenom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[3].Email)</chunk>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <chunk style="font-weight:bold;">User 5</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[4].Nom)</chunk>
+                </cell>
+                <cell> 
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[4].Prenom)</chunk>
+                </cell>
+                <cell>
+                    <chunk style="">@Html.DisplayFor(model => Model.UtilisateurInputSouscriptionViewModel.ListeUtilisateurs[4].Email)</chunk>
+                </cell>
+            </row>
+        </table>
+    </body>
+</html>
+

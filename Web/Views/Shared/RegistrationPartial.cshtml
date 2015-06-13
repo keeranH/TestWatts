@@ -1,0 +1,112 @@
+﻿@using Econocom.Model.Models.Benchmark
+@using Econocom.Model.ViewModel
+@model Econocom.Model.ViewModel.RegistrationClientModel
+@using ClientDetailsResources = Econocom.Resource.ClientDetail.ClientDetails
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div  style="width:1150px;min-height:300px; margin-bottom:100px ">
+            <div style="float:left;min-width:571px;min-height:300px">
+              
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Nom)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Nom)
+                    @Html.ValidationMessageFor(model => model.Nom)
+                </div>
+                
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.IdentificationNational)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.IdentificationNational)
+                    @Html.ValidationMessageFor(model => model.IdentificationNational)
+                </div>
+                
+                 <div class="editor-label">
+                    @Html.LabelFor(model => model.RaisonSociale)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.RaisonSociale)
+                    @Html.ValidationMessageFor(model => model.RaisonSociale)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Group)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Group)
+                    @Html.ValidationMessageFor(model => model.Group)
+                </div>
+                
+                 <div class="editor-label">
+                    @Html.LabelFor(model => model.TVAIntraComm)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.TVAIntraComm)
+                    @Html.ValidationMessageFor(model => model.TVAIntraComm)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CODENAF)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CODENAF)
+                    @Html.ValidationMessageFor(model => model.CODENAF)
+                </div>
+          
+                <legend>ADRESSE</legend>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Adresse, "AdresseEditor")
+                </div>
+              
+
+                <legend>IDENTITE BANCAIRE</legend>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.IdentiteBancaire,"IdentitaireBancaireEditor")
+                </div>
+               
+
+            </div>
+          </div>
+
+        <br />
+        <fieldset>
+		   @Html.ValidationMessageFor(model => model.Contacts)
+            <legend>Contact Details</legend>
+            <ul id="contactEditor" style="list-style-type: none">
+                @if (Model != null && Model.Contacts != null)
+                {
+                    foreach (ContactViewModel contact in Model.Contacts)
+                    {
+                        Html.RenderPartial("ContactEditor", contact);
+                    }
+                }
+            </ul>
+
+           <a id="addAnother" href="#">Add another</a>
+
+            <script type="text/javascript">
+                $(function () {
+                    $("#addAnother").unbind('click');
+                    // $("#contactEditor").sortable();
+                    $("#addAnother").click(function () {
+                        $.get('/fr/Client/ContactRow', function (template) {
+                            $("#contactEditor").append(template);
+                        });
+                    });
+                });
+            </script>
+        </fieldset>
+
+        <p>
+            <input type="submit" value= "@ClientDetailsResources.Create" />
+        </p>
+    </fieldset>
+}
+

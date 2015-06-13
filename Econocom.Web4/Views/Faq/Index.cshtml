@@ -1,0 +1,21 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgFaq;
+    Layout = "~/Views/Shared/Maquette/_Layout_info.cshtml";
+    <link href="@Url.Content("~/Content/css/Page/Page.css")" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            hideLoading();
+        });       
+    </script>
+}
+
+
+<div class="ContenuSurPage">
+  @if (@ViewBag.ContenuModere != null)
+  {
+             @Html.Raw(@ViewBag.ContenuModere.Contenu)
+         }   
+
+</div>

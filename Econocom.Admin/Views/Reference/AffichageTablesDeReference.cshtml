@@ -1,0 +1,10 @@
+﻿@model Econocom.Model.ViewModel.ReferenceUnitaireViewModel
+@using (Html.BeginForm("Detailles","TypeObjet"))
+{
+    @Html.AntiForgeryToken()
+    if (Model.TypeObjets != null)
+    {
+        @Html.DropDownListFor(m => m.Id, new SelectList(Model.TypeObjets, "Id", "NomTable"), new { style = "height: 35px"})
+         <input type="submit" value="Consulter" class="EconocomButton"/>
+    }
+}

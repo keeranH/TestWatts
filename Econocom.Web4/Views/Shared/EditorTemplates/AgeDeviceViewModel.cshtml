@@ -1,0 +1,90 @@
+﻿@using Econocom.Model.Enum
+@model Econocom.Model.ViewModel.AgeDeviceViewModel
+@using Calc = Econocom.Resource.Traduction
+    
+<div class="alternate" style="border:solid 0px red;margin-left:-10px; width:627px;">
+    @Html.HiddenFor(modelItem => Model.IdAge) 
+    <h5>
+        <span style="display:block; width:299px;float: left;margin-top: 7px; text-align:left; padding-left: 20px;">
+            @Model.LibelleAgeDevice
+        </span>
+        
+        @if (@ViewBag.TypeClient == TypeClient.ECSchange)
+        {
+            if (@ViewBag.UserType == "Payant")
+            {
+                //Non modifiable
+                @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                    new
+                    {
+                        id = Model.IdDevice,
+                        style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-110px;text-align:right;",
+                        @readonly = true
+                    })
+            }
+            else if (@ViewBag.TypeContact == "Admin" && @ViewBag.UserType == "Simulation")
+            {
+                //Modifiable
+                if (Model.Quantite >= 0)
+                {
+                    @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                        new
+                        {
+                            id = Model.IdDevice,
+                            onblur = "compute(this.value," + Model.IdClasse + "," + Model.IdAge + ",3,'" + Model.UniqueGuid + "');",
+                            style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-110px;text-align:right;"
+                        })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                        new
+                        {
+                            id = Model.IdDevice,
+                            onblur = "compute(this.value," + Model.IdClasse + "," + Model.IdAge + ",3,'" + Model.UniqueGuid + "');",
+                            style = "border:solid 1px red; height:20px; width:100px; margin-left:-110px;text-align:right;"
+                        })
+                }
+            }
+        }
+        else
+        {
+            if (@ViewBag.TypeContact == "Admin")
+            {
+                //Modifiable
+                if (Model.Quantite >= 0)
+                {
+                    @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                        new
+                        {
+                            id = Model.IdDevice,
+                            onblur = "compute(this.value," + Model.IdClasse + "," + Model.IdAge + ",3,'" + Model.UniqueGuid + "');",
+                            style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-110px;text-align:right;"
+                        })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                        new
+                        {
+                            id = Model.IdDevice,
+                            onblur = "compute(this.value," + Model.IdClasse + "," + Model.IdAge + ",3,'" + Model.UniqueGuid + "');",
+                            style = "border:solid 1px red; height:20px; width:100px; margin-left:-110px;text-align:right;"
+                        })
+                }
+            }
+            else
+            {
+                //Non modifiable
+                @Html.TextBoxFor(m => m.Quantite, "{0:### ### ###}",
+                    new
+                    {
+                        id = Model.IdDevice,
+                        style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-110px;text-align:right;",
+                        @readonly = true
+                    })
+            }
+        }        
+    </h5>
+</div>  
+    

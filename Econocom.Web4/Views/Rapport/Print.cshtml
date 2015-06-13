@@ -1,0 +1,16 @@
+﻿@using Econocom.Resource
+@model Econocom.Model.ViewModel.Report.RapportCsvSimulationViewModel
+
+@{
+    ViewBag.Title = @Traduction.TitrePgRapport;
+    var grid = new WebGrid(Model.Simulation, canPage: false);
+}
+
+@grid.GetHtml()
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        window.print();
+    });
+</script>

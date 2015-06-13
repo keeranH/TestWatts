@@ -1,0 +1,10 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgAide;
+}
+
+@if (@ViewBag.ContenuModere != null)
+{
+    @Html.Raw(@ViewBag.ContenuModere.Contenu)
+}

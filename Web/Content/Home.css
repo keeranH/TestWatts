@@ -1,0 +1,247 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+#logindisplay a:hover
+{
+    text-decoration: underline !important;
+    color: #2489ce !important;
+    
+}
+
+#logindisplay a:link 
+{
+    text-decoration:none;
+}
+
+div.ui-select
+{
+    width:80px !important;
+    float:right;
+}
+
+
+
+div#headerDiv
+{
+    width:1150px;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#logo
+{
+    float:left;
+    min-width:60%; 
+    height:110px
+}
+
+div#credentials
+{
+    float:right;
+    min-width:39%;
+    height:110px;
+    text-align: right;
+}
+
+div#bodyDiv
+{
+    width:1150px;
+    min-height:500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+div#targetOne, div#targetThree
+{
+    border:1px solid;
+    float:left;
+    min-width:571px;
+    height:300px;
+    font-size:20px;
+
+}
+
+
+
+div#targetTwo, div#targetFour
+{
+    border:1px solid;
+    float:right;
+    min-width:575px;
+    height:300px;
+    font-size:20px;
+
+}
+
+#greenItDiv, #demoDiv, #informationDiv, #registrationDiv
+{
+    line-height:200px;
+    float: right;
+   font-size :25pt;
+}
+
+
+
+#targetOne
+{
+     background-color:#e7eae8
+}
+#targetTwo
+{
+     background-color:#e7eae8
+}
+#targetThree
+{
+     background-color:#e7eae8
+}
+#targetFour
+{
+     background-color:#e7eae8
+}
+
+
+
+div#footerDiv
+{
+    width:1150px;
+    min-height:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sf-menu a 
+{
+	border-left:none;
+	border-top:none;
+	padding: 1px 10px 0px 0px;
+}
+
+.sf-vertical {
+	width: 6em;
+	height: 6em;
+}
+
+.sf-menu li {
+	background: #82b81a;
+	border-bottom:solid 1px #437e00;		
+	height:6em;
+	width:6em;
+}
+
+
+.sf-menu li.sfHover 
+{
+	background: #82b81a;
+	background: none;
+	-webkit-transition: none;
+	transition: none;
+}
+
+.sf-menu li:hover
+{
+	background: #82b81a;
+	-webkit-transition: none;
+	transition: none;
+}
+.sf-menu ul {
+	box-shadow: none;
+	min-width: 4em;	
+}
+
+.sf-menu ul li {
+	background: #434343;
+	border-bottom:solid 1px #7b9c19;		
+	height:6em;
+	width:6em;
+}
+
+.sf-menu ul li:hover
+{
+	background: #434343;
+	-webkit-transition: none;
+	transition: none;
+}
+
+a:link,a:visited
+{
+	color:#FFFFFF;
+	text-align:center;
+	text-decoration:none;
+}
+a:hover,a:active
+{
+	
+}
+
+.firstarrow
+{
+	float:left;
+	margin-top:37px;
+	width:1px;
+	height:1px;
+	border-top:solid 10px #ffffff;
+	border-bottom:solid 10px #ffffff;
+	border-left:solid 10px #82b81a;
+	border-right:solid 10px #ffffff;
+}
+
+.secondarrow
+{
+	float:left;
+	margin-top:35px;
+	width:1px;
+	height:1px;
+	border-top:solid 10px white;
+	border-bottom:solid 10px white;
+	border-left:solid 10px #434343;
+	border-right:solid 10px white;
+}
+
+.icon
+{
+	margin-top:20px;
+}
+
+.mainsecondicon
+{	
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+.secondicon
+{	
+	margin-top:20px;
+	margin-left:20px;
+}
+
+.center
+{
+	text-align:center;
+}
+
+.submenuanchormain
+{
+width: 6em;
+float: left;
+font-size: 30px;
+margin-left: -45px;
+margin-top: -30px;
+}
+
+.submenuanchor
+{
+width: 6em;
+float: left;
+font-size: 30px;
+margin-left: -45px;
+margin-top: 25px;
+}
+
+    
+

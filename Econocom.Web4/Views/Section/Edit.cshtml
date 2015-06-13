@@ -1,0 +1,24 @@
+﻿@model Econocom.Model.ViewModel.CMS.SectionViewModel
+
+@using (Ajax.BeginForm("Edit", "Section", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace, 
+            HttpMethod = "POST",
+            OnSuccess = "updateSuccess"
+        }, new { @id = "updateCarForm" }))
+    {
+    @Html.ValidationSummary(true)
+    <div id="update-message" class="error" ></div>
+    <fieldset>
+        <legend>Section</legend>
+            @Html.HiddenFor(m => m.IdParent)
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Nom)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Nom)
+                @Html.ValidationMessageFor(m => m.Nom)
+            </div>
+
+    </fieldset>
+}

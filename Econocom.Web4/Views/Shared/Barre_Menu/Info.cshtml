@@ -1,0 +1,117 @@
+﻿@using Econocom.Resource;
+@{
+    ViewBag.Title = "Main";
+    <link href="@Url.Content("~/Content/css/Maquette/BarreMenu.css")" rel="stylesheet" type="text/css"/>
+    
+    <style>
+        img {
+            border-style:none;
+        }
+    </style>
+    
+    
+    <script type="text/javascript">
+        function test() {
+
+        }
+    </script>
+}
+
+<div>
+    
+  <div align="right" class="topMenu">
+    
+      <div class="topMenuContentDiv">
+          @*@if (Request.IsAuthenticated)
+          {
+              <a href="@Url.Action("Index", "Consommation")" class="TopMenuAnchor">
+                  <img src="~/Content/images/Header/fleche_small.png"/>
+                  <span class="topMenuContent">@Traduction.MaPersonnalisation</span>
+              </a>
+          }*@
+          
+           @{ 
+               var msgPersoPasPret = HttpContext.Current.Session["MsgPersoPasPret"];
+           }
+
+          <span style="color: red"> @msgPersoPasPret</span>
+
+          <a href="@Url.Action("Index", "Faq")" class="TopMenuAnchor">
+              <img src="~/Content/images/Header/fleche_small.png"/>
+              <span class="topMenuContent">@Traduction.Faq</span>
+          </a>
+      </div>
+   </div>
+
+    <div  id="mainMenu" class="bottomMenu" style="text-align: center">
+   
+        <div class="AccueilMenu">
+            <a href="@Url.Action("Index", "Home")"> <img style="float:left; margin-left:20px;" src="~/Content/images/Menu/Navigateur/icone_hp.png" /></a>
+        </div>
+    
+        <div class="InfoMenuOne">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+             <div class="NavTitleDiv"><a href="http://www.econocom.com/fr" target="blank" class="NavTitle" >@Traduction.Econocom</a></div>
+        </div>
+    
+        <div class="InfoMenuTwo">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center">
+                
+                @if (ViewBag.greenIt != null)
+                {
+                    <a href="@Url.Action("Index", "GreenIt")" class="NavTitle_Choisi" >@Traduction.GreenIt</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "GreenIt")" class="NavTitle" >@Traduction.GreenIt</a>
+                }
+            </div>
+        </div>
+
+        <div class="InfoMenuThree">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+             <div class="NavTitleDiv" style="text-align: center">
+                 
+                 @if (ViewBag.developpement != null)
+                 {
+                 <a href="@Url.Action("Index", "Developpement")" class="NavTitle_Choisi" >@Traduction.DeveloppementDurable</a>
+                 }
+                 else
+                 {
+                 <a href="@Url.Action("Index", "Developpement")" class="NavTitle" >@Traduction.DeveloppementDurable</a>
+                 }
+             </div>
+        </div>
+        
+        <div class="InfoMenuFour" >
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center">
+                
+                 @if (ViewBag.simulateur != null)
+                 {
+                 <a href="@Url.Action("Index", "Simulateur")" class="NavTitle_Choisi" >@Traduction.SimulateurWattsGreen</a>
+                 }
+                 else
+                 {
+               <a href="@Url.Action("Index", "Simulateur")" class="NavTitle">@Traduction.SimulateurWattsGreen</a>
+                 }
+            </div>
+        </div>
+
+        <div class="InfoMenuFive">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+            <div class="NavTitleDiv" style="text-align: center">
+                
+                 @if (ViewBag.contactezNous != null)
+                 {
+                 <a href="@Url.Action("Index", "ContactezNous")" class="NavTitle_Choisi" >@Traduction.ContactezNous</a>
+                 }
+                 else
+                 {
+               <a href="@Url.Action("Index", "ContactezNous")" class="NavTitle" >@Traduction.ContactezNous</a>
+                 }
+            </div>
+        </div>
+    </div>  
+</div>

@@ -1,0 +1,155 @@
+﻿@*@model Econocom.Model.ViewModel.ListeUtilisateurViewModel*@
+
+@using System.Web.Mvc.Html
+@using Econocom.Resource
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+.webgrid-header th
+{
+    font-family:"sans-serif";         
+    font-size:15px;
+    padding-right: 10px;   
+    padding: 0px;
+    padding-bottom: 10px;
+    font-family: sans-serif;   
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;   
+    border-right: solid 1px #535353;
+    padding-left: 10px;
+    background-color: yellowgreen;   
+    height: 20px;
+    font-weight: bold;
+}
+
+.webgrid-row-style td, .webgrid-alternating-style td {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+.webgrid-alternating-row td{   
+     padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+.webgrid-alternating-row 
+{
+    background-color: #eeeeee;        
+}
+
+.webgrid-row-style {
+    background-color: white;     
+}
+
+.webgrid-footer {
+    padding-top: 30px;
+    border-top: solid 1px black;
+}
+
+.webgrid-footer td{
+    padding-top: 10px;
+}
+
+.headerSpacingActive {
+ display:inline-block; 
+ width:35px;
+    height: 10px;
+    background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+}
+
+.headerSpacingActiveUp {
+ display:inline-block; 
+ width:35px;
+    height: 10px;
+    background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+}
+
+.headerSpacingInactive {
+ display:inline-block; 
+ width:35px;
+ height: 10px;
+    background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+}
+
+.recherche {
+    padding-left: 35px;
+    background: url('/Content/images/recherche.png') no-repeat 0px 2px;
+}
+
+#search::-webkit-input-placeholder {
+   font-family: sans-serif;
+    color: gray;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+
+#search:-moz-placeholder { /* Firefox 18- */
+   font-family: sans-serif;
+    color: gray;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+
+#search::-moz-placeholder {  /* Firefox 19+ */
+   font-family: sans-serif;
+    color: gray;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+
+#search:-ms-input-placeholder {  
+   font-family: sans-serif;
+    color: gray;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+
+.RapportTitre {
+    text-align: left;
+    font-size: 1.7em;
+    padding: 0px;
+    font-family: sans-serif;
+    color: #000;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+</style>
+<div style="width:100%; border:solid 0px red">
+    @using (Ajax.BeginForm("Liste", "Contact", FormMethod.Post, new AjaxOptions {UpdateTargetId = "resultat"}))
+    {
+        @Html.ValidationSummary(true)
+        <div style="width: 100%; border-bottom: solid 1px yellowgreen; height: 50px; padding-top: 20px; margin-bottom: 20px">
+            <div style="width: 50%; border: solid 0px green; float: left;">
+                <h2 class="HeaderTexteH2" style="float:left">@Traduction.ListeUtilisateurs</h2><a href="/Contact/ExportMail" ><input type="button" value="Export CSV" class="EconocomButton" style="margin-left: 22px; margin-top: 10px;"/></a>
+            </div>
+            <div style="width: 50%; float: right">
+                <input id="search" type="search" name="search" maxlength="40" class="recherche" style="float: right; width: 300px;" placeholder="@Traduction.RechercherUtilisateur" />
+            </div>                        
+        </div>
+
+        <div id="resultat" style="background-color: #eeeeee; padding: 5px; padding-bottom: 20px;">
+            @{ RenderPartialExtensions.RenderPartial(Html, "Utilisateurs", Model); }
+        </div>
+                
+    }
+</div>

@@ -1,0 +1,23 @@
+﻿@using Econocom.Resource
+@using Econocom.Web4.Controllers.Rapport
+@model Econocom.Model.ViewModel.Report.RapportViewModel
+
+@{
+    ViewBag.Title = @Traduction.TitrePgRapport;
+    Layout = "~/Views/Shared/Maquette/_Layout_Client.cshtml";
+}
+
+<h2>title</h2>
+
+@{
+    var grid = new WebGrid(canPage: true, rowsPerPage: RapportController.PageSize, canSort: true, ajaxUpdateContainerId: "grid");
+    grid.Bind(Model.Rapports, rowCount: Model.Total, autoSortAndPage: false);
+    grid.Pager(WebGridPagerModes.All);
+    @grid.GetHtml(htmlAttributes: new { id="grid" },
+        columns: grid.Columns(
+            grid.Column(format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.Id })),
+                    grid.Column("LibelleRapport"),
+                    grid.Column("DateFin"),
+                    grid.Column("DateDebut")
+        ));
+}

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
+}
+
+@section HeaderSection{
+New Client
+}
+
+<link href="@Url.Content("~/Content/CompanyCss.css")" rel="stylesheet" type="text/css" />
+
+
+ @Html.Partial("RegistrationPartial")

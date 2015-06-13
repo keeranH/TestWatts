@@ -1,0 +1,64 @@
+﻿@using Web.Extension
+@model Econocom.Model.ViewModel.ContactViewModel
+@using ContactResources = Econocom.Resource.Contact.Contact
+               
+
+<div id="majorDiv" align="left" style="width:1150px;min-height:300px;">
+ @using (Html.BeginCollectionItem("Contacts"))
+ {
+        <div id="accountInfo" style="float:left;min-width:571px;min-height:300px">
+        
+           
+            <div id="addCustomerSurname">
+                 @Html.LabelFor(model => model.NOMCONTACT, ContactResources.Surname)
+                 @Html.EditorFor(model => model.NOMCONTACT)
+                 @Html.ValidationMessageFor(model => model.NOMCONTACT)
+            </div>
+
+
+
+            <div id="addCustomerForename">
+               @Html.LabelFor(model => model.PRENOMCONTACT, ContactResources.Forename)
+                 @Html.EditorFor(model => model.PRENOMCONTACT)
+                 @Html.ValidationMessageFor(model => model.PRENOMCONTACT)
+            </div>
+
+            <div id="addCustomerPhone">
+                @Html.LabelFor(model => model.NUMEROPHONE, ContactResources.Phone)
+                 @Html.EditorFor(model => model.NUMEROPHONE)
+                 @Html.ValidationMessageFor(model => model.NUMEROPHONE)
+            </div>
+
+            <div id="addCustomerMobile">
+                @Html.LabelFor(model => model.NUMEROGSM, ContactResources.Mobile)
+                 @Html.EditorFor(model => model.NUMEROGSM)
+                 @Html.ValidationMessageFor(model => model.NUMEROGSM)
+            </div>
+
+            <div id="addCustomerJobTitle">
+                @Html.LabelFor(model => model.FONCTION, ContactResources.JobTitle)
+                 @Html.EditorFor(model => model.FONCTION)
+                 @Html.ValidationMessageFor(model => model.FONCTION)
+            </div>
+
+        </div>
+
+     
+             <div id="personalInfo" style="float:right;min-width:571px;height:130px">
+
+
+                <div id="addCustomerEmail">
+                    @Html.LabelFor(model => model.EMAIL, ContactResources.Email)
+                     @Html.EditorFor(model => model.EMAIL)
+                     @Html.ValidationMessageFor(model => model.EMAIL)
+                </div>
+
+             </div>
+
+ }
+
+</div>
+
+   
+       
+

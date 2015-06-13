@@ -1,0 +1,148 @@
+﻿@using Econocom.Model.Models.Benchmark
+@model Econocom.Model.Models.Benchmark.CLIENT
+@using ClientDetailsResources = Econocom.Resource.ClientDetail.ClientDetails
+
+
+@using (Html.BeginForm("Edit", "Moderation", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div  style="width:1150px;min-height:300px; margin-bottom:100px ">
+            <div style="float:left;min-width:571px;min-height:300px">
+                 @Html.HiddenFor(model => model.IDCLIENT)
+                 @Html.HiddenFor(model => model.IDIDENTITEBANCAIRE)
+                 @Html.HiddenFor(model => model.IDADRESSE)
+
+                 <div class="editor-label">
+                    @Html.LabelFor(model => model.NOM)
+                </div>
+
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.NOM)
+                    @Html.ValidationMessageFor(model => model.NOM)
+                </div>
+                  <div class="editor-label">
+                    @Html.LabelFor(model => model.ADRESSE)
+                </div>
+
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ADRESSE)
+                    @Html.ValidationMessageFor(model => model.ADRESSE)
+                </div>
+                
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.IDENTITEBANCAIRE)
+                </div>
+
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.IDENTITEBANCAIRE)
+                    @Html.ValidationMessageFor(model => model.IDENTITEBANCAIRE)
+                </div>
+                
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.IDENTIFICATIONNATIONAL)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.IDENTIFICATIONNATIONAL)
+                    @Html.ValidationMessageFor(model => model.IDENTIFICATIONNATIONAL)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.RAISONSOCIALE)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.RAISONSOCIALE)
+                    @Html.ValidationMessageFor(model => model.RAISONSOCIALE)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.GROUPE)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.GROUPE)
+                    @Html.ValidationMessageFor(model => model.GROUPE)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.TVAINTRACOMM)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.TVAINTRACOMM)
+                    @Html.ValidationMessageFor(model => model.TVAINTRACOMM)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CODENAF)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CODENAF)
+                    @Html.ValidationMessageFor(model => model.CODENAF)
+                </div>
+                
+                
+                   <div class="editor-label">
+                    @Html.LabelFor(model => model.DATEFIN)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.DATEFIN)
+                    @Html.ValidationMessageFor(model => model.DATEFIN)
+                </div>
+                
+                
+                        <div class="editor-label">
+                    @Html.LabelFor(model => model.DATEDEBUT)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.DATEDEBUT)
+                    @Html.ValidationMessageFor(model => model.DATEDEBUT)
+                </div>
+                
+          
+          
+              
+            </div>
+        </div>
+
+        <br />
+        <fieldset>
+            @Html.ValidationMessageFor(model => model.CONTACTs)
+            <legend>Contact Details</legend>
+            <ul id="contactEditor" style="list-style-type: none">
+                @if (Model != null && Model.CONTACTs != null)
+                {
+                    foreach (CONTACT contact in Model.CONTACTs)
+                    {
+                        Html.RenderPartial("ContactEditor", contact);
+                    }
+                }
+            </ul>
+
+            @* <a id="addAnother" href="#">Add another</a>*@
+
+            <script type="text/javascript">
+                $(function () {
+                    $("#addAnother").unbind('click');
+                    // $("#contactEditor").sortable();
+                    $("#addAnother").click(function () {
+                        $.get('/Client/ContactRow', function (template) {
+                            $("#contactEditor").append(template);
+                        });
+                    });
+                });
+            </script>
+        </fieldset>
+
+        <p>
+            <input type="submit" value="Accept" name="btnstatus"/>
+        </p>   
+        
+        <p>
+            <input type="submit" value="Reject" name="btnstatus"/>
+        </p>
+    </fieldset>
+    
+    
+}
+

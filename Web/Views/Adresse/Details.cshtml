@@ -1,0 +1,55 @@
+﻿@model Econocom.Model.Models.Benchmark.ADRESSE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ADRESSE</legend>
+
+    <div class="display-label">IDADRESSE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDADRESSE)
+    </div>
+
+    <div class="display-label">PAY</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PAY.LIBELLEPAYS)
+    </div>
+
+    <div class="display-label">ADRESSE1</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADRESSE1)
+    </div>
+
+    <div class="display-label">ADRESSE2</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADRESSE2)
+    </div>
+
+    <div class="display-label">ADRESSE3</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADRESSE3)
+    </div>
+
+    <div class="display-label">CODEPOSTAL</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CODEPOSTAL)
+    </div>
+
+    <div class="display-label">REGION</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.REGION)
+    </div>
+
+    <div class="display-label">VILLE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VILLE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

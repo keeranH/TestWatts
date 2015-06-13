@@ -1,0 +1,149 @@
+﻿@model Econocom.Model.ViewModel.EvaluationEntrepriseViewModel
+@using Econocom.Resource;
+           
+@{
+    ViewBag.Title = @Traduction.TitrePgSouscription;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+    
+    <link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />   
+    <link href="@Url.Content("~/Content/css/Evaluation/Evaluation.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/Tooltip/Tooltip.css")" rel="stylesheet" type="text/css"/>
+    
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.easyui.min.js"></script>
+        
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            changePosition();
+        });
+
+        function changePosition() {
+            jQuery('.infoEquipment').tooltip({
+                position: "top"
+            });
+
+            jQuery('.infoSites').tooltip({
+                position: "top"
+            });
+        }
+    </script>
+    
+    <style>
+        input[type="submit"] 
+        {
+            background-color: green !important;
+        }
+    </style>
+    
+    <style>.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error { background-color: transparent !important;background-image: none !important;color: black !important;}</style>
+    
+    <script type="text/javascript">
+        function UpdateSuccess(data) {
+            alert(data);
+            document.getElementById('d1').innerHTML = data;
+        }
+    </script>
+}
+
+   
+<div align="left"  style="margin-left:50px; min-height: 700px">
+    
+    <div align="left" >
+        <div align="left" style="margin-left: 50px; margin-right: 20px; border: 1px solid transparent ">
+     
+            <div style="margin-top: 40px">
+                <span style="font-size: 2.1em">@Traduction.BienvenueSimulateur <b>WATT'S GREEN</b></span><br/>
+                <span style="font-size:1.5em">
+                   @Traduction.RemplirInfo
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <div style="width: 350px; margin-top: 30px; float: left; ">
+            <div>
+                @if (@ViewBag.Erreur == "ErrorRequired")
+                {
+                    <span style="color: red">@Traduction.Err_Message_Obligatoire</span>
+                }
+                    
+                @if (@ViewBag.Erreur == "ErrorRange")
+                {
+                    <span style="color: red">@Traduction.Err_Message_Incorrecte</span>
+                }
+                        
+                @if (@ViewBag.Erreur == "ErrorFormat")
+                {
+                    <span style="color: red">@Traduction.MsgErreurFormat</span>
+                }
+            </div>
+            
+            <br/>
+
+            @using (Html.BeginForm("Simulateur", "Souscription"))
+            {
+                @Html.AntiForgeryToken()
+                @*@Html.EditorFor(model => Model)*@
+                
+                <div>
+                    <span class="EvaluationTitreLabel">@Traduction.SecteurActivite</span><span class="asterisqueSpan"> *</span>
+                    <br/>
+                    @if (Model.ListeSecteurActivite.Count > 0)
+                    {
+                        @Html.DropDownListFor(m => m.SecteurActiviteId, new SelectList(Model.ListeSecteurActivite, "Id", "LibelleSecteurActivite"), Traduction.ChoisirSecteurActivite, new { @class = "dropDown" })
+                    }
+                </div>
+
+                <div>
+                    <br/>
+                    <span class="EvaluationTitreLabel">@Traduction.Effectif</span><span class="asterisqueSpan"> *</span>
+                    <br/>
+                    @Html.TextBoxFor(model => Model.Effectifs, new { @class = "fieldTxt" })
+                    <br/>
+                </div>
+
+                <div>
+                    <br/>
+                    <span class="EvaluationTitreLabel"> @Traduction.TauxEquipments</span><span class="asterisqueSpan"> *</span>
+                    <span class="infoEquipment" title="<font style='color:white'>@Traduction.BulleTitle1</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                    <br/>
+                    @Html.TextBoxFor(model => Model.TauxEquipement, new { @class = "fieldTxt" })
+                    <span> %</span>
+                    <br/>
+                </div>
+
+                <div>
+                    <br/>
+                    <span class="EvaluationTitreLabel">@Traduction.NombreSites</span><span class="asterisqueSpan"> *</span>
+                    <span class="infoSites" title="<font style='color:white'>@Traduction.BulleTitle2</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                    <br/>
+                    @Html.TextBoxFor(model => Model.NombreSites, new { @class = "fieldTxt" })
+                    <br/>
+                </div>
+
+                <div>
+                    <br/>
+                   <span class="EvaluationTitreLabel"> @Traduction.PrixMoyenKwatt</span>@*<span class="asterisqueSpan"> *</span>*@
+                    <br/>
+                    @Html.TextBoxFor(model => Model.PrixMoyenKwatt, new { @style = "width : 120px; padding-bottom: 3px;" })
+    
+                    @if (Model.ListeDevise.Count > 0)
+                    {
+                        @Html.DropDownListFor(m => m.DeviseId, new SelectList(Model.ListeDevise, "Id", "Libelle"), Traduction.ChoisirDevise, new { @style = "width: 185px; height:24px; margin-left: 15px" })
+                    }
+                </div>
+                
+                <input class="boutonPayant link" type="submit" value="@Traduction.Suivant" style="padding-top: 0px; margin-top: 20px"/>
+            }
+        </div>
+        
+        <div align="center" style="float:left;margin-top: 30px;width: 350px; height: 400px">
+            <div style="margin-top: 60px">
+                <img src="~/Content/images/Autres/symbol_logo_middle.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+

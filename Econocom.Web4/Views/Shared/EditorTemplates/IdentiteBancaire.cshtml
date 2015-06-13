@@ -1,0 +1,51 @@
+﻿@using  Econocom.Web4.Extension
+
+        
+
+<div id="majorDiv" align="left" style="width:1150px;min-height:300px;">
+        <div style="float: left;min-width:450px;min-height:250px;  margin-left: 40px">
+
+           @Html.HiddenFor(model => model.Id)
+       <div class="editor-field" id="registrationClientFieldDiv">
+            @Html.EditorFor(model => model.BIC)
+         
+         </div>
+        <div class="editor-field" id="registrationClientFieldDiv">
+            @Html.EditorFor(model => model.CleRIB)
+         
+        </div>
+
+        
+        <div class="editor-field" id="registrationClientFieldDiv">
+            @Html.EditorFor(model => model.CodeBanque)
+           
+        </div>
+
+      </div>
+     
+             <div  style="float: left;min-width:420px;min-height:250px; ">
+                    
+                    
+                    <div class="editor-field" id="registrationClientFieldDiv">
+                        @Html.EditorFor(model => model.Guichet)
+                       
+                    </div>
+
+                    
+                <div class="editor-field" id="registrationClientFieldDiv">
+                     @Html.EditorFor(model => model.IBAN)
+                   
+                 </div>
+                 
+                 <div class="editor-field" id="registrationClientFieldDiv">
+                     @Html.EditorFor(model => model.NumCompte)
+                    
+                 </div>
+                 
+                </div>
+
+</div>
+
+   
+       
+

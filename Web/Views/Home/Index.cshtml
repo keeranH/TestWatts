@@ -1,0 +1,78 @@
+﻿@using  myResources = Econocom.Resource.Home.Home
+           
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@myResources.LogOn
+
+@*
+@{
+    string informationTitleValue = null;
+    string infoOneSectionValue = null;
+    string infoTwoSectionValue   = null;
+    string infoThreeSectionValue = null;
+}
+
+sdadad: @ViewBag.nombres
+
+@if (ViewBag.PublishedContents != null)
+{
+    foreach (var item in (IEnumerable<Econocom.Model.Models.CMS.ContenuModere>) ViewBag.PublishedContents)
+    {
+        switch (item.CleModele.Nom)
+        {
+            case "InformationTitle":
+                informationTitleValue = item.Contenu;
+                break;
+            case "InfoOneSection":
+                infoOneSectionValue = item.Contenu;
+                break;
+            case "InfoTwoSection":
+                infoTwoSectionValue = item.Contenu;
+                break;
+            case "InfoThreeSection":
+                infoThreeSectionValue = item.Contenu;
+                break;
+        }
+    }
+}
+@section InformationTitle
+{
+    <div>
+         @Html.Raw(informationTitleValue)
+    </div>
+}
+
+
+@section InfoOneSection
+{
+    <div>
+         @Html.Raw(infoOneSectionValue)
+   </div>
+}
+
+@section InfoTwoSection
+{
+    <div>
+         @Html.Raw(infoTwoSectionValue)
+    </div>
+}
+
+@section InfoThreeSection
+{
+    <div>
+         @Html.Raw(infoThreeSectionValue)
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Tiny Mce Test", "TinyMce", "Home")
+</div>
+
+
+*@

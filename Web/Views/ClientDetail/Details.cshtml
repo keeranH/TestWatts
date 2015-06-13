@@ -1,0 +1,40 @@
+﻿@model Econocom.Model.Models.Benchmark.ClientDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ClientDetail</legend>
+
+    <div class="display-label">NumberOfEmployees</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfEmployees)
+    </div>
+
+    <div class="display-label">RatioDeviceEmployee</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RatioDeviceEmployee)
+    </div>
+
+    <div class="display-label">TurnOver</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TurnOver)
+    </div>
+
+    <div class="display-label">PriceOfKWatt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceOfKWatt)
+    </div>
+
+    <div class="display-label">TotalElectricityBill</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalElectricityBill)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

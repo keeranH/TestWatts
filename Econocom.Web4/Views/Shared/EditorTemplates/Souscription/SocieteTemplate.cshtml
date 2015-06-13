@@ -1,0 +1,138 @@
+﻿@model Econocom.Model.ViewModel.SocieteSouscriptionViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "Societe_Layout";
+    Layout = "~/Views/Shared/Souscription_Layout/SocieteSouscription_Layout.cshtml";
+    
+    <style type="text/css">
+        .CpTextBox
+        {
+             width: 78px;
+             height: 29px;
+        }
+
+        .villeTextBox
+        {
+             width: 219px;
+             height: 29px;
+        }
+
+        .societeLabelFor {
+            font-family: "sans-serif";
+        }
+
+        .societeTextBox {
+            width: 320px;
+            height:29px
+        }
+    </style>
+}
+
+@section option{
+    @if (ViewBag.subscribeType != "start")
+    {
+        <div align="left" style="width: 200px; float: left">
+            <span style="font-size: 1.5em">@Traduction.Societe</span>
+        </div>
+        
+        <div style="width: 300px">
+            <input type="submit" value="@Traduction.Sauvegarder"/>
+        </div>
+    }
+}
+
+@Html.HiddenFor(model => Model.ClientId)
+
+@section RaisonSociale{
+    <div class="editor-field">
+        <div>
+            <div style="width: 105px; float:left">@Html.LabelFor(model => Model.RaisonSociale, Traduction.RaisonSociale, new { @class = "societeLabelFor" })</div>
+            <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+        </div>
+        @Html.TextBoxFor(model => Model.RaisonSociale,new{@class="societeTextBox"})
+    </div>
+}
+
+@section Addresse{
+    <div class="editor-field">
+        <div style="width: 60px; float:left">
+            @Html.LabelFor(model => Model.Addresse, Traduction.Adresse, new { @class = "societeLabelFor" })
+        </div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+        @Html.TextAreaFor(model => Model.Addresse,new { style = "width: 320px; height: 89px;resize: none;" })
+    </div>
+}
+
+@section CP{
+    <div class="editor-field">
+        <div style="width: 70px; height: 30px">
+             <div style=" float:left; width: 30px">@Html.LabelFor(model => Model.CodePostal, Traduction.CP, new { @class = "societeLabelFor" })</div>
+             <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+        </div>
+        @Html.TextBoxFor(model => Model.CodePostal, new { @class = "CpTextBox" })
+    </div>
+}
+
+@section Ville{
+    <div class="editor-field">
+         <div style="width: 70px; height: 30px">
+             <div style=" float:left; width: 40px">@Html.LabelFor(model => Model.Ville, Traduction.Ville, new { @class = "societeLabelFor" })</div>
+             <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+         </div>
+        @Html.TextBoxFor(model => Model.Ville, new { @class = "villeTextBox" })
+    </div>
+}
+
+@section Tva{
+     <div class="editor-field">
+        @Html.LabelFor(model => Model.Tva, Traduction.TVA, new { @class = "societeLabelFor" })
+        @Html.TextBoxFor(model => Model.Tva, new { @class = "societeTextBox" })
+    </div>
+}
+
+@section DejaClient{
+    <div class="editor-field">
+        @Html.LabelFor(model => Model.ClientEconocom, Traduction.ClientEconocom, new { @class = "societeLabelFor" })
+        @Html.DropDownListFor(model => Model.ClientEconocom, new[] {new SelectListItem { Text = Traduction.Oui, Value = bool.TrueString },
+                                                                    new SelectListItem { Text = Traduction.Non, Value = bool.FalseString }})
+        @Html.HiddenFor(model => Model.LibelleClientEconocom)
+    </div>
+}
+
+@section Groupe{
+     <div class="editor-field">
+        @Html.LabelFor(model => Model.Groupe, Traduction.Groupe, new { @class = "societeLabelFor" })
+        @Html.TextBoxFor(model => Model.Groupe, new { @class = "societeTextBox" })
+    </div>
+}
+
+@section Pays{  
+    <div class="editor-field">
+        <div style="float:left">@Html.LabelFor(model => Model.Groupe, Traduction.Pays, new { @class = "societeLabelFor",@style="height:30px" })</div>
+        <div style="width: 20px;  float:left"><span style="color:#83b81a; font-weight: bold; font-size: 13px"> *</span></div>
+        @Html.DropDownListFor(m => m.PaysId, new SelectList(Model.ListPays, "Id", "LibellePays"), Traduction.ChoisirPays, new { style = "width: 310px; height: 30px;" }) 
+        @Html.HiddenFor(model => Model.LibellePays)
+    </div>
+}
+
+@section IdentificationNational{
+    <div class="editor-field">
+        @Html.LabelFor(model => Model.IdentificationNational, Traduction.IdentificationNational, new { @class = "societeLabelFor" })
+        @Html.TextBoxFor(model => Model.IdentificationNational, new { @class = "societeTextBox" })
+    </div>
+}
+
+@section ChiffresAffaires{
+     <div class="editor-field">
+        @Html.LabelFor(model => Model.ChiffresAffaires, Traduction.ChiffreAffaires, new { @class = "societeLabelFor" })
+        @Html.TextBoxFor(model => Model.ChiffresAffaires, new { @class = "societeTextBox" })
+    </div>
+}
+
+@section VotreContacte{
+     <div class="editor-field">
+        @Html.LabelFor(model => Model.VotreContacte, Traduction.ContactEconocom, new { @class = "societeLabelFor" })
+        @Html.TextBoxFor(model => Model.VotreContacte, new { @class = "societeTextBox" })
+    </div>
+}

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewBag.Title
+    </title>
+    
+    <link id="siteThemeLink" href="@Url.Content("~/Content/themes/ui-lightness/jquery-ui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Awesome.css")" rel="stylesheet" type="text/css" />
+  
+    @*--jquery first jquery.ui after--*@
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftMvcJQueryValidation.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Awesome.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/style.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/mvcvalidationfix.js")" type="text/javascript"></script>
+    
+    
+     
+
+
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        function loginSuccess(result) {
+            if (result.Url) {
+                location.href = result.Url;
+            }
+        }
+    </script>
+    
+
+</head>
+    <body>        
+        <noscript>
+            <div id="nos">
+                this site works best with javascript allowed
+            </div>
+        </noscript>
+        <header>
+            <div class="content-wrapper" style="height:85px; background-color: #fff;">
+                <div class="float-left">
+                    <p class="site-title">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logo.jpg" /></a>
+                    </p>
+                </div>
+                <div class="float-right" style="margin-top:-10px;">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>                    
+                </div>           
+            </div>              
+        </header>
+        <div id="body" >
+            @*<div style="width:100%; border:solid 0px red;min-width:960px; margin: 0 auto;max-width: 960px; background-color: #696969">
+                <div class="float-left" style="min-width:960px;max-width:960px;float:left;background-color: rgb(77, 80, 82);">
+                    <nav style="float:left;">
+                        @{Html.RenderAction("Index", "Nav");}
+                    </nav>
+                </div>
+            </div>*@
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix" style="background-color: #fff;min-height: 400px;">
+                
+                    <div>@Html.Partial("Barre_Menu/Client")</div>
+
+                @*
+                <div>
+                    <div style="margin-top: 10px">@Html.Partial("MenuPartial/_SubMenuGreenItPartial")</div>
+                </div>*@
+
+                @RenderBody()
+                
+               
+                <div align="center" style="width: 900px; height: 75px; border: 1px solid black; background-color: #D8D8D8">
+                    
+                    Vous souhaitez générez un rapport de votre SI en date du ---------?<br/> Celui-ci sera conservé dans 
+                    la rubrique Mes Rapports
+                </div>
+                
+                @if (@ViewBag.UserType == "Demo")
+                {
+                    <div align="center" style="width: 900px; height: 75px; border: 1px solid black; background-color: blue">
+                        <input type="button" value="Générer un Rapport"/>
+                    </div>
+                }
+                @if (@ViewBag.UserType == "Payant")
+                {
+                    <div align="center" style="width: 900px; height: 75px; border: 1px solid black; background-color: green">
+                        <input type="button" value="Générer un Rapport"/>
+                    </div>
+                }
+
+            </section>
+            
+
+        </div>
+        
+        
+
+        <footer>
+            <div class="content-wrapper" style="height:40px; background-color: #fff; border-top: solid 2px #eeeeee;">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Econocom</p>
+                </div>
+                <div class="float-right">
+                    <ul id="menu" style="font-size:1.1em; margin-top:10px;">
+                        <li>@Html.ActionLink("FAQ", "Index", "Faq")</li>                        
+                        <li>@Html.ActionLink("Contact", "Contact", "Support")</li>
+                        <li>@Html.ActionLink("Mentions legales", "Index", "MentionLegale")</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        @(Html.MakePopupForm("Login", controller:"Login", title:"Login", okText:"Login",successFunction:"loginSuccess", height:340, width:350, resizable:false))
+       
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

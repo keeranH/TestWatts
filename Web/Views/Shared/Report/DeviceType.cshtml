@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Econocom.Model.ViewModel.ViewModelDeviceType>
+
+@foreach (var deviceType in Model)
+{   
+    <div data-role="collapsible" id="my-collaspible1" class="divC">
+    <h3>@Html.DisplayFor(modelItem => deviceType.Label)	
+       <span style="float: right; margin-right: 150px; width:100px;" align="right">@deviceType.Value</span>   
+    </h3>									
+       @Html.Partial("Report/DeviceClass", deviceType.ViewModelDeviceClasses)                       
+       
+    </div>
+}

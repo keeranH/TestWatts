@@ -1,0 +1,227 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.EvaluationViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgEvaluation;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+    
+    <link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />   
+    <link href="@Url.Content("~/Content/css/Evaluation/Evaluation.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/Tooltip/Tooltip.css")" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.easyui.min.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            changePosition();
+        });
+
+        function changePosition() {
+            jQuery('.infoEquipment').tooltip({
+                position: "top"
+            });
+
+            jQuery('.infoSites').tooltip({
+                position: "top"
+            });
+        }
+    </script>    
+    
+    <style>.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error { background-color: transparent !important;background-image: none !important;color: black !important;}</style>
+    <style>.ui-state-active { background-color: transparent !important;background-image: none !important;color: white !important;border: none !important;}</style>
+}
+
+<div style="border: solid 1px white;">
+<table>
+    <tr>
+        <td>
+            <div id="mainDiv1">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div id="mainDiv2" align="left">
+                    
+                        <div id="titleDiv">
+                            <span class="titre1Span">@Traduction.Titre1</span><br/>
+                            <span class="titre2Span">@Traduction.Titre2</span><br/>
+                            <span class="titre2Span">@Traduction.Titre3</span><br/>
+                        </div>
+                    
+                        <br/>
+                    
+                        @if (@ViewBag.Erreur == "ErrorRequired")
+                        {
+                            <span class="erreurSpan">@Traduction.Err_Message_Obligatoire</span>
+                        }
+                    
+                        @if (@ViewBag.Erreur == "ErrorRange")
+                        {
+                            <span class="erreurSpan">@Traduction.Err_Message_Incorrecte</span>
+                        }
+                        
+                        @if (@ViewBag.Erreur == "ErrorFormat")
+                        {
+                            <span class="erreurSpan">@Traduction.MsgErreurFormat</span>
+                        }
+                    
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.RaisonSociale</span>@*<span class="asterisqueSpan"> *</span>*@
+                            <br/>
+                            @Html.TextBoxFor(model => Model.RaisonSociale, new { @class = "fieldTxt", @maxlength = "200" })
+                            <br/>
+                        </div>
+        
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Groupe</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Groupe, new { @class = "fieldTxt", @maxlength = "200" })
+                            <br/>
+                        </div>
+                    
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Pays</span><span class="asterisqueSpan"> *</span>
+                            <br/>
+                            @if (Model.ListePays.Count > 0)
+                            {
+                                @Html.DropDownListFor(m => m.PaysId, new SelectList(Model.ListePays, "Id", "LibellePays"), Traduction.ChoisirPays, new { @class = "dropDown" })
+                            }
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Nom</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Nom, new { @class = "fieldTxt", @maxlength = "50" })
+                            <br/>
+                        </div>
+        
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Prenom</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Prenom, new { @class = "fieldTxt", @maxlength = "50" })
+                            <br/>
+                        </div>
+        
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Fonction</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Fonction, new { @class = "fieldTxt", @maxlength = "50" })
+                            <br/>
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.AddresseMail</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Email, new { @class = "fieldTxt", @maxlength = "200" })
+                            <br/>
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Telephone</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.NumeroPhone, new { @class = "fieldTxt", @maxlength = "50" })
+                            <br/>
+                        </div>
+        
+                        @*<div>
+                            <br/>
+                            @Html.EditorFor(model => Model.EvaluationEntrepriseViewModel)
+                        </div>*@
+                        
+                        <br/>
+
+                        <div>
+                            <span class="EvaluationTitreLabel">@Traduction.SecteurActivite</span><span class="asterisqueSpan"> *</span>
+                            <br/>
+                            @if (Model.ListeSecteurActivite.Count > 0)
+                            {
+                                @Html.DropDownListFor(m => m.SecteurActiviteId, new SelectList(Model.ListeSecteurActivite, "Id", "LibelleSecteurActivite"), Traduction.ChoisirSecteurActivite, new { @class = "dropDown" })
+                            }   
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.Effectif</span><span class="asterisqueSpan"> *</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.Effectifs, new { @class = "fieldTxt" })
+                            <br/>
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel"> @Traduction.TauxEquipments</span><span class="asterisqueSpan"> *</span>
+                            <span class="infoEquipment" title="<font style='color:white'>@Traduction.BulleTitle1</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.TauxEquipement, new { @class = "fieldTxt" })
+                            <span> %</span>
+                            <br/>
+                        </div>
+
+                        <div>
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.NombreSites</span><span class="asterisqueSpan"> *</span>
+                            <span class="infoSites" title="<font style='color:white'>@Traduction.BulleTitle2</font>"><img src= "@Url.Content("~/Content/images/Autres/b_infobulle.gif")" /></span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.NombreSites, new { @class = "fieldTxt" })
+                            <br/>
+                        </div>
+
+                        <div>
+                            <br/>
+                           <span class="EvaluationTitreLabel"> @Traduction.PrixMoyenKwatt</span>
+                            <br/>
+                            @Html.TextBoxFor(model => Model.PrixMoyenKwatt, new { @style = "width : 120px; padding-bottom: 3px;" })
+    
+                            @if (Model.ListeDevise.Count > 0)
+                            {
+                                @Html.DropDownListFor(m => m.DeviseId, new SelectList(Model.ListeDevise, "Id", "Libelle"), Traduction.ChoisirDevise, new { @style = "width: 185px; height:24px; margin-left: 15px" })
+                            }
+                        </div>
+                    
+                        <div style="padding-bottom: 5px;padding-left: 5px;margin-right: 5px;margin-top: 5px;border:@(ViewBag.Accepter == null ? "none" : "solid 1px #e80c4d")">
+                            <br/>                                                      
+                            @Html.CheckBoxFor(model => Model.Accepter, new { @style = "padding-bottom: 3px;" }) <span style="font-size: 14px">@Traduction.CocherCaseCGU</span>"<a href='@Url.Action("TermesEtConditions","Evaluation")' target="_blank" style="font-size: 14px;text-decoration: underline">@Traduction.CGU</a>"
+                        </div>
+                        
+
+                        <br/>
+                    
+                        <div id="BoutonDiv">
+                            <input type="submit" class="boutonPayant link" style="padding: 0px 5px 0px 5px; width:200px;margin-top:15px; border-radius: 5px !important;" value="@Traduction.LibelleBouton"/>
+                        </div>
+                    
+                        <br/>
+
+                        <div id="infoDiv">
+                            <br/>
+                            <span class="EvaluationTitreLabel">@Traduction.MsgInfo1 (<span class="asterisqueSpan">*</span>) @Traduction.MsgInfo2 </span>
+                            <br/><br/>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </td>
+        
+        <td>
+            <div id="pourVotreInfoDiv">
+                @if (@ViewBag.ContenuModere != null)
+                {
+                    @Html.Raw(@ViewBag.ContenuModere.Contenu)
+                }
+            </div>
+        </td>
+    </tr>
+</table>
+</div>

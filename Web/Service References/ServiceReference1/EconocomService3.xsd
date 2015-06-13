@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPAYS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PAYS" nillable="true" type="tns:PAYS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPAYS" nillable="true" type="tns:ArrayOfPAYS" />
+  <xs:complexType name="PAYS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADRESSEs" nillable="true" type="tns:ArrayOfADRESSE" />
+      <xs:element minOccurs="0" name="COEFFICIENTCONVERSION" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DATEDEBUT" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDPAYS" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLEPAYS" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PAYS" nillable="true" type="tns:PAYS" />
+  <xs:complexType name="ArrayOfADRESSE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ADRESSE" nillable="true" type="tns:ADRESSE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfADRESSE" nillable="true" type="tns:ArrayOfADRESSE" />
+  <xs:complexType name="ADRESSE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADRESSE1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ADRESSE2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ADRESSE3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLIENTs" nillable="true" type="tns:ArrayOfCLIENT" />
+      <xs:element minOccurs="0" name="CODEPOSTAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDADRESSE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPAYS" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PAY" nillable="true" type="tns:PAYS" />
+      <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VILLE" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ADRESSE" nillable="true" type="tns:ADRESSE" />
+  <xs:complexType name="ArrayOfCLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CLIENT" nillable="true" type="tns:CLIENT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCLIENT" nillable="true" type="tns:ArrayOfCLIENT" />
+  <xs:complexType name="CLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACTIF" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ADRESSE" nillable="true" type="tns:ADRESSE" />
+      <xs:element minOccurs="0" name="CODENAF" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CONTACTs" nillable="true" type="tns:ArrayOfCONTACT" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DETAILSCLIENTs" nillable="true" type="tns:ArrayOfDETAILSCLIENT" />
+      <xs:element minOccurs="0" name="DEVICECLIENTs" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+      <xs:element minOccurs="0" name="GROUPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDADRESSE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" type="xs:int" />
+      <xs:element minOccurs="0" name="IDENTIFICATIONNATIONAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDENTITEBANCAIRE" nillable="true" type="tns:IDENTITEBANCAIRE" />
+      <xs:element minOccurs="0" name="IDIDENTITEBANCAIRE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RAISONSOCIALE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+      <xs:element minOccurs="0" name="TVAINTRACOMM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="USAGEs" nillable="true" type="tns:ArrayOfUSAGE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CLIENT" nillable="true" type="tns:CLIENT" />
+  <xs:complexType name="ArrayOfCONTACT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CONTACT" nillable="true" type="tns:CONTACT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCONTACT" nillable="true" type="tns:ArrayOfCONTACT" />
+  <xs:complexType name="CONTACT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AUTORISATIONS" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CLIENT" nillable="true" type="tns:CLIENT" />
+      <xs:element minOccurs="0" name="EMAIL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FONCTION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCONTACT" type="xs:int" />
+      <xs:element minOccurs="0" name="IDREPONSE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPECONTACT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MOTPASSE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOMCONTACT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NUMEROGSM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NUMEROPHONE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRENOMCONTACT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="REPONSE" nillable="true" type="tns:REPONSE" />
+      <xs:element minOccurs="0" name="SIMULATIONs" nillable="true" type="tns:ArrayOfSIMULATION" />
+      <xs:element minOccurs="0" name="TYPECONTACT" nillable="true" type="tns:TYPECONTACT" />
+      <xs:element minOccurs="0" name="VERIFICATIONCODE" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CONTACT" nillable="true" type="tns:CONTACT" />
+  <xs:complexType name="REPONSE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDQUESTION" type="xs:int" />
+      <xs:element minOccurs="0" name="IDREPONSE" type="xs:int" />
+      <xs:element minOccurs="0" name="Question" nillable="true" type="tns:QUESTION" />
+      <xs:element minOccurs="0" name="VALEUR" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="REPONSE" nillable="true" type="tns:REPONSE" />
+  <xs:complexType name="QUESTION">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDQUESTION" type="xs:int" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QUESTION" nillable="true" type="tns:QUESTION" />
+  <xs:complexType name="ArrayOfSIMULATION">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SIMULATION" nillable="true" type="tns:SIMULATION" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSIMULATION" nillable="true" type="tns:ArrayOfSIMULATION" />
+  <xs:complexType name="SIMULATION">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONTACT" nillable="true" type="tns:CONTACT" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:int" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCONTACT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDORIGINE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDPOLITIQUE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSIMULATION" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLESIMULATION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ORIGINE" nillable="true" type="tns:ORIGINE" />
+      <xs:element minOccurs="0" name="POLITIQUE" nillable="true" type="tns:POLITIQUE" />
+      <xs:element minOccurs="0" name="QUANTITE" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SIMULATION" nillable="true" type="tns:SIMULATION" />
+  <xs:complexType name="ORIGINE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DEVICECLIENTs" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+      <xs:element minOccurs="0" name="IDORIGINE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLEORIGINE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SIMULATIONs" nillable="true" type="tns:ArrayOfSIMULATION" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ORIGINE" nillable="true" type="tns:ORIGINE" />
+  <xs:complexType name="ArrayOfDEVICECLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DEVICECLIENT" nillable="true" type="tns:DEVICECLIENT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDEVICECLIENT" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+  <xs:complexType name="DEVICECLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+      <xs:element minOccurs="0" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+      <xs:element minOccurs="0" name="CLIENT" nillable="true" type="tns:CLIENT" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:int" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDDEVICECLIENT" type="xs:int" />
+      <xs:element minOccurs="0" name="IDORIGINE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ORIGINE" nillable="true" type="tns:ORIGINE" />
+      <xs:element minOccurs="0" name="QUANTITE" type="xs:int" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DEVICECLIENT" nillable="true" type="tns:DEVICECLIENT" />
+  <xs:complexType name="AGEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONSOWATTHEURs" nillable="true" type="tns:ArrayOfCONSOWATTHEUR" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DEVICECLIENTs" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLEAGEDEVICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+      <xs:element minOccurs="0" name="USAGEs" nillable="true" type="tns:ArrayOfUSAGE" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEAGEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEAGEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+  <xs:complexType name="ArrayOfCONSOWATTHEUR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CONSOWATTHEUR" nillable="true" type="tns:CONSOWATTHEUR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCONSOWATTHEUR" nillable="true" type="tns:ArrayOfCONSOWATTHEUR" />
+  <xs:complexType name="CONSOWATTHEUR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+      <xs:element minOccurs="0" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+      <xs:element minOccurs="0" name="CONSOMMATION" type="xs:int" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CONSOWATTHEUR" nillable="true" type="tns:CONSOWATTHEUR" />
+  <xs:complexType name="CLASSEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONSOWATTHEURs" nillable="true" type="tns:ArrayOfCONSOWATTHEUR" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DEVICECLIENTs" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLECLASSEDEVICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+      <xs:element minOccurs="0" name="USAGEs" nillable="true" type="tns:ArrayOfUSAGE" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEAGEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEAGEDEVICE" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+  <xs:complexType name="SECTEURACTIVITE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AGEDEVICEs" nillable="true" type="tns:ArrayOfAGEDEVICE" />
+      <xs:element minOccurs="0" name="CLASSEDEVICEs" nillable="true" type="tns:ArrayOfCLASSEDEVICE" />
+      <xs:element minOccurs="0" name="CLIENTs" nillable="true" type="tns:ArrayOfCLIENT" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FAMILLEDEVICEs" nillable="true" type="tns:ArrayOfFAMILLEDEVICE" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLESECTEURACTIVITE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RATIOS" nillable="true" type="tns:ArrayOfRATIO" />
+      <xs:element minOccurs="0" name="SEGMENTACTIVITE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TYPEACTIVITE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+  <xs:complexType name="ArrayOfAGEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAGEDEVICE" nillable="true" type="tns:ArrayOfAGEDEVICE" />
+  <xs:complexType name="ArrayOfCLASSEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCLASSEDEVICE" nillable="true" type="tns:ArrayOfCLASSEDEVICE" />
+  <xs:complexType name="ArrayOfFAMILLEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FAMILLEDEVICE" nillable="true" type="tns:FAMILLEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFAMILLEDEVICE" nillable="true" type="tns:ArrayOfFAMILLEDEVICE" />
+  <xs:complexType name="FAMILLEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CATEGORIEDEVICEs" nillable="true" type="tns:ArrayOfCATEGORIEDEVICE" />
+      <xs:element minOccurs="0" name="CLIENT" nillable="true" type="tns:CLIENT" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDFAMILLEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLEFAMILLEDEVICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FAMILLEDEVICE" nillable="true" type="tns:FAMILLEDEVICE" />
+  <xs:complexType name="ArrayOfCATEGORIEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CATEGORIEDEVICE" nillable="true" type="tns:CATEGORIEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCATEGORIEDEVICE" nillable="true" type="tns:ArrayOfCATEGORIEDEVICE" />
+  <xs:complexType name="CATEGORIEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FAMILLEDEVICE" nillable="true" type="tns:FAMILLEDEVICE" />
+      <xs:element minOccurs="0" name="IDCATEGORIEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDFAMILLEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLECATEGORIEDEVICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TYPEDEVICEs" nillable="true" type="tns:ArrayOfTYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CATEGORIEDEVICE" nillable="true" type="tns:CATEGORIEDEVICE" />
+  <xs:complexType name="ArrayOfTYPEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTYPEDEVICE" nillable="true" type="tns:ArrayOfTYPEDEVICE" />
+  <xs:complexType name="TYPEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CATEGORIEDEVICE" nillable="true" type="tns:CATEGORIEDEVICE" />
+      <xs:element minOccurs="0" name="CONSOWATTHEURs" nillable="true" type="tns:ArrayOfCONSOWATTHEUR" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DEVICECLIENTs" nillable="true" type="tns:ArrayOfDEVICECLIENT" />
+      <xs:element minOccurs="0" name="IDCATEGORIEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLETYPEDEVICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RATIOS" nillable="true" type="tns:ArrayOfRATIO" />
+      <xs:element minOccurs="0" name="USAGEs" nillable="true" type="tns:ArrayOfUSAGE" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEAGEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEAGEDEVICE" />
+      <xs:element minOccurs="0" name="VENTILATIONCLASSEDEVICEs" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+  <xs:complexType name="ArrayOfRATIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RATIO" nillable="true" type="tns:RATIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRATIO" nillable="true" type="tns:ArrayOfRATIO" />
+  <xs:complexType name="RATIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLERATIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RATIOCA" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RATIONBREQUIPEMENT" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RATIONBRSITE" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RATIOSUPERFICIE" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RATIOSUPERFICIEDATACENTER" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RATIO" nillable="true" type="tns:RATIO" />
+  <xs:complexType name="ArrayOfUSAGE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="USAGE" nillable="true" type="tns:USAGE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUSAGE" nillable="true" type="tns:ArrayOfUSAGE" />
+  <xs:complexType name="USAGE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+      <xs:element minOccurs="0" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+      <xs:element minOccurs="0" name="CLIENT" nillable="true" type="tns:CLIENT" />
+      <xs:element minOccurs="0" name="COEFFMODEOFF" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="COEFFNONINTENSIF" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEUSAGE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDUSAGE" type="xs:int" />
+      <xs:element minOccurs="0" name="NBRHEURESINTENSIFJOUR" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NBRHEURESOFFJOUR" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NBRJOURTRAVAILLE" type="xs:int" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+      <xs:element minOccurs="0" name="TYPEUSAGE" nillable="true" type="tns:TYPEUSAGE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="USAGE" nillable="true" type="tns:USAGE" />
+  <xs:complexType name="TYPEUSAGE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDTYPEUSAGE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLETYPEUSAGE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="USAGEs" nillable="true" type="tns:ArrayOfUSAGE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TYPEUSAGE" nillable="true" type="tns:TYPEUSAGE" />
+  <xs:complexType name="ArrayOfVENTILATIONCLASSEAGEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VENTILATIONCLASSEAGEDEVICE" nillable="true" type="tns:VENTILATIONCLASSEAGEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVENTILATIONCLASSEAGEDEVICE" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEAGEDEVICE" />
+  <xs:complexType name="VENTILATIONCLASSEAGEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AGEDEVICE" nillable="true" type="tns:AGEDEVICE" />
+      <xs:element minOccurs="0" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+      <xs:element minOccurs="0" name="COEFFICIENT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDAGEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VENTILATIONCLASSEAGEDEVICE" nillable="true" type="tns:VENTILATIONCLASSEAGEDEVICE" />
+  <xs:complexType name="ArrayOfVENTILATIONCLASSEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VENTILATIONCLASSEDEVICE" nillable="true" type="tns:VENTILATIONCLASSEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVENTILATIONCLASSEDEVICE" nillable="true" type="tns:ArrayOfVENTILATIONCLASSEDEVICE" />
+  <xs:complexType name="VENTILATIONCLASSEDEVICE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CLASSEDEVICE" nillable="true" type="tns:CLASSEDEVICE" />
+      <xs:element minOccurs="0" name="COEFFICIENT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DATEDEBUT" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DATEFIN" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IDCLASSEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDSECTEURACTIVITE" type="xs:int" />
+      <xs:element minOccurs="0" name="IDTYPEDEVICE" type="xs:int" />
+      <xs:element minOccurs="0" name="SECTEURACTIVITE" nillable="true" type="tns:SECTEURACTIVITE" />
+      <xs:element minOccurs="0" name="TYPEDEVICE" nillable="true" type="tns:TYPEDEVICE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VENTILATIONCLASSEDEVICE" nillable="true" type="tns:VENTILATIONCLASSEDEVICE" />
+  <xs:complexType name="POLITIQUE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDPOLITIQUE" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLEPOLITIQUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SIMULATIONs" nillable="true" type="tns:ArrayOfSIMULATION" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="POLITIQUE" nillable="true" type="tns:POLITIQUE" />
+  <xs:complexType name="TYPECONTACT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONTACTs" nillable="true" type="tns:ArrayOfCONTACT" />
+      <xs:element minOccurs="0" name="IDTYPECONTACT" type="xs:int" />
+      <xs:element minOccurs="0" name="LIBELLETYPECONTACT" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TYPECONTACT" nillable="true" type="tns:TYPECONTACT" />
+  <xs:complexType name="ArrayOfDETAILSCLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DETAILSCLIENT" nillable="true" type="tns:DETAILSCLIENT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDETAILSCLIENT" nillable="true" type="tns:ArrayOfDETAILSCLIENT" />
+  <xs:complexType name="DETAILSCLIENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CHIFFREAFFAIRE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CLIENT" nillable="true" type="tns:CLIENT" />
+      <xs:element minOccurs="0" name="CODEINTERNECLIENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDCLIENT" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IDDETAILSCLIENT" type="xs:int" />
+      <xs:element minOccurs="0" name="NOMBRESITE" type="xs:int" />
+      <xs:element minOccurs="0" name="PRIXKWH" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SUPERFICIEDATACENTER" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SUPERFICIETOTALE" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TAUXEQUIPEMENT" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DETAILSCLIENT" nillable="true" type="tns:DETAILSCLIENT" />
+  <xs:complexType name="IDENTITEBANCAIRE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BIC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLERIB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLIENTs" nillable="true" type="tns:ArrayOfCLIENT" />
+      <xs:element minOccurs="0" name="CODEBANQUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GUICHET" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IBAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDIDENTITEBANCAIRE" type="xs:int" />
+      <xs:element minOccurs="0" name="NUMCOMPTE" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IDENTITEBANCAIRE" nillable="true" type="tns:IDENTITEBANCAIRE" />
+  <xs:complexType name="ArrayOfQUESTION">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QUESTION" nillable="true" type="tns:QUESTION" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQUESTION" nillable="true" type="tns:ArrayOfQUESTION" />
+</xs:schema>

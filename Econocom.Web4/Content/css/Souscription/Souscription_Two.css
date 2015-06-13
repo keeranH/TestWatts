@@ -1,0 +1,121 @@
+﻿/* ---------------- CSS OF Souscription ---------------------*/
+  th {
+            font-size: 14px !important;
+        }
+        
+        input, textarea 
+        {
+            width: 14px;
+        }
+        
+/**--------------------- INDEX 2 -------------------------- **/
+
+/*DIV */
+div .ContentTwo_Div {
+    min-height: 700px;
+}
+
+div .ContentTwo_Div_Top {
+    margin-left: 100px; margin-right: 20px; border: 1px solid transparent 
+}
+
+div .Content_Two_Div_Title {
+    margin-top: 40px
+}
+
+div .Message_Erreur_Div {
+    visibility: hidden; color: red; font-weight: bold
+}
+
+div .Main_Content_Div {
+     min-height:350px; margin-left: 100px; margin-right: 100px
+}
+
+div .Top_Content_Div {
+    width: 700px; height: 60px; margin-left: -30px
+}
+
+div .Numero_Vert_Div {
+    float: left; width: 100px
+}
+
+div .Sub_Title_Div {
+    float: left; width: 500px; margin-top: 10px
+}
+
+div .Number_Six_Content_Div {
+     margin-top: 50px; min-height: 100px; border-top: 1px solid gray
+}
+
+div .Number_Six_Div_One {
+    width: 700px; height: 60px; margin-top:20px; margin-left: -30px
+}
+
+div .Rond_Six_Div {
+    float: left; width: 100px;
+}
+
+div .Facture_Div {
+    float: left; width: 500px; margin-top: 10px;
+}
+
+div .Reglement_Message_Div {
+     margin-left:20px; margin-right:20px; font-family: sans-serif; font-weight: bold; font-size: 1.3em
+}
+
+div .Submit_Button_Holder_Div {
+    border: 1px solid #82B81A; background-color: #82B81A; width: 870px; height: 120px; margin-top: 50px; margin-bottom: 20px;
+}
+
+
+div .Button_Holder_Div {
+     margin-top: 30px
+}
+
+
+/*SPAN */
+.First_Title_Span {
+    font-size: 2.1em
+}
+
+.Second_Title_Span {
+    font-size: 1.5em
+}
+
+.Tarif_annuel_span {
+    font-size: 1.5em
+}
+
+.Facture_Span {
+    font-size: 1.5em
+}
+
+/* TITLE HEADER & TABLE DATA*/
+th.Table_Header_One {
+    width:100px
+}
+
+th.Table_Header_Other {
+    width: 200px;
+    text-align: center
+}
+
+td.Td_White_Back {
+    font-family: sans-serif; text-align: center
+}
+
+td.Td_Gray_Back {
+    background-color: #F4F4F4; text-align: center
+}
+
+td.Td_Yellow_Back {
+    background-color: #EAF9B1; text-align: center
+}
+
+
+/*BUTTON */
+input[type="button"].Suivant_Button
+{
+     width:200px; margin-top:10px; padding: 0px !important; border: 1px solid #518e01 !important;
+}
+

@@ -1,0 +1,71 @@
+﻿
+body
+{
+	margin:3px;
+}
+body,table
+{
+	font:normal 12px Arial;
+}
+p,div
+{
+	font:inherits;
+}
+
+
+.printpagebreak
+{
+	height:5px;
+	border-bottom:dotted 1px #999999!important;
+	border-top:dotted 1px #999999!important;
+	clear: both !important; 
+	page-break-after: always; 
+	background-image:url(images/pagebreak.gif)!important;
+	background-position: 50% 50%; background-repeat: no-repeat no-repeat !important;
+}
+.printpagebreak:before
+{
+	
+}
+
+body.dragcontrol,body.dragcontrol *
+{
+	cursor:default!important;
+}
+body.dragcontrol .dragcontrol
+{
+	background-color:#eeeeee;
+	opacity:0.5;
+	alpha(opacity=50);
+}
+
+
+
+body.designborder div.rtelayer
+{
+	border:2px solid #0099ff;
+}
+body.designborder form
+{
+	border:1px dotted #ff0000;
+}
+
+body.designborder table
+{
+	border:dotted 1px #7F7C75;
+}
+body.designborder tr
+{
+	min-height:10px;
+}
+body.designborder td
+{
+	border:dotted 1px #7F7C75;
+}
+
+
+
+/*fix opera*/
+body > br:first-child { display:none; }
+
+

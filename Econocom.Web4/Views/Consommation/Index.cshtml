@@ -1,0 +1,73 @@
+﻿@model Econocom.Model.ViewModel.ConsommationViewModel
+@using Conso = Econocom.Resource.Traduction
+
+@{
+    ViewBag.Title = @Conso.TitrePgConsommation;
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        showLoading();
+        $("#contentDivPartial").load("@Url.Action("ShowWatt", "Consommation")", { 'typeObjet': "Famille" },
+            function(response, status, xhr) {
+                if (status == "error") {
+                    //alert("An error occurred while loading the results.");
+                }
+            });
+    });            
+
+</script>
+
+
+<div align="center" id="contentDivPartial" class="contentDiv" style="padding-top: 20px; border:solid 0px red;height:auto;min-height:100%; ">
+    
+</div>
+
+@if (@ViewBag.UserType == "Payant")
+{
+    @*<div class="hideContent" style="border: solid 1px grey; height: 80px; width: 870px; float: left; padding-top: 20px; margin-bottom: 30px;">
+        <div style="position: relative; float: left; margin-left: 275px">
+            <img src= "@Url.Content("~/Content/images/Consommation/Payant/p_print_perso.png")" alt="" />
+        </div>   
+                        
+        <div style="position: relative; float: left; margin-left: 10px; margin-top: 10px;">
+            <img src= "@Url.Content("~/Content/images/Consommation/Payant/fleche_vert.png")" alt="" style="margin-left: 10px;"/>
+            <a href="#" onclick=" printDiv(); " style="text-decoration: none; font-family: sans-serif; font-size: 16px; font-weight: bold; margin-left: 10px; color: black !important;">@Conso.ImprimerRepresentationGraphique</a>
+        </div>  
+    </div>*@
+}
+
+@if (@ViewBag.UserType == "Simulation")
+{
+   @* <div class="hideContent" style="border: solid 1px grey; height: 80px; width: 870px; float: left; padding-top: 20px; margin-bottom: 30px;">
+        <div style="position: relative; float: left; margin-left: 275px">
+            <img src= "@Url.Content("~/Content/images/Consommation/Simulation/p_print_simu.png")" alt="" />
+        </div>   
+                        
+        <div style="position: relative; float: left; margin-left: 10px; margin-top: 10px;">
+            <img src= "@Url.Content("~/Content/images/Consommation/Simulation/fleche_vert2.png")" alt="" style="margin-left: 10px;"/>
+            <a href="#" onclick=" printDiv(); " style="text-decoration: none; font-family: sans-serif; font-size: 16px; font-weight: bold; margin-left: 10px; color: black !important;">@Conso.ImprimerRepresentationGraphique</a>
+        </div>  
+    </div>
+    
+    if (@ViewBag.GenererRapport == "Vrai" && @ViewBag.TypeContact == "Admin")
+    {
+        <div class="hideContent" style="width: 870px; height: 100px; background-color: gainsboro; float: left; text-align: center; margin-top: 20px; margin-bottom: 20px;">
+            <div style="margin-top: 15px">
+                <span style="font-size: 18px">@Conso.TxtModifierSI1</span>
+                <div style="margin-top: -7px;">
+                    <span style="font-size: 18px; margin-left: 10px">@Conso.TxtModifierSI2</span>
+                    <span style="font-weight: bold; font-size: 18px">@Conso.TxtModifierSI3</span>
+                    <span style="font-size: 18px;">@Conso.TxtModifierSI4</span>
+                </div>
+                <div style="margin-top: -7px;">
+                    <span style="font-size: 18px;">@Conso.TxtModifierSI5</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hideContent" style="width: 870px; height: 100px; background-color: #377A37; float: left; text-align: center; margin-bottom: 30px;">            
+            <a class="boutonSimulation link" href="@Url.Action("GenererRapportSimulation", "Simulation", new { idFamille = @ViewBag.IdParent })" style="text-decoration: none; color: white; font-family: sans-serif; font-size: 16px; font-weight: bold; margin-top: 30px;">@Conso.GenererRapport</a>            
+        </div>
+    }*@
+}  

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" />
+  <xs:complexType name="RegistrationClientModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adresse" nillable="true" type="tns:AdresseViewModel" />
+      <xs:element minOccurs="0" name="CODENAF" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="Contacts" nillable="true" type="q1:ArrayOfCONTACT" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="IDPAYS" nillable="true" type="q2:ArrayOfPAYS" />
+      <xs:element minOccurs="0" name="IdentificationNational" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="IdentiteBancaire" nillable="true" type="q3:IDENTITEBANCAIRE" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RaisonSociale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TVAIntraComm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationClientModel" nillable="true" type="tns:RegistrationClientModel" />
+  <xs:complexType name="AdresseViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADRESSE1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ADRESSE2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ADRESSE3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CODEPOSTAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDPAYS" nillable="true" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="PAY" nillable="true" type="q4:PAYS" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" minOccurs="0" name="PAYS" nillable="true" type="q5:ArrayOfPAYS" />
+      <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VILLE" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdresseViewModel" nillable="true" type="tns:AdresseViewModel" />
+</xs:schema>

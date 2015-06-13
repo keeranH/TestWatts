@@ -1,0 +1,426 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@model Econocom.Model.ViewModel.ConfigSiDeviceAttributeViewModel
+@using Econocom.Model.Enum
+@using Econocom.Resource
+@using Calc = Econocom.Resource.Traduction
+@using Conso = Econocom.Resource.Traduction
+
+@{
+    ViewBag.Title = @Conso.TitrePgConsommation;
+    
+    var estPremier = true;
+    Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    Response.AppendHeader("Pragma", "no-cache");
+    Response.AppendHeader("Expires", "0"); 
+}
+
+<style type="text/css">
+
+    .txtField {
+        width: 100px!important;
+        margin-right: 3px;
+        text-align:right;
+    }
+    
+    .txtField1 {
+        width: 100px!important;
+        text-align:right;
+    }
+    
+    .percent {
+        width: 80px!important;
+        text-align:right;
+    }
+    .mainTitle {
+        font-size: 22px;
+    }
+    
+    .subTitle {
+        font-size: 20px;
+        color: #82b81a;
+    }
+    
+    .titre {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .borderTopBottom {
+        border-top: solid 1px gainsboro;
+        border-bottom: solid 1px gainsboro;
+        
+    }
+    
+    .ui-dialog {
+        position: absolute !important;
+        top: 0px !important;
+        max-width: 650px;
+        
+    }
+</style>
+
+<script type="text/javascript">
+     $(document).ready(function() {
+         $(".editLink").click(function() {
+             $(ae_popup).dialog("close");
+         });
+     });
+
+     function RechargerDiv(valeur) {
+         valeur = $(valeur).val();
+         if (valeur == 'True') {
+             document.getElementById("divConsoModifiable").style.display = "block";
+             document.getElementById("divCoeffModifiable").style.display = "block";
+             document.getElementById("divConsoNonModifiable").style.display = "none";
+             document.getElementById("divCoeffNonModifiable").style.display = "none";
+         } else {
+             document.getElementById("divConsoModifiable").style.display = "none";
+             document.getElementById("divCoeffModifiable").style.display = "none";
+             document.getElementById("divConsoNonModifiable").style.display = "block";
+             document.getElementById("divCoeffNonModifiable").style.display = "block";
+         }
+     }
+</script>
+
+<div id="MainDv">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(o => o.Id)
+        @Html.HiddenFor(o => o.IdDevice)
+        @Html.HiddenFor(o => o.IdCategorie)
+        @Html.HiddenFor(o => o.EstNouveau)
+        
+        <div align="left" style="border-bottom: solid 1px gainsboro; height: 68px; margin-bottom: 10px">
+            @if (@ViewBag.UserType == "Simulation")
+            {
+                 <img src="@Url.Content("~/Content/images/Consommation/Payant/v_attributs_2.png")" alt=""/>
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/images/Consommation/Payant/v_attributs.png")" alt=""/>
+            }
+            <span style="margin-top: -55px; display: block; margin-left: 45px; font-size: 30px;">@Conso.Attributs</span>
+        </div>
+        
+        <div align="left" style="color: red">@ViewBag.MsgErreur</div>
+        
+        <div class="borderTopBottom" style="width: 600px; background-color: #EFEEEF; margin-top: 10px; height:25px;">
+            <span class="titre nomdevice">@Conso.NomDevice</span>
+            <span style="float:right">
+                @if (@ViewBag.SourceDevice == (int)ConfigSiDeviceType.Benchmark || @ViewBag.TypeContact == "Utilisateur")
+                {
+                    @Html.TextBoxFor(model => Model.LibelleDevice, new { style = "width:400px;margin-right:5px;", @readonly = true })
+                }
+                else
+                {
+                     @Html.TextBoxFor(model => Model.LibelleDevice, new { style = "width:400px;margin-right:5px;" })
+                }
+            </span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span class="mainTitle">@Conso.ModificationUsage</span>
+            @if (@ViewBag.UserType == "Simulation")
+            {
+                <span style="border:1px; height:40px"><a href="@ViewBag.WikiLink" target="blank"><img src="/Content/images/bnt_wiki_3.png" style="float: right;margin-right: 5px;margin-top: 20px;" /></a></span> 
+            }
+            else
+            {
+                <span style="border:1px; height:40px"><a href="@ViewBag.WikiLink" target="blank"><img src="/Content/images/bnt_wiki_2.png" style="float: right;margin-right: 5px;margin-top: 20px;" /></a></span>
+            }
+
+        </div>
+        
+        <div>
+            <table style="width: 600px;">
+                <col width="500px" />
+                <col width="100px" />
+                
+                @Html.HiddenFor(model => Model.LibelleDevice)
+
+                <tr>
+                    <td colspan="2" >
+                        <div style="margin-top: 10px">
+                            <span class="subTitle">@Conso.TempsUtilisation</span>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                    <td style="text-align:left">
+                        <span class="titre">@Conso.NbJrsParAn</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.NbrJourTravaille, new { @class = "txtField", @readonly = true }) : Html.TextBoxFor(model => Model.NbrJourTravaille, new { @class = "txtField" }))
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.NbHeuresIntensifJr</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.NbrHeuresIntensifJour, new { @class = "txtField", @readonly = true }) : Html.TextBoxFor(model => Model.NbrHeuresIntensifJour, new { @class = "txtField" }))
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.NbHeuresNonIntensifJr</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.NbrHeuresNonIntensifJour, new { @class = "txtField", @readonly = true }) : Html.TextBoxFor(model => Model.NbrHeuresNonIntensifJour, new { @class = "txtField" }))
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.NbHeuresOffJr</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.NbrHeuresOffJour, new { @class = "txtField", @readonly = true }) : Html.TextBoxFor(model => Model.NbrHeuresOffJour, new { @class = "txtField" }))
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" >
+                        <div style="margin-top: 20px">
+                            <span class="subTitle">@Conso.TypeConso</span>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.UtiliseEnergieExterne</span>
+                    </td>
+                    
+                    <td align="right">
+                        @*@(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.UtiliseEnergieExterne, new { @class = "txtField", @readonly = true }) : Html.TextBoxFor(model => Model.UtiliseEnergieExterne, new { @class = "txtField" }))*@
+                        @if (@ViewBag.TypeContact == "Utilisateur")
+                        {
+                            @(Model.UtiliseEnergieExterne.Equals(true) ? Html.TextBox("Oui", "Oui", new { @class = "txtField", @readonly = true }) : Html.TextBox("Non", "Non", new { @class = "txtField", @readonly = true }))
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => Model.UtiliseEnergieExterne, new[]
+                                {
+                                    new SelectListItem {Text = Conso.Oui, Value = bool.TrueString},
+                                    new SelectListItem {Text = Conso.Non, Value = bool.FalseString}
+                                }, new { @onchange = "RechargerDiv(this);", @style = "width : 90px; margin-right : 10px;" })
+                        }
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.PcntConsoExterne</span>
+                    </td>
+                    
+                    <td align="right">
+                         @if (Model.UtiliseEnergieExterne.Equals(true))
+                         {
+                             <div id="divConsoModifiable">
+                                 @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent" }))&nbsp;%
+                             </div>
+
+                             <div id="divConsoNonModifiable" style="display: none">
+                                 @Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent", @readonly = true })&nbsp;%
+                             </div>
+                         }
+                         else
+                         {
+                              <div id="divConsoModifiable" style="display: none">
+                                 @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent" }))&nbsp;%
+                             </div>
+
+                             <div id="divConsoNonModifiable">
+                                 @Html.TextBoxFor(model => Model.PourcentConsomExtern, new { @class = "txtField percent", @readonly = true })&nbsp;%
+                             </div>
+                         }
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.CoeffAbattement</span>
+                    </td>
+                    
+                    <td align="right">
+                        @if (Model.UtiliseEnergieExterne.Equals(true))
+                        {
+                            <div id="divCoeffModifiable">
+                                @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent" }))&nbsp;%
+                            </div>
+
+                            <div id="divCoeffNonModifiable" style="display: none">
+                                @Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent", @readonly = true })&nbsp;%
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="divCoeffModifiable" style="display: none">
+                                @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent" }))&nbsp;%
+                            </div>
+
+                            <div id="divCoeffNonModifiable">
+                                @Html.TextBoxFor(model => Model.CoeffAbbatement, new { @class = "txtField percent", @readonly = true })&nbsp;%
+                            </div>
+                        }
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom">
+                    <td colspan="2" >
+                         
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" >
+                        <div style="margin-top: 20px">
+                            <span class="subTitle">@Conso.CoeffReduction</span>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.ModeNonIntensif</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.CoeffNonIntensif, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.CoeffNonIntensif, new { @class = "txtField percent" }))&nbsp;
+                    </td>
+                </tr>
+                
+                <tr class="borderTopBottom">
+                   <td style="text-align:left">
+                        <span class="titre">@Conso.ModeOff</span>
+                    </td>
+                    
+                    <td align="right">
+                        @(@ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => Model.CoeffModeOff, new { @class = "txtField percent", @readonly = true }) : Html.TextBoxFor(model => Model.CoeffModeOff, new { @class = "txtField percent" }))&nbsp;
+                    </td>
+                </tr>
+            </table>    
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <span class="mainTitle" style="margin-top: 10px">@Conso.ConsulterConso</span>
+        </div>
+        
+        <div style="margin-top: -7px; margin-bottom: 10px;">
+            <span class="titre">@Conso.EnWattOuHeure</span>
+        </div>
+        
+       <div>
+           <table style="width: 400px;">
+               <col width="168px" />
+               <col width="108px" />
+               <col width="108px" />
+               <col width="108px" />
+               <col width="108px" />
+               
+               @for (int i = 0; i < Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel.Count; i++)
+               {
+                   @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].Id)
+                   <tr>
+                       <td style="text-align:left" colspan="2">
+                           <span class="subTitle" style="display: block; margin-top: 10px;">
+                               @Html.DisplayFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].LibelleClasseDevice)
+                              @* @Calc.ResourceManager.GetString("Classe" + Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].Id)*@
+                           </span>
+                       </td>                     
+                       @*@Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[0].AgeDeviceId)*@
+
+                       @for (int j = 0; j < Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels.Count; j++)
+                       {
+                           @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].AgeDeviceId)
+                           <td align="center" style="display: none">
+                               @if (estPremier)
+                               {
+                                   <span class="titre">
+                                       @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].LibelleAge)
+                                       @*@Calc.ResourceManager.GetString("Age" + Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].AgeDeviceId)*@
+                                   </span>
+                               }
+                           </td>
+                       }                         
+                       @{
+                       estPremier = false;
+                       }
+
+                   </tr>
+
+                <tr class="borderTopBottom" style="background-color: #EFEEEF">
+                    <td style="text-align:left">
+                        <span class="titre">@Conso.ModeIntensif</span>
+                    </td>                                   
+                    <td align="right">
+                       @for (int j = 0; j < 1; j++)
+                       {
+                            if (@ViewBag.TypeClient == TypeClient.ECSchange)
+                            {
+                                @Html.TextBoxFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationIntensif, "{0:### ##0.0000}", new {@class = "txtField1"})
+                            }
+                            else
+                            {
+                                @(ViewBag.SourceDevice == (int) ConfigSiDeviceType.Benchmark || @ViewBag.TypeContact == "Utilisateur" ? Html.TextBoxFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationIntensif, "{0:### ##0.0000}", new {@class = "txtField1", @readonly = true}) : Html.TextBoxFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationIntensif, "{0:### ##0.0000}", new {@class = "txtField1"}))
+                            }
+                       }
+                        @for (int j = 1; j < Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels.Count; j++)
+                        {                          
+                           @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationIntensif)                          
+                        }                        
+                    </td>                         
+                </tr>
+
+                <tr class="borderTopBottom">
+                       <td style="text-align:left">
+                           <span class="titre">@Conso.ModeNonIntensif</span>
+                       </td>                                  
+                        <td align="right">                               
+                            @for (int j = 0; j < 1; j++)
+                            {                               
+                                @Html.TextBoxFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[0].ConsommationNonIntensif, "{0:### ##0.0000}", new { @class = "txtField1", @readonly = true })
+                            }
+
+                            @for (int j = 1; j < Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels.Count; j++)
+                            {                               
+                                @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationNonIntensif)
+                            }
+                        </td>                           
+                   </tr>
+                   
+                <tr class="borderTopBottom">
+                    <td style="text-align:left">
+                        <span class="titre">Mode Off</span>
+                    </td>                                                        
+                    <td align="right">
+                        @for (int j = 0; j < 1; j++)
+                        {
+                            @Html.TextBoxFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationModeOff, "{0:### ##0.0000}", new { @class = "txtField1", @readonly = true })
+                        }
+                        @for (int j = 1; j < Model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels.Count; j++)
+                        {                         
+                            @Html.HiddenFor(model => model.ConfigSiConsommationViewModel.ClasseDeviceViewModel[i].AgeDeviceConsoViewModels[j].ConsommationModeOff)                           
+                        } 
+                    </td>                                                                      
+                </tr>
+               }
+           </table>
+        </div>
+    }
+    
+</div>
+

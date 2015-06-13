@@ -1,0 +1,87 @@
+﻿
+
+@{
+    ViewBag.Title = "Societe_Layout";
+    
+}
+
+<div style=" width:800px; height:500px; border:1px solid black" id="societeContentDiv">
+    <div style="width:790px; height:40px">
+        <h2 align="left" style="width:570px; float:left">La Societé</h2>
+        <div align="right" style="width:200px;  float:left"> @RenderSection("Option", required:false)</div>
+    </div>
+
+    <div id="societeLeftDiv" style=" width:390px; height:450px; float:left">
+
+        <div id="societeRaisonSociale" style="width:350px; height:60px">
+            <div align="left" style="float:left; width:100%;">@RenderSection("RaisonSociale", required: true)</div>
+        </div>
+
+        <div id="societeAddressDiv" style=" width:350px; height:100px">
+             <div align="left" style="float:left; width:100%; height:70px">
+                @RenderSection("Addresse", required: false)
+             </div>
+
+        </div>
+
+        <div style="width:350px; height:100px; ">
+
+            <div style=" width:150px; height:90px;float:left">
+                <div style="float:left;width:100%">CP</div>
+                <div style="">@RenderSection("CP", required: false)</div>
+            </div>
+
+            <div style=" width:150px; height:90px;float:left">
+                <div style="">@RenderSection("Ville", required: false)</div>
+            </div>
+
+        </div>
+
+        <div id="societeTva" style=" width:350px; height:100px">
+             <span style=" float:left ">No. de Tva Intra-communautaire</span>
+             <div style="float:left; width:100%;height:70px">@RenderSection("Tva", required: false)</div>
+
+        </div>
+
+        <div id="societeDejaCLient" style=" width:350px; height:100px">
+             <span style=" float:left ">Etes vous deja client a Econocom?</span>
+             <div style="float:left; width:100%; height:40px">@RenderSection("Econocom", required: false)</div>
+
+        </div>
+
+
+
+    </div>
+
+    <div id="societeRightDiv" style=" width:390px; height:450px; float:left">
+
+      <div id="societeGroupe" style="width:350px; height:60px">
+            <div align="left" style="float:left; width:100%;">@RenderSection("Groupe", required: false)</div>
+        </div>
+
+        <div id="societePays" style=" width:350px; height:60px">
+            <div align="left" style="float:left; width:100%;">@RenderSection("Pays", required: false)</div>
+        </div>
+
+
+        <div  style=" width:350px; height:300px; margin-top:50px">
+
+            <div id="societeCode" style="width:350px; height:60px">
+                <div align="left" style="float:left; width:100%;">@RenderSection("CodeNaf", required: false)</div>
+            </div>
+            <div id="societeChiffres" style=" width:350px; height:60px">
+                <div align="left" style="float:left; width:100%;">@RenderSection("ChiffresAffaires", required: false)</div>
+            </div>
+            <div id="societeVotreContact" style=" width:350px; height:60px">
+                <div align="left" style="float:left; width:100%;">@RenderSection("VotreContacte", required: false)</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+@RenderBody()
+
+</div>

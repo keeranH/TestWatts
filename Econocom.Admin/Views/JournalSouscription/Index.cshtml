@@ -1,0 +1,126 @@
+﻿@model Econocom.Model.ViewModel.ChoixDateViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .webgrid-header th
+    {
+        font-family:"sans-serif";         
+        font-size:15px;
+        padding-right: 10px;   
+        padding: 0px;
+        padding-bottom: 10px;
+        font-family: sans-serif;   
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;   
+        border-right: solid 1px #535353;
+        padding-left: 10px;
+        background-color: yellowgreen;   
+        height: 20px;
+        font-weight: bold;
+    }
+
+    .webgrid-row-style td, .webgrid-alternating-style td {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .webgrid-alternating-row td{   
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    .webgrid-alternating-row 
+    {
+        background-color: #eeeeee;        
+    }
+
+    .webgrid-row-style {
+        background-color: white;     
+    }
+
+    .webgrid-footer {
+        padding-top: 30px;
+        border-top: solid 1px black;
+    }
+
+    .webgrid-footer td{
+        padding-top: 10px;
+    }
+
+    .headerSpacingActive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingActiveUp {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingInactive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datepicker1').datepicker({
+            changeMonth: true,
+            changeYear: true, 
+            dateFormat: 'dd M yy'   
+        });
+
+        $('#datepicker2').datepicker({
+            changeMonth: true,
+            changeYear: true, 
+            dateFormat: 'dd M yy'
+        });
+    });
+</script>
+
+<div class="mainDiv" style="width:100%; float:left; height:100%; min-height:1200px;">
+    
+    <div style="width:100%; border:solid 0px red">
+        @using (Ajax.BeginForm("AfficherListeClients", "JournalSouscription", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+        {
+            @Html.ValidationSummary(true)
+            <div style="width:100%; border-bottom :solid 1px yellowgreen; height:50px;padding-top:20px; margin-bottom:20px">
+                <div style="width:50%; border :solid 0px green; float:left;">
+                    <h2 class="HeaderTexteH2">@Econocom.Resource.Traduction.JournalSouscription</h2>
+                </div>                                   
+            </div>
+            <div>
+                <span>Date Debut</span>
+                <span>@Html.TextBoxFor(model => model.DateDebut, new { id = "datepicker1" })</span>   
+                <span style="margin-left: 30px">Date Fin</span>
+                <span>@Html.TextBoxFor(model => model.DateFin, new { id = "datepicker2" })</span>               
+                <span style="margin-left: 40px"><input id="submit" name="submit" type="submit" value="Afficher" class="EconocomButton"/></span>
+                <span style="margin-left: 40px"> <a href="/JournalSouscription/GetListeSouscriptions" ><input type="button" value="Export CSV" class="EconocomButton" /></a></span>                 
+            </div>
+    
+            <div id="resultat" style="padding: 5px; padding-bottom:20px;">
+        
+            </div>
+        }
+    </div>
+</div>

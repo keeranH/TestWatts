@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{441917B4-5B39-4FBD-AACC-5DC5D46F414A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Econocom.Model</RootNamespace>
+    <AssemblyName>Econocom.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Econocom.Model.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.0.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.Awesome.Core">
+      <HintPath>..\packages\MvcProjectAwesome.1.9\lib\40\Omu.Awesome.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EconocomException.cs" />
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Enum\ClientStatut.cs" />
+    <Compile Include="Enum\ConfigSiDeviceType.cs" />
+    <Compile Include="Enum\ConfigSiStatut.cs" />
+    <Compile Include="Enum\CorrespondanceTypeDeviceCaracteristique.cs" />
+    <Compile Include="Enum\EconocomEnum.cs" />
+    <Compile Include="Enum\OrigineEnum.cs" />
+    <Compile Include="Enum\SimulationStatut.cs" />
+    <Compile Include="Enum\TypeClient.cs" />
+    <Compile Include="Enum\TypeContactEnum.cs" />
+    <Compile Include="Error\Resultat.cs" />
+    <Compile Include="Interfaces\ICrudService.cs" />
+    <Compile Include="Interfaces\IGeneral.cs" />
+    <Compile Include="JsonResponseFactory.cs" />
+    <Compile Include="Models\Benchmark\Adresse.cs" />
+    <Compile Include="Models\Benchmark\AgeDevice.cs" />
+    <Compile Include="Models\Benchmark\CategorieDevice.cs" />
+    <Compile Include="Models\Benchmark\ChangementAnneeCalendaire.cs" />
+    <Compile Include="Models\Benchmark\ClasseDevice.cs" />
+    <Compile Include="Models\Benchmark\Client.cs" />
+    <Compile Include="Models\Benchmark\ConfigSi.cs" />
+    <Compile Include="Models\Benchmark\ConsommationDeviceClient.cs" />
+    <Compile Include="Models\Benchmark\ConsoWattHeur.cs" />
+    <Compile Include="Models\Benchmark\Contact.cs" />
+    <Compile Include="Models\Benchmark\ConfigSiClient.cs" />
+    <Compile Include="Models\Benchmark\ConfigSiDevice.cs" />
+    <Compile Include="Models\Benchmark\ConfigSiConsommation.cs" />
+    <Compile Include="Models\Benchmark\ContenuMail.cs" />
+    <Compile Include="Models\Benchmark\CorrespondancePuissance.cs" />
+    <Compile Include="Models\Benchmark\CorrespondanceTypeDevice.cs" />
+    <Compile Include="Models\Benchmark\CorrespondanceVitesse.cs" />
+    <Compile Include="Models\Benchmark\CorrespondanceTaille.cs" />
+    <Compile Include="Models\Benchmark\CorrespondanceProcesseur.cs" />
+    <Compile Include="Models\Benchmark\CorrespondanceSecteurActivite.cs" />
+    <Compile Include="Models\Benchmark\TypeClient.cs" />
+    <Compile Include="Models\Traduction\DeviseTraduction.cs" />
+    <Compile Include="Models\Benchmark\Devise.cs" />
+    <Compile Include="Models\Benchmark\Document.cs" />
+    <Compile Include="Models\Benchmark\Rapport.cs" />
+    <Compile Include="Models\Traduction\AgeDeviceTraduction.cs" />
+    <Compile Include="Models\Traduction\CategorieDeviceTraduction.cs" />
+    <Compile Include="Models\Traduction\ClasseDeviceTraduction.cs" />
+    <Compile Include="Models\Traduction\FamilleDeviceTraduction.cs" />
+    <Compile Include="Models\Traduction\OrigineTraduction.cs" />
+    <Compile Include="Models\Traduction\PaysTraduction.cs" />
+    <Compile Include="Models\Traduction\QuestionTraduction.cs" />
+    <Compile Include="Models\Traduction\SecteurActiviteTraduction.cs" />
+    <Compile Include="Models\Traduction\TarifTraduction.cs" />
+    <Compile Include="Models\Traduction\TypeDeviceTraduction.cs" />
+    <Compile Include="Models\Traduction\TypeRatioTraduction.cs" />
+    <Compile Include="Models\Traduction\TypeUsageTraduction.cs" />
+    <Compile Include="ViewModel\ChoixDateViewModel.cs" />
+    <Compile Include="ViewModel\CMS\CleModeleViewModel.cs" />
+    <Compile Include="ViewModel\CMS\LangueViewModel.cs" />
+    <Compile Include="ViewModel\CMS\ModeleViewModel.cs" />
+    <Compile Include="ViewModel\CMS\RoutageViewModel.cs" />
+    <Compile Include="ViewModel\ContenuMailViewModel.cs" />
+    <Compile Include="Models\Benchmark\DetailsClient.cs" />
+    <Compile Include="Models\Benchmark\DeviceClient.cs" />
+    <Compile Include="Models\Benchmark\Equivalence.cs" />
+    <Compile Include="Models\Traduction\EquivalenceTraduction.cs" />
+    <Compile Include="Models\Benchmark\Evaluation.cs" />
+    <Compile Include="Models\Benchmark\FamilleDevice.cs" />
+    <Compile Include="Models\Benchmark\Origine.cs" />
+    <Compile Include="Models\Benchmark\Pays.cs" />
+    <Compile Include="Models\Benchmark\Politique.cs" />
+    <Compile Include="Models\Traduction\PolitiqueTraduction.cs" />
+    <Compile Include="Models\Benchmark\Question.cs" />
+    <Compile Include="Models\Benchmark\Ratio.cs" />
+    <Compile Include="Models\Benchmark\Reponse.cs" />
+    <Compile Include="Models\Benchmark\Resultat.cs" />
+    <Compile Include="Models\Benchmark\SecteurActivite.cs" />
+    <Compile Include="Models\Benchmark\Simulation.cs" />
+    <Compile Include="Models\Benchmark\Tarif.cs" />
+    <Compile Include="Models\Benchmark\TypeContact.cs" />
+    <Compile Include="Models\Benchmark\TypeDevice.cs" />
+    <Compile Include="Models\Benchmark\TypeMail.cs" />
+    <Compile Include="Models\Benchmark\TypeObjet.cs" />
+    <Compile Include="Models\Benchmark\TypeRatio.cs" />
+    <Compile Include="Models\Benchmark\TypeUsage.cs" />
+    <Compile Include="Models\Benchmark\Usage.cs" />
+    <Compile Include="Models\Benchmark\Utilisateur.cs" />
+    <Compile Include="Models\Benchmark\VentilationClasseAgeDevice.cs" />
+    <Compile Include="Models\Benchmark\VentilationClasseDevice.cs" />
+    <Compile Include="Models\CMS\CleModele.cs" />
+    <Compile Include="Models\CMS\ContenuModere.cs" />
+    <Compile Include="Models\CMS\Langue.cs" />
+    <Compile Include="Models\CMS\Modele.cs" />
+    <Compile Include="Models\CMS\Page.cs" />
+    <Compile Include="Models\CMS\Routage.cs" />
+    <Compile Include="Models\CMS\Section.cs" />
+    <Compile Include="Models\Common\Status.cs" />
+    <Compile Include="Models\Service\DocumentUpload.cs" />
+    <Compile Include="Models\Service\ErrorMessage.cs" />
+    <Compile Include="Models\Service\FileUpload.cs" />
+    <Compile Include="Models\Service\UploadResult.cs" />
+    <Compile Include="Models\Benchmark\UsageDevice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="ViewModel\AdresseViewModel.cs" />
+    <Compile Include="ViewModel\AgeDeviceConsoViewModel.cs" />
+    <Compile Include="ViewModel\AgeDeviceViewModel.cs" />
+    <Compile Include="ViewModel\CalculateurViewModel.cs" />
+    <Compile Include="ViewModel\CategorieDeviceViewModel.cs" />
+    <Compile Include="ViewModel\ChangementAnneeCalendaireViewModel.cs" />
+    <Compile Include="ViewModel\ClasseDeviceViewModel.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\CMS\ContactViewModel.cs" />
+    <Compile Include="ViewModel\CMS\ContenuModereViewModel.cs" />
+    <Compile Include="ViewModel\ConfigSiConsommationViewModel.cs" />
+    <Compile Include="ViewModel\ConfigSiDeviceAttributeViewModel.cs" />
+    <Compile Include="ViewModel\ConfigSiDeviceViewModel.cs" />
+    <Compile Include="ViewModel\ConsomationViewModel.cs" />
+    <Compile Include="ViewModel\Consommation.cs" />
+    <Compile Include="ViewModel\ConsoWattHeurViewModel.cs" />
+    <Compile Include="ViewModel\ContactSouscriptionViewModel.cs" />
+    <Compile Include="ViewModel\ContactViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondancePuissanceViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondanceVitesseViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondanceTailleViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondanceProcesseurViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondanceTypeDeviceViewModel.cs" />
+    <Compile Include="ViewModel\CorrespondanceSecteurActiviteViewModel.cs" />
+    <Compile Include="ViewModel\TypeSocieteViewModel.cs" />
+    <Compile Include="ViewModel\CsvMap\CsvMapper.cs" />
+    <Compile Include="ViewModel\DetailResultatSimulationViewModel.cs" />
+    <Compile Include="ViewModel\DeviseViewModel.cs" />
+    <Compile Include="ViewModel\DocumentViewModel.cs" />
+    <Compile Include="ViewModel\EquipementImportViewModel.cs" />
+    <Compile Include="ViewModel\EquivalenceQtyViewModel.cs" />
+    <Compile Include="ViewModel\ImportClientViewModel.cs" />
+    <Compile Include="ViewModel\ImportECSchangeViewModel.cs" />
+    <Compile Include="ViewModel\InfoClientImportViewModel.cs" />
+    <Compile Include="ViewModel\JournalSouscriptionViewModel.cs" />
+    <Compile Include="ViewModel\ListeDeviseViewModel.cs" />
+    <Compile Include="ViewModel\ListeEquivalenceViewModel.cs" />
+    <Compile Include="ViewModel\ListeUtilisateurViewModel.cs" />
+    <Compile Include="ViewModel\MesInformationsViewModel.cs" />
+    <Compile Include="ViewModel\PdfConsoViewModel.cs" />
+    <Compile Include="ViewModel\Report\ListeClientViewModel.cs" />
+    <Compile Include="ViewModel\Report\RapportConfigViewModel.cs" />
+    <Compile Include="ViewModel\Report\RapportConfigViewModelMap.cs" />
+    <Compile Include="ViewModel\Report\RapportCsvPersonnalisationViewModel.cs" />
+    <Compile Include="ViewModel\Report\RapportCsvSimulationViewModel.cs" />
+    <Compile Include="ViewModel\Report\RapportViewModel.cs" />
+    <Compile Include="ViewModel\ResultatSimulationViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\AgeDeviceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\CategorieDeviceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\ClasseDeviceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\DeviseTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\EquivalenceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\FamilleDeviceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\OrigineTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\PaysTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\PolitiqueTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\QuestionTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\SecteurActiviteTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\TarifTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\TypeDeviceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\TypeRatioTraductionViewModel.cs" />
+    <Compile Include="ViewModel\Traduction\TypeUsageTraductionViewModel.cs" />
+    <Compile Include="ViewModel\UtilisateurSouscriptionViewModel.cs" />
+    <Compile Include="ViewModel\DetailConsommationViewModel.cs" />
+    <Compile Include="ViewModel\DetailGamme.cs" />
+    <Compile Include="ViewModel\DetaillesUsageViewModel.cs" />
+    <Compile Include="ViewModel\DetailsClientViewModel.cs" />
+    <Compile Include="ViewModel\EntityViewModel.cs" />
+    <Compile Include="ViewModel\EquivalenceTraductionViewModel.cs" />
+    <Compile Include="ViewModel\EquivalenceViewModel.cs" />
+    <Compile Include="ViewModel\EvaluationClientViewModel.cs" />
+    <Compile Include="ViewModel\EvaluationEntrepriseViewModel.cs" />
+    <Compile Include="ViewModel\EvaluationViewModel.cs" />
+    <Compile Include="ViewModel\FamilleDeviceViewModel.cs" />
+    <Compile Include="ViewModel\GammesDeviceViewModel.cs" />
+    <Compile Include="ViewModel\ClientDeviceTypeViewModel.cs" />
+    <Compile Include="ViewModel\CMS\PageViewModel.cs" />
+    <Compile Include="ViewModel\CMS\SectionViewModel.cs" />
+    <Compile Include="ViewModel\GestionMotDePasseViewModel.cs" />
+    <Compile Include="ViewModel\MotDePasseModifierViewModel.cs" />
+    <Compile Include="ViewModel\MotDePasseOublieViewModel.cs" />
+    <Compile Include="ViewModel\OrigineViewModel.cs" />
+    <Compile Include="ViewModel\PaysViewModel.cs" />
+    <Compile Include="ViewModel\PolitiqueTraductionViewModel.cs" />
+    <Compile Include="ViewModel\PolitiqueViewModel.cs" />
+    <Compile Include="ViewModel\QuestionViewModel.cs" />
+    <Compile Include="ViewModel\RatioViewModel.cs" />
+    <Compile Include="ViewModel\Reference.cs" />
+    <Compile Include="ViewModel\ReferenceUnitaireViewModel.cs" />
+    <Compile Include="ViewModel\ReferenceViewModel.cs" />
+    <Compile Include="ViewModel\RegistrationClientModel.cs" />
+    <Compile Include="ViewModel\CMS\EditPublishedContent.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\ReponseViewModel.cs" />
+    <Compile Include="ViewModel\Report\ViewModelReportClient.cs" />
+    <Compile Include="ViewModel\DeviceAgeViewModel.cs" />
+    <Compile Include="ViewModel\DeviceCategoryViewModel.cs" />
+    <Compile Include="ViewModel\DeviceClassViewModel.cs" />
+    <Compile Include="ViewModel\DeviceFamilyViewModel.cs" />
+    <Compile Include="ViewModel\ConsoViewModel.cs" />
+    <Compile Include="ViewModel\ResultatCalculateurViewModel.cs" />
+    <Compile Include="ViewModel\SecteurActiviteViewModel.cs" />
+    <Compile Include="ViewModel\SimulationViewModel.cs" />
+    <Compile Include="ViewModel\TarifViewModel.cs" />
+    <Compile Include="ViewModel\TypeContactViewModel.cs" />
+    <Compile Include="ViewModel\TypeDeviceViewModel.cs" />
+    <Compile Include="ViewModel\TypeMailViewModel.cs" />
+    <Compile Include="ViewModel\TypeObjetViewModel.cs" />
+    <Compile Include="ViewModel\SocieteSouscriptionViewModel.cs" />
+    <Compile Include="ViewModel\SouscriptionViewModel.cs" />
+    <Compile Include="ViewModel\TypeRatioViewModel.cs" />
+    <Compile Include="ViewModel\TypeUsageViewModel.cs" />
+    <Compile Include="ViewModel\UsageDeviceViewModel.cs" />
+    <Compile Include="ViewModel\UsageViewModel.cs" />
+    <Compile Include="ViewModel\VentilationClasseAgeDeviceViewModel.cs" />
+    <Compile Include="ViewModel\VentilationClasseDeviceViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\Omu.Awesome.Core.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NLog.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Econocom.Resource\Econocom.Resources.csproj">
+      <Project>{AC70D204-0271-4224-B9BB-43709B7CCB90}</Project>
+      <Name>Econocom.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

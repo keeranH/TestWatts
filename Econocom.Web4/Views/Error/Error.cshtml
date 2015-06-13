@@ -1,0 +1,19 @@
+@using Econocom.Resource
+@model Infrastructure.DTO.ErrorDisplay
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/Maquette/_Layout_Info1.cshtml";
+}
+<h1>@Traduction.ErreurServeur_Titre</h1>
+
+<hr />
+    
+    <div style="padding: 10px;">
+        <p>
+           @Traduction.ErreurServeur_Info
+        </p>
+        <p>
+           @Traduction.ErreurServeur_Details
+        </p>
+    </div>
+

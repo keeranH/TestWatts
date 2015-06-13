@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Econocom.Model.ViewModel.ViewModelDeviceAge>
+           
+@{
+    ViewBag.Title = "DeviceAge";
+}
+<style>
+input { width: 80em; }
+</style>
+@foreach (var deviceAge in Model)
+{ 
+    <div data-role="" id="my-collaspible1" class="divC">
+        <h3 class="ui-btn-text">@Html.DisplayFor(modelItem => deviceAge.Label)	
+            <span style="float: right; margin-right: 150px; width:100px;" align="right">@deviceAge.Value</span>        									        
+        </h3>
+    </div>
+} 

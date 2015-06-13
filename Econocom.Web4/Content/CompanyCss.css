@@ -1,0 +1,19 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 300px;
+}
+
+.ui-btn
+{
+    width:300px;
+}
+

@@ -1,0 +1,20 @@
+﻿@using Econocom.Resource
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+}
+
+<h1>@Traduction.ErreurServeur_Titre</h1>
+
+<hr />
+    
+    <div style="padding: 10px;">
+        <p>
+           @Traduction.ErreurServeur_Info
+        </p>
+        <p>
+           @Traduction.ErreurServeur_Details
+        </p>
+    </div>
+

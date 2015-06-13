@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Abonnement" xml:space="preserve">
+    <value>Das angemeldete Abo</value>
+  </data>
+  <data name="Accepte" xml:space="preserve">
+    <value>Ich stimme zu</value>
+  </data>
+  <data name="Address1" xml:space="preserve">
+    <value>Adresse 1</value>
+  </data>
+  <data name="Address2" xml:space="preserve">
+    <value>Adresse 2</value>
+  </data>
+  <data name="AddresseMail" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="Administrateur" xml:space="preserve">
+    <value>Der Administrator</value>
+  </data>
+  <data name="Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Afficher" xml:space="preserve">
+    <value>Anzeigen</value>
+  </data>
+  <data name="Affiner" xml:space="preserve">
+    <value>Verfeinern Sie Ihre Vorhersage!</value>
+  </data>
+  <data name="Aide" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Ajouter" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="AllerPlusLoin1" xml:space="preserve">
+    <value>Sie wünschen, Ihr SI zu personalisieren, Simulationen durchzuführen dann, Berichte zu erzeugen?</value>
+  </data>
+  <data name="AllerPlusLoin2" xml:space="preserve">
+    <value>Abonnieren jetzt!</value>
+  </data>
+  <data name="AllerPlusLoin3" xml:space="preserve">
+    <value>Ab 600€ / Jahr</value>
+  </data>
+  <data name="AnalyseDesEcarts" xml:space="preserve">
+    <value>SOLL-IST-VERGLEICH</value>
+  </data>
+  <data name="AncientMdpIncorrect" xml:space="preserve">
+    <value>Altes Passwort falsch</value>
+  </data>
+  <data name="AncientMotDePasse" xml:space="preserve">
+    <value>Altes Passwort</value>
+  </data>
+  <data name="Annuler" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Attributs" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="AutresDevices" xml:space="preserve">
+    <value>Klicken Sie hier, um die Ausrüstungen mit der Menge null anzuzeigen</value>
+  </data>
+  <data name="BarilsPetrole" xml:space="preserve">
+    <value>Barrel Öl</value>
+  </data>
+  <data name="Benefice" xml:space="preserve">
+    <value>Gewinn</value>
+  </data>
+  <data name="BienvenueSimulateur" xml:space="preserve">
+    <value>Willkommen im Simulator</value>
+  </data>
+  <data name="BulleCliquezGraphique" xml:space="preserve">
+    <value>Klicken Sie auf die Grafik &lt;br/&gt;, um weitere Details anzuzeigen.</value>
+  </data>
+  <data name="BulleMetier" xml:space="preserve">
+    <value>Die Berechnung des Stromverbrauchs &lt;br/&gt; der Arbeitsgeräte &lt;br/&gt; ist nur in der kostenpflichtigen &lt;br/&gt; Version abrufbar</value>
+  </data>
+  <data name="BulleModifQty" xml:space="preserve">
+    <value>Die Änderungen der Mengen, Attribute und die Einrichtung neuer Geräte sind nur in der kostenpflichtigen Version abrufbar</value>
+  </data>
+  <data name="BulleTitle1" xml:space="preserve">
+    <value>Anzahl der IT-Arbeitsplätze &lt;br/&gt;(feste und mobile) / Anzahl der  &lt;br/&gt; Mitarbeiter Ergebnis ausgedrückt in %</value>
+  </data>
+  <data name="BulleTitle2" xml:space="preserve">
+    <value>Alle Standorte, an denen &lt;br/&gt; Geräte zur gemeinsamen Nutzung installiert sind &lt;br/&gt; (Drucker, Datenprojektoren, usw...)</value>
+  </data>
+  <data name="Categorie" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ChampsObligatoires1" xml:space="preserve">
+    <value>Die mit einem Sternchen gekennzeichneten Felder</value>
+  </data>
+  <data name="ChampsObligatoires2" xml:space="preserve">
+    <value>müssen ausgefüllt werden, um mit der Anmeldung fortzufahren</value>
+  </data>
+  <data name="ChargementFichier_Echec" xml:space="preserve">
+    <value>Laden der beschädigten Datei (Die Daten vor der Datei, die die Störung verursacht hat, wurden gesichert)</value>
+  </data>
+  <data name="ChargementFichier_Succes" xml:space="preserve">
+    <value>Datei erfolgreich geladen</value>
+  </data>
+  <data name="Charger_Fichier" xml:space="preserve">
+    <value>Datei laden</value>
+  </data>
+  <data name="ChiffreAffaires" xml:space="preserve">
+    <value>Umsatz</value>
+  </data>
+  <data name="ChoisirDevise" xml:space="preserve">
+    <value>- Wählen Sie Ihr Gerät -</value>
+  </data>
+  <data name="ChoisirPays" xml:space="preserve">
+    <value>- Wählen Sie ein Land -</value>
+  </data>
+  <data name="ChoisirPolitique" xml:space="preserve">
+    <value>- Wählen Sie eine Maßnahme -</value>
+  </data>
+  <data name="ChoisirQuestion" xml:space="preserve">
+    <value>Eine Frage wählen</value>
+  </data>
+  <data name="ChoisirSecteurActivite" xml:space="preserve">
+    <value>- Wählen Sie einen Tätigkeitsbereich -</value>
+  </data>
+  <data name="ChoisirTarif" xml:space="preserve">
+    <value>Wählen Sie bitte Ihren gewünschten Tarif.</value>
+  </data>
+  <data name="ChoixSimulation" xml:space="preserve">
+    <value>Auswahl der Simulation</value>
+  </data>
+  <data name="ClientCode" xml:space="preserve">
+    <value>Kundencode</value>
+  </data>
+  <data name="ClientEconocom" xml:space="preserve">
+    <value>Sind Sie bereits ECONOCOM-Kunde?</value>
+  </data>
+  <data name="CliquantMesSimulations" xml:space="preserve">
+    <value>Durch Klicken auf „Meine Simulationen“ in der Menüleiste gelangen Sie wieder in die Umgebung von</value>
+  </data>
+  <data name="CliquezGraphique" xml:space="preserve">
+    <value>Klicken Sie auf die Grafik, um weitere Details anzuzeigen.</value>
+  </data>
+  <data name="Co2An" xml:space="preserve">
+    <value>teq-CO2/an</value>
+  </data>
+  <data name="CoeffAbattement" xml:space="preserve">
+    <value>Rabattsatz</value>
+  </data>
+  <data name="CoeffReduction" xml:space="preserve">
+    <value>Koeffizient für Verbrauchsrückgang</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Name des Unternehmens</value>
+  </data>
+  <data name="CompteValide" xml:space="preserve">
+    <value>Dieses Konto ist bereits bestätigt</value>
+  </data>
+  <data name="ConditionsGenerals" xml:space="preserve">
+    <value>AGB</value>
+  </data>
+  <data name="ConfigurerMotDePasse" xml:space="preserve">
+    <value>Passwort konfigurieren</value>
+  </data>
+  <data name="ConfirmationMdpIncorrrect" xml:space="preserve">
+    <value>Zweites Passwort stimmt nicht mit dem ersten überein</value>
+  </data>
+  <data name="ConfirmerMotDePasse" xml:space="preserve">
+    <value>Passwort bestätigen</value>
+  </data>
+  <data name="Connexion" xml:space="preserve">
+    <value>VERBINDUNG</value>
+  </data>
+  <data name="ConsoAnnuelleClasseECO2" xml:space="preserve">
+    <value>Jahresverbrauch Klasse E (CO2)</value>
+  </data>
+  <data name="ConsoAnnuelleClasseEKWH" xml:space="preserve">
+    <value>Jahresverbrauch Klasse E (kWh)</value>
+  </data>
+  <data name="ConsoAnnuelleClasseHCO2" xml:space="preserve">
+    <value>Jahresverbrauch Klasse H (CO2)</value>
+  </data>
+  <data name="ConsoAnnuelleClasseHKWH" xml:space="preserve">
+    <value>Jahresverbrauch Klasse H (kWh)</value>
+  </data>
+  <data name="ConsoAnnuelleClasseMCO2" xml:space="preserve">
+    <value>Jahresverbrauch Klasse M (CO2)</value>
+  </data>
+  <data name="ConsoAnnuelleClasseMKWH" xml:space="preserve">
+    <value>Jahresverbrauch Klasse M (kWh)</value>
+  </data>
+  <data name="ConsoAnnuelleCO2" xml:space="preserve">
+    <value>Jahresverbrauch CO2</value>
+  </data>
+  <data name="ConsoAnnuelleKWH" xml:space="preserve">
+    <value>Jahresverbrauch kWh</value>
+  </data>
+  <data name="ConsoAnuelleCo2" xml:space="preserve">
+    <value>Jahresverbrauch an teq-CO2</value>
+  </data>
+  <data name="ConsoAnuelleKwh" xml:space="preserve">
+    <value>Jahresverbrauch in kWh</value>
+  </data>
+  <data name="ConsoDateTitre" xml:space="preserve">
+    <value>Mein Verbrauch im</value>
+  </data>
+  <data name="ConsoEnergetique" xml:space="preserve">
+    <value>Mein Stromverbrauch</value>
+  </data>
+  <data name="ConsoIT" xml:space="preserve">
+    <value>Ihres IT-Jahresverbrauchs</value>
+  </data>
+  <data name="ConsulterConso" xml:space="preserve">
+    <value>Beratung zum Stromverbrauch</value>
+  </data>
+  <data name="ContactDetails" xml:space="preserve">
+    <value>Profil Ansprechpartner</value>
+  </data>
+  <data name="Contacte" xml:space="preserve">
+    <value>Ansprechpartner</value>
+  </data>
+  <data name="ContactEconocom" xml:space="preserve">
+    <value>Ihr Ansprechpartner bei Econocom</value>
+  </data>
+  <data name="ContactezNous" xml:space="preserve">
+    <value>Kontaktieren Sie uns</value>
+  </data>
+  <data name="ContactNonExistant" xml:space="preserve">
+    <value>Kein Kontakt mit dieser E-Mail-Adresse gefunden</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="CoutAnnuelkWtClasseE" xml:space="preserve">
+    <value>kosten Klasse E (kWt)</value>
+  </data>
+  <data name="CoutAnnuelkWtClasseH" xml:space="preserve">
+    <value>kosten Klasse H (kWt)</value>
+  </data>
+  <data name="CoutAnnuelkWtClasseM" xml:space="preserve">
+    <value>kosten Klasse M (kWt)</value>
+  </data>
+  <data name="CoutAnnuelleKWH" xml:space="preserve">
+    <value>kosten Klasse kWH</value>
+  </data>
+  <data name="CoutEnergetique" xml:space="preserve">
+    <value>Meine Stromkosten</value>
+  </data>
+  <data name="CoutITAnnuelle" xml:space="preserve">
+    <value>Ihrer jährlichen IT-Kosten</value>
+  </data>
+  <data name="CoutTitre" xml:space="preserve">
+    <value>Meine Stromkosten im</value>
+  </data>
+  <data name="CP" xml:space="preserve">
+    <value>CP</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="CreationDevice" xml:space="preserve">
+    <value>Ein Ereignis erstellen</value>
+  </data>
+  <data name="CreationEquivalence" xml:space="preserve">
+    <value>Einrichtung Äquivalenz</value>
+  </data>
+  <data name="CreationNouveauDevice" xml:space="preserve">
+    <value>Ein neues Ereignis erstellen</value>
+  </data>
+  <data name="CreationPolitique" xml:space="preserve">
+    <value>Einrichtung Politik</value>
+  </data>
+  <data name="CreationSimulation" xml:space="preserve">
+    <value>Eine Simulation erstellen</value>
+  </data>
+  <data name="CreationUsage" xml:space="preserve">
+    <value>Eine Verwendung erstellen</value>
+  </data>
+  <data name="CreerConso" xml:space="preserve">
+    <value>Erstellen des Stromverbrauchs</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="De" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="Deconnexion" xml:space="preserve">
+    <value>Verbindung trennen</value>
+  </data>
+  <data name="DefinitionMotDePasse" xml:space="preserve">
+    <value>Passwort definieren</value>
+  </data>
+  <data name="DemandeRecapitulatif" xml:space="preserve">
+    <value>Nachstehend finden Sie die Zusammenfassung Ihres Zeichnungsantrags.</value>
+  </data>
+  <data name="DemandeSouscription" xml:space="preserve">
+    <value>Zeichnungsantrag am Simulator</value>
+  </data>
+  <data name="DeveloppementDurable" xml:space="preserve">
+    <value>ENERGIEBIKLANZ DES S.I.</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Gerät</value>
+  </data>
+  <data name="DevicePolitique" xml:space="preserve">
+    <value>Gerät</value>
+  </data>
+  <data name="DevicesConcernes" xml:space="preserve">
+    <value>Betreffende Ausrüstungen</value>
+  </data>
+  <data name="Devise" xml:space="preserve">
+    <value>Gerät</value>
+  </data>
+  <data name="DonnerNomSimulation" xml:space="preserve">
+    <value>Diese Simulation benennen</value>
+  </data>
+  <data name="Econocom" xml:space="preserve">
+    <value>ECONOCOM</value>
+  </data>
+  <data name="Effectif" xml:space="preserve">
+    <value>Häufigkeit</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="EmailContenu" xml:space="preserve">
+    <value>Ihr Passwort lautet:</value>
+  </data>
+  <data name="EmailSujet" xml:space="preserve">
+    <value>Econocom Passwort</value>
+  </data>
+  <data name="Enregistrer" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="EnregistrerModifs" xml:space="preserve">
+    <value>Registrieren Sie Ihre Änderungen, bevor Sie die Seite verlassen</value>
+  </data>
+  <data name="EntrerMotDePasse" xml:space="preserve">
+    <value>Passwort eingeben</value>
+  </data>
+  <data name="EnvoyerMotDePasse" xml:space="preserve">
+    <value>Reinitialisieren</value>
+  </data>
+  <data name="EnWattOuHeure" xml:space="preserve">
+    <value>(in Watt/Stunde)</value>
+  </data>
+  <data name="Equivalence" xml:space="preserve">
+    <value>Äquivalenz</value>
+  </data>
+  <data name="Equivalence1" xml:space="preserve">
+    <value>Europäische Haushalte</value>
+  </data>
+  <data name="Equivalence2" xml:space="preserve">
+    <value>Privatfahrzeuge</value>
+  </data>
+  <data name="Equivalence3" xml:space="preserve">
+    <value>Erdumrundung im Flugzeug</value>
+  </data>
+  <data name="Equivalence4" xml:space="preserve">
+    <value>Barrel Öl</value>
+  </data>
+  <data name="Equivalence5" xml:space="preserve">
+    <value>H/R Paris New-York</value>
+  </data>
+  <data name="Erreur403_Detail" xml:space="preserve">
+    <value>Weitere Details über diesen Fehler wurden automatisch erfasst und wir wurden benachrichtigt.</value>
+  </data>
+  <data name="Erreur403_Info" xml:space="preserve">
+    <value>Wir entschuldigen uns für jegliche Unannehmlichkeiten, aber beim Navigieren auf unserer Seite ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="Erreur403_Titre" xml:space="preserve">
+    <value>Ups! Eine Störung ist aufgetreten!</value>
+  </data>
+  <data name="Erreur404_Detail" xml:space="preserve">
+    <value>Weitere Details über diesen Fehler wurden automatisch erfasst und wir wurden benachrichtigt.</value>
+  </data>
+  <data name="Erreur404_Info" xml:space="preserve">
+    <value>Wir entschuldigen uns für jegliche Unannehmlichkeiten, aber beim Navigieren auf unserer Seite ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="Erreur404_Titre" xml:space="preserve">
+    <value>Ups! Eine Störung ist aufgetreten!</value>
+  </data>
+  <data name="Erreur505_Detail" xml:space="preserve">
+    <value>Weitere Details über diesen Fehler wurden automatisch erfasst und wir wurden benachrichtigt.</value>
+  </data>
+  <data name="Erreur505_Info" xml:space="preserve">
+    <value>Wir entschuldigen uns für jegliche Unannehmlichkeiten, aber beim Navigieren auf unserer Seite ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="Erreur505_Titre" xml:space="preserve">
+    <value>Ups! Eine Störung ist aufgetreten!</value>
+  </data>
+  <data name="ErreurChampObligatoire" xml:space="preserve">
+    <value>Die roten Bereiche müssen ausgefüllt werden</value>
+  </data>
+  <data name="ErreurLogin" xml:space="preserve">
+    <value>E-Mail/Passwort falsch</value>
+  </data>
+  <data name="ErreurServeur_Details" xml:space="preserve">
+    <value>Weitere Details finden Sie in der Log-Datei</value>
+  </data>
+  <data name="ErreurServeur_Info" xml:space="preserve">
+    <value>Während der letzten Suche ist ein Fehler aufgetreten</value>
+  </data>
+  <data name="ErreurServeur_Titre" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten</value>
+  </data>
+  <data name="ErreurUtilisateur" xml:space="preserve">
+    <value>Dieser Benutzer existiert nicht</value>
+  </data>
+  <data name="Erreur_Donnees" xml:space="preserve">
+    <value>(Die Daten vor der Datei, die die Störung verursacht hat, wurden gesichert)</value>
+  </data>
+  <data name="Erreur_Doublons" xml:space="preserve">
+    <value>Objekte doppelt/fehlerhaft.</value>
+  </data>
+  <data name="Erreur_VerifierLog" xml:space="preserve">
+    <value>In der Log-Datei finden Sie weitere Informationen.</value>
+  </data>
+  <data name="Error_Msg_Mdp" xml:space="preserve">
+    <value>Das Passwort muss angegeben werden</value>
+  </data>
+  <data name="Error_Msg_MdpConfirmer" xml:space="preserve">
+    <value>Die Bestätigung des Passworts ist obligatorisch</value>
+  </data>
+  <data name="Error_Msg_Reponse" xml:space="preserve">
+    <value>Die Antwort ist obligatorisch</value>
+  </data>
+  <data name="Err_ConstraintException" xml:space="preserve">
+    <value>Fehler in der Nutzung der Tabelle in der Datenbank</value>
+  </data>
+  <data name="Err_DeletedRowInaccessibleException" xml:space="preserve">
+    <value>Zeile bereits gelöscht</value>
+  </data>
+  <data name="Err_DuplicateNameException" xml:space="preserve">
+    <value>Name doppelt</value>
+  </data>
+  <data name="Err_EntityException" xml:space="preserve">
+    <value>Objekt fehlerhaft</value>
+  </data>
+  <data name="Err_InvalidConstraintException" xml:space="preserve">
+    <value>Nutzung der Tabelle ungültig</value>
+  </data>
+  <data name="Err_InvalidExpressionException" xml:space="preserve">
+    <value>Ausdruck ungültig</value>
+  </data>
+  <data name="Err_Message_Incorrecte" xml:space="preserve">
+    <value>Die roten Bereiche sind falsch</value>
+  </data>
+  <data name="Err_Message_Obligatoire" xml:space="preserve">
+    <value>Die roten Bereiche müssen ausgefüllt werden</value>
+  </data>
+  <data name="Err_MissingPrimaryKeyException" xml:space="preserve">
+    <value>Primärschlüssel fehlt</value>
+  </data>
+  <data name="Err_NoNullAllowedException" xml:space="preserve">
+    <value>Der Wert null ist nicht zulässig</value>
+  </data>
+  <data name="Err_ObjectNotFoundException" xml:space="preserve">
+    <value>Fehlendes Objekt</value>
+  </data>
+  <data name="Err_ReadOnlyException" xml:space="preserve">
+    <value>Objekt nur zum Lesen</value>
+  </data>
+  <data name="Err_RowNotInTableException" xml:space="preserve">
+    <value>Zeile nicht in der Tabelle vorhanden</value>
+  </data>
+  <data name="Err_StrongTypingException" xml:space="preserve">
+    <value>Technischer Fehler</value>
+  </data>
+  <data name="Err_UpdateException" xml:space="preserve">
+    <value>Aktualisierung fehlgeschlagen (überprüfen, ob Dubletten / Nutzungen auf anderen Tabellen vorliegen)</value>
+  </data>
+  <data name="EssayezSimulateurWattsGreen" xml:space="preserve">
+    <value>Testen Sie jetzt den WATT’S GREEN Simulator.</value>
+  </data>
+  <data name="Estimation" xml:space="preserve">
+    <value>Schätzung der Gewinne</value>
+  </data>
+  <data name="EstimerConsommationSI" xml:space="preserve">
+    <value>Sie möchten den Verbrauch Ihres SI und dessen Auswirkung auf die Umwelt feststellen?</value>
+  </data>
+  <data name="Et" xml:space="preserve">
+    <value>und</value>
+  </data>
+  <data name="EvaluationInfoBulle" xml:space="preserve">
+    <value>Berechnen Sie gratis den Stromverbrauch &lt;br/&gt; Ihrer SI basierend auf veröffentlichten Quellen</value>
+  </data>
+  <data name="EvaluezVous" xml:space="preserve">
+    <value>Machen Sie den Test</value>
+  </data>
+  <data name="Export_Erreur" xml:space="preserve">
+    <value>Fehler beim CSV-Export</value>
+  </data>
+  <data name="FaireNouvelleSimulation" xml:space="preserve">
+    <value>Wenn Sie eine neue Simulation starten möchten, klicken Sie auf „Neue Simulation“, andernfalls</value>
+  </data>
+  <data name="FALSE" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Famille" xml:space="preserve">
+    <value>Familie</value>
+  </data>
+  <data name="Faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Faux" xml:space="preserve">
+    <value>FALSE</value>
+  </data>
+  <data name="FichierDemandeSouscription" xml:space="preserve">
+    <value>Zeichnungsantragsdatei</value>
+  </data>
+  <data name="FichierInvalide" xml:space="preserve">
+    <value>Datei ungültig.</value>
+  </data>
+  <data name="Fonction" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="FooterInfo" xml:space="preserve">
+    <value>Econocom Smart Solutions</value>
+  </data>
+  <data name="Forename" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Passwort vergessen</value>
+  </data>
+  <data name="FoyersEuropeens" xml:space="preserve">
+    <value>Europäische Haushalte</value>
+  </data>
+  <data name="GainAnnuelleIT" xml:space="preserve">
+    <value>Gewinn Ihres IT-Jahresverbrauchs</value>
+  </data>
+  <data name="GainEquivalent" xml:space="preserve">
+    <value>Die Jahresgewinne für TEQ-CO2 entsprechen:</value>
+  </data>
+  <data name="GenererRapport" xml:space="preserve">
+    <value>Bericht erstellen</value>
+  </data>
+  <data name="GestionDocument" xml:space="preserve">
+    <value>Dokumente verwalten</value>
+  </data>
+  <data name="GestionMotDePasse" xml:space="preserve">
+    <value>Passwort vergessen</value>
+  </data>
+  <data name="Gestion_Masse" xml:space="preserve">
+    <value>Massenpflege</value>
+  </data>
+  <data name="Gestion_Unitaire" xml:space="preserve">
+    <value>Einzelpflege</value>
+  </data>
+  <data name="GreenIt" xml:space="preserve">
+    <value>GREEN IT</value>
+  </data>
+  <data name="Groupe" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="Heure" xml:space="preserve">
+    <value>{0}Uhr</value>
+  </data>
+  <data name="HT" xml:space="preserve">
+    <value>(ohne Steuern)</value>
+  </data>
+  <data name="Identifiant" xml:space="preserve">
+    <value>Benutzername</value>
+  </data>
+  <data name="IdentificationNational" xml:space="preserve">
+    <value>Nationaler Benutzername</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Identifizieren</value>
+  </data>
+  <data name="IdentiqueAuSouscripteur" xml:space="preserve">
+    <value>Identisch mit dem Abonnenten (ja/nein)</value>
+  </data>
+  <data name="ImagePays" xml:space="preserve">
+    <value>/Content/Langues/b_drapeau_fr.png</value>
+  </data>
+  <data name="Imprimer" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="Imprimer3" xml:space="preserve">
+    <value>DRUCKEN</value>
+  </data>
+  <data name="ImprimerRepresentationGraphique" xml:space="preserve">
+    <value>Die grafische Darstellung drucken</value>
+  </data>
+  <data name="InfoSauvegardeKO" xml:space="preserve">
+    <value>Ihre Änderung ist fehlgeschlagen</value>
+  </data>
+  <data name="InfoSauvegardeOK" xml:space="preserve">
+    <value>Ihre Änderung wurde übernommen</value>
+  </data>
+  <data name="InternsiveHours" xml:space="preserve">
+    <value>Intensivkurs</value>
+  </data>
+  <data name="InvalidEmailErrorMessage" xml:space="preserve">
+    <value>E-Mail ungültig</value>
+  </data>
+  <data name="InvalidPhoneErrorMessage" xml:space="preserve">
+    <value>Nummer ungültig</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="JournalSouscription" xml:space="preserve">
+    <value>Anmeldejournal</value>
+  </data>
+  <data name="KwhAn" xml:space="preserve">
+    <value>kWh/Jahr</value>
+  </data>
+  <data name="LibelleBouton" xml:space="preserve">
+    <value>PRÜFEN</value>
+  </data>
+  <data name="LibelleBtnAccepter" xml:space="preserve">
+    <value>ICH STIMME ZU</value>
+  </data>
+  <data name="LibelleBtnImprimer" xml:space="preserve">
+    <value>DRUCKEN</value>
+  </data>
+  <data name="LibelleBtnRefuser" xml:space="preserve">
+    <value>ABLEHNEN</value>
+  </data>
+  <data name="LibelleBtnTelecharger" xml:space="preserve">
+    <value>HERUNTERLADEN</value>
+  </data>
+  <data name="LibelleEquivalence" xml:space="preserve">
+    <value>Äquivalenz</value>
+  </data>
+  <data name="LibelleRapportClient" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="LireAccepterConditions" xml:space="preserve">
+    <value>Lesen Sie bitte die nachstehenden AGB und stimmen Sie ihnen zu.</value>
+  </data>
+  <data name="ListeClient" xml:space="preserve">
+    <value>Die Liste der Kunden</value>
+  </data>
+  <data name="ListeClientsSouscritsEntre" xml:space="preserve">
+    <value>Liste der angemeldeten Kunden zwischen</value>
+  </data>
+  <data name="ListeUtilisateurs" xml:space="preserve">
+    <value>Liste der Benutzer</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Spitzname</value>
+  </data>
+  <data name="Logon" xml:space="preserve">
+    <value>Sich verbinden</value>
+  </data>
+  <data name="MaPersonnalisation" xml:space="preserve">
+    <value>Meine persönlichen Daten</value>
+  </data>
+  <data name="MdpEnvoye" xml:space="preserve">
+    <value>Passwort gesendet an:</value>
+  </data>
+  <data name="MdpModifie" xml:space="preserve">
+    <value>Passwort geändert</value>
+  </data>
+  <data name="MentionLegale" xml:space="preserve">
+    <value>Rechtliche Hinweise</value>
+  </data>
+  <data name="MesInformations" xml:space="preserve">
+    <value>Meine Informationen</value>
+  </data>
+  <data name="MesRapports" xml:space="preserve">
+    <value>Meine Berichte</value>
+  </data>
+  <data name="MesSimulations" xml:space="preserve">
+    <value>Meine Simulationen</value>
+  </data>
+  <data name="Mesure" xml:space="preserve">
+    <value>Messung</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="ModeIntensif" xml:space="preserve">
+    <value>Intensiver Modus</value>
+  </data>
+  <data name="ModeNonIntensif" xml:space="preserve">
+    <value>Nicht intensiver Modus</value>
+  </data>
+  <data name="ModeOff" xml:space="preserve">
+    <value>OFF-Modus</value>
+  </data>
+  <data name="ModificationEquivalence" xml:space="preserve">
+    <value>Änderung Äquivalenz</value>
+  </data>
+  <data name="ModificationPolitique" xml:space="preserve">
+    <value>Änderung Politik</value>
+  </data>
+  <data name="ModificationUsage" xml:space="preserve">
+    <value>Nutzungsänderung</value>
+  </data>
+  <data name="Modifier" xml:space="preserve">
+    <value>ÄNDERN</value>
+  </data>
+  <data name="ModifierDataCenter" xml:space="preserve">
+    <value>Die Oberfläche Ihres Rechenzentrums ändern</value>
+  </data>
+  <data name="ModifierMotDePasse" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="ModifierQuantiteDevices" xml:space="preserve">
+    <value>Die Mengenangaben Ihrer Ausrüstungen ändern</value>
+  </data>
+  <data name="MonEstimation" xml:space="preserve">
+    <value>Meine Berechnung</value>
+  </data>
+  <data name="MonSIApresSimulation" xml:space="preserve">
+    <value>MEIN SI NACH DER SIMULATION</value>
+  </data>
+  <data name="MonSIAvantSimulation" xml:space="preserve">
+    <value>MEIN SI VOR DER SIMULATION</value>
+  </data>
+  <data name="MotDePasseIncorrect" xml:space="preserve">
+    <value>Benutzername oder Passwort falsch</value>
+  </data>
+  <data name="MotDePassePasCorrespondre" xml:space="preserve">
+    <value>Die Passwörter stimmen nicht überein</value>
+  </data>
+  <data name="MotsDePasse" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="MotsDePasseOublier" xml:space="preserve">
+    <value>Passwort vergessen</value>
+  </data>
+  <data name="MsgErreurChoixPolitique" xml:space="preserve">
+    <value>Keine Maßnahme ausgewählt</value>
+  </data>
+  <data name="MsgErreurFormat" xml:space="preserve">
+    <value>Die eingegebenen Werte sind falsch</value>
+  </data>
+  <data name="MsgErreurFormatMail" xml:space="preserve">
+    <value>Die roten Bereiche enthalten schlecht formatierte E-Mail-Adressen</value>
+  </data>
+  <data name="MsgErreurIncorrecte" xml:space="preserve">
+    <value>Die roten Bereiche sind falsch</value>
+  </data>
+  <data name="MsgErreurLibelleExistant" xml:space="preserve">
+    <value>Es existiert bereits ein Gerät mit diesem Namen</value>
+  </data>
+  <data name="MsgErreurLibelleObligatoire" xml:space="preserve">
+    <value>Der Name des Geräts ist obligatorisch</value>
+  </data>
+  <data name="MsgErreurLibelleSimulation" xml:space="preserve">
+    <value>Der Name der Simulation ist obligatorisch</value>
+  </data>
+  <data name="MsgErreurLongeurLibelleDevice" xml:space="preserve">
+    <value>Die Bezeichnung darf nicht mehr als 100 Zeichen enthalten.</value>
+  </data>
+  <data name="MsgErreurMailExistant" xml:space="preserve">
+    <value>Die roten Bereiche enthalten E-Mail-Adressen, die bereits in Watts Green vorhanden sind</value>
+  </data>
+  <data name="MsgErreurMailIdentique" xml:space="preserve">
+    <value>Die roten Bereiche enthalten identische E-Mail-Adressen</value>
+  </data>
+  <data name="MsgErreurNombreDevices" xml:space="preserve">
+    <value>Anzahl der maximal überholten Anlagen</value>
+  </data>
+  <data name="MsgErreurObligatoire" xml:space="preserve">
+    <value>Die roten Bereiche müssen ausgefüllt werden</value>
+  </data>
+  <data name="MsgErreurQtyNegative" xml:space="preserve">
+    <value>Anzahl der Geräte kann nicht negativ sein</value>
+  </data>
+  <data name="MsgErreurTarif" xml:space="preserve">
+    <value>Einen Tarif auswählen, um fortzufahren</value>
+  </data>
+  <data name="MsgInfo1" xml:space="preserve">
+    <value>Die mit einem Sternchen gekennzeichneten Felder</value>
+  </data>
+  <data name="MsgInfo2" xml:space="preserve">
+    <value>müssen ausgefüllt werden, um mit der Anmeldung fortzufahren.</value>
+  </data>
+  <data name="MsgModificatioEchoue" xml:space="preserve">
+    <value>Ihre Änderung ist fehlgeschlagen</value>
+  </data>
+  <data name="MsgModification" xml:space="preserve">
+    <value>Ihre Änderung wurde berücksichtigt</value>
+  </data>
+  <data name="MsgPersoPasPret" xml:space="preserve">
+    <value>Der Bereiche ‚Meine persönlichen Daten‘ ist noch nicht fertig</value>
+  </data>
+  <data name="MsgReglement" xml:space="preserve">
+    <value>Für die Zahlungsbedingungen gilt „Zahlung bei Rechnungseingang“ gemäß den AGB von WATT'S GREEN</value>
+  </data>
+  <data name="NbHeuresIntensifJr" xml:space="preserve">
+    <value>Anzahl der Stunden pro Tag, die im intensiven Modus aufgewendet wurden</value>
+  </data>
+  <data name="NbHeuresNonIntensifJr" xml:space="preserve">
+    <value>Anzahl der Stunden pro Tag, die im nicht intensiven Modus aufgewendet wurden</value>
+  </data>
+  <data name="NbHeuresOffJr" xml:space="preserve">
+    <value>Anzahl der Stunden pro Tag, die im OFF-Modus aufgewendet wurden</value>
+  </data>
+  <data name="NbJrsParAn" xml:space="preserve">
+    <value>Anzahl der pro Jahr aufgewendeten Tage</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NombreClasseEMoinDunAns" xml:space="preserve">
+    <value>Anzahl klasse E weniger als einem Jahr</value>
+  </data>
+  <data name="NombreClasseEPlusCinqAns" xml:space="preserve">
+    <value>Anzahl klasse E über fünf Jahre</value>
+  </data>
+  <data name="NombreClasseETroisACinqAns" xml:space="preserve">
+    <value>Anzahl klasse E drei bis fünf Jahre</value>
+  </data>
+  <data name="NombreClasseEUnATroisAns" xml:space="preserve">
+    <value>Anzahl klasse E zwischen einem und drei Jahren</value>
+  </data>
+  <data name="NombreClasseHMoinDunAns" xml:space="preserve">
+    <value>Anzahl klasse H weniger als einem Jahr</value>
+  </data>
+  <data name="NombreClasseHPlusCinqAns" xml:space="preserve">
+    <value>Anzahl klasse H über fünf Jahre</value>
+  </data>
+  <data name="NombreClasseHTroisACinqAns" xml:space="preserve">
+    <value>Anzahl klasse H drei bis fünf Jahre</value>
+  </data>
+  <data name="NombreClasseHUnATroisAns" xml:space="preserve">
+    <value>Anzahl klasse H zwischen einem und drei Jahren</value>
+  </data>
+  <data name="NombreClasseMMoinDunAns" xml:space="preserve">
+    <value>Anzahl klasse M weniger als einem Jahr</value>
+  </data>
+  <data name="NombreClasseMPlusCinqAns" xml:space="preserve">
+    <value>Anzahl klasse M über fünf Jahre</value>
+  </data>
+  <data name="NombreClasseMTroisACinqAns" xml:space="preserve">
+    <value>Anzahl klasse M drei bis fünf Jahre</value>
+  </data>
+  <data name="NombreClasseMUnATroisAns" xml:space="preserve">
+    <value>Anzahl klasse M zwischen einem und drei Jahren</value>
+  </data>
+  <data name="NombreDevices" xml:space="preserve">
+    <value>Anzahl der Geräte</value>
+  </data>
+  <data name="NombreEquipement" xml:space="preserve">
+    <value>Anzahl der Geräte</value>
+  </data>
+  <data name="NombreObjetErreur" xml:space="preserve">
+    <value>Anzahl der doppelten/fehlerhaften Objekte: {0}</value>
+  </data>
+  <data name="NombreSites" xml:space="preserve">
+    <value>Anzahl der Standorte</value>
+  </data>
+  <data name="NombreTotalClasseE" xml:space="preserve">
+    <value>Anzahl gesamt klasse E</value>
+  </data>
+  <data name="NombreTotalClasseH" xml:space="preserve">
+    <value>Anzahl gesamt klasse H</value>
+  </data>
+  <data name="NombreTotalClasseM" xml:space="preserve">
+    <value>Anzahl gesamt klasse M</value>
+  </data>
+  <data name="NombreTotalDevice" xml:space="preserve">
+    <value>Anzahl gesamt Ausrüstung</value>
+  </data>
+  <data name="NomDeLaPersonnalisation" xml:space="preserve">
+    <value>{0}Name der Personalisierung</value>
+  </data>
+  <data name="NomDeLaSimulation" xml:space="preserve">
+    <value>{0}Name der Simulation</value>
+  </data>
+  <data name="NomDevice" xml:space="preserve">
+    <value>Name des Geräts</value>
+  </data>
+  <data name="NomDuRapport" xml:space="preserve">
+    <value>Name des Berichts</value>
+  </data>
+  <data name="NomSimulation" xml:space="preserve">
+    <value>Name Ihrer Simulation</value>
+  </data>
+  <data name="Non" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="NouveauMotDePasse" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="NouvelleSimulation" xml:space="preserve">
+    <value>Neue Simulation</value>
+  </data>
+  <data name="Objectif" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="Operation_Erreur" xml:space="preserve">
+    <value>Erstellen/Änderung fehlgeschlagen</value>
+  </data>
+  <data name="Operation_Succes" xml:space="preserve">
+    <value>Erstellen/Änderung erfolgreich</value>
+  </data>
+  <data name="Oui" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="ParAn" xml:space="preserve">
+    <value>/Jahr</value>
+  </data>
+  <data name="Pays" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="PcntConsoExterne" xml:space="preserve">
+    <value>% externer Verbrauch</value>
+  </data>
+  <data name="Personaliser" xml:space="preserve">
+    <value>Passen Sie die Mengen individuell an und fügen Sie neue Geräte hinzu.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Politique" xml:space="preserve">
+    <value>Politik</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="Prenom" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="PrixAnnuel" xml:space="preserve">
+    <value>Jährliche Kosten</value>
+  </data>
+  <data name="PrixMoyenKwatt" xml:space="preserve">
+    <value>Ihr Durchschnittspreis je kWh</value>
+  </data>
+  <data name="QuantiteDevice" xml:space="preserve">
+    <value>Die Mengenangaben Ihrer Geräte</value>
+  </data>
+  <data name="QuestionSecrete" xml:space="preserve">
+    <value>Geheimfrage</value>
+  </data>
+  <data name="RaisonSociale" xml:space="preserve">
+    <value>Firmenbezeichnung</value>
+  </data>
+  <data name="RapportMaPersonnalisation" xml:space="preserve">
+    <value>Bericht „Meine persönlichen Angaben"</value>
+  </data>
+  <data name="RapportMesSimulations" xml:space="preserve">
+    <value>Bericht „Meine Simulationen“</value>
+  </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Verhältnis</value>
+  </data>
+  <data name="RechercheRapport" xml:space="preserve">
+    <value>Einen Bericht suchen</value>
+  </data>
+  <data name="RechercherClient" xml:space="preserve">
+    <value>Einen Kunden suchen</value>
+  </data>
+  <data name="RechercherUtilisateur" xml:space="preserve">
+    <value>Benutzer suchen</value>
+  </data>
+  <data name="RedevanceAnnuelle" xml:space="preserve">
+    <value>Jahresgebühr</value>
+  </data>
+  <data name="RedirigerPageAccueil" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie wieder zur Startseite weitergeleitet werden möchten?</value>
+  </data>
+  <data name="Refuser" xml:space="preserve">
+    <value>Ablehnen</value>
+  </data>
+  <data name="ReglementFacture" xml:space="preserve">
+    <value>Bezahlung der Rechnung</value>
+  </data>
+  <data name="RemplirInfo" xml:space="preserve">
+    <value>Füllen Sie bitte die folgenden Informationen aus</value>
+  </data>
+  <data name="Reponse" xml:space="preserve">
+    <value>Antwort</value>
+  </data>
+  <data name="ReponseIncorrecte" xml:space="preserve">
+    <value>Antwort auf die Geheimfrage falsch</value>
+  </data>
+  <data name="RequiredFieldErrorMessage" xml:space="preserve">
+    <value>Dieses Feld muss ausgefüllt werden</value>
+  </data>
+  <data name="Retour" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="RetrouverSimulation" xml:space="preserve">
+    <value>Ihre Simulation finden Sie in der Rubrik „Meine Berichte“.</value>
+  </data>
+  <data name="RIB" xml:space="preserve">
+    <value>Bescheinigung über die Bankverbindung</value>
+  </data>
+  <data name="Sauvegarder" xml:space="preserve">
+    <value>SPEICHERN</value>
+  </data>
+  <data name="SecteurActivite" xml:space="preserve">
+    <value>Tätigkeitsbereich</value>
+  </data>
+  <data name="SelectionnerFichier" xml:space="preserve">
+    <value>Eine Datei auswählen</value>
+  </data>
+  <data name="Selection_Fichier" xml:space="preserve">
+    <value>Eine Datei zum Erstellen/Ändern oder Löschen auswählen</value>
+  </data>
+  <data name="Selection_Table" xml:space="preserve">
+    <value>Eine Tabelle auswählen</value>
+  </data>
+  <data name="SimulateurWattsGreen" xml:space="preserve">
+    <value>SIMULATOR WATT’S GREEN by econocom</value>
+  </data>
+  <data name="SimulationConsoEnergetique" xml:space="preserve">
+    <value>Simulation meines Stromverbrauchs</value>
+  </data>
+  <data name="SimulationDateTitre" xml:space="preserve">
+    <value>Meine Simulation in</value>
+  </data>
+  <data name="SimulationEnCours" xml:space="preserve">
+    <value>Ihre Simulation läuft, um Ihre Änderungen fortsetzen zu können.</value>
+  </data>
+  <data name="SocialReason" xml:space="preserve">
+    <value>Firmenbezeichnung</value>
+  </data>
+  <data name="Societe" xml:space="preserve">
+    <value>Das Unternehmen</value>
+  </data>
+  <data name="Souscripteur" xml:space="preserve">
+    <value>Der Abonnent</value>
+  </data>
+  <data name="Souscrire" xml:space="preserve">
+    <value>ABONNIEREN</value>
+  </data>
+  <data name="SouscrireInfoBulle" xml:space="preserve">
+    <value>Melden Sie sich für den kostenpflichtigen Bereich an, um &lt;br/&gt; ihren S.I individuell anzupassen und Möglichkeiten zur Senkung des Stromverbrauchs zu simulieren</value>
+  </data>
+  <data name="Souscrivez" xml:space="preserve">
+    <value>MELDEN SIE SICH AN</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>aktiviert</value>
+  </data>
+  <data name="Suivant" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Supprimer" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TarifAbonnement" xml:space="preserve">
+    <value>Jahrestarif für das Abonnement WATT’S GREEN</value>
+  </data>
+  <data name="TarifAnnuel" xml:space="preserve">
+    <value>Jahrestarif</value>
+  </data>
+  <data name="TauxEquipments" xml:space="preserve">
+    <value>Ausrüstungsquote</value>
+  </data>
+  <data name="Telecharger" xml:space="preserve">
+    <value>Herunterladen</value>
+  </data>
+  <data name="Telecharger1" xml:space="preserve">
+    <value>HERUNTERLADEN</value>
+  </data>
+  <data name="TelechargerDemande" xml:space="preserve">
+    <value>Den Zeichnungsantrag im .pdf Format herunterladen</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="TempsUtilisation" xml:space="preserve">
+    <value>Nutzungsdauer</value>
+  </data>
+  <data name="Titre1" xml:space="preserve">
+    <value>Schätzen Sie KOSTENLOS</value>
+  </data>
+  <data name="Titre12" xml:space="preserve">
+    <value>AGB</value>
+  </data>
+  <data name="Titre2" xml:space="preserve">
+    <value>ihr energetischer Verbrauch</value>
+  </data>
+  <data name="Titre22" xml:space="preserve">
+    <value>Lesen Sie bitte die nachstehenden AGB und stimmen Sie ihnen zu.</value>
+  </data>
+  <data name="Titre3" xml:space="preserve">
+    <value>diese einige Informationen informierend</value>
+  </data>
+  <data name="TitreLibellePolitique" xml:space="preserve">
+    <value>Politik</value>
+  </data>
+  <data name="TitrePage" xml:space="preserve">
+    <value>Stromverbrauch</value>
+  </data>
+  <data name="TitrePgAccueil" xml:space="preserve">
+    <value>Watts-Green | Startseite</value>
+  </data>
+  <data name="TitrePgAide" xml:space="preserve">
+    <value>Watts-Green | Hilfe</value>
+  </data>
+  <data name="TitrePgConnexion" xml:space="preserve">
+    <value>Watts-Green | Verbindung</value>
+  </data>
+  <data name="TitrePgConsommation" xml:space="preserve">
+    <value>Watts-Green | Stromverbrauch</value>
+  </data>
+  <data name="TitrePgContactezNous" xml:space="preserve">
+    <value>Watts-Green | Kontakt</value>
+  </data>
+  <data name="TitrePgDevDurable" xml:space="preserve">
+    <value>Watts-Green | Energiebilanz des S.I.</value>
+  </data>
+  <data name="TitrePgEvaluation" xml:space="preserve">
+    <value>Watts-Green | Kontoüberprüfung</value>
+  </data>
+  <data name="TitrePgFaq" xml:space="preserve">
+    <value>Watts-Green | FAQ</value>
+  </data>
+  <data name="TitrePgGestionMdp" xml:space="preserve">
+    <value>Watts-Green | Passwort verwalten—</value>
+  </data>
+  <data name="TitrePgGreenIt" xml:space="preserve">
+    <value>Watts-Green | Green IT</value>
+  </data>
+  <data name="TitrePgMentionLegale" xml:space="preserve">
+    <value>Watts-Green | Rechtliche Hinweise—</value>
+  </data>
+  <data name="TitrePgModifierMdp" xml:space="preserve">
+    <value>Watts-Green | Passwort ändern</value>
+  </data>
+  <data name="TitrePgRapport" xml:space="preserve">
+    <value>Watts-Green | Meine Berichte</value>
+  </data>
+  <data name="TitrePgSimulateur" xml:space="preserve">
+    <value>Watts-Green | Simulator</value>
+  </data>
+  <data name="TitrePgSimulation" xml:space="preserve">
+    <value>Watts-Green | Meine Simulationen</value>
+  </data>
+  <data name="TitrePgSouscription" xml:space="preserve">
+    <value>Watts-Green | Anmeldung</value>
+  </data>
+  <data name="TitrePgTarif" xml:space="preserve">
+    <value>Watts-Green | Tarifauswahl</value>
+  </data>
+  <data name="TitrePgTermesEtConditions" xml:space="preserve">
+    <value>Watts-Green | Bedingungen und Konditionen</value>
+  </data>
+  <data name="TitrePgVerificationCompte" xml:space="preserve">
+    <value>Watts-Green | Kontoüberprüfung</value>
+  </data>
+  <data name="TitreRapportClient" xml:space="preserve">
+    <value>Konfiguration SI</value>
+  </data>
+  <data name="TitreRapportMaPersonnalisation" xml:space="preserve">
+    <value>Bericht „Meine persönlichen Angaben"</value>
+  </data>
+  <data name="TitreRapportMaSimulation" xml:space="preserve">
+    <value>BERICHT MEINER SIMULATION</value>
+  </data>
+  <data name="TitreSociete" xml:space="preserve">
+    <value>Sie können die Informationen zu Ihrem Unternehmen ändern. Keine der Änderungen wirkt sich auf Ihre Berechnungen aus, mit Ausnahme des Feldes „Ihr Durchschnittspreis in kWh“, der sich auf Ihre Berechnung auswirkt und unter der Ansicht „Kosten“ sichtbar ist.</value>
+  </data>
+  <data name="TitreUtilisateur1" xml:space="preserve">
+    <value>Im Falle einer Änderung können Sie neue Benutzer anmelden.</value>
+  </data>
+  <data name="TitreUtilisateur2" xml:space="preserve">
+    <value>Durch Ankreuzen des Feldes „Passwort verwalten“ sendet Watts Green eine Einladungs-E-Mail an den neuen Benutzer mit der Bitte, sein Passwort festzulegen.</value>
+  </data>
+  <data name="TotalDays" xml:space="preserve">
+    <value>Gesamtzahl der Tage</value>
+  </data>
+  <data name="TotalSI" xml:space="preserve">
+    <value>Gesamt SI</value>
+  </data>
+  <data name="TourMonde" xml:space="preserve">
+    <value>Erdumrundung im Flugzeug</value>
+  </data>
+  <data name="TousDroitReserver" xml:space="preserve">
+    <value>Alle Rechte vorbehalten</value>
+  </data>
+  <data name="TrainsGrandeVitesse" xml:space="preserve">
+    <value>Hochgeschwindigkeitszüge</value>
+  </data>
+  <data name="TRUE" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="TVA" xml:space="preserve">
+    <value>USt-ID-Nummer</value>
+  </data>
+  <data name="TxtAcceder" xml:space="preserve">
+    <value>Um auf die Änderungen, Einrichtungen von Geräten, zuzugreifen</value>
+  </data>
+  <data name="TxtChoixSimulation" xml:space="preserve">
+    <value>Wählen Sie bitte in der nachfolgenden Liste die von Ihnen gewünschte Methode zur Reduzierung des Stromverbrauchs. Es öffnet sich automatisch ein Fenster, in dem Sie ergänzende Informationen betreffend Ihrer Simulation erfahren.</value>
+  </data>
+  <data name="TxtDonnerNomSimulation" xml:space="preserve">
+    <value>Dies ist ein Pflichtfeld. Sobald Sie Ihre Änderungen vorgenommen haben, können Sie mithilfe dieses Feldes Ihre Simulation speichern (im CSV-Bericht).</value>
+  </data>
+  <data name="TxtModifierSI1" xml:space="preserve">
+    <value>Sie haben Ihren S.I geändert (Mengen, Attribute geändert, neue Geräte erstellt…)</value>
+  </data>
+  <data name="TxtModifierSI2" xml:space="preserve">
+    <value>Klicken Sie nun auf „Bericht erstellen“, um</value>
+  </data>
+  <data name="TxtModifierSI3" xml:space="preserve">
+    <value>einen neuen Bericht zu erstellen.</value>
+  </data>
+  <data name="TxtModifierSI4" xml:space="preserve">
+    <value>Dieser wird in der Rubrik</value>
+  </data>
+  <data name="TxtModifierSI5" xml:space="preserve">
+    <value>„Meine Berichte/Meine persönlichen Daten“ gespeichert.</value>
+  </data>
+  <data name="TxtSouscriver" xml:space="preserve">
+    <value>melden Sie sich jetzt gleich am Simulator an</value>
+  </data>
+  <data name="TypeConso" xml:space="preserve">
+    <value>Stromverbrauchstyp</value>
+  </data>
+  <data name="Utilisateurs" xml:space="preserve">
+    <value>Die Benutzer</value>
+  </data>
+  <data name="UtiliseEnergieExterne" xml:space="preserve">
+    <value>Nutzung der externen Energie</value>
+  </data>
+  <data name="Valeur" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="ValidationCodeAcces" xml:space="preserve">
+    <value>Nach der Überprüfung durch Econocom erhalten Sie per E-Mail Ihren Zugangscode.</value>
+  </data>
+  <data name="Valider" xml:space="preserve">
+    <value>Überprüfen</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="Ville" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="VoirDetail" xml:space="preserve">
+    <value>SIEHE DETAILS</value>
+  </data>
+  <data name="VoituresPrives" xml:space="preserve">
+    <value>Privatfahrzeuge</value>
+  </data>
+  <data name="VotreChoix" xml:space="preserve">
+    <value>Ihre Auswahl</value>
+  </data>
+  <data name="VotreReponse" xml:space="preserve">
+    <value>Ihre Antwort</value>
+  </data>
+  <data name="Vrai" xml:space="preserve">
+    <value>Richtig</value>
+  </data>
+  <data name="WorkingDays" xml:space="preserve">
+    <value>Arbeitstage</value>
+  </data>
+  <data name="ImportParcKO" xml:space="preserve">
+    <value>Import parc KO</value>
+  </data>
+  <data name="ImportParcOK" xml:space="preserve">
+    <value>Import parc OK</value>
+  </data>
+  <data name="TitreWattsGreen" xml:space="preserve">
+    <value>WATT'S GREEN</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Tat</value>
+  </data>
+  <data name="VisualiserGraphe" xml:space="preserve">
+    <value>Grafik anzeigen</value>
+  </data>
+  <data name="MaSimulation" xml:space="preserve">
+    <value>Meine Simulation : </value>
+  </data>
+  <data name="TxtPopup" xml:space="preserve">
+    <value>Die Daten wurden gespeichert.</value>
+  </data>
+  <data name="OuvrantMenuAction" xml:space="preserve">
+    <value>durch Öffnen Sie das Menü Aktion</value>
+  </data>
+  <data name="CGU" xml:space="preserve">
+    <value>Allgemeine Benutzungsbedingungen</value>
+  </data>
+  <data name="CocherCaseCGU" xml:space="preserve">
+    <value>Markieren Sie das Kästchen, um die </value>
+  </data>
+  <data name="GenererMotDePasse" xml:space="preserve">
+    <value>Passwort generieren</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
+  <data name="CoefficientCO2" xml:space="preserve">
+    <value>CO2-Koeffizient</value>
+  </data>
+  <data name="ConsoEnergetiqueEstime" xml:space="preserve">
+    <value>Schätzung Stromverbrauch</value>
+  </data>
+  <data name="CoutEnergetiqueEstime" xml:space="preserve">
+    <value>Schätzung Stromkosten</value>
+  </data>
+  <data name="NumeroContrat" xml:space="preserve">
+    <value>Vertragnummer</value>
+  </data>
+  <data name="ConsoExterneAnnuelleCO2" xml:space="preserve">
+    <value>Jahresverbrauch äußere CO2 </value>
+  </data>
+  <data name="ConsoExterneAnnuelleKWH" xml:space="preserve">
+    <value>Jahresverbrauch äußere KWH</value>
+  </data>
+  <data name="ConsoTotalAnnuelleCO2" xml:space="preserve">
+    <value>Jahresverbrauch gesamt CO2</value>
+  </data>
+  <data name="ConsoTotalAnnuelleKWH" xml:space="preserve">
+    <value>Jahresverbrauch gesamt kWh</value>
+  </data>
+  <data name="CoutExterneAnnuelleKWH" xml:space="preserve">
+    <value>kosten äußere Klasse kWH</value>
+  </data>
+  <data name="CoutTotalAnnuelleKWH" xml:space="preserve">
+    <value>kosten gesamt Klasse kWH</value>
+  </data>
+</root>

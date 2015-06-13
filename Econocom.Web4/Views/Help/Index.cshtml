@@ -1,0 +1,33 @@
+﻿@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgAide;
+    Layout = "~/Views/Shared/Maquette/_Layout_Client.cshtml";
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function () {           
+            hideLoading();
+        });       
+    </script>
+}
+
+<style type="text/css">
+    a:hover 
+    {
+        background-color: transparent !important;
+    }
+</style>
+
+<div style="border: solid 1px white;">
+    
+    <div style="font-size: 20px; padding-top: 20px;">
+        <span style="color: #83B81A !important">@Traduction.Aide</span>    
+    </div>
+
+    <br/>
+
+    <div id="news_contents" style="border: solid 1px gainsboro; height: 500px; overflow: auto">
+        @Html.Partial("HelpPartial")
+    </div>
+    
+</div>

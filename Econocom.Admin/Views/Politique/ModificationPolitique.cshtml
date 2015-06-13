@@ -1,0 +1,52 @@
+﻿@model Econocom.Model.Models.Benchmark.Politique
+@using Econocom.Resource
+
+@{
+    ViewBag.Title = "ModificationPolitique";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <br/>
+        
+        <div>
+            <span>@Traduction.TitreLibellePolitique</span>
+            <span>@Html.TextBoxFor(model => model.LibellePolitique)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span>@Traduction.Device</span>
+            <span>@Html.TextBoxFor(model => model.Device)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span>@Traduction.Objectif</span>
+            <span>@Html.TextBoxFor(model => model.Objectif)</span>
+        </div>
+
+        <br/>
+        
+        <div>
+            <span>@Traduction.Benefice</span>
+            <span>@Html.TextBoxFor(model => model.Benefice)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span><input id="submit" name="submit" type="submit" value="Sauvegarder" class="EconocomButton"/></span>
+        </div> 
+    }
+    
+</div>

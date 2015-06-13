@@ -1,0 +1,178 @@
+﻿@using Econocom.Resource
+@using Econocom.Web4.Controllers.Rapport
+@model Econocom.Model.ViewModel.Report.RapportViewModel
+
+@{
+    ViewBag.Title = @Traduction.TitrePgRapport;
+    Layout = "~/Views/Shared/Maquette/_Layout_Client.cshtml";
+}
+
+<script>
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) || !isNaN(Globalize.parseDate(value));
+    }
+
+    $(document).ready(function () {
+        //Globalize.culture('fr-FR');
+        hideLoading();
+        // Only there to show which culture are being used.
+        //console.log(Globalize.culture().name);
+    });
+</script>
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .webgrid-header th
+    {
+        font-family:"sans-serif";     
+        color: #FFFFFF;
+        font-size:15px;
+        padding-right: 10px;   
+        padding: 0px;
+        padding-bottom: 10px;
+        font-family: sans-serif;
+        color: #000;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+
+    .webgrid-row-style td, .webgrid-alternating-style td {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .webgrid-alternating-row td{   
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    .webgrid-alternating-row 
+    {
+        background-color: #eeeeee;        
+    }
+
+    .webgrid-row-style {
+        background-color: white;     
+    }
+
+    .webgrid-footer {
+        padding-top: 30px;
+    }
+
+    .webgrid-footer td{
+        padding-top: 10px;
+    }
+
+    .headerSpacingActive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingActiveUp {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingInactive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+    }
+
+    .libelle {
+        background: url('/Content/images/v_ouvrir.png') no-repeat 5px 3px;
+        width: 490px;
+        padding-left: 35px;   
+    }
+
+    .date {
+        background: url('/Content/images/v_dossier.png') no-repeat 6px 7px;
+        width: 120px;
+        padding-left: 35px;   
+    }
+
+    .heure {
+        background: url('/Content/images/v_clock.png') no-repeat 5px 7px;
+        width: 120px;
+        padding-left: 35px;   
+    }
+    .recherche {
+        padding-left: 35px;
+        background: url('/Content/images/recherche.png') no-repeat 0px 2px;
+    }
+
+    #search::-webkit-input-placeholder {
+        font-family: sans-serif;
+        color: gray;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+
+    #search:-moz-placeholder { /* Firefox 18- */
+        font-family: sans-serif;
+        color: gray;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+
+    #search::-moz-placeholder {  /* Firefox 19+ */
+        font-family: sans-serif;
+        color: gray;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+
+    #search:-ms-input-placeholder {  
+        font-family: sans-serif;
+        color: gray;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+
+    .RapportTitre {
+        text-align: left;
+        font-size: 1.7em;
+        padding: 0px;
+        font-family: sans-serif;
+        color: #000;
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;
+    }
+</style>
+
+<div style="width:100%; border:solid 0px red">
+    @using (Ajax.BeginForm("Personalisation", "Rapport", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+        {
+            <div style="width:100%; border-bottom :solid 1px #e2e2e2; height:50px;padding-top:20px;">
+                @Html.ValidationSummary(true)
+                <input id="search" type="search" name="search" maxlength="40" class="recherche" style="float: right; height: 30px;" placeholder="@Traduction.RechercheRapport" />
+            </div>
+        
+            <div style="width:100%; border :solid 0px green; height:30px;margin-top:10px;margin-bottom: 20px;">
+                <h2 class="RapportTitre">@Traduction.RapportMaPersonnalisation</h2>
+            </div>
+    
+            <div id="resultat" style="background-color: #eeeeee; padding: 5px; padding-bottom:20px;">
+                @{ Html.RenderPartial("Rapports", Model); }
+            </div>
+        }
+</div>

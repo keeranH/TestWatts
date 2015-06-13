@@ -1,0 +1,1883 @@
+﻿@using Econocom.Model.Models.Benchmark;
+@using Econocom.Model.ViewModel;
+@using Econocom.Model.ViewModel.CMS;
+@using MVCControlsToolkit.Controls;
+@model ReferenceViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    td {
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    th {
+        text-align: center;
+    }
+</style>
+
+@{
+    var displayModel = Model.DisplayModel;
+
+    var typeObjet = Model.ListType;
+    var templateIndex = Model.TemplateIndex;
+    var typeTable = typeObjet.ToString();
+    string nomObjet = typeTable.Split('.').Last();
+    var entitees = Model.Entitees;
+}
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+@using (Html.BeginForm("Sauvegarde", "TypeObjet"))
+{
+    @Html.AntiForgeryToken()
+    <h1>@nomObjet</h1>
+    @Html.ValidationSummary(true)
+   
+    <div style="border: solid 0px red; overflow-x: auto; overflow-y: auto">
+        <table style="border: solid 0px blue;">
+            @if (displayModel == typeof(AgeDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CategorieDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Lien Wiki</th>
+                        <th class="gridHeader">FamilleDeviceId</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(ChangementAnneeCalendaireViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">AgeDeviceId</th>
+                        <th class="gridHeader">CoefficinetSource</th>
+                        <th class="gridHeader">CoefficinetDestination</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(ClasseDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(ConsoWattHeurViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">ClasseDeviceId</th>
+                        <th class="gridHeader">TypeDeviceId</th>
+                        <th class="gridHeader">AgeDeviceId</th>
+                        <th class="gridHeader">Consommation</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(EquivalenceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Valeur</th>
+                        <th class="gridHeader">Mesure</th>
+                        <th class="gridHeader">Afficher</th>
+                        <th class="gridHeader">LienImage</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(FamilleDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">Libelle</th>
+                         <th class="gridHeader">Lien Wiki</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(LangueViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Code</th>
+                        <th class="gridHeader">Nom</th>
+                        <th class="gridHeader">Culture</th>
+                        <th class="gridHeader">Defaut</th>
+                        <th class="gridHeader">Pays</th>
+                        <th class="gridHeader">Localise</th>
+                        <th class="gridHeader">LienImage</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(OrigineViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(PaysViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">CoefficientConversion</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(PolitiqueViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Device</th>
+                        <th class="gridHeader">Objectif</th>
+                        <th class="gridHeader">Benefice</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(QuestionViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(RatioViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">TypeDeviceId</th>
+                        <th class="gridHeader">TypeRatioId</th>                        
+                        <th class="gridHeader">Valeur</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(SecteurActiviteViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Segment Activite</th>
+                        <th class="gridHeader">Type Activite</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TarifViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">NbreMinDevice</th>
+                        <th class="gridHeader">NbreMaxDevice</th>
+                        <th class="gridHeader">TarifAnnuel</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TypeContactViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TypeDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">CategorieDeviceId</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Lien Wiki</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TypeMailViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>                       
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TypeRatioViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>                       
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(TypeUsageViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>                       
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(UsageViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">TypeUsageId</th>
+                        <th class="gridHeader">NbrJourTravaille</th>
+                        <th class="gridHeader">NbrHeuresIntensifJour</th>
+                        <th class="gridHeader">NbrHeuresNonIntensifJour</th>
+                        <th class="gridHeader">NbrHeuresOffJour</th>
+                        <th class="gridHeader">UtiliseEnergieExterne</th>
+                        <th class="gridHeader">CoeffNonIntensif</th>
+                        <th class="gridHeader">CoeffModeOff</th>
+                        <th class="gridHeader">CoeffReductionWattExterne</th>
+                        <th class="gridHeader">PourcentageConsoExterne</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(UsageDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>  
+                        <th class="gridHeader">Id</th>                      
+                        <th class="gridHeader">UsageId</th>
+                        <th class="gridHeader">TypeDeviceId</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(VentilationClasseAgeDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">TypeDeviceId</th>
+                        <th class="gridHeader">ClasseDeviceId</th>                        
+                        <th class="gridHeader">AgeDeviceId</th>
+                        <th class="gridHeader">Coefficient</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(VentilationClasseDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">SecteurActiviteId</th>
+                        <th class="gridHeader">TypeDeviceId</th>
+                        <th class="gridHeader">ClasseDeviceId</th>   
+                        <th class="gridHeader">Coefficient</th>                     
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(DeviseViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Libelle</th>
+                        <th class="gridHeader">Code Devise</th>
+                        <th class="gridHeader">Lien Image</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondanceSecteurActiviteViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>
+                        <th class="gridHeader">Id Type Client</th>
+                        <th class="gridHeader">Code Activite</th>
+                        <th class="gridHeader">Id Secteur Activite</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondanceTypeDeviceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>                        
+                        <th class="gridHeader">Id Type Client</th>
+                        <th class="gridHeader">Code Categorie</th>
+                        <th class="gridHeader">Code Famille</th>
+                        <th class="gridHeader">Code sous-famille</th>
+                        <th class="gridHeader">Id Type Device</th>
+                        <th class="gridHeader">Caracteristique</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondanceProcesseurViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>    
+                        <th class="gridHeader">Id Type Client</th>                    
+                        <th class="gridHeader">Code Processeur</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondanceVitesseViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>                       
+                        <th class="gridHeader">Id Type Client</th>
+                        <th class="gridHeader">Id Type Device</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Vitesse 1</th>
+                         <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Vitesse 2</th>
+                         <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Vitesse 3</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondanceTailleViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>                       
+                        <th class="gridHeader">Id Type Client</th>
+                        <th class="gridHeader">Id Type Device</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Taille 1</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Taille 2</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Taille 3</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }
+            else if (displayModel == typeof(CorrespondancePuissanceViewModel))
+            {
+                <thead>
+                    <tr>
+                        <th class="gridHeader">Supprimer</th>
+                        <th class="gridHeader">Id</th>                       
+                        <th class="gridHeader">Id Type Client</th>
+                        <th class="gridHeader">Id Type Device</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Puissance 1</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Puissance 2</th>
+                        <th class="gridHeader">Id Classe Device</th>
+                        <th class="gridHeader">Puissance 3</th>
+                        <th class="gridHeader">Date Debut</th>
+                        <th class="gridHeader">Date Fin</th>
+                        <th class="gridHeader">Date Modification</th>
+                    </tr>
+                </thead>
+            }          
+            @Html.SortableListFor(
+                m => m.Entitees,
+                new object[]
+                    {                        
+                        _S.H<AgeDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr>
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td> 
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LibelleAgeDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleAgeDevice, "*")
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)                                                                                   
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<CategorieDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                                                    
+                                 <tr>
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>
+                                         @item.TypedEditDisplayFor(m => m.LibelleCategorieDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleCategorieDevice, "*")
+                                     </td>
+                                     <td>
+                                         @item.TypedEditDisplayFor(m => m.URL, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.URL, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.FamilleDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.FamilleDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<ChangementAnneeCalendaireViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.AgeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.AgeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoefficientSource, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoefficientSource, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoefficientDestination, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoefficientDestination, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<ClasseDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleClasseDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleClasseDevice, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>                                     
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<ConsoWattHeurViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.ClasseDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.AgeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.AgeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Consommation, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Consommation, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),                        
+                        _S.H<EquivalenceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleEquivalence, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleEquivalence, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Valeur, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Valeur, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Mesure, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Mesure, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Afficher, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Afficher, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LienImage, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LienImage, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<FamilleDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LibelleFamilleDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleFamilleDevice, "*")
+                                     </td>  
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.URL, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.URL, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<LangueViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.Code, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Code, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Nom, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Nom, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Culture, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Culture, "*")
+                                     </td>
+                                     <td>
+                                         @item.TypedEditDisplayFor(m => m.Defaut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Defaut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Pays, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Pays, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Localise, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Localise, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LienImage, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LienImage, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<OrigineViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>    
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>      
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LibelleOrigine, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleOrigine, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<PaysViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                          
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibellePays, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibellePays, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoefficientConversion, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoefficientConversion, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<PolitiqueViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibellePolitique, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibellePolitique, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Device, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Device, "*")
+                                     </td> 
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Objectif, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Objectif, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Benefice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Benefice, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<QuestionViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleQuestion, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleQuestion, "*")
+                                     </td>                                     
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<RatioViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                          
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeRatioId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeRatioId, "*")
+                                     </td>                                     
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Valeur, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Valeur, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<SecteurActiviteViewModel>(
+                            @<text>                          
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)  
+                                     </td>      
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>                              
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleSecteurActivite, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleSecteurActivite, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.SegmentActivite, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SegmentActivite, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeActivite, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeActivite, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<TarifViewModel>(
+                            @<text>                                                             
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleTarif, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTarif, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbreMinDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbreMinDevice, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbreMaxDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbreMaxDevice, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TarifAnnuel, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TarifAnnuel, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<TypeContactViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleTypeContact, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTypeContact, "*")
+                                     </td>                                     
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<TypeDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.CategorieDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CategorieDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LibelleTypeDevice, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTypeDevice, "*")
+                                     </td>  
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.URL, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.URL, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<TypeMailViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleTypeMail, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTypeMail, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),                         
+                        _S.H<TypeRatioViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.LibelleTypeRatio, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTypeRatio, "*")
+                                     </td>                                     
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "")                                                                             
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<TypeUsageViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>      
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>                              
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.LibelleTypeUsage, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.LibelleTypeUsage, "*")
+                                     </td>                                     
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                          @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<UsageViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeUsageId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeUsageId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbrJourTravaille, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbrJourTravaille, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbrHeuresIntensifJour, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbrHeuresIntensifJour, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbrHeuresNonIntensifJour, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbrHeuresNonIntensifJour, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NbrHeuresOffJour, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NbrHeuresOffJour, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.UtiliseEnergieExterne, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.UtiliseEnergieExterne, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoeffNonIntensif, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoeffNonIntensif, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoeffModeOff, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoeffModeOff, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CoeffReductionWattExterne, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CoeffReductionWattExterne, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.PourcentageConsoExterne, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.PourcentageConsoExterne, "*")
+                                     </td>                                                                       
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<UsageDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.UsageId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.UsageId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<VentilationClasseAgeDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                      <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.ClasseDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.AgeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.AgeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Coefficient, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Coefficient, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<VentilationClasseDeviceViewModel>(
+                            @<text>
+                                 @*@Html.Hidden(Model.ListType.ToString()) *@                            
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.ClasseDeviceId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Coefficient, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Coefficient, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),
+                        _S.H<DeviseViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.Libelle, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Libelle, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeDevise, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeDevise, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.UrlImage, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.UrlImage, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<CorrespondanceSecteurActiviteViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeActivite, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeActivite, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.SecteurActiviteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.SecteurActiviteId, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<CorrespondanceTypeDeviceViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeCategorie, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeCategorie, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeFamille, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeFamille, "*")
+                                     </td> 
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeSousFamille, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeSousFamille, "*")
+                                     </td>         
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                      </td>  
+                                       <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Caracteristique, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Caracteristique, "*")
+                                     </td>                             
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<CorrespondanceProcesseurViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.CodeProcesseur, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.CodeProcesseur, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.ClasseDeviceId, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<CorrespondanceVitesseViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>                                    
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse1ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse1ClasseDeviceId, "*")
+                                      </td>         
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse1, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse1, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse2ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse2ClasseDeviceId, "*")
+                                      </td>   
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse2, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse2, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse3ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse3ClasseDeviceId, "*")
+                                      </td>   
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Vitesse3, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Vitesse3, "*")
+                                     </td>                           
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>),            
+                        _S.H<CorrespondanceTailleViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille1ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille1ClasseDeviceId, "*")
+                                      </td>         
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille1, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille1, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille2ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille2ClasseDeviceId, "*")
+                                      </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille2, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille2, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille3ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille3ClasseDeviceId, "*")
+                                      </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Taille3, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Taille3, "*")
+                                     </td>                              
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>)
+            ,            
+                        _S.H<CorrespondancePuissanceViewModel>(
+                            @<text>                                                         
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr class="gridRow">
+                                     <td>
+                                         @item.CheckBoxFor(m=>m.Supprimer)
+                                     </td>
+                                     <td>
+                                         @item.DisplayFor(m=>m.Id)
+                                     </td>
+                                     <td>                                        
+                                         @item.TypedEditDisplayFor(m => m.TypeSocieteId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeSocieteId, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.TypeDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.TypeDeviceId, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance1ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance1ClasseDeviceId, "*")
+                                      </td>         
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance1, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance1, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance2ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance2ClasseDeviceId, "*")
+                                      </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance2, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance2, "*")
+                                     </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance3ClasseDeviceId, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance3ClasseDeviceId, "*")
+                                      </td>
+                                      <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Puissance3, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Puissance3, "*")
+                                     </td>                              
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateDebut, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateDebut, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.DateFin, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.DateFin, "")
+                                     </td>
+                                     <td>                                     
+                                         @item.DisplayFor(m => m.DateModification)
+                                     </td>
+                                 </tr>
+                             </text>)
+                    },
+templateSelector: (l => templateIndex),
+htmlAttributesItems: new Dictionary<string, object> { { "class", "gridRow" } },
+itemContainer: ExternalContainerType.tr,
+allItemsContainer: ExternalContainerType.tbody,
+canSort: false,
+enableMultipleInsert: true,
+itemCss: "gridRow",
+altItemCss: "gridRow"
+)   
+  
+            <div class='ControlPanel'>
+                @if (displayModel == typeof(AgeDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 0, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CategorieDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 1, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(ChangementAnneeCalendaireViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 2, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(ClasseDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 3, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(ConsoWattHeurViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 4, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(EquivalenceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 5, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(FamilleDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 6, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(LangueViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 7, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(OrigineViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 8, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(PaysViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 9, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(PolitiqueViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 10, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(QuestionViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 11, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(RatioViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 12, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(SecteurActiviteViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 13, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TarifViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 14, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TypeContactViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 15, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TypeDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 16, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TypeMailViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 17, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TypeRatioViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 18, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(TypeUsageViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 19, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(UsageViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 20, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(UsageDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 21, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(VentilationClasseAgeDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 22, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(VentilationClasseDeviceViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 23, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(DeviseViewModel))
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 24, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CorrespondanceSecteurActiviteViewModel))
+                {
+                     @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 25, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CorrespondanceTypeDeviceViewModel))
+                {
+                     @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 26, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CorrespondanceProcesseurViewModel))
+                {
+                     @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 27, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CorrespondanceVitesseViewModel))
+                {
+                     @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 28, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }
+                else if (displayModel == typeof(CorrespondanceTailleViewModel))
+                {
+                     @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter", templateIndex: 29, htmlAttributes: new Dictionary<string, object> { { "class", "EconocomButton" } })
+                }       
+                <input type='submit' class = "EconocomButton" value='Sauvegarder' /> <a href="/TypeObjet/GetFile/@ViewBag.IdTable" ><input type="button" value="Export CSV" class="EconocomButton" /></a>
+                @if (ViewBag.Erreur != null)
+                {
+                    <h4 style="color:red;">@ViewBag.MessageUnitaire</h4> <br />
+                    @ViewBag.Erreur
+                }
+                else
+                {
+                    <h4 style="color:green;">@ViewBag.MessageUnitaire</h4>
+                }
+            </div>                                                    
+        </table>  
+    </div>
+     
+
+}
+
+@using (Html.BeginForm("Afficher", "TypeObjet"))
+{
+     @Html.AntiForgeryToken()
+      @Html.HiddenFor(m => m.Id)   
+    <div class="ToDoPager">
+        @{ var pager = Html.PagerFor(m => m.CurrentPage, m => m.PreviousPage, m => m.TotalPages); }
+        @pager.PageButton("<<", PageButtonType.First, PageButtonStyle.Link) 
+        @pager.PageButton("<", PageButtonType.Previous, PageButtonStyle.Link) 
+        @pager.PageChoice((Model.CurrentPage < 6 ? (10 - Model.CurrentPage + 1) : (Model.CurrentPage > Model.TotalPages - 5) ? (10 - (Model.TotalPages - Model.CurrentPage + 1)) : 5)) 
+        @pager.PageButton(">", PageButtonType.Next, PageButtonStyle.Link) 
+        @pager.PageButton(">>", PageButtonType.Last, PageButtonStyle.Link)             
+    </div>
+}
+
+@Html.ActionLink("Retour", "Index", "Reference")

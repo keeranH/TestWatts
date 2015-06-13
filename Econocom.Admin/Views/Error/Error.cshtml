@@ -1,0 +1,14 @@
+@model Infrastructure.DTO.ErrorDisplay
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Une erreur est survenue</h2>
+<hr />
+@if (TempData.ContainsKey("Erreur"))
+{       
+    <p>
+        @TempData["Erreur"]
+    </p>
+}

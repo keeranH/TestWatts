@@ -1,0 +1,13 @@
+﻿/* ---------------- CSS DE TOOLTIP ---------------------*/
+
+  .tooltip 
+  {
+    display:none;
+      background-color: #313131!important;     
+    width:230px;
+    height:auto;
+      color: transparent;
+      border: none;
+    
+  }
+   

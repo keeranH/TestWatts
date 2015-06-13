@@ -1,0 +1,58 @@
+﻿@model Econocom.Model.Models.Benchmark.ClientDetail
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+<fieldset>
+    <legend>ClientDetail</legend>
+
+    <div class="display-label">NumberOfEmployees</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfEmployees)
+    </div>
+
+    <div class="display-label">RatioDeviceEmployee</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RatioDeviceEmployee)
+    </div>
+
+    <div class="display-label">TurnOver</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TurnOver)
+    </div>
+
+    <div class="display-label">PriceOfKWatt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceOfKWatt)
+    </div>
+
+    <div class="display-label">TotalElectricityBill</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalElectricityBill)
+    </div>
+    
+    <div class="editor-field">
+        @Html.DropDownList("ReportTypes", String.Empty)
+          
+    </div>
+    @Html.ActionLink("Display Report", "ReportDisplay", "Report", new { reportName = "ClientReport" }, null)
+    
+</fieldset>
+
+@using (Html.BeginForm("ReportDisplay", "Report", FormMethod.Post, new { id = "ReportForm" }))     
+{
+    @Html.DropDownList("reportId", new SelectList("ReportTypes", String.Empty))
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $('#reportId').change(function () {
+            $('#vendorDetailsForm').submit();
+        });
+    });
+</script>
+

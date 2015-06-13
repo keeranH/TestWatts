@@ -1,0 +1,29 @@
+﻿@model Econocom.Model.Models.CMS.PublishedContent
+
+@{
+    Layout = "~/Views/Shared/_TinyMceLayout.cshtml";
+}
+          
+@{
+    ViewBag.Title = "TinyMce3";
+}
+
+<h2>TinyMce1</h2>
+
+@section Content1
+{
+    @using (Html.BeginForm("ActualiserContentu", "Section", FormMethod.Post))
+    {
+        <div>
+            @if (Model != null)
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.Raw(ViewBag.Editor)
+            }
+        </div>
+
+        <p>
+            <input type="submit" value="Edit" />
+        </p>
+    }      
+}

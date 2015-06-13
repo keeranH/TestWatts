@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Econocom.Model.Models.CMS.Page>
+
+@{
+
+    WebGrid grid = new WebGrid(Model);
+
+}
+
+<div>
+    @foreach (var item in Model)
+    {
+        <br/>
+        @Ajax.ActionLink(@item.Nom,"ModifierPage","Section",
+                         new
+                         {
+                               nomDePage = @item.Nom,
+                               lien = @item.Lien,
+                               idLangue = 1,
+                               idPage = @item.Id
+                         },
+                         new AjaxOptions { UpdateTargetId = "contentDivPartial" })
+
+    }
+    
+    @*
+    @grid.GetHtml(columns: new[]
+        {
+            grid.Column(
+                "Nom",
+                header:"",
+                format:(item) => @Ajax.ActionLink(
+                    (string)item.Nom,
+                    "ModifierPage",
+                    "Section",
+                    new
+                        {
+                            nomDePage = item.Nom
+                        },
+                    new AjaxOptions {UpdateTargetId = "contentDivPartial"})
+                      )
+        })*@
+    
+
+</div>

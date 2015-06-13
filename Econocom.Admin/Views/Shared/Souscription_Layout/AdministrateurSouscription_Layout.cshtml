@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Contact_Layout";    
+}
+<head>
+    <style>
+        .FieldSectionStyle
+        {
+            
+            width: 350px;
+            height: 100px;
+            float: left;
+        }
+        .LabelStyle
+        {
+            float: left;
+            width: 100%;
+            height: 70px;
+            border: none !important;
+        }
+        .MainDivStyle
+        {
+            
+            width: 390px;
+            height: 330px;
+            float: left;
+        }
+    </style>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<style type="text/css" media="screen">
+.AdministrateurContentDiv {
+    height: 300px
+}
+
+
+</style> 
+
+<style type="text/css" media="print">
+.AdministrateurContentDiv {
+    height: 250px
+}
+
+</style>
+
+
+</head>
+<body>
+    <div style="width: 800px; " id="AdministrateurContentDiv" class="AdministrateurContentDiv">
+             <div  style="width: 800px; height: 60px; float: left">
+                  @if (ViewBag.subscribeType == "start")
+                  {
+                      <div style="float: left; width: 700px; height: 50px" align="left">
+                          <div style="float: left; width: 50px">
+                              <img src="~/Content/images/Numero_Rond/rond_3.png" width="40px" height="40px"/>
+                          </div>
+                          <div style="float: left; width: 500px; margin-top: 10px" align="left">
+                              <span style="font-size: 1.5em">L'administrateur</span>
+                          </div>
+  
+                      </div>
+                  }
+                  
+                   @if (ViewBag.subscribeType != "start")
+                   {
+                       <div align="right" style="width:700px;  float:left;height:40px; border-top: 1px solid gray; border-bottom: 1px solid gray"> @RenderSection("Option3", required: false)</div>
+
+                   }
+                   else
+                   {
+                  @RenderSection("Option3", required: false)
+
+                   }
+                 
+                 
+             </div>
+             
+        <div id="souscripteurLeftDiv" class="MainDivStyle">
+            <div id="nom" class="FieldSectionStyle" style=" height: 70px">
+                <div align="left" class="LabelStyle">
+                    @RenderSection("Nom3", required: false)
+                </div>
+            </div>
+            <div id="fonction" class="FieldSectionStyle" style="height: 70px">
+                <div align="left" class="LabelStyle">
+                    @RenderSection("Fonction3", required: false)
+                </div>
+            </div>
+            <div id="addMail" class="FieldSectionStyle" style=" height: 70px">
+                <div align="left" class="LabelStyle">
+                    @RenderSection("AdresseMail3", required: false)
+                </div>
+            </div>
+        </div>
+        <div id="societeRightDiv" class="MainDivStyle" style="height: 70px">
+            <div id="prenom" class="FieldSectionStyle">
+                <div align="left" class="LabelStyle">
+                    @RenderSection("Prenom3", required: false)
+                </div>
+            </div>
+            <div id="fonction" class="FieldSectionStyle" style="height: 40px">
+            </div>
+            <div id="telephone" class="FieldSectionStyle" style=" height: 70px">
+                <div align="left" class="LabelStyle">
+                    @RenderSection("Telephone3", required: false)
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+        
+    </div>
+</body>
+

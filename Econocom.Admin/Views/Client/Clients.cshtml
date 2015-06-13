@@ -1,0 +1,52 @@
+﻿@model Econocom.Model.ViewModel.Report.ListeClientViewModel
+
+@using Econocom.Admin.Controllers.GestionClient
+@using Econocom.Resource
+<style>
+    label 
+    {
+        font-size: 12px;
+        font-weight: normal;
+    }
+</style>
+@using (Ajax.BeginForm("Index", "Client", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+{
+
+    <div id="resultat">
+        @{
+            var grid = new WebGrid(canPage: true, rowsPerPage: ClientController.PageSize, canSort: true, ajaxUpdateContainerId: "grid");
+            grid.Bind(Model.Clients, rowCount: Model.Total, autoSortAndPage: false);
+            grid.Pager(WebGridPagerModes.All);
+            @MvcHtmlString.Create(grid.GetHtml(htmlAttributes: new {id = "grid"},
+            mode: WebGridPagerModes.All,
+            previousText: " < ",
+            nextText: " > ",
+            lastText: " >> ",
+            firstText: " << ",
+            columns: grid.Columns(
+                grid.Column(columnName: "Id", style: "gridCell"),
+                grid.Column(columnName: "RaisonSociale", header:"Raison Sociale",style: "gridCell"),
+                grid.Column(columnName: "Adresse1",header:"Adresse", style: "gridCell"),
+                grid.Column(columnName: "Ville", style: "gridCell"),
+                grid.Column(columnName: "CodePostal",header:"Code Postal", style: "gridCell"),
+                grid.Column(columnName: "LibellePays", header:"Pays", style: "gridCell"),
+                grid.Column(columnName: "CodeInterneWattsGreen", header:"Code Interne", style: "gridCell"),
+                grid.Column(columnName: "Groupe", style: "gridCell"),
+                grid.Column(columnName: "DateDebut", header: "Date Souscription", format: (item) => item.DateDebut != null ? string.Format("{0:dd/MM/yyyy}", item.DateDebut) : "", style: "gridCell"),
+                grid.Column(columnName: "DateValidation", header: "Date Validation", format: (item) => item.DateValidation != null ? string.Format("{0:dd/MM/yyyy}", item.DateValidation) : "", style: "gridCell"),
+                grid.Column(columnName: "LibelleTarif", header:"Tarif",style: "gridCell"),
+                grid.Column(columnName: "ClientEconocom", header: "ClientEconocom", style: "gridCell"),
+                grid.Column(columnName: "TypeClient", header: "Id Type Client  ", style: "gridCell"),
+                grid.Column(columnName: "ConfigSi", header: "ConfigSI",format:
+                    @<text>@(item.ConfigSI ? Html.ActionLink("Export (csv)", "GetRapportClient", "Client", new {id = item.Id}, null) : @Html.Label("Aucun")) </text>,  style: "gridCell")
+            ),
+            tableStyle: "webgrid",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style").ToString())  
+            ;
+        }
+    </div>
+}

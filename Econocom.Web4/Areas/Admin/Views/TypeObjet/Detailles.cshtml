@@ -1,0 +1,87 @@
+﻿@using Econocom.Model.Models.Benchmark
+@using Econocom.Model.ViewModel;
+@using MVCControlsToolkit.Controls
+@model ReferenceViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+    var displaModel = Model.Entitees.ElementAt(0);
+}
+
+@using (Html.BeginForm("Index", "TypeObjet"))
+{
+
+    @Html.ValidationSummary(false)
+    <div style="border: solid 0px red; overflow-x: auto; overflow-y: auto">
+        <table style="border: solid 0px blue;">
+            @if (displaModel is TypeObjetViewModel)
+            {
+                <thead>
+                    <tr>
+                        <th style="text-align: left">Nom Objet @Html.ActionLink("dd", "Filter", "TypeObjet", new {column = "NomObjet", order = "Asc"}, null)</th>
+                        <th style="text-align: left">Nom Table</th>
+                        <th style="text-align: left">Namespace</th>
+                    </tr>
+                </thead>
+            }
+
+                        
+            @Html.SortableListFor(
+                m => m.Entitees,
+                 new object[]
+                    {
+                        _S.H<TypeObjetViewModel>(
+                            @<text>                             
+                                 @item.HiddenFor(m => m.Id)                             
+                                 <tr>
+                                     <td>
+                                         @item.TypedEditDisplayFor(m => m.NomObjet, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NomObjet, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.NomTable, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.NomTable, "*")
+                                     </td>
+                                     <td>                                     
+                                         @item.TypedEditDisplayFor(m => m.Namespace, simpleClick: true) 
+                                         @item.ValidationMessageFor(m => m.Namespace, "*")
+                                     </td>
+                                     <td>                                     
+                                     
+                                     </td>
+                                 </tr>
+                             </text>)
+                    },
+                     templateSelector: (l => l is TypeObjetViewModel ? 0 : 1),
+                htmlAttributesItems: new Dictionary<string, object> {{"class", "PersonListItem"}},
+                itemContainer: ExternalContainerType.tr,
+                allItemsContainer: ExternalContainerType.tbody,
+                canSort: false
+             )
+
+            
+  
+            <div class='ControlPanel'>
+                @if (displaModel is TypeObjetViewModel)
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Ajouter type objet", templateIndex: 0)
+                }
+                else if (displaModel is TypeObjetViewModel)
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Add new Customer", templateIndex: 1)
+                }
+                else if (displaModel is TypeObjetViewModel)
+                {
+                    @Html.SortableListAddButtonFor(m => m.Entitees, "Add new acid", templateIndex: 2)
+                }       
+                <input type='submit' value='Submit' />
+            </div>                                                    
+        </table>  
+    </div>
+}
+@Html.ActionLink("Back", "Index", "TypeObjet")

@@ -1,0 +1,524 @@
+﻿@using System.Collections
+@using Econocom.Model.ViewModel
+@model IEnumerable<Econocom.Model.ViewModel.ConsoViewModel>
+@using Calc = Econocom.Resource.Traduction
+@using Conso = Econocom.Resource.Traduction
+@using Simulation = Econocom.Resource.Traduction
+
+@{
+    ///ViewBag.UserType="Simulation";    
+}
+<link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/tooltip/demo.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+
+<style type="text/css" media="screen">
+    .noPrint{ display: block; }
+    .yesPrint{ display: block !important; }
+</style> 
+
+<style type="text/css" media="print">
+    .noPrint{ display: none; }
+    .yesPrint{ display: block !important; }
+</style>
+
+<style type="text/css">
+
+    .container
+    {
+        position:relative;
+        border: solid 0px red;
+        width:870px;
+        height:auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 35px;
+    }
+
+    .scale
+    {
+	    display:inline-block; 
+	    background-image: url('@Url.Content("~/Content/images/Consommation/Demo/Graphe/graph_fond1.png")'); 
+        background-position: bottom;
+	    width:180px; 
+        background-repeat: no-repeat;
+        text-align: left;
+        margin-left: 10px;
+    }
+    
+    .tdBorderLeftRight
+    {
+	    border-right: solid 1px gainsboro;
+        border-left: solid 1px gainsboro;
+        border-bottom: none;
+        border-top: none;
+        width: 180px !important;
+        height: auto;
+        background-color: white;
+    }
+
+    .tdBorderLeftRightTop
+    {
+	    border-right: solid 1px gainsboro;
+        border-left: solid 1px gainsboro;
+        border-top: solid 1px gainsboro;
+        border-bottom: none;
+        width: 180px !important;
+        height: auto;
+        background-color: white;
+    }
+
+    .tdBorderLeftRightBottom
+    {
+	    border-right: solid 1px gainsboro;
+        border-left: solid 1px gainsboro;
+        border-bottom: solid 1px gainsboro;
+        border-top: none;
+        width: 180px !important;
+        padding-bottom: 10px;
+        height: auto;
+        background-color: white;
+    }
+
+    .tdBorderLeftRightTopBottom
+    {
+	    border-right: solid 1px gainsboro;
+        border-left: solid 1px gainsboro;
+        border-top: solid 1px gainsboro;
+        border-bottom: solid 1px gainsboro;
+        width: 180px !important;
+        padding-bottom: 10px;
+        height: auto;
+        background-color: white;
+    }
+
+    .linkText {
+        color: transparent !important;
+    }
+
+    .divConsoEnergie {       
+        position: relative;       
+    }
+
+    .divMain {
+        width: 870px; 
+        min-height: 800px;
+        background-color: #EEEEEE;
+        margin-left: 0px;
+        border: solid 0px blue;
+    }
+
+    .linkDisplay
+    {
+        font-size: 12px;
+        color: white !important;
+        text-decoration:none;
+        text-align:center!important;
+        width: 90px!important;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: normal;
+        line-height: 116%;
+    }
+
+    div.odd
+    {
+        background: #EFEEEF;
+    }
+    div.even
+    {
+        background: white;
+    }
+</style> 
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('.linkDisplay').click(function () {
+            showLoading();
+        });
+
+        $('.link').click(function () {
+            showLoading();
+        });
+
+        $('#actionLink').click(function () {
+            $('#actionMenu').toggle();
+        });
+    });
+
+    $(".alternate div:odd").addClass("odd");
+    $(".alternate div:even").addClass("even");
+
+    function showLoading() {
+        $("#loading").show();
+        if ($.browser.msie) {
+            $("#loading").css("background-image", "url('/Content/images/00_Attente.gif')"); //handle IE9 bug
+        }
+        $('html, body').css({
+            'overflow': 'hidden'
+        });
+    }
+
+    $("#actionLink").click(function () {
+        $(this).toggleClass("actionLinkActive");
+        console.log('logger');
+    });
+</script>
+<div align="center" style="position:relative; display:block; height:auto;">
+    
+    <div id="subMenuGreenIt" style="width: 870px;height:130px; ">
+        
+        <!-- boutons actions start-->
+        <div id="actionContainer" class="noPrint" style="float:left;width:250px;border:solid 0px red; z-index:1002;  position:relative;height:auto">               
+            <div class="actionContainer" style="border:solid 0px red">
+                @Html.Partial("MenuPartial/_ActionPartial", new ViewDataDictionary(this.ViewData) { { "imprimer", true } })       
+            </div>
+        </div>
+        <!-- boutons actions end-->
+
+        <!-- information start-->
+        <div align="center" id="infoContainer" class="infoContainer" style="position:relative; float:left; width:450px; margin-left: 10px;">
+            <div class="yesPrint">
+                <div style="border-bottom: solid 1px gainsboro; height: auto"> 
+                    @*@if (@ViewBag.UserType == "Simulation")
+                    {*@                
+                        <div style="margin-top: 0px;font-size: 2.0em;color: #377A37;">@Conso.MaSimulation "@ViewBag.NomSimulation"</div>
+                    @*}*@
+                    @*@if (@ViewBag.UserType == "Payant")
+                    {
+                        if (@ViewBag.TypeAffichage == "ShowPrix")
+                        {
+                            <span style="font-size: 25px; margin-top: -8px; width: 350px;text-align: center; display:block">@Conso.CoutEnergetique</span>
+                            if (@ViewBag.TypeObjet == "Categorie")
+                            {
+                                <span style="font-size: 25px; color: #83B81A;">@ViewBag.CurrentFamilleLibelle</span>
+                            }
+                        }
+                        else
+                        {
+                            <span style="font-size: 25px; margin-top: -8px; width: 350px;text-align: center; display:block">@Conso.ConsoEnergetique</span>
+                            if (@ViewBag.TypeObjet == "Categorie")
+                            {
+                                <span style="font-size: 25px; color: #83B81A;">@ViewBag.CurrentFamilleLibelle</span>
+                            }
+                        }
+                    }    *@        
+                </div>
+            
+                <div style="border-bottom: solid 1px gainsboro; height:50px;padding-bottom:10px;">                                   
+                   @* @if (@ViewBag.UserType == "Simulation")
+                    {*@
+                        <span style="color: #000; font-size: 40px;  text-align: center; background-repeat: no-repeat; ">@ViewBag.TotalConsoEnergetique @Conso.ParAn</span>
+                    @*}*@
+                </div>
+                                              
+                <div style="width: 450px; height: 40px;padding-bottom:10px;">                     
+                    <div id="detailsSi" style="border: 0px solid gainsboro" align="center">
+                        @if (@ViewBag.UserType == "Demo")
+                        {
+                            <div style="text-align: center; font-weight: bold; font-size: 20px; color: #377A37">@ViewBag.DateModifier</div>
+                        }
+                        else if (@ViewBag.UserType == "Payant")
+                        {
+                            <div style="text-align: center; font-weight: bold; font-size: 20px; color: #377A37">@ViewBag.DateModifier</div>                        
+                        }
+                        else if (@ViewBag.UserType == "Simulation")
+                        {
+                            <div style="text-align: center; font-weight: bold; font-size: 20px; color: #377A37">@ViewBag.DateModifier</div>                        
+                        }
+                    </div>                         
+                </div>
+            </div>           
+        </div>
+        <!-- information end -->
+
+        <!-- icon show watt/co2/prix-->
+        <div class="noPrint" style="float: right; height: 40px; border:solid 0px blue;">            
+           @Html.Partial("MenuPartial/_MesurePartial", new ViewDataDictionary(this.ViewData) { { "simulation", true } })   
+        </div>
+    </div>
+
+
+    <div class="yesPrint">
+        
+        <style type="text/css" media="print">
+            .noPrint{ display: none; }
+            .yesPrint{ display: block !important; }
+    
+            .tdBorderLeftRight
+            {
+                border-right: solid 1px gainsboro;
+                border-left: solid 1px gainsboro;
+                width: 210px !important;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .tdBorderLeftRightTop
+            {
+                border-right: solid 1px gainsboro;
+                border-left: solid 1px gainsboro;
+                border-top: solid 1px gainsboro;
+                width: 210px !important;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .tdBorderLeftRightBottom
+            {
+                border-right: solid 1px gainsboro;
+                border-left: solid 1px gainsboro;
+                border-bottom: solid 1px gainsboro;
+                width: 210px !important;
+                padding-bottom: 10px;
+                height: auto;
+            }
+            
+            .tdBorderLeftRightTopBottom
+            {
+                border-right: solid 1px gainsboro;
+                border-left: solid 1px gainsboro;
+                border-top: solid 1px gainsboro;
+                border-bottom: solid 1px gainsboro;
+                width: 210px !important;
+                padding-bottom: 10px;
+                height: auto;
+            }
+            
+            .divConsoEnergie {
+                position: relative;
+                margin-left: 240px;
+                border: solid 0px black;
+            }
+            
+            .divMain {
+                width: 870px;
+                min-height: 800px;
+                background-color: transparent !important;
+                border: solid 0px blue;
+            }
+            
+            .container {
+                margin-left: -5px;
+            }
+            
+            .infoContainer {
+                float: none !important;
+            }
+        </style>
+                
+        <br/>
+        <div class="container">
+            <table style="table-layout: fixed; width: 850px; border-spacing: 10px 0;">
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td align="center" valign="middle" class="tdBorderLeftRightTop">
+                            <div align="center" style="height:50px; width:205px; padding-bottom: 5px;" >
+                                <img style="padding-top: 10px;" src= "@Url.Content(@item.LienImage)" alt="IMAGES" />
+                            </div>
+                        </td>
+                        <td> </td>
+                    }
+                </tr>
+
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td align="center" valign="middle" class="tdBorderLeftRight">
+                            <div align="center" style="height:50px; width:205px; padding-bottom: 5px; padding-top: 10px; margin-bottom: 30px;">
+                                <span style="color: #377A37; font-size: 20px;">@item.Libeller</span>
+                            </div>
+                        </td>
+                        <td> </td>
+                    }
+                </tr>
+
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        var heightTotale = item.LongueurGrapheTotale + "px";
+                        var heightMilieu = item.LongueurGrapheMilieu + "px";
+
+                        var heightTotaleSimule = item.LongueurGrapheSimuleTotale + "px";
+                        var heightMilieuSimule = item.LongueurGrapheSimuleMilieu + "px";
+                        
+                        <td align="center" valign="middle" style="vertical-align: bottom; height: 475px;" class="tdBorderLeftRight">
+                            <div style="height: @heightTotale; position: relative; float: left; width: 50px; ">
+                                <div style="border: solid 0px transparent; position: absolute; bottom: 0px;" >
+                                    @{
+                                        int valeurConso = (int)(item.consoTotale);
+
+                                        valeurConso = valeurConso / 1000;
+
+                                        int j = valeurConso + 10;
+
+                                        int k = valeurConso % 10;
+
+                                        if ((valeurConso % 10) != 0)
+                                        {
+                                            valeurConso = valeurConso + (10 - k);
+                                        }
+                                    }
+                                        
+                                    @*@for (int i = 0; i < j; i += 10)
+                                    {
+                                        <span class="scale" style="height:50px; color: white; font-weight: bold; padding-left: 4px; border: solid 0px green">
+                                            <!--[if !IE]>--><span style="display:block; margin-top:33px;color:white;">@valeurConso</span><!--<![endif]-->
+                                            <!--[if IE]><span style="display:block; margin-top:30px;color:white;">@valeurConso</span> <![endif]-->  
+                                        </span>
+                                        valeurConso = valeurConso - 10;
+                                    }*@
+                                    
+                                     @for (int i = 0; i <= 100; i += 10)
+                                     {
+                                         int w = 100 - i;
+                                            
+                                         <span class="scale" style="height:50px; color: white; font-weight: bold; padding-left: 4px; border: solid 0px green; ">
+                                             <!--[if !IE]>--><span style="display:block; margin-top:33px;color:white;">@w</span><!--<![endif]-->
+                                             <!--[if IE]><span style="display:block; margin-top:30px;color:white;">@w</span> <![endif]-->                                                
+                                         </span>
+                                     }
+                                </div>
+                                 
+                                @if (item.LongueurGrapheTotale > 0)
+                                {
+                                    if (item.LongueurGrapheMilieu < -5)
+                                    {
+                                        @*Graph source*@
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 60px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert3_small.png")');"> </div>
+                                        
+                                        @*Graph simule*@    
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 110px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert2_small.png")');"> </div>
+                                    }
+                                    else if (item.LongueurGrapheMilieu > -5 && item.LongueurGrapheMilieu < 0)
+                                    {
+                                        @*Graph source*@
+                                        @*<div style="height: 5px; width: 49px; float: left; display: block; position: relative; margin-left: 60px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_haut_vert3_small.png")');">  </div>*@
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 60px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert3_small.png")');"></div>
+                                        
+                                        @*Graph simule*@
+                                        @*<div style="height: 5px; width: 49px; float: left; display: block; position: relative; margin-left: 110px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_haut_vert2_small.png")');">  </div>*@
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 110px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert2_small.png")');"></div>
+                                    }
+                                    else
+                                    {
+                                        @*Graph source*@
+                                        @*<div style="height: 5px; width: 49px; float: left; display: block; position: relative; margin-left: 45px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_haut_vert2_small.png")');">  </div>*@
+                                        <div style="background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_milieu_vert3_small.png")'); height: @heightMilieu; width: 49px; bottom: 4px; position: absolute; float: left; display: block; margin-left: 45px;"></div>
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 45px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert3_small.png")');"> </div>
+                                        
+                                        @*Graph simule*@    
+                                        @*<div style="height: 5px; width: 49px; float: left; display: block; position: relative; margin-left: 110px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_haut_vert3_small.png")');">  </div>*@
+                                        <div style="background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_milieu_vert2_small.png")'); height: @heightMilieuSimule; width: 49px; bottom: 4px; position: absolute; float: left; display: block; margin-left: 110px;"></div>
+                                        <div style="height: 4px; width: 49px; bottom: 0px; position: absolute; float: left; display: block; margin-left: 110px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Graphe/graph_bas_vert2_small.png")');"> </div>
+                                    }
+                                }
+                                   
+                            </div>
+                        </td>
+                        <td> </td>
+                    }
+                    
+                </tr>
+
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td align="center" valign="middle" class="tdBorderLeftRight">
+                            <div style="width: 195px; margin-bottom: 5px;">
+                                @if (@ViewBag.TypeAffichage == "ShowWatt")
+                                {
+                                    <span style="color: #EEEEEE; font-weight: bold;">@Conso.ConsoAnuelleKwh</span>
+                                }
+                                @if (@ViewBag.TypeAffichage == "ShowCO2")
+                                {
+                                    <span style="color: #EEEEEE; font-weight: bold;">@Conso.ConsoAnuelleCo2</span>
+                                }
+                                @if (@ViewBag.TypeAffichage == "ShowPrix")
+                                {
+                                    <span style="color: #EEEEEE; font-weight: bold;">@Conso.PrixAnnuel</span>
+                                }
+                            </div>
+                            
+                            <div align="center" style="height: 50px; width: 195px; margin-left: 5px; background-color: #EEEEEE; background-image:url('@Url.Content(@ViewBag.LienImage)'); background-repeat:no-repeat; background-position:right;">
+                                <div align="right" style="display: inline-table; width:170px; margin-top: 10px;margin-right:25px;">
+                                    <span style="font-size: 20px; font-weight: bold;">@item.Consommation.ValeurAfficher</span>
+                                    <span style="margin-left: 5px; font-size: 18px;">@item.Consommation.Measure</span>
+                                   @* @if (@ViewBag.TypeAffichage != "ShowPrix")
+                                    {
+                                        <span style="margin-left: 5px; font-size: 18px;">@item.Consommation.Measure</span>
+                                    }*@
+                                </div>                               
+                            </div>
+                        </td>
+                        <td style="width: 1px"></td>
+                    }
+                </tr>
+
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td align="center" valign="middle" class="tdBorderLeftRightBottom">
+                            <div align="center" style="height: 50px; width: 195px; margin-left: 5px; background-color: #EEEEEE">
+                                <div style="border: solid 1px transparent; position: relative; width: 28px; top: 12px; font-size: 21px; font-weight: bold; float: left; margin-left: 14px;">@item.Pourcentage.Valeur</div>
+                                <div style="border: solid 1px transparent; position: relative; width: 20px; top: 12px; font-size: 21px; float: left; margin-left: 4px;">@item.Pourcentage.Measure</div>
+                                <div style="border: solid 1px transparent; position: relative; width: 82px; bottom: 16px; font-size: 10px; float: left; text-align: left; margin-left: 2px; top: 5px; word-wrap:break-word;">
+                                    @(@ViewBag.TypeAffichage == "ShowPrix" ? Conso.CoutITAnnuelle : Simulation.GainAnnuelleIT)
+                                </div>
+                                <div style="border: solid 1px transparent; position: relative; float: left; margin-left: 6px"><img src="@Url.Content("~/Content/images/Consommation/Demo/Graphe/v_pourcentage.png")" alt=""/></div>
+                            </div>
+                        </td>
+                        <td> </td>
+                    }
+                </tr>
+                   
+            </table>	
+            
+            <div class="noPrint">
+                @if (@ViewBag.TypeAffichage != "ShowPrix")
+                {
+                    <table style="table-layout: fixed; width: 850px; border-spacing: 10px 0;">
+                        <tr>
+                            @foreach (var item in Model)
+                            {
+                                var index = 1;
+                                <td align="center" valign="middle" class="tdBorderLeftRightTopBottom">
+                                    <span style="color: #377A37; font-weight: bold; font-size: 14px">@Simulation.GainEquivalent</span>
+                                
+                                    <div align="center" style="height: 20px; width: 195px; margin-left: 5px; margin-top: 10px;">
+                                    
+                                        @foreach (var equivalence in item.Equivalences)
+                                        {
+
+                                            if (equivalence.LienImage != null)
+                                            {
+                                                    <div class="row @(index % 2 == 0 ? "even" : "odd")" style="float: left; height: 20px; background-image: url('@Url.Content(equivalence.LienImage)'); background-repeat: no-repeat; background-position: 0 50%; padding-left: 20px; width: 175px">
+                                                        <span>@equivalence.Quantite</span>
+                                                        <span>@equivalence.LibelleEquivalence</span>
+                                                    </div>
+                                            }
+                                            else
+                                            {
+                                                    <div class="row @(index % 2 == 0 ? "even" : "odd")" style="float: left; height: 20px; background-image: url('@Url.Content("~/Content/images/Consommation/Simulation/Equivalence/no_visuel.png")'); background-repeat: no-repeat; background-position: 0 50%; padding-left: 20px; width: 175px">
+                                                        <span>@equivalence.Quantite</span>
+                                                        <span>@equivalence.LibelleEquivalence</span>
+                                                    </div>
+                                            }                                        
+                                            <br/>
+                                            ++index;
+                                        }
+                                                                                               
+                                    </div>
+                                </td>
+                                <td> </td>
+                            }
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

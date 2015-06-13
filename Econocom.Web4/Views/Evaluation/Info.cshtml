@@ -1,0 +1,15 @@
+﻿@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgEvaluation;
+    Layout = "~/Views/Shared/Maquette/_Layout_Evaluation.cshtml";
+}
+
+<div style="border: solid 1px white">
+    <div align="left" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;">
+        @if (@ViewBag.ContenuModere != null)
+        {
+            @Html.Raw(@ViewBag.ContenuModere.Contenu)
+        }
+    </div>
+</div>

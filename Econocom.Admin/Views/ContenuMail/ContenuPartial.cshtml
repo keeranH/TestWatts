@@ -1,0 +1,59 @@
+﻿@model Econocom.Model.ViewModel.ContenuMailViewModel
+
+<script type="text/javascript">
+
+    function compute(idLangue, idTypeMail) {
+        $('#result').empty();
+        $.ajax({
+            url: '/ContenuMail/ModifierContenu',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ idTypeMail: idTypeMail, idLangue: idLangue}),
+            success: function (data) {
+                $('#contentDivPartial').empty().html(data);
+                /*if (result) {
+                //location.href = result.Url;
+                $("#contentDivPartial").load(result);
+                }
+                else {
+                location.href = result.Url;
+                }*/
+            }
+        });
+
+    }
+
+</script>
+ 
+@using (Ajax.BeginForm("ActualiserContenu", "ContenuMail", FormMethod.Post, new AjaxOptions { UpdateTargetId = "result" }))
+{
+    <div style="width:900px; height:100%; border:solid 0px red;"> 
+         <div style="width:100%; margin-bottom:10px;">
+            <div style="width:170px; float:left; padding:5px;">@Html.Label("Choisir une langue: ")</div> 
+            <div style="padding-top:5px;"> @Html.DropDownListFor(m => m.LangueId, new SelectList(Model.ListeLangues, "Id", "Nom", Model.LangueId), new { @onchange = "compute(this.value, " + Model.TypeMailId + ")" }) </div>
+         </div>  
+                                             
+        <div>
+            @if (Model != null)
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.LangueId)
+                @Html.HiddenFor(model => model.TypeMailId)
+                <div style="width:100%; margin-bottom:10px;">
+                    <div style="width:170px; float:left; padding:5px;">@Html.Label("Sujet du mail: ")</div>
+                    <div> @Html.TextBoxFor(model => model.Sujet)</div>
+                </div>
+                       
+                @Html.EditorFor(model => model.Contenu)
+               @* @Html.Label("Contenu : ");*@
+                @*@Html.Raw(ViewBag.Editor)*@
+            }
+        </div>
+
+        <p style="margin-left:20px;">
+            <input type="submit" value="Sauvegarder"  class="EconocomButton" />
+        </p>
+    </div>
+}      
+
+    

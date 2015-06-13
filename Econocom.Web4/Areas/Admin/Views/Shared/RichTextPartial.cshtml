@@ -1,0 +1,51 @@
+﻿@model Econocom.Model.ViewModel.CMS.ContenuModereViewModel
+
+<script type="text/javascript">
+
+    function compute(nomDePage, lien, idLangue, idPage) {
+        
+        $.ajax({
+            url: '/Admin/Section/ModifierPage',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ nomDePage: nomDePage, lien: lien, idLangue: idLangue, idPage: idPage }),
+            success: function (data) {
+                $('#div1').empty().html(data);
+                /*if (result) {
+                    //location.href = result.Url;
+                    $("#contentDivPartial").load(result);
+                }
+                else {
+                    location.href = result.Url;
+                }*/
+            }
+        });
+
+    }
+
+</script>
+ 
+@using (Html.BeginForm("ActualiserContentu", "Section", FormMethod.Post))
+{
+    <div>
+        @*@Html.DropDownList("Langues", "Selectez langue")*@
+        @Html.DropDownListFor(m => m.LangueId, new SelectList(Model.ListeLangues, "Id", "Nom", Model.ListeLangues.First().Id), new { @onchange = "compute('" + Model.Page.Nom + "','" + Model.Page.Lien + "',this.value, " + Model.Page.Id + ")" }) 
+    </div>  
+    
+                                             
+    <div id="div1">
+        @if (Model != null)
+        {
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.PageId)
+            @*@Html.Raw(ViewBag.Editor)*@
+            @Model.Contenu
+        }
+    </div>
+
+    <p>
+        <input type="submit" value="Edit" />
+    </p>
+}      
+
+    

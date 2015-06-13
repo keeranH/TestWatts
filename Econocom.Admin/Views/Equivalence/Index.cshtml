@@ -1,0 +1,168 @@
+﻿@using Econocom.Resource
+@using Econocom.Admin.Controllers.GestionEquivalence
+@using Econocom.Admin.Controllers.GestionPolitique
+@using Omu.Awesome.Mvc.Helpers
+@model Econocom.Model.ViewModel.ListeEquivalenceViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<script type="text/javascript">
+    function ajouteSuccess() {
+        location.reload();
+    }
+
+    function ConfirmerSuppressionEquivalence() {
+        var x = confirm("Êtes-vous sûr de vouloir supprimer cette equivalence?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .webgrid-header th
+    {
+        font-family:"sans-serif";         
+        font-size:15px;
+        padding-right: 10px;   
+        padding: 0px;
+        padding-bottom: 10px;
+        font-family: sans-serif;   
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;   
+        border-right: solid 1px #535353;
+        padding-left: 10px;
+        background-color: yellowgreen;   
+        height: 20px;
+        font-weight: bold;
+    }
+
+    .webgrid-row-style td, .webgrid-alternating-style td {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .webgrid-alternating-row td{   
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    .webgrid-alternating-row 
+    {
+        background-color: #eeeeee;        
+    }
+
+    .webgrid-row-style {
+        background-color: white;     
+    }
+
+    .webgrid-footer {
+        padding-top: 30px;
+        border-top: solid 1px black;
+    }
+
+    .webgrid-footer td{
+        padding-top: 10px;
+    }
+
+    .headerSpacingActive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingActiveUp {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingInactive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+    }
+    
+    .ui-widget-header 
+    {
+        background-image: none !important;
+        background-color: yellowgreen !important;
+    }
+</style>
+
+@*@(Html.MakePopupForm("AjouteEquivalence", controller: "Equivalence", title: Traduction.CreationEquivalence, okText: Traduction.Valider, successFunction: "ajouteSuccess", height: 400, width: 400, resizable: true))
+@(Html.MakePopupForm("ModificationEquivalence", new[] { "id" }, controller: "Equivalence", title: Traduction.ModificationEquivalence, okText: Traduction.Valider, successFunction: "ajouteSuccess", height: 400, width: 400, resizable: true))*@
+
+
+<div class="mainDiv" style="width:100%; float:left; height:100%; min-height:1200px;">
+
+    <h2 class="HeaderTexteH2">@Traduction.Equivalence</h2>
+    
+    <div style="margin-top: 10px">
+        @*<span>@(Html.PopupFormActionLink<EquivalenceController>(o => o.AjouteEquivalence(), Traduction.Ajouter, new { @class = "EconocomButton" }))</span>*@
+        @Html.ActionLink(Traduction.Ajouter, "AjouteEquivalence", "Equivalence", new { @class = "EconocomButton" })
+    </div>
+
+    <div style="margin-top:20px;">
+    @using (Ajax.BeginForm("Index", "Equivalence", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+    {    
+        @Html.ValidationSummary(true)
+    
+        <div id="resultat" style="width: 100%; padding: 5px;">
+           
+            @{
+                var grid = new WebGrid(canPage: true, rowsPerPage: 10, canSort: true, ajaxUpdateContainerId: "grid");
+                grid.Bind(Model.Equivalences, rowCount: Model.Total, autoSortAndPage: false);
+                grid.Pager(WebGridPagerModes.All);
+                @grid.GetHtml(htmlAttributes: new {id = "grid"},
+                              columns: grid.Columns(
+                               grid.Column(header: string.Format("Id{0}", grid.SortColumn == "Id" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : ""), columnName: "Id", style: "gridCell"),
+                               grid.Column(header: string.Format("LibelleEquivalence{0}", grid.SortColumn == "LibelleRapport" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : ""), columnName: "LibelleEquivalence", style: "gridCell"),
+                               grid.Column(columnName: "Valeur", style: "gridCell"),
+                               grid.Column(columnName: "Mesure", style: "gridCell"),
+                               grid.Column(columnName: "Afficher", style: "gridCell"),
+                               grid.Column(columnName: "LienImage", style: "gridCell"),
+                               grid.Column(header: string.Format("DateDebut{0}", grid.SortColumn == "DateDebut" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : ""), columnName: "DateDebut", style: "gridCell"),
+                               grid.Column(columnName: "DateModification", style: "gridCell"),
+                               grid.Column(columnName: "DateFin", style: "gridCell"),
+                               @*grid.Column(format: @<text>@(Html.PopupFormActionLink<EquivalenceController>(o => o.ModificationEquivalence(9), "Modifier", new { @class = "EconocomButton" }))</text>),*@
+                               grid.Column(format: @<text>@Html.ActionLink(Traduction.Modifier, "ModificationEquivalence", "Equivalence", new { id = item.Id }, new { @class = "EconocomButton" })  </text>),
+                               @*grid.Column(format: @<text>@Html.ActionLink("Supprimer", "SupprimerEquivalence", "Equivalence", new { id = item.Id }, new { @class = "EconocomButton", Onclick = "ConfirmerSuppressionEquivalence();" })  </text>)*@
+                               grid.Column(format: @<text> @Ajax.ActionLink("Supprimer", "SupprimerEquivalence", new { id = item.Id },
+                 new AjaxOptions() { Confirm = "Êtes-vous sûr de vouloir supprimer cette equivalence?", OnSuccess = "ajouteSuccess();" }, new { @class = "EconocomButton" })  </text>)),
+                               tableStyle: "webgrid",
+                               headerStyle: "webgrid-header",
+                               footerStyle: "webgrid-footer",
+                               alternatingRowStyle: "webgrid-alternating-row",
+                               selectedRowStyle: "webgrid-selected-row",
+                               rowStyle: "webgrid-row-style");
+            }
+                
+        
+        </div>
+    }
+    </div>
+</div>

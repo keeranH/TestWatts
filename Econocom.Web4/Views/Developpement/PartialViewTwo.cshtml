@@ -1,0 +1,17 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgDevDurable;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info1.cshtml";
+}
+
+<div id="mainDiv" style="border: solid white 1px;">
+    
+    <div>
+         @if (@ViewBag.ContenuModere != null)
+        {
+            @Html.Raw(@ViewBag.ContenuModere.Contenu)
+        }
+    </div>
+    
+</div>

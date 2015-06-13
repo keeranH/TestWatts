@@ -1,0 +1,121 @@
+﻿@model Econocom.Model.ViewModel.SocieteSouscriptionViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "Societe_Layout";
+    Layout = "~/Views/Shared/Souscription_Layout/SocieteSouscription_Layout.cshtml";
+    
+    <style type="text/css">
+        .villeTextBox
+        {
+             width: 180px;
+             height: 15px;
+        }
+
+        .CpTextBox
+        {
+             width: 70px;
+             height: 15px;
+        }
+
+        .societeLabelFor {
+            font-family: "Times New Roman";
+        }
+
+        .displayedValue {
+            width: 320px;
+            background-color: #EDFFB5;
+            height: 29px;
+        }
+    </style>
+}
+
+@section option{
+    <div align="left" style="width: 200px; float: left">
+        <span style="font-size: 1.5em">@Traduction.Societe</span>
+    </div>
+}
+
+<div>
+
+    @Html.HiddenFor(model => Model.ClientId)
+
+    @section RaisonSociale{
+        <div class="editor-field" style="margin-left: 20px">
+            @Html.LabelFor(model => Model.RaisonSociale, Traduction.RaisonSociale, new { @class = "societeLabelFor" })
+            <div  class="displayedValue">@Html.DisplayFor(model => Model.RaisonSociale, new { @class= "trza"})</div>
+        </div>
+    }
+
+    @section Addresse{
+        <div class="editor-field" style="margin-left: 20px">
+        @Html.LabelFor(model => Model.Addresse, Traduction.Adresse, new { @class = "societeLabelFor" })
+            <div style="background-color: #EDFFB5">@Html.DisplayFor(model => Model.Addresse)</div>
+        </div>
+    }
+
+    @section CP{
+        <div class="editor-field" style="margin-left: 50px; margin-top: -50px">
+        @Html.LabelFor(model => Model.CodePostal, Traduction.CP, new { @class = "societeLabelFor" })
+             <div style="background-color: #EDFFB5; width: 70px">@Html.DisplayFor(model => Model.CodePostal, new { disabled = "true", @class = "CpTextBox" })</div>
+        </div>
+    }
+
+    @section Ville{
+        <div class="editor-field;" style="margin-top: -50px">
+            @Html.LabelFor(model => Model.Ville, Traduction.Ville, new { @class = "societeLabelFor" })
+            <div style="background-color: #EDFFB5; width: 180px">@Html.DisplayFor(model => Model.Ville, new { @class = "villeTextBox", disabled = "true" })</div>
+        </div>
+    }
+
+    @section Tva{
+        <div class="editor-field" style="margin-left: 20px;margin-top: -50px">
+            @Html.LabelFor(model => Model.Tva, Traduction.TVA, new { @class = "societeLabelFor" })
+            <div class="displayedValue">@Html.DisplayFor(model => Model.Tva, new { disabled = "true" })</div>
+        </div>
+    }
+
+    @section DejaClient{
+         <div class="editor-field" style="width: 300px; margin-left: 20px;margin-top: -50px">
+            @Html.LabelFor(model => Model.ClientEconocom, Traduction.ClientEconocom, new { @class = "societeLabelFor" })
+            <div class="displayedValue">@Html.DisplayFor(model=>Model.LibelleClientEconocom)</div>
+         </div>
+    }
+
+    @section Groupe{
+         <div class="editor-field">
+            @Html.LabelFor(model => Model.Groupe, Traduction.Groupe, new { @class = "societeLabelFor" })
+            <div  class="displayedValue">@Html.DisplayFor(model => Model.Groupe, new { disabled = "true" })</div>
+         </div>
+    }
+
+    @section Pays{
+        <div class="editor-field">
+            @Html.LabelFor(model => Model.Pays, Traduction.Pays, new { @class = "societeLabelFor" })
+            <div  class="displayedValue">@Html.DisplayFor(model => model.LibellePays)</div>
+        </div>
+    }
+
+    @section IdentificationNational{
+        <div class="editor-field" style="margin-top: -50px">
+            @Html.LabelFor(model => Model.IdentificationNational, Traduction.IdentificationNational, new { @class = "societeLabelFor" })
+            <div  class="displayedValue"> @Html.DisplayFor(model => Model.IdentificationNational, new { disabled = "true" })</div>
+        </div>
+    }
+
+    @section ChiffresAffaires{
+        <div class="editor-field" style="margin-top: -50px">
+            @Html.LabelFor(model => Model.ChiffresAffaires, Traduction.ChiffreAffaires, new { @class = "societeLabelFor" })
+            <div  class="displayedValue"> @Html.DisplayFor(model => Model.ChiffresAffaires, new { disabled = "true" })</div>
+        </div>
+    }
+    
+    @section VotreContacte{
+        <div class="editor-field" style="margin-top: -50px">
+            @Html.LabelFor(model => Model.VotreContacte, Traduction.ContactEconocom, new { @class = "societeLabelFor" })
+            <div class="displayedValue">@Html.DisplayFor(model => Model.VotreContacte, new {disabled = "true" })</div>
+        </div>
+    }
+</div>
+
+

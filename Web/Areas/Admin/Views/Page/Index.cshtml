@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Econocom.Model.Models.CMS.Page>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Template
+        </th>
+        <th>
+            Section
+        </th>
+        <th>
+            relative_path
+        </th>
+        <th>
+            enabled
+        </th>
+        <th>
+            unpublished_template_id
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishedTemplate.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelativePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnpublishedTemplate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

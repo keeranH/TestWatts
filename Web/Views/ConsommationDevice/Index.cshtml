@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<h2 align="center"><img src="/Content/images/bar/logo.jpg"/></h2>
+
+<table width="100%">
+    <colgroup>
+    <col width="30%" style="background-color:white">
+    <col width="70%" style="background-color:white">
+  </colgroup>
+
+@if (ViewBag.ConsommationDevice != null)
+{
+    foreach (var item in (IEnumerable<Econocom.Model.Models.Benchmark.ConsommationDeviceClient>) ViewBag.ConsommationDevice)
+    {
+        <tr>
+            <td align="right" style="color: black">@item.TYPEDEVICE.LIBELLETYPEDEVICE</td>
+            <td align="left"><img src="/Content/images/bar/@(item.CONSOMMATION).jpg"/> </td>
+        </tr>
+    }
+}
+
+    <tr>
+        <td align="right"><img src="/Content/images/bar/scaleTitle.jpg"/></td>
+        <td align="left"><img src="/Content/images/bar/scale.jpg"/></td>
+    </tr>
+
+</table>

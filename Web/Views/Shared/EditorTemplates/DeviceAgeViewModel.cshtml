@@ -1,0 +1,29 @@
+﻿@using Web.Extension
+@model Econocom.Model.ViewModel.DeviceAgeViewModel
+           
+@{
+    ViewBag.Title = "DeviceAge";
+}
+@section head
+{
+    <style>
+        input { width: 80em; }
+        .wide
+        {
+            border: solid 1px red;
+            font-size: 1em;
+        }
+    </style>
+}
+  
+<div data-role="" id="my-collaspible1">
+    <h3 style="margin: 10px 0px 0px 0px!important;"><span style="margin-left: 40px;">@Html.DisplayFor(modelItem => Model.Label)</span>	
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.ViewModelUsage.NumberOfNonIntensiveWorkingHours)</span>
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.ViewModelUsage.NumberOfIntensiveWorkingHours)</span>
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.ViewModelUsage.NumberOfWorkingDays)</span>
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.ViewModelUsage.NumberOfDaysInYear)</span>
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.Ratio)</span>
+        <span style="float: right; margin-right: 33px; width:95px;">@Html.EditorFor(modelItem => Model.Value)</span>  
+    </h3>
+</div>    
+

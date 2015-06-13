@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_LayoutAdmin.cshtml";    
+}
+
+<h2>Help</h2>
+
+<style type="text/css">
+    a:hover 
+    {
+        background-color: transparent !important;
+    }
+</style>
+
+<script type="text/javascript">
+    function printDiv() {
+        var printer = window.open('', '', 'width=500,height=500');
+        printer.document.open("text/html");
+        printer.document.write(document.getElementById('news_contents').innerHTML);
+        printer.print();
+    }
+</script>
+
+<div style="border: solid 1px white">
+    <br/>
+
+    <div id="news_contents" style="border: solid 1px gainsboro; overflow: auto">
+        @Html.Partial("HelpPartial")
+    </div>
+    
+    <br/>
+    <div>
+        <a href="@Url.Action("HelpPartial", "Help")">
+            <input type="button" value="Telecharger" class="EconocomButton"/>
+        </a>
+        
+        <a href="#" onclick="printDiv();">
+            <input type="button" value="Imprimer" class="EconocomButton"/>
+        </a>
+    </div>
+    
+    <br/>
+</div>

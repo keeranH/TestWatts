@@ -1,0 +1,125 @@
+﻿@using Econocom.Model.Models.CMS
+@using Page = Econocom.Model.Models.CMS.Page
+@model IEnumerable<Econocom.Model.Models.CMS.Section>
+
+@{
+    ViewBag.Title = "People";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    WebGrid grid = new WebGrid(Model);
+}
+
+<h2>Pages</h2>
+
+
+<script type="text/javascript">
+    $("#main").height('1000px');
+</script>
+
+
+@Html.ActionLink("Add Section", "Edit", "Section", new {id = 0}, new {@class = "editLink", @id = "login"})
+
+
+<div id="updateDialog" title="Login"></div>
+<script type="text/javascript">
+    var linkObj;
+    $(function () {
+        $(".editLink").button();
+        var x = "connecter";
+        $('#updateDialog').dialog({
+            autoOpen: false,
+            width: 400,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Login": function () {
+                    $("#update-message").html(''); //make sure there is nothing on the message before we continue                         
+                    $("#updateForm").submit();
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $($("button", $("#updateDialog").parent())[0]).text("Sauvegarder");
+        $($("button", $("#updateDialog").parent())[1]).text("Annuler");
+            
+        $(".editLink").click(function (e) {
+            //change the title of the dialog
+            linkObj = $(this);
+            var dialogDiv = $('#updateDialog');
+            var viewUrl = linkObj.attr('href');
+            $.get(viewUrl, function (data) {
+                dialogDiv.html(data);
+                //validation
+                var $form = $("#updateForm");
+                // Unbind existing validation
+                $form.unbind();
+                $form.data("validator", null);
+                // Check document for changes
+                //$.validator.unobtrusive.parse(document);
+                // Re add validation with changes
+                //$form.validate($form.data("unobtrusiveValidation").options);
+                //open dialog
+                dialogDiv.dialog('open');
+                e.preventDefault();
+            });
+            return false;
+        });
+
+    });
+
+    function updateSuccess(data) {
+        var response = jQuery.parseJSON(data);
+        //if (response.Success == true) {
+        if (data.Success == true) {
+            //now we can close the dialog
+            $('#updateDialog').dialog('close');
+            window.location.href = window.location.href;
+        } else {
+            alert(response.ErrorMessage);
+            $("#update-message").html(response.ErrorMessage);
+            $("#update-message").show();
+        }
+    }
+
+</script>
+
+<div class="mainDiv" style="width:100%; float:left;">
+    <table class="pagesTable" width="100%">
+        <tr>
+            <td valign="top">
+                <div id="treeSectionDivPartial" class="treeSectionDiv" style="width:300px; float:left">
+                    
+                    @TreeView(Model, null)
+                    @helper TreeView(IEnumerable<Section> sections, int? parentId)
+                    {
+                        if (sections != null)
+                        {
+                            if (sections.Any(model => model.ParentId == parentId))
+                            {
+                                <ul>                           
+                                    @foreach (var item in sections.Where(model => model.ParentId == parentId))
+                                    {
+                                        @Html.Partial("SectionPartial", item)
+
+                                        if (sections != null)
+                                        {
+                                            @TreeView(sections, item.Id)
+                                        }
+                                    }
+                                </ul>
+                            }
+                        }
+                    }
+                      
+                </div>
+           </td>
+
+            <td>
+                <div id="contentDivPartial" class="contentDiv" style="width:700px"></div>
+            </td>
+        </tr>
+    </table>  
+</div>

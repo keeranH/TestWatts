@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Personnalisation";
+    Layout = "~/Views/Shared/MenuPartial/_SimulatorLayout.cshtml";
+}
+
+@model Infrastructure.DTO.Reference.PaysCreateInput
+@{ Html.EnableClientValidation(); }
+@using(Html.BeginForm()){
+@Html.EditorFor(o => o.Id)
+@Html.EditorFor(o => o.LibellePays)
+@Html.EditorFor(o => o.CoefficientConversion)
+@Html.EditorFor(o => o.DateDebut)
+@Html.EditorFor(o => o.DateFin)
+}
+<script type="text/javascript">
+    enableClientValidation();
+</script>

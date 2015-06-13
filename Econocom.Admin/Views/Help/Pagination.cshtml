@@ -1,0 +1,75 @@
+﻿@{
+   Layout = "../Shared/_LayoutAdmin.cshtml";    
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tablesorter.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tablesorter.pager.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
+            .tablesorterPager({ container: $("#pager"), size: $(".pagesize option:selected").val() });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <table class="tablesorter">
+            <thead>
+                <tr>
+                    <th>LibelleTarif</th>
+                    <th>NbreMinDevice</th>
+                    <th>NbreMaxDevice</th>
+                    <th>DateDebut</th>
+                    <th>TarifAnnuel</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var p in ViewBag.People)
+                    {            
+                    <tr>
+                        <td>@p.LibelleTarif</td>
+                        <td>@p.NbreMinDevice</td>
+                        <td>@p.NbreMaxDevice</td>
+                        <td>@p.DateDebut</td>
+                        <td>@p.TarifAnnuel</td>
+                    </tr>
+                    }
+                }
+            </tbody>
+            @*<tfoot>
+                <tr>
+                    <th>LibelleTarif</th>
+                    <th>NbreMinDevice</th>
+                    <th>NbreMaxDevice</th>
+                    <th>DateDebut</th>
+                    <th>TarifMensuel</th>
+                </tr>
+            </tfoot>*@
+        </table>
+        <div id="pager" style="position: fixed;">
+            <form>
+            <img src="@Url.Content("~/Content/images/first.png")" class="first" />
+            <img src="@Url.Content("~/Content/images/prev.png")" class="prev" />
+            <input type="text" class="pagedisplay" />
+            <img src="@Url.Content("~/Content/images/next.png")" class="next" />
+            <img src="@Url.Content("~/Content/images/last.png")" class="last" />
+            <select class="pagesize">
+                <option selected="selected" value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+            </select>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+

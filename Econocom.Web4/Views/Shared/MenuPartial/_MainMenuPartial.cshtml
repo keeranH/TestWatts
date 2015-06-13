@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "_MainMenuPartial";
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            document.getElementById("rapport_sub").style.display = 'none';
+
+            $('#mesRapports').click(function () {
+                $('#rapport_sub').toggle();
+            });
+        });
+
+    </script>
+    
+}
+
+<div  id="mainMenu" style=" width: 920px; height: 20px; background-color: gray">
+   
+    <div style=" width: 100px;  float: left"><img src="@Url.Content("~/Content/images/home.jpg")"/></div>
+    <div style=" width: 200px;  float: left"><a href="#" style="color: white">Mon estimation</a></div>
+    <div style=" width: 200px;  float: left"><a href="#" style="color: white">Ma personnalisation</a></div>
+    <div style=" width: 200px;  float: left"><a href="#" style="color: white">Mes simulations</a></div>
+    <div id="mesRapports" style=" width: 150px;  float: left; height: 30px">
+        <a  href="#" style="color: white">Mes rapports</a>
+        <div id="rapport_sub" style="margin-top: 2px">
+            <div style="background-color: gray"><a href="Personnalisation" style="color: white">Ma personnalisation</a></div>
+            <div style=" background-color: gray; margin-top: 2px"><a href="dfgdfgssss" style="color: white">Mes simulations</a></div>
+        </div>
+    </div>
+    
+</div>
+

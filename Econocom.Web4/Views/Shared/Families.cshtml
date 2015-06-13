@@ -1,0 +1,94 @@
+﻿@using Econocom.Model.ViewModel
+@using Econocom.Web4.Extension
+@model Econocom.Model.ViewModel.ClientDeviceTypeViewModel
+
+           
+ <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.mobile.custom.js")"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+>>>>>>> .r718
+
+<style>
+    .ui-collapsible-inset .ui-collapsible-content
+    {
+        margin-left: 0;
+    }
+
+    .ui-btn-inner {
+        display: block;
+        position: relative;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        zoom: 1;
+    }
+
+    .ui-btn-inner 
+    {
+        padding-right: 0px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 40px !important;
+    }
+
+    input {
+        font-size: 1.0em !important;
+        background: none;
+        padding: 0px;
+    }
+
+    .input.ui-input-text {
+        background-image: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: 0em !important;
+        line-height: 0em !important;
+    }
+
+    input.ui-input-text, textarea.ui-input-text {
+        background-image: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: 0em !important;
+        line-height: 0em !important;
+    }
+
+    .ui-collapsible-content {
+        padding: 5px 15px;
+    }
+
+    .ui-input-search, div.ui-input-text {
+        margin: 0px;
+    }
+
+    .ui-collapsible-heading {
+        font-size: 1.0em!important;
+    }
+   
+            .ui-page {
+                width: 1000px !important;
+                margin: 0 auto !important;
+                position: relative !important;
+            }
+        
+       
+    .ui-collapsible-inset {
+        margin: 5px 0px;
+    }
+</style>
+
+<div data-role="page" class="type-interior ui-page ui-body-c ui-page-active">
+    <div data-role="content" class="ui-content" role="main">
+        <div   class="content-secondary">
+            <div>
+                @Html.HiddenFor(model => model.IdClient)
+                @Html.HiddenFor(model => model.IdFamille)
+                @Html.HiddenFor(model => model.IdCategorie)                           
+                @Html.EditorFor(modelItem=>Model.TypeDevices)
+                                                                                      
+            </div>
+            </div>         
+    </div>	       
+</div>
+               

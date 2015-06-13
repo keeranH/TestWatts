@@ -1,0 +1,6 @@
+﻿@model Infrastructure.DTO.UserInput
+
+@using(Html.BeginForm()){
+@Html.EditorFor(o => o.Name)
+@Html.EditorFor(o => o.Roles)
+}

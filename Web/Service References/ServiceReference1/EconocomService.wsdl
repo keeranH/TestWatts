@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EconocomService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IEconocomService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Econocom.Service" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.Benchmark" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.Models.CMS" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel" />
+      <xsd:import schemaLocation="http://localhost:57313/EconocomService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEconocomService_GetPeople_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPeople" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetPeople_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPeopleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetPeopleWithOutCicularReferencing_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPeopleWithOutCicularReferencing" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetPeopleWithOutCicularReferencing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPeopleWithOutCicularReferencingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListePays_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListePays" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListePays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListePaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeLangues_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListeLangues" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeLangues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListeLanguesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeConsoWattHeur_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListeConsoWattHeur" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeConsoWattHeur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListeConsoWattHeurResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContact" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SetClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetClient" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SetClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="DocumentUpload">
+    <wsdl:part name="parameters" element="tns:DocumentUpload" />
+  </wsdl:message>
+  <wsdl:message name="DocumentUpload_Headers">
+    <wsdl:part name="documentName" element="tns:documentName" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SaveDocument_OutputMessage" />
+  <wsdl:message name="UploadResult">
+    <wsdl:part name="parameters" element="tns:UploadResult" />
+  </wsdl:message>
+  <wsdl:message name="UploadResult_Headers">
+    <wsdl:part name="Error" element="tns:Error" />
+    <wsdl:part name="ErrorLines" element="tns:ErrorLines" />
+    <wsdl:part name="Status" element="tns:Status" />
+  </wsdl:message>
+  <wsdl:message name="FileUpload">
+    <wsdl:part name="parameters" element="tns:FileUpload" />
+  </wsdl:message>
+  <wsdl:message name="FileUpload_Headers">
+    <wsdl:part name="FileName" element="tns:FileName" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauveGardeClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:SauveGardeClient" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauveGardeClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SauveGardeClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeContenuPublier_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListeContenuPublier" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeContenuPublier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListeContenuPublierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContenuPublier_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContenuPublier" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContenuPublier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContenuPublierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ActualiserClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualiserClient" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ActualiserClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualiserClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListePage_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListePage" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListePage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListePageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ActualiserContenuPublier_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualiserContenuPublier" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ActualiserContenuPublier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualiserContenuPublierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetClientNonModerer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientNonModerer" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetClientNonModerer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientNonModererResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetClientParId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientParId" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetClientParId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientParIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetPays_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPays" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetPays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListeSection" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListeSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContactParVerificationCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactParVerificationCode" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetContactParVerificationCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactParVerificationCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetQuestionParId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionParId" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_GetQuestionParId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionParIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_MAJContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:MAJContact" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_MAJContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MAJContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_VerificationCompte_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificationCompte" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_VerificationCompte_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificationCompteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauvegardeSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:SauvegardeSection" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauvegardeSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SauvegardeSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauvegardePage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SauvegardePage" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_SauvegardePage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SauvegardePageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeModele_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListeModele" />
+  </wsdl:message>
+  <wsdl:message name="IEconocomService_ListeModele_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListeModeleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEconocomService">
+    <wsdl:operation name="GetPeople">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetPeople" message="tns:IEconocomService_GetPeople_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetPeopleResponse" message="tns:IEconocomService_GetPeople_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeopleWithOutCicularReferencing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetPeopleWithOutCicularReferencing" message="tns:IEconocomService_GetPeopleWithOutCicularReferencing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetPeopleWithOutCicularReferencingResponse" message="tns:IEconocomService_GetPeopleWithOutCicularReferencing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListePays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListePays" message="tns:IEconocomService_ListePays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListePaysResponse" message="tns:IEconocomService_ListePays_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListeLangues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListeLangues" message="tns:IEconocomService_ListeLangues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListeLanguesResponse" message="tns:IEconocomService_ListeLangues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListeConsoWattHeur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListeConsoWattHeur" message="tns:IEconocomService_ListeConsoWattHeur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListeConsoWattHeurResponse" message="tns:IEconocomService_ListeConsoWattHeur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetContact" message="tns:IEconocomService_GetContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetContactResponse" message="tns:IEconocomService_GetContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/SetClient" message="tns:IEconocomService_SetClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/SetClientResponse" message="tns:IEconocomService_SetClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/SaveDocument" name="DocumentUpload" message="tns:DocumentUpload" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/SaveDocumentResponse" message="tns:IEconocomService_SaveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/UploadDocument" name="DocumentUpload" message="tns:DocumentUpload" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/UploadDocumentResponse" name="UploadResult" message="tns:UploadResult" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/UploadFile" name="FileUpload" message="tns:FileUpload" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/UploadFileResponse" name="UploadResult" message="tns:UploadResult" />
+    </wsdl:operation>
+    <wsdl:operation name="SauveGardeClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/SauveGardeClient" message="tns:IEconocomService_SauveGardeClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/SauveGardeClientResponse" message="tns:IEconocomService_SauveGardeClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListeContenuPublier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListeContenuPublier" message="tns:IEconocomService_ListeContenuPublier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListeContenuPublierResponse" message="tns:IEconocomService_ListeContenuPublier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContenuPublier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetContenuPublier" message="tns:IEconocomService_GetContenuPublier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetContenuPublierResponse" message="tns:IEconocomService_GetContenuPublier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualiserClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ActualiserClient" message="tns:IEconocomService_ActualiserClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ActualiserClientResponse" message="tns:IEconocomService_ActualiserClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListePage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListePage" message="tns:IEconocomService_ListePage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListePageResponse" message="tns:IEconocomService_ListePage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualiserContenuPublier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ActualiserContenuPublier" message="tns:IEconocomService_ActualiserContenuPublier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ActualiserContenuPublierResponse" message="tns:IEconocomService_ActualiserContenuPublier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientNonModerer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetClientNonModerer" message="tns:IEconocomService_GetClientNonModerer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetClientNonModererResponse" message="tns:IEconocomService_GetClientNonModerer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientParId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetClientParId" message="tns:IEconocomService_GetClientParId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetClientParIdResponse" message="tns:IEconocomService_GetClientParId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetPays" message="tns:IEconocomService_GetPays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetPaysResponse" message="tns:IEconocomService_GetPays_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListeSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListeSection" message="tns:IEconocomService_ListeSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListeSectionResponse" message="tns:IEconocomService_ListeSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactParVerificationCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetContactParVerificationCode" message="tns:IEconocomService_GetContactParVerificationCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetContactParVerificationCodeResponse" message="tns:IEconocomService_GetContactParVerificationCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetQuestions" message="tns:IEconocomService_GetQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetQuestionsResponse" message="tns:IEconocomService_GetQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionParId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/GetQuestionParId" message="tns:IEconocomService_GetQuestionParId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/GetQuestionParIdResponse" message="tns:IEconocomService_GetQuestionParId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MAJContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/MAJContact" message="tns:IEconocomService_MAJContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/MAJContactResponse" message="tns:IEconocomService_MAJContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificationCompte">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/VerificationCompte" message="tns:IEconocomService_VerificationCompte_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/VerificationCompteResponse" message="tns:IEconocomService_VerificationCompte_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SauvegardeSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/SauvegardeSection" message="tns:IEconocomService_SauvegardeSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/SauvegardeSectionResponse" message="tns:IEconocomService_SauvegardeSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SauvegardePage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/SauvegardePage" message="tns:IEconocomService_SauvegardePage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/SauvegardePageResponse" message="tns:IEconocomService_SauvegardePage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListeModele">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEconocomService/ListeModele" message="tns:IEconocomService_ListeModele_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEconocomService/ListeModeleResponse" message="tns:IEconocomService_ListeModele_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEconocomService" type="tns:IEconocomService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IEconocomService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPeople">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetPeople" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeopleWithOutCicularReferencing">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetPeopleWithOutCicularReferencing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListePays">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListePays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListeLangues">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListeLangues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListeConsoWattHeur">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListeConsoWattHeur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContact">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetClient">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/SetClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocument">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/SaveDocument" style="document" />
+      <wsdl:input name="DocumentUpload">
+        <soap:header message="tns:DocumentUpload_Headers" part="documentName" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadDocument">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/UploadDocument" style="document" />
+      <wsdl:input name="DocumentUpload">
+        <soap:header message="tns:DocumentUpload_Headers" part="documentName" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UploadResult">
+        <soap:header message="tns:UploadResult_Headers" part="Error" use="literal" />
+        <soap:header message="tns:UploadResult_Headers" part="ErrorLines" use="literal" />
+        <soap:header message="tns:UploadResult_Headers" part="Status" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/UploadFile" style="document" />
+      <wsdl:input name="FileUpload">
+        <soap:header message="tns:FileUpload_Headers" part="FileName" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UploadResult">
+        <soap:header message="tns:UploadResult_Headers" part="Error" use="literal" />
+        <soap:header message="tns:UploadResult_Headers" part="ErrorLines" use="literal" />
+        <soap:header message="tns:UploadResult_Headers" part="Status" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SauveGardeClient">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/SauveGardeClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListeContenuPublier">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListeContenuPublier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContenuPublier">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetContenuPublier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualiserClient">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ActualiserClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListePage">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListePage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualiserContenuPublier">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ActualiserContenuPublier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientNonModerer">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetClientNonModerer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientParId">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetClientParId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPays">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetPays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListeSection">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListeSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactParVerificationCode">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetContactParVerificationCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionParId">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/GetQuestionParId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MAJContact">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/MAJContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificationCompte">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/VerificationCompte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SauvegardeSection">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/SauvegardeSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SauvegardePage">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/SauvegardePage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListeModele">
+      <soap:operation soapAction="http://tempuri.org/IEconocomService/ListeModele" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EconocomService">
+    <wsdl:port name="BasicHttpBinding_IEconocomService" binding="tns:BasicHttpBinding_IEconocomService">
+      <soap:address location="http://localhost:57313/EconocomService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

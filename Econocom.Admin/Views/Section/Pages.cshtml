@@ -1,0 +1,151 @@
+﻿@using Econocom.Model.Models.CMS
+@using Page = Econocom.Model.Models.CMS.Page
+@model IEnumerable<Econocom.Model.Models.CMS.Section>
+
+@{
+    ViewBag.Title = "Pages";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; min-width:1000px; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+
+<style>
+    td{ padding: 0px;}
+</style>
+
+
+<div style="border:solid 0px red; width:100%; height:100%;">   
+    <div id="updateDialog" title="Entrez les données suivantes: "></div>
+
+    <script type="text/javascript">
+        var linkObj;
+        $(function () {
+            $(".editLink").button();
+            var x = "connecter";
+            $('#updateDialog').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Login": function () {
+                        $("#update-message").html(''); //make sure there is nothing on the message before we continue                         
+                        $("#updateForm").submit();
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $($("button", $("#updateDialog").parent())[0]).text("Sauvegarder");
+            $($("button", $("#updateDialog").parent())[1]).text("Annuler");
+            
+            $(".editLink").click(function (e) {
+                //change the title of the dialog
+                linkObj = $(this);
+                var dialogDiv = $('#updateDialog');
+                var viewUrl = linkObj.attr('href');
+                $.get(viewUrl, function (data) {
+                    dialogDiv.html(data);
+                    //validation
+                    var $form = $("#updateForm");
+                    // Unbind existing validation
+                    $form.unbind();
+                    $form.data("validator", null);
+                    //open dialog
+                    dialogDiv.dialog('open');
+                    e.preventDefault();
+                });
+                return false;
+            });
+
+        });
+
+        function updateSuccess(data) {
+            var response = jQuery.parseJSON(data);
+            if (data.Success == true) {
+                //now we can close the dialog
+                $('#updateDialog').dialog('close');
+
+                window.location.href = window.location.href;
+                $('#result').html(data);
+            } else {         
+                $("#update-message").html(response.ErrorMessage);
+                $("#update-message").show();
+            }
+        }
+
+    </script>
+    <style>
+        .ui-button-text-only .ui-button-text {
+            padding: 0px;
+            font-size: 0.8em;
+        }
+    </style>
+    <div class="mainDiv" style="width:100%; float:left; min-width:1000px; background-color:#fff;">
+         <h2 class="HeaderTexteH2">Contenu Page</h2>
+        <div style="margin-top:20px;">
+                                                                                                                                                                                                        <table class="pagesTable" width="100%">
+            <tr>
+                <td colspan="2">
+                   
+                </td>                
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("+Section", "Edit", "Section", new {id = 0}, new {@class = "editLink", @id = "section", style="width:60px"})
+                </td>
+                <td>
+                    <div id="result" style="display:block; height:30px; width:400px;">
+                        &nbsp;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <div id="treeSectionDivPartial" class="treeSectionDiv" style="width:320px; height: 100%; float:left; overflow: auto; ">
+                    
+                        @TreeView(Model, null)
+                        @helper TreeView(IEnumerable<Section> sections, int? parentId)
+                        {
+                            if (sections != null)
+                            {
+                                if (sections.Any(model => model.ParentId == parentId))
+                                {
+                                    <ul style="list-style: none; padding: 5px; margin:0px;">                           
+                                        @foreach (var item in sections.Where(model => model.ParentId == parentId))
+                                        {
+                                            @Html.Partial("SectionPartial", item)
+
+                                            if (sections != null)
+                                            {
+                                                @TreeView(sections, item.Id)
+                                            }
+                                        }
+                                    </ul>
+                                }
+                            }
+                        }
+                      
+                    </div>
+                </td>
+
+                <td>
+                    <div id="contentDivPartial" class="contentDiv" style="width:100%; min-width:920px; height: 100%; overflow: auto; border:solid 0px #e2e2e2;background-color:#eee;"></div>
+                </td>
+            </tr>
+        </table>  
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#main").height('1000px');   
+</script>

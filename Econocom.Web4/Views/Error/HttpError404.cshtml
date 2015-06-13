@@ -1,0 +1,20 @@
+@using Econocom.Resource
+@model Infrastructure.DTO.ErrorDisplay
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/Maquette/_Layout_Info1.cshtml";
+}
+<h1>@Traduction.Erreur404_Titre</h1>
+
+<hr />
+    
+<div style="padding: 10px;">
+    <p>
+        @Traduction.Erreur404_Info
+    </p>
+   
+    <p>
+        @Traduction.Erreur404_Detail
+    </p>
+    
+</div>

@@ -1,0 +1,59 @@
+﻿@using Econocom.Resource
+@model Econocom.Model.ViewModel.EquivalenceViewModel
+@{
+    ViewBag.Title = "ModificationEquivalence";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<div>
+    @using (Html.BeginForm("ModificationEquivalence", "Equivalence", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <br/>
+        
+        <div>
+            <span>@Traduction.LibelleEquivalence</span>
+            <span>@Html.TextBoxFor(model => model.LibelleEquivalence)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span>@Traduction.Valeur</span>
+            <span>@Html.TextBoxFor(model => model.Valeur)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span>@Traduction.Mesure</span>
+            <span>@Html.TextBoxFor(model => model.Mesure)</span>
+        </div>
+        
+        <br/>
+
+        <div>
+            <span>@Traduction.Afficher</span>
+            <span> @Html.DropDownListFor(model => model.Afficher, new[] {new SelectListItem { Text = Traduction.Oui, Value = bool.TrueString },
+                       new SelectListItem { Text = Traduction.Non, Value = bool.FalseString }})</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            @Html.HiddenFor(model => model.LienImage) 
+            @Html.TextBoxFor(m => m.File, new { type = "file", @style = "width : 250px;" })
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span><input id="submit" name="submit" type="submit" value="Sauvegarder" class="EconocomButton"/></span>
+        </div> 
+    }
+</div>

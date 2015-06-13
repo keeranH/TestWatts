@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MonSILayoutPartial.cshtml";
+}
+
+@section TopImage{
+
+    <img style="margin-left: 25px" src="/Content/images/MonSI/@(ViewBag.test.familyLogo)"/> 
+}
+
+
+@section KwhImage{
+    
+    <img src="/Content/images/MonSI/@(ViewBag.test.imageUrl)"/> 
+}
+
+@section KwhValue{
+    
+   @ViewBag.test.kwhValue
+}
+
+@section PercentageValue{
+    
+   @ViewBag.test.percentageValue
+}

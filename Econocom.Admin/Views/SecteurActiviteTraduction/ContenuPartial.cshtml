@@ -1,0 +1,49 @@
+﻿@model Econocom.Model.ViewModel.Traduction.SecteurActiviteTraductionViewModel
+
+<script type="text/javascript">
+
+    function compute(idLangue, idSecteurActivite) {
+        $('#result').empty();
+        $.ajax({
+            url: '/SecteurActiviteTraduction/ModifierContenu',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ idSecteurActivite: idSecteurActivite, idLangue: idLangue }),
+            success: function (data) {
+                $('#contentDivPartial').empty().html(data);                
+            }
+        });
+
+    }
+
+</script>
+ 
+@using (Ajax.BeginForm("ActualiserContenu", "SecteurActiviteTraduction", FormMethod.Post, new AjaxOptions { UpdateTargetId = "result" }))
+{
+    <div style="width:900px; height:100%; border:solid 0px red;"> 
+         <div style="width:100%; margin-bottom:10px;">
+            <div style="width:170px; float:left; padding:5px;">@Html.Label("Choisir une langue: ")</div> 
+            <div style="padding-top:5px;"> @Html.DropDownListFor(m => m.LangueId, new SelectList(Model.ListeLangues, "Id", "Nom", Model.LangueId), new { @onchange = "compute(this.value, " + Model.SecteurActiviteId + ")" }) </div>
+         </div>  
+                                             
+        <div>
+            @if (Model != null)
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.LangueId)
+                @Html.HiddenFor(model => model.SecteurActiviteId)
+                <div style="width:100%; margin-bottom:10px;">
+                    <div style="width:170px; float:left; padding:5px;">@Html.Label("Libelle: ")</div>
+                    <div> @Html.TextBoxFor(model => model.LibelleSecteurActivite, new { @class = "input" })</div>                    
+                </div> 
+                <p style="margin-left:5px;">
+                    <input type="submit" value="Sauvegarder"  class="EconocomButton" />
+                </p>             
+            }
+        </div>
+
+        
+    </div>
+}      
+
+    

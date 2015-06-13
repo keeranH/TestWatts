@@ -1,0 +1,33 @@
+﻿@using Econocom.Resource
+@{
+    ViewBag.Title = "Accueil";
+    <link href="@Url.Content("~/Content/css/Maquette/BarreMenu.css")" rel="stylesheet" type="text/css"/>
+}
+
+<div>
+    <div class="topMenu" align="right">
+        <div class="topMenuContentDiv" >
+            <a href="@Url.Action("Index", "Faq")" class="TopMenuAnchor">
+                <img src="~/Content/images/Header/fleche_small.png"/>
+                <span class="topMenuContent">@Traduction.Faq</span>
+            </a>
+        </div>
+    </div>
+    
+    
+      <div class="bottomMenu" id="mainMenu">
+        <div class="AccueilMenu">
+            <a href="@Url.Action("Index", "Home")"> <img src="~/Content/images/Menu/Navigateur/icone_hp.png" /></a>
+        </div>
+    
+        <div class="SimpleMenuOne">
+            <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+             <div class="NavTitleDiv" ><a href="http://www.econocom.com/fr" class="NavTitle">@Traduction.Econocom</a></div>
+        </div>
+    
+          <div class="SimpleMenuTwo">
+              <div class="barNavSeparateurDiv"> <img src="~/Content/images/Menu/Navigateur/barre_nav_separateur.gif" /></div>
+              <div class="NavTitleDiv"><a href="@Url.Action("Index", "ContactezNous")" class="NavTitle">@Traduction.ContactezNous</a></div>
+          </div>
+       </div>
+</div>

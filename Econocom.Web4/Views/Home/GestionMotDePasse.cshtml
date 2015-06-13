@@ -1,0 +1,93 @@
+﻿@model Econocom.Model.ViewModel.GestionMotDePasseViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.DefinitionMotDePasse;
+    Layout = "~/Views/Shared/Maquette/_Layout_info.cshtml";
+    
+    <style>.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error { background-color: transparent !important;background-image: none !important;color: black !important;}</style>
+    <style>.ui-state-active { background-color: transparent !important;background-image: none !important;color: white !important;border: none !important;}</style>
+}
+
+
+<div align="left" style="margin-left: 20px;">
+   
+     <div style="margin-left: 280px; font-size: 20px; padding-top: 20px;">
+         <span style="color: #83B81A !important">@Traduction.DefinitionMotDePasse</span>    
+     </div>
+
+     @if (!ViewBag.CompteActif)
+     {
+         using (Html.BeginForm())
+         {
+             @Html.AntiForgeryToken()
+             @Html.ValidationSummary(true)
+             @Html.HiddenFor(model => Model.CodeVerification)
+             ;
+             @Html.HiddenFor(model => Model.Email)
+             ;
+             <div>
+                 <span style="color: red">@ViewBag.MsgErreur</span>
+             </div>
+
+             <br/>
+         
+             <div>
+                 <br/>
+                 <div style="display: inline-block; width: 250px">
+                     <span>@Traduction.EntrerMotDePasse</span><span class="asterisqueSpan"> *</span>
+                 </div> 
+                 <span>@Html.PasswordFor(model => Model.MotDePasse)</span>
+                 <span>@Html.ValidationMessageFor(model => Model.MotDePasse, String.Empty, new {@style = "background: transparent; border-color: transparent; color: red !important;"})</span>
+                 <br/>
+             </div>
+
+             <div>
+                 <br/>
+                 <div style="display: inline-block; width: 250px">
+                     <span>@Traduction.ConfirmerMotDePasse</span><span class="asterisqueSpan"> *</span>
+                 </div>
+                 <span>@Html.PasswordFor(model => Model.MotDePasseConfirme)</span>
+                 <span>@Html.ValidationMessageFor(model => Model.MotDePasseConfirme, String.Empty, new {@style = "background: transparent; border-color: transparent; color: red !important;"})</span>
+                 <br/>
+             </div>
+
+             <div>
+                 <br/>
+                 <div style="display: inline-block; width: 250px">
+                     <span>@Traduction.ChoisirQuestion</span><span class="asterisqueSpan"> *</span>
+                 </div>
+                 <span>
+                     @if (Model.Questions.Count > 0)
+                     {
+                         @Html.DropDownListFor(m => m.QuestionId, new SelectList(Model.Questions, "Id", "LibelleQuestion", Model.Questions.First().Id), new {@style = "width: 300px; height: 30px;"})
+                     }
+                 </span>
+                 <br/>
+             </div>
+
+             <div>
+                 <br/>
+                 <div style="display: inline-block; width: 250px">
+                     <span>@Traduction.VotreReponse</span><span class="asterisqueSpan"> *</span>
+                 </div>
+                 <span>@Html.TextBoxFor(model => Model.ReponseSaisie)</span>
+                 <span>@Html.ValidationMessageFor(model => Model.ReponseSaisie, String.Empty, new {@style = "background: transparent; border-color: transparent; color: red !important;"})</span>
+                 <br/>
+             </div>
+
+             <div id="BoutonDiv">
+                 <br/>
+                 <span class="BoutonValidationSpan">
+                     <input class="boutonPayant link" type="submit" value="@Traduction.Enregistrer" style="color: white; padding-top: 0px;"/>
+                 </span>
+             </div>
+         }
+     }
+     else
+     {
+        <div>
+            <span style="color: red">@Traduction.CompteValide</span>
+        </div>
+     }
+</div>

@@ -1,0 +1,97 @@
+﻿@using Econocom.Model.Enum
+@model Econocom.Model.ViewModel.GammesDeviceViewModel
+@using Calc = Econocom.Resource.Traduction
+
+
+<div class="inner " style="margin-left:-25px!important;width:630px;border:solid 0px yellow;">
+    <span class="acid" style="border:solid 0px green; width:350px;">
+        @*  @Html.LabelFor(m=>m.Libeller,new {                             
+                                        style = "border:solid 1px red; height:20px; width:300px"
+                                })*@
+        @Model.Libeller
+        
+        @if (@ViewBag.TypeClient == TypeClient.ECSchange)
+        {
+            if (@ViewBag.UserType == "Payant")
+            {
+                //Non modifiable
+                 @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                    new
+                    {
+                        id = Model.IdDevice,
+                        style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-120px;text-align:right;",
+                        @readonly = true
+                    })
+            }
+            else if (@ViewBag.TypeContact == "Admin" && @ViewBag.UserType == "Simulation")
+            {
+                //Modifiable
+                if (Model.Quantiter >= 0)
+                {
+                    @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                                     new
+                                     {
+                                         id = Model.IdDevice,
+                                         onblur = "compute(this.value," + Model.IdClasse + ",0,2,'" + Model.Guid + "');",
+                                         style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-120px;text-align:right;"
+                                     })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                                     new
+                                     {
+                                         id = Model.IdDevice,
+                                         onblur = "compute(this.value," + Model.IdClasse + ",0,2,'" + Model.Guid + "');",
+                                         style = "border:solid 1px red; height:20px; width:100px; margin-left:-120px;text-align:right;"
+                                     })
+                }
+            }
+        }
+        else
+        {
+            if (@ViewBag.TypeContact == "Admin")
+            {
+                //Modifiable
+                if (Model.Quantiter >= 0)
+                {
+                    @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                                     new
+                                     {
+                                         id = Model.IdDevice,
+                                         onblur = "compute(this.value," + Model.IdClasse + ",0,2,'" + Model.Guid + "');",
+                                         style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-120px;text-align:right;"
+                                     })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                                     new
+                                     {
+                                         id = Model.IdDevice,
+                                         onblur = "compute(this.value," + Model.IdClasse + ",0,2,'" + Model.Guid + "');",
+                                         style = "border:solid 1px red; height:20px; width:100px; margin-left:-120px;text-align:right;"
+                                     })
+                }
+            }
+            else
+            {
+                //Non modifiable
+                @Html.TextBoxFor(m => m.Quantiter, "{0:### ### ###}",
+                    new
+                    {
+                        id = Model.IdDevice,
+                        style = "border:solid 1px gainsboro; height:20px; width:100px; margin-left:-120px;text-align:right;",
+                        @readonly = true
+                    })
+            }
+
+        }
+    </span>
+    
+    <div class="inner alternate" style="width:618px; border:solid 0px blue;">
+        @Html.EditorFor(model => model.AgeDeviceViewModels)
+    </div>
+</div>
+   
+    

@@ -1,0 +1,30 @@
+﻿@model Econocom.Model.Models.Benchmark.DeviceAge
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Age</legend>
+
+    <div class="display-label">Label</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Label)
+    </div>
+
+    <div class="display-label">Minimum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Minimum)
+    </div>
+
+    <div class="display-label">Maximum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Maximum)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

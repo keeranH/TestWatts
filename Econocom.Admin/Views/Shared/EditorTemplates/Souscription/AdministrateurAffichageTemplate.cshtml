@@ -1,0 +1,68 @@
+﻿@model Econocom.Model.ViewModel.ContactSouscriptionViewModel
+
+@{
+    ViewBag.Title = "ContactTemplate";
+    Layout = "~/Views/Shared/Souscription_Layout/AdministrateurSouscription_Layout.cshtml";
+    
+            <style type="text/css">
+
+.administrateurLabelFor {
+    font-family: "Times New Roman";
+}
+
+.displayedValue {
+    width: 320px;
+    background-color: #EDFFB5;
+    height: 20px;
+}
+
+    </style>
+}
+
+
+@section option3{
+ <div align="left" style="width: 200px; float: left">
+        
+       <span style="font-size: 1.5em"> L'administrateur</span>
+    </div>
+  @*  <div style="width: 300px">
+
+     @Ajax.ActionLink("Modifier", "AdministrateurInput", "Souscription",
+                      new
+                          {
+                              clientId = Model.ClientId
+
+                          },
+                               new AjaxOptions { UpdateTargetId = "AdministrateurContentDiv" })
+</div>*@
+ }
+
+
+
+
+@section Nom3{
+
+    @Html.LabelFor(model => model.Nom, new { @class = "administrateurLabelFor" }) 
+    <div  class="displayedValue">@Html.DisplayFor(model => Model.Nom, new { disabled = "true" })</div>
+
+}
+
+@section Fonction3{
+    @Html.LabelFor(model => model.Fonction, new { @class = "administrateurLabelFor" }) 
+    <div  class="displayedValue">@Html.DisplayFor(model => Model.Fonction, new { disabled = "true" })</div>
+}
+
+@section AdresseMail3{
+    @Html.LabelFor(model => model.Email, "Adresse Email", new { @class = "administrateurLabelFor" }) 
+    <div  class="displayedValue">@Html.DisplayFor(model => Model.Email, new { disabled = "true" })</div>
+}
+
+@section Prenom3{
+    @Html.LabelFor(model => model.Prenom, "Prénom", new { @class = "administrateurLabelFor" }) 
+    <div  class="displayedValue">@Html.DisplayFor(model => Model.Prenom, new { disabled = "true" })</div>
+}
+
+@section Telephone3{
+    @Html.LabelFor(model => model.Telephone, "Téléphone", new { @class = "administrateurLabelFor" })
+    <div  class="displayedValue">@Html.DisplayFor(model => Model.Telephone, new { disabled = "true" })</div>
+}

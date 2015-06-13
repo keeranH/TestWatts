@@ -1,0 +1,40 @@
+﻿@using Econocom.Resource
+
+@{
+    ViewBag.Title = @Traduction.TitrePgSimulateur;
+    Layout = "~/Views/Shared/Maquette/_Layout_info1.cshtml";    
+    <link href="@Url.Content("~/Content/css/GreenIt/GreenIt.css")" rel="stylesheet" type="text/css"/>
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>    
+        <!-- Include Main Easy Slides library & default css file-->
+        <script type="text/Javascript" src="/Scripts/jquery.easyslides.min.v1.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Content/easySlides.default.min.css" />
+        <!-- Include own Javascript/jQuery & CSS file for Example 1 -->
+        
+        <link rel="stylesheet" type="text/css" href="/Content/imageslider.css" />
+    
+<script>
+
+    $(document).ready(function() {
+
+        // Set up our options for the slideshow...
+        var myOptions = {
+            noImages: @ViewBag.NumImages,
+            path: '@ViewBag.Folder',  // Relative path with trailing slash.                    
+            linksOpen: 'newWindow',
+            timerInterval: 1500, // 6500 = 6.5 seconds
+            randomise: false // Start with random image?
+        };
+  
+        $('#imageSlider').easySlides(myOptions);
+
+    });
+</script>
+}
+
+<div>
+    <div align="center" class="Partial_Content_Div" >
+        <div id="contentDivPartial" class="Partial_Div">
+            @Html.Partial("PartialView")
+        </div>
+    </div>
+</div>

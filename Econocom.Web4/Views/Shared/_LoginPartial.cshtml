@@ -1,0 +1,139 @@
+﻿@using Econocom.Resource
+@using Econocom.Web4.Controllers
+@using Omu.Awesome.Mvc.Helpers
+
+@{
+    <link href="@Url.Content("~/Content/css/Login/Login.css")" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+}
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        document.getElementById("languages").style.display = "none";
+    });
+
+    var linkObj;
+    $(function () {
+        $(".editLink").button();
+        $('#updateDialog').dialog({
+            autoOpen: false,
+            width: 400,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Login": function () {
+                    $("#update-message").html(''); //make sure there is nothing on the message before we continue                         
+                    $("#updateCarForm").submit();
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $($("button", $("#updateDialog").parent())[1]).text("Connecter");
+        $($("button", $("#updateDialog").parent())[2]).text("Annuler");
+
+
+        $(".editLink").click(function (e) {
+            //change the title of the dialog
+            linkObj = $(this);
+            var dialogDiv = $('#updateDialog');
+            var viewUrl = linkObj.attr('href');
+           // alert(viewUrl);
+            $.get(viewUrl, function (data) {
+                dialogDiv.html(data);
+                //validation
+                var $form = $("#updateCarForm");
+                // Unbind existing validation
+                $form.unbind();
+                $form.data("validator", null);
+                // Check document for changes
+                $.validator.unobtrusive.parse(document);
+                // Re add validation with changes
+                $form.validate($form.data("unobtrusiveValidation").options);
+                //open dialog
+                dialogDiv.dialog('open');
+                e.preventDefault();
+            });
+            return false;
+        });
+
+    });
+
+
+    function updateSuccess(data) {
+        var response = jQuery.parseJSON(data);
+        if (response.Success == true) {
+            $('#updateDialog').dialog('close');
+            $(".editLink").hide();
+            //twitter type notification
+            $('#commonMessage').html(response.Object.Username);
+            //$('#commonMessage').delay(400).slideDown(400).delay(3000).slideUp(400);
+        } else {
+            //alert(response.ErrorMessage);
+            $("#update-message").html(response.ErrorMessage);
+            $("#update-message").show();
+        }
+    }
+
+    function checkVisibility() {       
+        if (document.getElementById("languages").style.display == "none") {
+            document.getElementById("languages").style.display = "block";
+        }
+
+        else {
+            document.getElementById("languages").style.display = "none";
+        }
+
+    }
+    </script>
+
+    <div class="MainLoginContentDiv">
+        <div class="LoginContentDiv">
+            <div style="width:370px;float:left">
+                <div style="width:370px;float:right">
+                    @Html.Partial("MenuPartial/_CredentialPartial")
+                </div>
+                 <div class="LoginContentTwo" >           
+                    <span> @if (!Request.IsAuthenticated)
+                           {
+                               @(Html.PopupFormActionLink<MotDePasseController>(o => o.Index(), @Traduction.GestionMotDePasse, new { @class = "abtn" }))
+                           }
+                           else
+                           {
+                                @(Html.PopupFormActionLink<MotDePasseController>(o => o.Index(), @Traduction.ModifierMotDePasse, new { @class = "abtn" }))
+                           }</span>                
+                </div>
+            </div>
+            <div class="LoginContentOne" style="float:right">
+                <div id="selectLanguage" align="left" class="selectLanguageDiv">
+                    <div class="Div_Image_Pays" style=""><img src="/Content/Langues/@ViewBag.Langue" width="30px" height="37px" alt="Images" onclick="checkVisibility()" /></div>
+                    <div id="languages" class="LanguagesDiv" style="display:none">
+              
+                        @foreach (var item in (List<Econocom.Model.Models.CMS.Langue>)ViewBag.Langues)
+                        {
+                            <div  class="ContenuPays">
+                                <div class="ContenuPaysFlag"><img src="/Content/Langues/@item.LienImage" width="25px" height="25px"/></div>
+                                <div class="ContenuPaysLibelle" align="left" style="color:#000!important;">
+                                    @Html.ActionLink(item.Nom, "ChangeCulture", "Localisation", new { language = item.Code, returnUrl = this.Request.RawUrl }, new {style="color:#000!important;"}) <br />                
+                                </div>                                 
+                            </div>                                                      
+                        }
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>     
+ @if (Request.IsAuthenticated)
+ {
+     @(Html.MakePopupForm("Index", controller: "MotDePasse", title: "", okText: @Traduction.ModifierMotDePasse, cancelText: Traduction.Annuler, successFunction: "loginSuccess", height: 400, width: 400, resizable: false))
+ }
+ else
+ {
+     @(Html.MakePopupForm("Index", controller: "MotDePasse", title: "", okText: @Traduction.EnvoyerMotDePasse, cancelText: Traduction.Annuler, successFunction: "loginSuccess", height: 350, width: 400, resizable: false))
+ }

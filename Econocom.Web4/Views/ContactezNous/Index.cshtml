@@ -1,0 +1,21 @@
+﻿@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgContactezNous;
+    Layout = "~/Views/Shared/Maquette/_Layout_info.cshtml";
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            hideLoading();
+        });       
+    </script>
+}
+
+<div style="border: solid 1px white;">
+      <div id="pourVotreInfoDiv" style="margin-top: 50px">
+        @if (@ViewBag.ContenuModere != null)
+        {
+            @Html.Raw(@ViewBag.ContenuModere)
+        }
+    </div>
+</div>
+

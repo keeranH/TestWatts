@@ -1,0 +1,43 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Gestion tables de référence";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="border:solid 1px white; height:600px; width:870px;">
+    @*<h2 style="margin-left:20px">@Econocom.Resource.Gestion.Gestion.Gestion_Unitaire (@Econocom.Resource.Gestion.Gestion.Selection_Table)</h2>*@
+
+    <h2 style="margin-left:20px" class="HeaderTexteH2">@Econocom.Resource.Traduction.Gestion_Masse</h2>
+    <div style="min-height:200px; margin-left:40px;">
+        <br />        
+        @if(ViewBag.Error!=null)
+        {
+            <h4 style="color:red;">@ViewBag.Error</h4>
+        }
+        else if (ViewBag.Success != null)
+        {
+            <h4 style="color:green;">@ViewBag.Success</h4>
+        }
+        
+        <span class="NormalText">@Econocom.Resource.Traduction.Selection_Fichier</span><br/>
+        @using (Html.BeginForm("Index", "Reference", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div>            
+                <input type="file" name="file" style="width:300px;"/>&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="@Econocom.Resource.Traduction.Charger_Fichier" name="Command" class="EconocomButton"/><br />
+            </div>           
+        }
+        <div style="border:solid 0px red; height:auto;">
+            
+        </div>
+       
+    </div>    
+    
+    <h2 style="margin-left:20px" class="HeaderTexteH2"> @Econocom.Resource.Traduction.Gestion_Unitaire </h2><br/>
+    <div style="margin-left:40px;">       
+        <span class="NormalText">@Econocom.Resource.Traduction.Selection_Table </span><br/>
+        @{ Html.RenderAction("GetTablesDeReference","Reference"); }        
+    </div>
+
+</div>

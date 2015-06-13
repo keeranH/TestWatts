@@ -1,0 +1,49 @@
+﻿@model Econocom.Model.ViewModel.UtilisateurSouscriptionViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "ContactTemplate";
+    Layout = "~/Views/Shared/Souscription_Layout/UtilisateurSouscription_Layout.cshtml";
+    
+    <style type="text/css">
+        .wide
+        {
+            width: 200px;
+            height: 10px;
+        }
+
+        .displayedValue {
+            width: 320px;
+            background-color: #EDFFB5;
+            height: 20px;
+        }
+    </style>
+}
+
+
+@section option{
+    <div align="left" style="width: 200px; float: left">
+        <span style="font-size: 1.5em">@Traduction.Utilisateurs</span>
+    </div>
+}
+
+@section UserTable
+{
+    @for (var i = 0; i < 5; i++)
+    {
+        <tr>
+            <td><span style="font-size: 14px; font-weight: bold">User @(i + 1)</span></td>
+
+            <td style="text-align: center">@Html.DisplayFor(x => x.ListeUtilisateurs[i].Nom, Traduction.Nom, new { @class = "wide", @style="height:20px" }) </td>
+
+            <td style="text-align: center"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Prenom, Traduction.Prenom, new { @class = "wide", @style = "height:20px" })</td>
+
+            <td style="text-align: center"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Email, Traduction.AddresseMail, new { @class = "wide", @style = "height:20px" }) </td>
+        </tr>
+    }
+
+}
+
+
+
+

@@ -1,0 +1,82 @@
+﻿@using Econocom.Model.Models.CMS
+@using Page = Econocom.Model.Models.CMS.Page
+@model IEnumerable<Econocom.Model.Models.Benchmark.TypeMail>
+
+@{
+    ViewBag.Title = "Pages";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<script type="text/javascript">
+    $("#main").height('1000px');
+</script>
+
+<div style="border:solid 0px red; width:100%; height:100%;">
+<div id="updateDialog" title="Entrez les données suivantes: "></div>
+
+<script type="text/javascript">
+    
+</script>
+<style>
+    .ui-button-text-only .ui-button-text {
+        padding: 0px;
+        font-size: 0.8em;
+    }
+    
+    #Sujet {
+        width: 500px;
+    }
+</style>
+    <div class="mainDiv" style="width:100%; float:left; height:100%; min-height:1200px;">
+        <h2 class="HeaderTexteH2">Contenu mail</h2>
+        <div style="margin-top:20px;">
+            <table class="contenuMailTable" width="100%">
+                <tr>
+                    <td>
+                        <h2 style="text-align: left; font-size:1.5em; padding:0px;"></h2>
+                    </td>
+                    <td>
+                        <div id="result" style="display:block; height:30px; width:400px;">
+                            &nbsp;
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="width:230px;">
+                        <div id="treeContenuDivPartial" class="treeContenuDiv" style="width:220px; height: 100%; float:left; overflow: auto; ">
+                    
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div style="width: 200px; height: 10px; padding-bottom: 15px; margin-left: 10px;">
+                                        <div style="float: left">@Ajax.ActionLink(@item.LibelleTypeMail, "ModifierContenu", "ContenuMail",
+                                                                                  new
+                                                                                      {
+                                                                                          idTypeMail = @item.Id,
+                                                                                          idLangue = 1
+                                                                                      },
+                                                                                  new AjaxOptions {UpdateTargetId = "contentDivPartial"})
+                                        </div>
+                            
+                                    </div>
+                                }
+                            } 
+                        </div>
+                    </td>
+
+                    <td>                
+                        <div id="contentDivPartial" class="contentDiv" style="width:100%; height: 100%; overflow: auto; border-color:#c0c0c0;border-style:solid;border-width:0px;background-color:#eee;"></div>
+                    </td>
+                </tr>
+            </table>  
+        </div>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B04EE70-1A39-47FA-BCAC-C5E0267D374A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Econocom.Business</RootNamespace>
+    <AssemblyName>Econocom.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Econocom.Business.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.2.2\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSScriptControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Lib\Interop.MSScriptControl.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\iTextSharp.4.1.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.Awesome.Core, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\ValueInjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.6.1\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorPDF">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net40\RazorPDF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CrudService.cs" />
+    <Compile Include="Events\Email\EmailHelper.cs" />
+    <Compile Include="Helpers\ClientHelper.cs" />
+    <Compile Include="Helpers\FileProcessor.cs" />
+    <Compile Include="Login\LoginAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration\RegistrationAction.cs" />
+    <Compile Include="Events\Email\SendEmailEventArgs.cs" />
+    <Compile Include="Events\Email\SendEmailListener.cs" />
+    <Compile Include="Service\BusinessService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Econocom.Data.csproj">
+      <Project>{3961B58F-0778-40DE-B8CD-8D85FD2C8B09}</Project>
+      <Name>Econocom.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Calculateur\Econocom.Calculateur.csproj">
+      <Project>{48005BE3-2E7D-44EA-8222-75D814B9BA78}</Project>
+      <Name>Econocom.Calculateur</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Helper\Econocom.Helper.csproj">
+      <Project>{57F8996C-5DA2-4C1D-94CA-E4401C7833ED}</Project>
+      <Name>Econocom.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Econocom.Resource\Econocom.Resources.csproj">
+      <Project>{AC70D204-0271-4224-B9BB-43709B7CCB90}</Project>
+      <Name>Econocom.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Econocom.Model.csproj">
+      <Project>{441917B4-5B39-4FBD-AACC-5DC5D46F414A}</Project>
+      <Name>Econocom.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Econocom.Security.csproj">
+      <Project>{1116C43B-FE24-4476-B31B-E0837BEEB89E}</Project>
+      <Name>Econocom.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App_Browsers\qt.browser" />
+    <None Include="NLog.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\Interop.MSScriptControl.dll" />
+    <Content Include="Lib\Omu.Awesome.Core.dll" />
+    <Content Include="NuGet.exe" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

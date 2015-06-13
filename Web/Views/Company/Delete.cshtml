@@ -1,0 +1,118 @@
+﻿@model Econocom.Model.Models.Benchmark.Company
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Company</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">RaisonSocial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RaisonSocial)
+    </div>
+
+    <div class="display-label">Address1</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address1)
+    </div>
+
+    <div class="display-label">ComplementAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ComplementAddress)
+    </div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">Country</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Country.Name)
+    </div>
+
+    <div class="display-label">Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Group.Name)
+    </div>
+
+    <div class="display-label">Sector</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sector.Label)
+    </div>
+
+    <div class="display-label">Surname</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surname)
+    </div>
+
+    <div class="display-label">Forename</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Forename)
+    </div>
+
+    <div class="display-label">JobTitle</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JobTitle)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">Mobile</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+
+    <div class="display-label">NumberOfEmployees</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfEmployees)
+    </div>
+
+    <div class="display-label">EmployeeDeviceRatio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeDeviceRatio)
+    </div>
+
+    <div class="display-label">CompanyReturn</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyReturn)
+    </div>
+
+    <div class="display-label">NumberOfSite</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfSite)
+    </div>
+
+    <div class="display-label">AveragePricePerKWatt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AveragePricePerKWatt)
+    </div>
+
+    <div class="display-label">TotalKWattPerYear</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalKWattPerYear)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

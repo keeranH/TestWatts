@@ -1,0 +1,45 @@
+﻿@using Econocom.Resource
+@model Econocom.Model.ViewModel.DeviseViewModel
+
+@{
+    ViewBag.Title = "AjouteDevise";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<div>
+    @using (Html.BeginForm("AjouteDevise", "Devise", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <br/>
+        
+        <div>
+            <span>Libelle Devise</span>
+            <span>@Html.TextBoxFor(model => model.Libelle)</span>
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span>Code Devise</span>
+            <span>@Html.TextBoxFor(model => model.CodeDevise)</span>
+        </div>
+        
+        <br/>
+        
+        <div> 
+            @Html.TextBoxFor(m => m.File, new { type = "file", @style = "width : 250px;"})
+        </div>
+        
+        <br/>
+        
+        <div>
+            <span><input id="submit" name="submit" type="submit" value="Sauvegarder" class="EconocomButton"/></span>
+        </div> 
+    }
+    
+</div>

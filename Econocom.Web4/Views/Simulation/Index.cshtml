@@ -1,0 +1,156 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.SimulationViewModel
+@using Simulation = Econocom.Resource.Traduction
+
+@{
+    ViewBag.Title = Simulation.TitrePgSimulation;
+    Layout = "~/Views/Shared/Maquette/_Layout_Client.cshtml";
+    
+    <style>.ui-state-active { background-color: transparent !important;background-image: none !important;color: white !important;border: none !important;}</style>
+    
+    <style>
+        .ui-widget-header {background-color: transparent !important;background-image: none !important;border: none; color: #83B81A !important;}
+        .ui-icon {background-image: url('@Url.Content("~/Content/images/Button/b_close.png")')!important; display: block !important}
+        .ui-icon-closethick {background-position: 0, 0;}
+        .ui-widget-content {background-color: white !important;background-image: none !important;}
+       .ui-state-error {color: black !important}
+    </style>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      //  console.log("simulation index");
+        hideLoading();
+    });
+    function AfficherPopup(valeur) {
+        var selectedValue = $(valeur).val();
+
+        $.get('/@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName/Simulation/DetailPolitique?politiqueId=' + selectedValue, function (data) {
+            document.getElementById('libellePolitique').innerHTML = data.value.LibellePolitique;
+            document.getElementById('device').innerHTML = data.value.Device;
+            document.getElementById('objectif').innerHTML = data.value.Objectif;
+            document.getElementById('benefice').innerHTML = data.value.Benefice;
+            hideLoading();
+            $('#dialog').dialog({
+                width: 550,
+                height: 500,
+                resizable: false
+            });
+        });
+    }   
+</script>
+
+<div id="dialog" style="display:none">
+    <div style="background-color: white">
+        <div align="left" style="margin-top: -10px;">
+            <img src= "@Url.Content("~/Content/images/Consommation/Simulation/v_choix_simu.png")" alt=""/>
+            <span style="font-size: 30px;">@Simulation.ChoixSimulation</span>
+        </div>
+        
+        <div align="center" style="height: 60px; background-color: #83B81A;">
+            <div id="libellePolitique" style="font-size: 22px; color: white; padding-top: 10px">
+            
+            </div>
+        </div>
+       
+        <br/>
+       
+        <div align="left" style="border-bottom: solid 1px gainsboro; height: 80px">
+            <span style="font-size: 18px">@Simulation.DevicesConcernes</span> 
+            <div id="device">
+                
+            </div>
+        </div>
+        
+        <br/>
+        
+        <div align="left" style="border-bottom: solid 1px gainsboro; height: 80px">
+            <span style="font-size: 18px">@Simulation.Objectif</span> 
+            <div id="objectif">
+                
+            </div>
+        </div>
+        
+        <br/>
+
+        <div align="left" style="height: 80px">
+            <span style="font-size: 18px">@Simulation.Estimation</span>
+            <div id="benefice">
+                
+            </div> 
+            
+        </div>
+    </div>
+</div>
+
+<div style="width: 870px">
+    
+    @using (Html.BeginForm("Index", "Simulation", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div style="float: left; width: 600px; height: 650px;">
+            <br/>
+            <div align="left" style="border-right: solid 1px gainsboro">
+                <div>
+                    <span style="font-size: 25px">@Simulation.CreationSimulation</span>
+                </div>
+                
+                <br/><br/>
+
+                <div>
+                    <span>
+                        <img src="~/Content/images/Simulation/rond_vert2_1.png"/>
+                    </span>
+                    <span style="display: block; margin-top: -35px; margin-left: 50px; font-size: 22px;">@Simulation.ChoixSimulation:</span>
+                    
+                    <br/>
+                    
+                    <span style="font-size: 14px; display: block; width: 580px">
+                        @Simulation.TxtChoixSimulation
+                    </span>
+                    
+                    <br/>
+                    
+                    <span style="display: block; margin-top: 20px">
+                        <span style="color: red;">@ViewBag.ErreurChoixPolitique</span><br />
+                        @Html.DropDownListFor(m => m.PolitiqueId, new SelectList(Model.Politiques, "Id", "LibellePolitique"), Simulation.ChoisirPolitique, new { @onchange = "AfficherPopup(this);", @style = "width: 350px; height: 30px; font-size: 14px;" }) 
+                    </span>
+                </div>
+                
+                <br/><br/>
+                
+                <div style="margin-top: 35px">
+                    <span>
+                        <img src="~/Content/images/Simulation/rond_vert2_2.png"/>
+                    </span>
+                    <span style="display: block; margin-top: -35px; margin-left: 50px; font-size: 22px;">@Simulation.DonnerNomSimulation</span>
+                    
+                    <br/>
+                    
+                    <span style="font-size: 14px; display: block; width: 580px; margin-bottom: 20px">
+                        @Simulation.TxtDonnerNomSimulation
+                    </span>
+                    
+                    <br/>
+                    <span style="color: red;">@ViewBag.ErreurLibelleSimulation</span>
+                    <span style="font-size: 18px; display: block;">@Simulation.NomSimulation</span>
+                    <span style="display: block;">@Html.TextBoxFor(o => o.LibelleSimulation, new { @style = "width: 350px; height: 30px; font-size: 14px;" })</span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div style="float: right; width: 266px; height: 650px;">
+            <div align="center" style="vertical-align: middle; margin-top: 160px">
+                <img src="~/Content/images/Autres/symbol_logo_big.png"/>
+            </div>
+        </div>
+        
+        <div style="width:870px; height:100px; background-color: #377A37 ; text-align: center; margin-bottom: 30px; margin-top: 10px; display: inline-block">
+            <span class="boutonSimulation link" style="display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-left:100px; margin-top:30px; float: right; margin-right: 360px;">
+                <input type="submit" value="@Simulation.Valider" style="text-decoration:none; color:white; font-size: 14px; margin-top: -3px; width: 155px; background-color: transparent"/>
+            </span>
+        </div>
+        
+    }
+</div>

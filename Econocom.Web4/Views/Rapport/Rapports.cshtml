@@ -1,0 +1,26 @@
+﻿@using Econocom.Resource
+@using Econocom.Web4.Controllers.Rapport
+@model Econocom.Model.ViewModel.Report.RapportViewModel
+
+@{
+    ViewBag.Title = @Traduction.TitrePgRapport;    
+}
+
+@{
+    var grid = new WebGrid(canPage: true, rowsPerPage: RapportController.PageSize, canSort: true, ajaxUpdateContainerId: "grid");
+    grid.Bind(Model.Rapports, rowCount: Model.Total, autoSortAndPage: false);
+    grid.Pager(WebGridPagerModes.All);
+    @MvcHtmlString.Create(grid.GetHtml(htmlAttributes: new {id = "grid"},
+                                       columns: grid.Columns(
+                                                   grid.Column(header: string.Format(@Traduction.NomDeLaPersonnalisation, grid.SortColumn == "LibelleRapport" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : "♦"), columnName: "LibelleRapport", style: "libelle"),
+                                                   grid.Column(header: string.Format("{0}Date", grid.SortColumn == "DateDebut" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : "♦"), columnName: "DateDebut", style: "date", format: d => d.DateDebut.ToShortDateString()),
+                                                           grid.Column(header: string.Format(@Traduction.Heure, grid.SortColumn == "HeureCree" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : "♦"), columnName: "HeureCree", style: "heure", format: d => d.HeureCree.ToString("hh\\:mm")),
+                                                    grid.Column(format: @<text>@Html.ActionLink("CSV", "GetRapportPersonnalisation","Rapport", new { id = item.Id },null)  </text>)),
+                                               tableStyle: "webgrid",
+                                               headerStyle: "webgrid-header",
+                                               footerStyle: "webgrid-footer",
+                                               alternatingRowStyle: "webgrid-alternating-row",
+                                               selectedRowStyle: "webgrid-selected-row",
+                                                               rowStyle: "webgrid-row-style").ToString().Replace("♦", "<span class=\"headerSpacingInactive\"></span>").Replace("▼", "<span class=\"headerSpacingActive\"></span>").Replace("▲", "<span class=\"headerSpacingActiveUp\"></span>"))
+    ;
+}

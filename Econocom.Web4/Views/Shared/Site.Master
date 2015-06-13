@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link rel="shortcut icon" href="<%=Url.Content("~/favicon2.ico") %>" type="image/x-icon" />
+    <link id="siteThemeLink" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/<% Html.RenderAction("CurrentTheme", "ChangeTheme"); %>/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Content/Awesome.css")%>" rel="stylesheet" type="text/css" />
+    <%--jquery first jquery.ui after--%>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"
+        type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jquery.form.js")%>" type="text/javascript"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"
+        type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/MicrosoftMvcJQueryValidation.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/Awesome.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/style.js")%>" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+    function enableClientValidation() {
+        var allFormOptions = window.mvcClientValidationMetadata;
+        if (allFormOptions) {
+            while (allFormOptions.length > 0) {
+                var thisFormOptions = allFormOptions.pop();
+                __MVC_EnableClientValidation(thisFormOptions);
+            }
+        }
+    }
+</script>
+    <noscript>
+        <div id="nos">
+            this site works best with javascript allowed
+        </div>
+    </noscript>
+    <div id="top-wrapper" class="ui-state-default">
+        <div id="header" class="container">
+            <div id="hlogo">
+                <a href="<%=Url.Content("~") %>">
+                    <img src='<%=Url.Content("~\\Content\\strawberry.png") %>' alt="logo" />
+                </a>
+            </div>
+            <div class="hmenus">
+                <div class="nav">
+                    <% Html.RenderAction("Index", "Nav"); %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-container">
+        <div id="main" class="maindiv ">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </div>
+    <div id="footer" class="ui-state-default">
+        <div class="maindiv">
+            <div class="changetheme">
+                <% Html.RenderAction("Index", "ChangeTheme"); %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

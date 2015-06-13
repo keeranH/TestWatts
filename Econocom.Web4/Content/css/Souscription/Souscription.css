@@ -1,0 +1,63 @@
+﻿/* ---------------- CSS OF Souscription ---------------------*/
+
+/**--------------------- INDEX 1 -------------------------- **/
+
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {
+      background-color: transparent !important;background-image: none !important;color: black !important;
+ }
+ 
+/*DIV*/
+
+div .TopTitle_Div {
+    border: 1px solid transparent; margin-left: 0px; 
+    /*margin-right: 100px; height: 150px; */
+    text-align: left
+}
+
+div .TopTitle_Div2 {
+    margin-top: 50px;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+    margin-bottom: 15px;
+}
+
+div .SocieteSouscriptionContentDiv {
+    margin-top: 50px;margin-left: auto;margin-right: auto;
+}
+
+div .ErrorMessage_Div {
+    margin-left: 70px; margin-bottom: 25px;
+}
+
+div .Reglement_Div {
+    font-family: sans-serif; font-weight: bold;font-size: 12px; margin-bottom: -20px;
+}
+
+div .Bottom_Content_Div {
+    background-color: #82B81A; width: 870px; height: 100px; margin-bottom: 20px;
+}
+
+div .Bottom_Content_Div_Two {
+    margin-top: 30px
+}
+
+/*SPAN */
+.FirstTitle {
+    font-size: 22px; font-family: sans-serif;
+}
+
+.SecondTitle {
+    font-size: 20px; font-family: sans-serif;
+}
+
+.Message_Error_Span {
+    color: red;
+}
+
+
+/*BUTTON */
+input[type="submit"].Suivant_Button
+{
+    width:172px; margin-top:30px; padding: 0px !important; border-radius: 5px !important;
+}

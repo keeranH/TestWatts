@@ -1,0 +1,30 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+        Bonjour, @User.Identity.Name
+        @using (Html.BeginForm("LogOut", "Admin", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Deconnecter</a>
+        }
+    </text>
+}
+else {
+    <text>
+    @using (Html.BeginForm("Login", "Admin"))
+        {
+        @Html.AntiForgeryToken()
+            <div>
+                <div style="width: 500px;height: 30px;">
+                    <input type="text" name="username"  placeholder="Username"  style="float:left; width:150px;" />
+                    <input type="password" name="password" placeholder="Password" style="float:left; width:150px; margin-left:5px" />
+                    <input type="submit" value="Connecter" style="width: 92px;height:32px; color:white;float:left;  margin-left:5px; background-image:url('/Content/images/Header/b_connexion.png')" />
+                </div>
+                <div style="width: 500px;height: 20px;">
+                    @if (@ViewBag.Erreur!=null)
+                    {
+                        <span style="color:red; float:left; margin-top:-10px;">@ViewBag.Erreur</span>
+                    } 
+                </div>
+            </div>                                               
+        }
+    </text>
+}

@@ -1,0 +1,20 @@
+﻿@using Econocom.Resource; 
+@model Econocom.Model.ViewModel.CMS.ContenuModereViewModel
+
+@{
+    Layout = null;
+    ViewBag.Title = @Traduction.TitrePgTermesEtConditions;
+}
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <link href="@Url.Content("~/Content/css/Maquette/Maquette.css")" rel="stylesheet" type="text/css"/>
+    </head>
+    
+    <body>
+        @Html.Raw(@Model.Contenu)
+    
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Econocom.Model.ViewModel.CMS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SectionViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdParent" type="xs:int" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SectionViewModel" nillable="true" type="tns:SectionViewModel" />
+  <xs:complexType name="PageViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdSection" type="xs:int" />
+      <xs:element minOccurs="0" name="LienRelatif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PageViewModel" nillable="true" type="tns:PageViewModel" />
+</xs:schema>

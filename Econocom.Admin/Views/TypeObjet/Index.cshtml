@@ -1,0 +1,40 @@
+﻿@model Econocom.Model.ViewModel.ReferenceViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Administration Objets</h2>
+
+
+<div class="mainDiv" style="width:100%; float:left;">
+    <table width="100%">
+        <tr>
+            <td valign="top">
+                <div style="width:300px; float:left">
+                    
+                    @foreach (var item in Model.Entitees)
+                    {
+                        <br/>
+                        @Html.ActionLink("s", "Detailles", "TypeObjet")
+
+                        @*@Ajax.ActionLink(@item.NomObjet, "AfficherObjet", "TypeObjet",
+                         new
+                         {
+                             nomObjet = @item.NomObjet
+                         },
+                         new AjaxOptions { UpdateTargetId = "contentDivPartial" })
+                         *@
+
+                    }
+                      
+                </div>
+           </td>
+
+            <td>
+                <div id="contentDivPartial" class="contentDiv" style="width:700px"></div>
+            </td>
+        </tr>
+    </table>  
+</div>

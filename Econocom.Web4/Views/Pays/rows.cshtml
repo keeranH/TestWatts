@@ -1,0 +1,35 @@
+@model System.Collections.Generic.IEnumerable<Econocom.Model.Models.Benchmark.Pays>
+@using Econocom.Web4.Controllers.Reference
+
+
+@foreach (var o in Model)
+   {
+<tr id='o@(o.Id)'>
+    <td>
+        @o.LibellePays
+    </td>
+    <td>
+        @o.CoefficientConversion
+    </td>
+    <td>
+        @o.DateDebut
+    </td>
+    <td>
+        @o.DateFin
+    </td>
+    <td>
+       
+    </td>   
+    <td>
+       
+    </td>
+    <td>
+        @(Html.PopupFormActionLink<PaysController>(a => a.Edit(o.Id), htmlAttributes: new { @class = "abtn" }))
+    </td>
+    <td>
+        <form method="post" action="@Url.Action("Delete",new{o.Id})" class="fconfirm">
+        <input type="submit" value="delete" class="confirm" />
+        </form>
+    </td>
+</tr>
+}

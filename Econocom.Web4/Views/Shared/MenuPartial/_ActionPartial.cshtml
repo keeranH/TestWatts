@@ -1,0 +1,107 @@
+﻿<nav>    
+    <div>
+        <ul class="actionsubmenu@{ @ViewBag.UserType }">
+            <li class="actionmenulistitem"><div class="action"><a id="actionLink" class="actionLinkInactive">@Econocom.Resource.Traduction.Actions</a></div>
+                <ul class="actionsubmenulist" id="actionMenu">                    
+                    @if (@ViewBag.UserType == "Simulation")
+                    {
+                        if (@ViewBag.TypeContact == "Admin")
+                        {
+                            <li style="display: block; height: 40px;">
+                                <div>
+                                    <span class="actionIcon genererRapport"></span>
+                                    <span><a href='@Url.Action("GenererRapportSimulation", "Simulation", new {idFamille = @ViewBag.IdParent, idCategorie = @ViewBag.CurrentCategorieId })' class="link boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.GenererRapport</span></a></span>                                              
+                                </div>
+                            </li>
+                        }
+                        <li style="display: block; height: 40px;">
+                            <div>
+                                <span class="actionIcon nouvelleSimulation"></span>
+                                <span ><a href="@Url.Action("CreationNouvelleSimulation", "Simulation")" class="link boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.NouvelleSimulation</span></a></span> 
+                            </div>
+                        </li>
+                        if (!false.Equals(ViewData["imprimer"]))
+                        {
+                            <li style="display: block; height: 40px;">
+                                <div>
+                                    <span class="actionIcon imprimer"></span>
+                                    <span ><a href="#" onclick="printDiv();" class="boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.Imprimer</span></a></span>                                              
+                                </div>
+                            </li>
+                        }       
+                        <li style="display: block; height: 40px;">
+                            <div>
+                                <span class="actionIcon visualiser"></span>
+                                <span ><a href="@Url.Action("ResultatSimulation", "Consommation")" class="link boutonPayant whiteLink"> <span class="whiteLink">@Econocom.Resource.Traduction.VisualiserGraphe</span></a></span> 
+                            </div>
+                        </li>                
+                        <li style="display: block; height: 40px;" >
+                            <div>
+                                <span class="actionIcon enregistrer"></span>                               
+                                <span ><a href='javascript:SauvegarderModification(@(ViewBag.CurrentFamilleId == null ? "null" : ViewBag.CurrentFamilleId), @(ViewBag.CurrentCategorieId == null ? "null" : ViewBag.CurrentCategorieId), @(ViewBag.ModificationQty == null ? "null" : ViewBag.ModificationQty));' class="link boutonPayant whiteLink"> <span class="whiteLink">@Econocom.Resource.Traduction.Enregistrer</span></a></span> 
+                            </div>
+                        </li>                                               
+                    }
+                    else if (@ViewBag.UserType == "Payant")
+                    {
+                        if (@ViewBag.TypeContact == "Admin")
+                        {
+                            <li style="display: block; height: 40px;">
+                                <div>
+                                    <span class="actionIcon genererRapport"></span>
+                                    <span><a href='@Url.Action("GenererRapportPersonnalisation", "Consommation", new { idFamille = @ViewBag.IdParent, idCategorie = @ViewBag.CurrentCategorieId, modificationQty = @ViewBag.ModificationQty })' class="link boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.GenererRapport</span></a></span>                                              
+                                </div>
+                            </li>
+                        }
+
+                        if (!false.Equals(ViewData["imprimer"]))
+                        {
+                            <li style="display: block; height: 40px;">
+                                <div>
+                                    <span class="actionIcon imprimer"></span>
+                                    <span ><a href="#" onclick=" printDiv(); " class="boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.Imprimer</span></a></span>                                              
+                                </div>
+                            </li>
+                        }                                                
+                        <li style="display: block; height: 40px;">
+                            <div>
+                                <span class="actionIcon visualiser"></span>
+                                <span ><a href="@Url.Action("Index", "Consommation", new { id = HttpContext.Current.Session["idClient"] })" class="link boutonPayant whiteLink"> <span class="whiteLink">@Econocom.Resource.Traduction.VisualiserGraphe</span></a></span> 
+                            </div>
+                        </li> 
+                        <li style="display: block; height: 40px;" >
+                            <div>
+                                <span class="actionIcon enregistrer"></span>                               
+                                <span ><a href='javascript:SauvegarderModification(@(ViewBag.CurrentFamilleId == null ? "null" : ViewBag.CurrentFamilleId), @(ViewBag.CurrentCategorieId == null ? "null" : ViewBag.CurrentCategorieId), @(ViewBag.ModificationQty == null ? "null" : ViewBag.ModificationQty));' class="link boutonPayant whiteLink"> <span class="whiteLink">@Econocom.Resource.Traduction.Enregistrer</span></a></span> 
+                            </div>
+                        </li>                        
+                    }
+                    else if (@ViewBag.UserType == "Demo")
+                    {
+                        <li style="display: block; height: 40px;">
+                            <div>
+                                <span class="actionIcon genererRapport"></span>
+                                <span><a disabled="disabled" class="boutonPayantDisabled whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.GenererRapport</span></a></span>                                              
+                            </div>
+                        </li>
+                        if (!false.Equals(ViewData["imprimer"]))
+                        {
+                            <li style="display: block; height: 40px;">
+                                <div>
+                                    <span class="actionIcon imprimer"></span>
+                                    <span ><a href="#" onclick=" printDiv();" class="boutonPayant whiteLink"><span class="whiteLink">@Econocom.Resource.Traduction.Imprimer</span></a></span>                                              
+                                </div>
+                            </li>
+                        }			                                   			            
+                        <li style="display: block; height: 40px;" >
+                            <div>
+                                <span class="actionIcon enregistrer"></span>                               
+                                <span ><a disabled="disabled" class="boutonPayantDisabled whiteLink"> <span class="whiteLink">@Econocom.Resource.Traduction.Enregistrer</span></a></span> 
+                            </div>
+                        </li>               
+                    }	       			       	           						           
+                </ul>
+            </li>					
+        </ul>
+    </div>                
+</nav>  

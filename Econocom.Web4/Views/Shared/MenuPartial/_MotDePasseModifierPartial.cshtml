@@ -1,0 +1,58 @@
+﻿@model Econocom.Model.ViewModel.MotDePasseModifierViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = "";
+    <link href="@Url.Content("~/Content/css/Home/Home.css")" rel="stylesheet" type="text/css"/>
+    <style>.ui-state-error, .ui-state-error, .ui-state-error { background-color: transparent !important;background-image: none !important;color: black !important;}</style> 
+    <style>
+    .ui-dialog {
+        position: absolute !important;
+        top: 0px !important;        
+        max-width: 400px;
+        max-height: 400px;    
+        height: 400px;   
+    }
+    #pfindexmotdepasse {
+         height: 300px; 
+          max-height: 300px;         
+    }
+</style> 
+}
+
+
+<div align="left" style="border-bottom: solid 1px gainsboro; height: 30px; margin-bottom: 10px">
+    <span style="display: block; font-size: 22px; color: #82b81a">@Traduction.ModifierMotDePasse</span>
+</div>
+
+@using (Html.BeginForm("ModifierMdp", "MotDePasse"))
+{
+    @Html.AntiForgeryToken()
+    <div id="divModifierMdp" align="center" style="margin-top: 10px">
+        @if (@ViewBag.ErrorMessage != "")
+        {
+            <span class="erreurSpan">@ViewBag.ErrorMessage</span>
+        }
+        
+        @Html.HiddenFor(m => m.IdContact)
+        @Html.HiddenFor(m => m.IdQuestion)
+
+        <div align="left">
+            <span class="libelle">@Html.DisplayFor(model => Model.Question.LibelleQuestion) *</span>
+            @Html.TextBoxFor(model => Model.ReponseSaisie, new { @class = "txtbox" })
+        </div>
+        <div align="left" >
+            <span class="libelle">@Traduction.AncientMotDePasse *</span>
+            @Html.PasswordFor(model => Model.AncientMotDePasse, new { @class = "txtbox" })
+        </div>
+        <div align="left">
+            <span class="libelle">@Traduction.NouveauMotDePasse *</span>
+            @Html.PasswordFor(model => Model.NouveauMotDePasse, new { @class = "txtbox" })
+        </div>
+       <div align="left">
+            <span class="libelle">@Traduction.ConfirmerMotDePasse *</span>
+            @Html.PasswordFor(model => Model.ConfirmerMotDePasse, new { @class = "txtbox" })
+        </div>
+
+    </div>
+}

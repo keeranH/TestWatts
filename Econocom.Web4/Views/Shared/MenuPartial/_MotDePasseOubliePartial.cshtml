@@ -1,0 +1,115 @@
+﻿@model Econocom.Model.ViewModel.MotDePasseOublieViewModel
+@using Econocom.Resource;
+
+@{
+    Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    Response.AppendHeader("Pragma", "no-cache");
+    Response.AppendHeader("Expires", "0");     
+}
+
+@{
+    ViewBag.Title = "_MotDePasseOublie";
+    
+    <style>.ui-state-error, .ui-state-error, .ui-state-error { background-color: transparent !important;background-image: none !important;color: black !important;}</style>
+     <style>
+    .ui-dialog {
+        position: absolute !important;
+        top: 0px !important;
+       height: 350px;  
+        max-width: 400px;        
+        max-height: 350px;        
+    }
+    #pfindexmotdepasse {
+         height: 250px; 
+          max-height: 250px;         
+    }
+</style> 
+}
+
+
+<style type="text/css">
+
+    .txtField {
+        width: 100px!important;
+        margin-right: 3px;
+        text-align:right;
+    }
+    
+    .txtField1 {
+        width: 100px!important;
+        text-align:right;
+    }
+    
+    .drpdwn {
+        width: 250px;
+    }
+    
+    .txtbox {
+        width: 250px;
+    }
+    .percent {
+        width: 80px!important;
+        text-align:right;
+    }
+    .mainTitle {
+        font-size: 22px;
+    }
+    
+    .subTitle {
+        font-size: 20px;
+        color: #82b81a;
+    }
+    
+    .titre {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .borderTopBottom {
+        border-top: solid 1px gainsboro;
+        border-bottom: solid 1px gainsboro;
+        
+    }
+    
+</style>
+
+<div align="left" style="border-bottom: solid 1px gainsboro; height: 30px; margin-bottom: 10px">
+    <span style="display: block; font-size: 22px; color: #82b81a">@Traduction.ConfigurerMotDePasse</span>
+</div>
+
+@using (Html.BeginForm("EnvoyerMdp", "MotDePasse"))
+{
+    @Html.AntiForgeryToken()
+    <div id="divOublieMdp" align="center">
+        
+        @if (@ViewBag.ErrorMessage != "")
+        {
+            <span class="erreurSpan">@ViewBag.ErrorMessage</span>
+        }
+        
+        <br/>
+
+        <div align="left">
+            <span class="libelle">@Traduction.QuestionSecrete *</span>
+            @if (Model.Questions.Count > 0)
+            {
+                @Html.DropDownListFor(m => m.Question.Id, new SelectList(Model.Questions, "Id", "LibelleQuestion", Model.Questions.First().Id), new { @class = "drpdwn" })
+            }
+        </div>
+        
+        <br/>
+
+        <div align="left">
+            <span class="libelle">@Traduction.Reponse *</span>
+            @Html.TextBoxFor(model => Model.ReponseSaisie, new { @class = "txtbox" })
+        </div>
+        
+        <br/>
+
+        <div align="left">
+            <span class="libelle">@Traduction.Email *</span>
+            @Html.TextBoxFor(model => Model.EmailSaisi, new { @class = "txtbox" })
+        </div>
+
+    </div>
+}

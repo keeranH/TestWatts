@@ -1,0 +1,18 @@
+﻿@model Econocom.Model.Models.CMS.ContenuModere
+ 
+@using (Html.BeginForm("ActualiserContentu", "Section", FormMethod.Post))
+{
+    <div>
+        @if (Model != null)
+        {
+            @Html.HiddenFor(model => model.IdContenuModere)
+            @Html.Raw(ViewBag.Editor)
+        }
+    </div>
+
+    <p>
+        <input type="submit" value="Edit" />
+    </p>
+}      
+
+    

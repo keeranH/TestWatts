@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+
+<body>
+   
+   @RenderBody()
+   @foreach (var item in (IEnumerable<KeyValuePair<int, string>>) ViewBag.PublishedContents)
+   {
+       <div>
+           @if (item.Key == 1)
+           {
+               @item.Value
+           }
+       </div>
+       
+       <div>
+            @if (item.Key == 2)
+            {
+                @item.Value
+            }
+        </div>
+   }
+
+    @*<div id="Content1" style="height:40px;color: black;"> @RenderSection("Content1", required: false)</div>*@
+                       
+</body>
+</html>

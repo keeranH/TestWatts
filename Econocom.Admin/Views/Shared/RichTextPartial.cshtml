@@ -1,0 +1,57 @@
+﻿@model Econocom.Model.ViewModel.CMS.ContenuModereViewModel
+
+
+@using (Ajax.BeginForm("ActualiserContentu", "Section", FormMethod.Post, new AjaxOptions { UpdateTargetId = "result" }))
+{
+    <div style="width:900px; height:100%; border:solid 0px red;">
+        <div style="width:100%; margin-bottom:10px;">
+            <div style="width:170px; float:left; padding:5px;">@Html.Label("Choisir une langue: ")</div> 
+            <div style="padding-top:5px;"> @Html.DropDownListFor(m => m.LangueId, new SelectList(Model.ListeLangues, "Id", "Nom", Model.ListeLangues.First().Id), new { @onchange = "compute('" + Model.Page.Nom + "','" + Model.Page.Lien + "',this.value, " + Model.Page.Id + ")" }) </div>
+        </div>
+               
+                                             
+        <div style="width:900px; height:100%; border:solid 0px yellowgreen;">
+            @if (Model != null)
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.PageId)
+
+                @Html.EditorFor(model => model.Contenu)
+                @Html.Raw(ViewBag.Editor)
+            }
+        </div>
+
+        <p style="margin-left:20px;">
+            <input type="submit" value="Sauvegarder" class="EconocomButton"/>
+        </p>
+    </div>
+}      
+
+<script type="text/javascript">
+   
+    function compute(nomDePage, lien, idLangue, idPage) {
+        $('#result').empty();
+        $.ajax({
+            url: '/Section/ModifierPage',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ nomDePage: nomDePage, lien: lien, idLangue: idLangue, idPage: idPage }),
+            success: function (data) {
+                $('#contentDivPartial').empty().html(data);
+                /*if (result) {
+                //location.href = result.Url;
+                $("#contentDivPartial").load(result);
+                }
+                else {
+                location.href = result.Url;
+                }*/
+            }
+        });
+
+    }
+   
+    $(document).ready(function () {
+        $('#Contenu_ifr').addClass('texteditor');
+    });
+</script> 
+    

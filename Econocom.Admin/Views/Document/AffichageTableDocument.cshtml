@@ -1,0 +1,151 @@
+﻿@using Econocom.Admin.Controllers.GestionLangue
+@using Econocom.Resource
+@model Econocom.Model.ViewModel.DocumentViewModel
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .webgrid-header th
+    {
+        font-family:"sans-serif";         
+        font-size:15px;
+        padding-right: 10px;   
+        padding: 0px;
+        padding-bottom: 10px;
+        font-family: sans-serif;   
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;   
+        border-right: solid 1px #535353;
+        padding-left: 10px;
+        background-color: yellowgreen;   
+        height: 20px;
+        font-weight: bold;
+    }
+
+    .webgrid-row-style td, .webgrid-alternating-style td {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .webgrid-alternating-row td{   
+         padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    .webgrid-alternating-row 
+    {
+        background-color: #eeeeee;        
+    }
+
+    .webgrid-row-style {
+        background-color: white;     
+    }
+
+    .webgrid-footer {
+        padding-top: 30px;
+        border-top: solid 1px black;
+    }
+
+    .webgrid-footer td{
+        padding-top: 10px;
+    }
+
+    .headerSpacingActive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingActiveUp {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingInactive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+    }
+    
+    .ui-widget-header 
+    {
+        background-image: none !important;
+        background-color: yellowgreen !important;
+    }
+</style>
+
+@*@using (Html.BeginForm("Detailles","TypeObjet"))
+{
+    @Html.AntiForgeryToken()
+    if (Model.TypeObjets != null)
+    {
+        @Html.DropDownListFor(m => m.Id, new SelectList(Model.TypeObjets, "Id", "NomTable"), new { style = "height: 35px"})
+         <input type="submit" value="Consulter" class="EconocomButton"/>
+    }
+}*@
+
+@*<div>
+    <table width="100%" style="border: 1px solid black">
+        <thead>
+            <th>Nom</th>
+            <th>Date Création</th>
+            <th>Date Fin</th>
+            <th>Date Modif</th>
+
+        </thead>
+        
+        
+             @foreach (var item in Model.ListeDocuments)
+             {
+                 <tr>
+                     <td>@Html.CheckBox("Id", new { value = item.Id})</td>
+                     <td>@Html.DisplayFor(model=> item.Nom)</td> 
+                     <td>@Html.DisplayFor(model=> item.DateCreation)</td> 
+                     <td>@Html.DisplayFor(model=> item.DateFin)</td> 
+                     <td>@Html.DisplayFor(model=> item.DateModification)</td> 
+                     <td> @Html.ActionLink("Supprimer", "Supprimer", new{docId=item.Id})</td>
+                     <td> @Html.ActionLink("Telecharger", "Telecharger", new{docId=item.Id})</td>
+                 </tr>
+                 }
+            
+    </table>
+
+</div>*@
+
+@using (Ajax.BeginForm("GetTableDeDocument", "Document", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+{
+    <div id="resultat">
+        @{
+            var grid = new WebGrid(canPage: true, rowsPerPage: DocumentController.PageSize, canSort: true, ajaxUpdateContainerId: "grid");
+            grid.Bind(Model.ListeDocuments, rowCount: @ViewBag.Total, autoSortAndPage: false);
+            grid.Pager(WebGridPagerModes.All);
+            @MvcHtmlString.Create(grid.GetHtml(htmlAttributes: new {id = "grid"},
+                                               columns: grid.Columns(
+                                                grid.Column(columnName: "Nom"),
+                                                grid.Column(columnName: "DateCreation"),
+                                                grid.Column(columnName: "DateModification"),
+                                                grid.Column(format: @<text>@Html.ActionLink("Supprimer", "Supprimer", "Document", new { docId = item.Id }, new { @class = "EconocomButton" })  </text>),
+                                                grid.Column(format: @<text>@Html.ActionLink(Traduction.Telecharger, "Telecharger", "Document", new { docId = item.Id }, new { @class = "EconocomButton" })  </text>)),
+
+                                               tableStyle: "webgrid",
+                                               headerStyle: "webgrid-header",
+                                               footerStyle: "webgrid-footer",
+                                               alternatingRowStyle: "webgrid-alternating-row",
+                                               selectedRowStyle: "webgrid-selected-row",
+                                               rowStyle: "webgrid-row-style").ToString())
+            ;
+        }
+    </div>
+}

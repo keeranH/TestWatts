@@ -1,0 +1,87 @@
+﻿@model Econocom.Model.ViewModel.UtilisateurSouscriptionViewModel
+
+@{
+    ViewBag.Title = "ContactTemplate";
+    Layout = "~/Views/Shared/Souscription_Layout/UtilisateurSouscription_Layout.cshtml";
+    
+    
+        <style type="text/css">
+        .wide
+{
+     width: 200px;
+            height: 10px;
+}
+
+.displayedValue {
+    width: 320px;
+    background-color: #EDFFB5;
+    height: 20px;
+}
+
+    </style>
+    
+}
+
+
+@section option{
+
+ <div align="left" style="width: 200px; float: left">
+        
+       <span style="font-size: 1.5em"> Les utilisateurs</span>
+    </div>
+@*    <div style="width: 300px">
+
+    @Ajax.ActionLink("Modifier", "UtilisateurInput", "Souscription",
+                      new
+                      {
+
+                      },
+                      new AjaxOptions { UpdateTargetId = "UtilisateurContentDiv" })
+                      
+                      </div>*@
+ 
+
+}
+
+@section UserTable
+{
+
+    @*  @for (var i = 0; i < 5; i++)
+    {
+        
+
+            <tr>
+                <td style="">User @(i + 1)</td>
+
+                <td><div style="background-color: #EDFFB5; width:215px; height: 20px">@Html.DisplayFor(x => x.ListeUtilisateurs[i].Nom, new {@class = "wide", disabled = "true"})</div></td>
+
+                <td><div style="background-color: #EDFFB5; width:215px; height: 20px"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Prenom, new { @class = "wide", disabled = "true" })</div></td>
+
+                <td><div style="background-color: #EDFFB5; width:215px; height: 20px"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Email, new { @class = "wide", disabled = "true" })</div> </td>
+            </tr>
+        
+
+    }*@
+    
+        @for (var i = 0; i < 5; i++)
+       {
+          
+        
+            <tr>
+                <td><span style="font-size: 14px; font-weight: bold">User @(i + 1)</span></td>
+
+                <td style="text-align: center">@Html.DisplayFor(x => x.ListeUtilisateurs[i].Nom, new { @class = "wide", @style="height:20px" }) </td>
+
+                 <td style="text-align: center"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Prenom, new { @class = "wide", @style = "height:20px" })</td>
+
+                 <td style="text-align: center"> @Html.DisplayFor(x => x.ListeUtilisateurs[i].Email, new { @class = "wide", @style = "height:20px" }) </td>
+            </tr>
+
+
+        }
+
+}
+
+
+
+

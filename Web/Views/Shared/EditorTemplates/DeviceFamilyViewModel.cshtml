@@ -1,0 +1,15 @@
+﻿@using Econocom.Model.ViewModel
+@using Web.Extension
+@model Econocom.Model.ViewModel.DeviceFamilyViewModel
+               
+<div data-role="collapsible" class="ui-collapsible-heading" id="my-collaspible1" data-theme="b" data-content-theme="d">
+    @Html.HiddenFor(modelItem => Model.Id) 
+    <h3>@Html.DisplayFor(modelItem => Model.Label)</h3>
+    @if (Model != null && Model.ViewModelDeviceCategories != null)
+    {
+        @Html.EditorFor(modelItem => Model.ViewModelDeviceCategories)                 
+    }                                                    
+</div>
+
+            
+          

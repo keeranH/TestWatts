@@ -1,0 +1,162 @@
+﻿@if (true.Equals(ViewData["familleCategorie"]))
+{
+    if (@ViewBag.TypeAffichage == "ShowWatt")
+    {
+        <a class="link" href="@Url.Action("ShowPrix", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowWatt", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">          
+            <div class="mesure activeWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowCO2", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+    else if (@ViewBag.TypeAffichage == "ShowCO2")
+    {
+        <a class="link" href="@Url.Action("ShowPrix", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowWatt", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>   
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowCO2", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+    else if (@ViewBag.TypeAffichage == "ShowPrix")
+    {
+        <a class="link" href="@Url.Action("ShowPrix", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowWatt", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial"   >
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>   
+        </a>
+                
+        <a class="link" href="@Url.Action("ShowCO2", "Consommation", new { typeObjet = ViewBag.TypeObjet, idParent = ViewBag.IdParent })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+}
+else if (true.Equals(ViewData["modification"]))
+{
+    if (@ViewBag.TypeAffichage == "ShowWatt")
+    {
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowPrix" })"
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>  
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">          
+            <div class="mesure activeWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>                                        
+    }            
+    else if (@ViewBag.TypeAffichage == "ShowCO2")
+    {
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowPrix" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>   
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">          
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a> 
+    }            
+    else if (@ViewBag.TypeAffichage == "ShowPrix")
+    {
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowPrix" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial"   >
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = ViewBag.IdParent, typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+}
+else if (true.Equals(ViewData["simulation"]))
+{
+    if (@ViewBag.TypeAffichage == "ShowWatt")
+    {
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowPrix" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">          
+            <div class="mesure activeWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+    else if (@ViewBag.TypeAffichage == "ShowCO2")
+    {
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowPrix" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+    else if (@ViewBag.TypeAffichage == "ShowPrix")
+    {
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowPrix" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure activeCost-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowWatt" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveWatt-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+                
+        <a class="link" href="@Url.Action("AfficherResultatSimulation", "Consommation", new { typeAffichage = "ShowCO2" })" 
+            data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+            <div class="mesure inactiveCO2-@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName"></div>
+        </a>
+    }
+}

@@ -1,0 +1,62 @@
+﻿@model Econocom.Model.ViewModel.ContactViewModel
+@using Econocom.Web4.Extension
+@using ContactResources = Econocom.Resource.Traduction
+               
+
+
+ @using (Html.BeginCollectionItem("Contacts"))
+ {
+     <div id="majorDiv"  style="width: 1150px; min-height: 250px;">
+         
+          <div style="width: 300px;"><legend>CONTACT DETAILS</legend></div>
+         <div id="accountInfo" style="float: left; min-width:200px;min-height:250px;">
+        
+           
+             <div id="addCustomerSurname" class="registrationClientFieldDiv" >
+
+                 @Html.EditorFor(model => model.NomContact,ContactResources.Surname)
+             
+             </div>
+
+
+
+             <div id="addCustomerForename" class="registrationClientFieldDiv">
+                 @Html.EditorFor(model => model.PrenomContact, ContactResources.Forename)
+           
+             </div>
+
+             <div id="addCustomerPhone" class="registrationClientFieldDiv">
+                 @Html.EditorFor(model => model.NumeroPhone, ContactResources.Phone)
+               
+             </div>
+
+             
+
+         </div>
+
+     
+         <div id="personalInfo" style="float: left;min-width:420px;min-height:200px;">
+         
+         <div id="addCustomerMobile" class="registrationClientFieldDiv">
+                 @Html.EditorFor(model => model.NumeroGSM, ContactResources.Mobile)
+           
+             </div>
+
+             <div id="addCustomerJobTitle" class="registrationClientFieldDiv">
+                 @Html.EditorFor(model => model.Fonction, ContactResources.JobTitle)
+               
+             </div>
+
+             <div id="addCustomerEmail" class="registrationClientFieldDiv">
+                 @Html.EditorFor(model => model.Email,ContactResources.Email)
+             
+             </div>
+
+         </div>
+
+     </div>
+ }
+
+   
+       
+

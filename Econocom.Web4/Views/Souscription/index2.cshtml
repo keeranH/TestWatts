@@ -1,0 +1,105 @@
+﻿@model List<Econocom.Model.Models.Benchmark.Tarif>
+@using Econocom.Resource;
+           
+@{
+    ViewBag.Title = @Traduction.TitrePgTarif;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+    <link href="@Url.Content("~/Content/css/Souscription/Souscription_Two.css")" rel="stylesheet" type="text/css"/>
+
+    var tarifId = 0;
+}
+
+<script type="text/javascript">
+    function UpdateSuccess(data) {
+        document.getElementById('d1').innerHTML = data;
+    }
+
+    var id;
+    function test() {
+        id = $('input[type=radio]:checked').val();
+        $.ajax({
+            url: '/@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName/Souscription/index_two',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ tarifId: id }),
+        });
+    }
+    
+    function checkRadio() {
+        var radios = document.querySelectorAll('.radioButtonTarif');
+        var flag = 0;
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                flag += 1;
+            } else {
+                flag += 0;
+            }
+        }
+        if (flag > 0) {
+            location.href = 'Validation';
+        } else {
+            document.getElementById("Message_Erreur").style.visibility = "visible";
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+    }
+</script>
+    
+    
+<div align="center" class="ContentTwo_Div">
+    <div align="center" style="border: solid 1px white">
+        <div class="Content_Two_Div_Title" style="text-align: left; margin-left: 100px">
+            <span class="First_Title_Span">@Traduction.DemandeSouscription <b>@Traduction.TitreWattsGreen</b></span><br/>
+            <span class="Second_Title_Span">@Traduction.ChoisirTarif</span>
+        </div>
+        <div id="Message_Erreur" class="Message_Erreur_Div">@Traduction.MsgErreurTarif</div>
+    </div>
+
+    <br/>
+
+    <div class="Main_Content_Div">
+        <div class="Top_Content_Div">
+            <div class="Numero_Vert_Div"><img src="~/Content/images/Numero_Rond/rond_5.png"/></div>
+            <div class="Sub_Title_Div" align="left"><span class="Tarif_annuel_span">@Traduction.TarifAbonnement</span></div>
+        </div>
+        
+        <div>
+            <table>
+                <thead>
+                    <th class="Table_Header_One"></th>            
+                    <th class="Table_Header_Other">@Traduction.NombreEquipement</th>
+                    <th class="Table_Header_Other">@Traduction.TarifAnnuel</th>
+                    <th class="Table_Header_Other">@Traduction.VotreChoix</th>
+                </thead>
+                <tbody>
+                    @{int i = 0;}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="Td_White_Back">@Html.DisplayFor(modelItem => item.LibelleTarif)</td>
+                            <td class="Td_Gray_Back">@Traduction.De @Html.DisplayFor(modelItem => item.NbreMinDevice) @Traduction.A @Html.DisplayFor(modelItem => item.NbreMaxDevice)</td>
+                            <td class="Td_Yellow_Back">@Html.DisplayFor(modelItem => item.TarifAnnuel) @Traduction.HT</td>
+                            <td class="Td_Gray_Back">@Html.RadioButtonFor(modelItem => item.LibelleTarif, item.Id, new { @onchange = "test();", @class = "radioButtonTarif" })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="Number_Six_Content_Div">
+            <div class="Number_Six_Div_One">
+                <div class="Rond_Six_Div"><img src="~/Content/images/Numero_Rond/rond_6.png" /></div>
+                <div class="Facture_Div" align="left"><span class="Facture_Span">@Traduction.ReglementFacture</span></div>
+            </div>
+        
+            <div class="Reglement_Message_Div" align="left">
+                @Traduction.MsgReglement
+            </div>
+        </div>
+    </div>
+    
+    <div class="Submit_Button_Holder_Div">
+        <div class="Button_Holder_Div">
+            <input class="Suivant_Button boutonPayant link" type="button" value="@Traduction.Suivant" onclick="checkRadio()" style="border: 0px solid transparent; "/>
+        </div>
+    </div>
+</div>

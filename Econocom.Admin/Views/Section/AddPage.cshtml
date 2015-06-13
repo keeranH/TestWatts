@@ -1,0 +1,94 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.CMS.PageViewModel
+@{
+
+    ViewBag.Modeles = Model.Modeles;
+    <link href="@Url.Content("~/Content/css/Section/Section.css")" rel="stylesheet" type="text/css"/>
+}
+
+@using (Ajax.BeginForm("AddPage", "Section", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    OnSuccess = "updateSuccess"
+}, new { @id = "updateForm" }))
+{
+    @Html.ValidationSummary(true)
+    <div id="update-message" class="error" ></div>
+    <fieldset>
+        <legend>Page</legend>
+            @Html.HiddenFor(m => m.SectionId)
+            @Html.HiddenFor(m => m.Id)
+            
+        <div class="TitleContenuDiv" >
+            <div class="ContainerOne">
+                @Html.LabelFor(m => m.Nom,  new {  @class="ContainerLabel"})
+            </div>
+            
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Nom, new { @class="NameTextBox"})
+                @Html.ValidationMessageFor(m => m.Nom)
+            </div>
+
+
+        </div>
+        
+        <div class="TitleContenuDiv">
+            <div class="ContainerOne">
+                @Html.LabelFor(m => m.Lien, new { @class = "ContainerLabel" })
+            </div>
+            
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Lien, new { @class = "LienRelatifTextBox" })
+                @Html.ValidationMessageFor(m => m.Lien)
+            </div>
+        
+        </div>
+        
+        <div class="TitleContenuDiv">
+            
+            <div class="editor-field">
+                <div class="ContainerTwo">
+                    <div class="RadioSectionContent">@Html.LabelFor(m => m.Actif, new { @class = "ContainerLabel" })</div>
+                    <div class="RadioSectionContent">:</div>
+                </div>
+
+                <div class="ContainerTwo">
+                    <div class="RadioSectionContent" > @Html.Label("Vrai", new { @class = "ContainerLabel" })</div>
+                    <div class="RadioSectionContent">@Html.RadioButtonFor(x => x.Actif, true, new {  @class = "RadioContent" })</div>  
+                </div>
+                
+                <div class="ContainerTwo">
+                    <div class="RadioSectionContent">  @Html.Label("Faux", new { @class = "ContainerLabel" })</div>
+                    <div class="RadioSectionContent">@Html.RadioButtonFor(x => x.Actif, false, new { @class = "RadioContent" })</div>  
+                </div>
+
+                <div>
+                    @Html.ValidationMessageFor(m => m.Actif)
+
+                </div>
+            </div>
+        </div>
+        
+        @*
+        <div class="TitleContenuDiv">
+            <div class="editor-field">
+                <div class="ContainerTwo">
+                    <div class="ContainerTwo">    @Html.LabelFor(model => model.IdModele, "Modele", new { style = "font=family:sans-serif; font-size:16px" })</div>
+                </div>
+
+                <div class="ContainerTwo">
+                    <div class="ContainerTwo">
+                        @Html.DropDownList("IdModele", new SelectList(ViewData["IdModele"] as IEnumerable, "IdModele", "Nom", Model.IdModele))
+                    </div>   
+                </div>
+                
+                <div class="editor-field">
+                    @Html.ValidationMessageFor(model => model.IdModele)
+                </div>
+            </div>
+        </div>
+        *@
+
+    </fieldset>
+}

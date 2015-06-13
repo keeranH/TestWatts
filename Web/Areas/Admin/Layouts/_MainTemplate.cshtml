@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+<center>
+
+<div id="headerSection">@RenderSection("HeaderSection", required:false)</div>
+
+<div id="bodySection">
+@RenderSection("MainPageSection", required:false)
+@RenderBody()
+
+</div>
+
+<div id="footerSection">@RenderSection("FooterSection", required:false)</div>
+
+</center>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@model Econocom.Model.ViewModel.SouscriptionViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+}
+
+
+<div align="left" style="margin-left:50px">
+    <span style="font-size: 1.8em">Souscription au Simulateur green IT WATT's GREEN</span><br/>
+    <span>Merci de remplir les information ci-dessous</span>
+</div>
+
+<div style="margin-top: 50px" align="center">
+
+<div id="SocieteSouscriptionContentDiv" style="margin-top: 50px">
+     @using (Html.BeginForm("SocieteInput", "Souscription"))
+     {
+         @Html.EditorFor(model => Model.SocieteSouscriptionViewModel)
+     }
+</div>
+
+<div id="SouscripteurSouscriptionContentDiv" style="margin-top: 50px">
+    @using (Html.BeginForm("SouscripteurInput", "Souscription"))
+    {
+        @Html.EditorFor(model => Model.SouscripteurSouscriptionViewModel)
+    }
+</div>
+
+<div id="AdministrateurSouscriptionContentDiv" style="margin-top: 50px">
+    @using (Html.BeginForm("AdministrateurInput","Souscription"))
+    {
+        @Html.EditorFor(model => Model.AdministrationSouscriptionViewModel)
+    }
+</div>
+
+<div id="UtilisateurSouscriptionContentDiv" style="margin-top: 50px">
+    @using (Html.BeginForm("UtilisateurInput", "Souscription"))
+    {
+        @Html.EditorFor(model => Model.UtilisateurSouscriptionViewModel)
+    }
+</div>
+
+
+    <div style="border-top: 1px solid gray; width: 750px; height: 50px">
+        
+        <div style="float: left"><input type="button" value="Télécharger"/></div>
+        <div style="float: right"><input type="button" value="Imprimer"/></div>
+
+    </div>
+    
+    <div style="border: 1px solid black; width:750px; height: 100px; background-color: #EEEEEE" align="center">
+        Aprs validation de votre souscription par ECONOCOM, vous recevrez des codes d'acces 
+        au simulateur WATT's GREEN a l'adresse email indiqué pour le souscripteur
+
+    </div>
+
+    <div style="border: 1px solid black; background-color: #82B81A; width: 800px; height: 120px; margin-top: 20px">
+    
+    <div style=" margin-top: 30px;">
+        <input type="button" value="Valider" onclick="location.href='index_three'"/>
+    </div>
+</div>
+
+</div>

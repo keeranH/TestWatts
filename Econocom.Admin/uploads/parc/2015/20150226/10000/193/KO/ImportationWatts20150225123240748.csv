@@ -1,0 +1,3 @@
+IdClient	TypeDevice	LibelleDevice	TypeUsageId	NbrJourTravaille	NbrHeuresIntensifJour	NbrHeuresNonIntensifJour	NbrHeuresOffJour	UtiliseEnergieExterne	CoeffNonIntensif	CoeffModeOff	CoeffReductionWattExterne	PourcentageConsoExterne	ClasseDevice	AgeDevice	QteDevice	ConsommationIntensif	ConsommationNonIntensif	ConsommationWatt	ConsommationCo2	CoefficientConversion	ConsommationIntensifUnitaire	Poids
+207	1												1	1	10							1
+207	1												2	2	20							2

@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Societe_Layout";
+
+    <style>
+        td {
+            padding: 0em 0em 0em 0em;
+        }
+        
+        th {
+            text-align:center !important;
+            font-size: 1em !important;
+            
+        }
+        
+    </style>
+    
+        <style type="text/css" media="screen">
+.UtilisateurContentDiv {
+    height:350px;
+}
+
+
+</style> 
+
+<style type="text/css" media="print">
+.UtilisateurContentDiv {
+    height:250px;
+}
+
+</style>
+    
+    
+}
+
+<div style="width:800px; " id="UtilisateurContentDiv" class="UtilisateurContentDiv">
+    <div style="width:790px; height:60px;">
+        
+         @if (ViewBag.subscribeType == "start")
+         {
+        <div style="float: left; width: 700px; height: 50px" align="left">
+            <div style="float: left; width: 50px">
+                <img src="~/Content/images/Numero_Rond/rond_4.png" width="40px" height="40px"/>
+            </div>
+            <div style="float: left; width: 500px; margin-top: 10px" align="left">
+                <span style="font-size: 1.5em">Les utilisateurs</span>
+            </div>
+  
+        </div>
+         }
+        
+        @if (ViewBag.subscribeType != "start")
+        {
+            <div align="right" style="width:700px;  float:left;height:40px; border-top: 1px solid gray; border-bottom: 1px solid gray"> @RenderSection("Option", required: false)</div>
+   
+        }
+        else
+        {
+         @RenderSection("Option", required: false)
+   
+        }
+         </div>
+
+    <div  id="UtilisateurContentDiv2" style=" height:30px;float:left;width: 690px">
+        
+        <table style="width: 100%">
+
+            <thead>
+                <th style="font-family: sans-serif"></th>
+                <th style="font-family: sans-serif; width: 210px">Nom</th>
+                <th style="font-family: sans-serif;width: 210px">Prénom</th>
+                <th style="font-family: sans-serif; width: 210px">Adresse Email</th>
+
+            </thead>
+            
+             @RenderSection("UserTable", required: false)
+
+        </table>
+            
+        @*   <table width="100%" style="border: 1px solid black; " >
+                <col width="25%px" />
+                <col width="25%px" />
+                <col width="25%px" />
+                <col width="25%px" />
+                
+                <thead>
+                    <th style="font-family: sans-serif; border: 1px solid black"></th>
+                    <th style="font-family: sans-serif; border: 1px solid red">Nom</th>
+                    <th style="font-family: sans-serif; border: 1px solid red">Prénom</th>
+                    <th style="font-family: sans-serif; border: 1px solid red">Adresse Email</th>
+
+                </thead>
+             
+               
+                @RenderSection("UserTable", required: false)
+
+            </table>*@
+   
+
+    </div>
+
+    @RenderBody()
+
+</div>

@@ -1,0 +1,14 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+

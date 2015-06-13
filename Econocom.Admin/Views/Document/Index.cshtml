@@ -1,0 +1,42 @@
+﻿@model Econocom.Model.ViewModel.DocumentViewModel
+@{
+    ViewBag.Title = "Gestion des documents";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+<div style="border:solid 1px white; height:600px; width:870px;">
+   
+    <h2 style="margin-left:20px" class="HeaderTexteH2">@Econocom.Resource.Traduction.GestionDocument</h2>
+    <div style="min-height:200px; margin-left:40px;">
+        <br />        
+        @if(ViewBag.Error!=null)
+        {
+            <h4 style="color:red;">@ViewBag.Error</h4>
+        }
+        else if (ViewBag.Success != null)
+        {
+            <h4 style="color:green;">@ViewBag.Success</h4>
+        }
+        
+        <span class="NormalText">@Econocom.Resource.Traduction.SelectionnerFichier</span><br/>
+        @using (Html.BeginForm("Upload", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div>
+                Nom: @Html.TextBoxFor(Model => Model.Nom)
+                Fichier:<input type="file" name="Photo" id="Photo" /><br />
+                <input type="submit" value="@Econocom.Resource.Traduction.Charger_Fichier" name="Command" class="EconocomButton"/><br />
+            </div>           
+        }
+        <div style="height:auto;">
+            
+              @{ Html.RenderAction("GetTableDeDocument","Document"); }  
+
+        </div>
+       
+    </div>    
+    
+</div>

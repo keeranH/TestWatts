@@ -1,0 +1,31 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+.ui-input-search, div.ui-input-text 
+{
+    margin: .0em 0 !important;
+}
+
+.ui-btn-icon-left .ui-btn-inner 
+{
+    padding:0;
+}
+
+input.ui-input-text, textarea.ui-input-text 
+{
+    line-height: .0em !important;
+}
+
+div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text, .ui-input-search input.ui-input-text 
+{
+    padding:0;
+}
+
+
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button 
+{
+    font-family: none !important;
+}

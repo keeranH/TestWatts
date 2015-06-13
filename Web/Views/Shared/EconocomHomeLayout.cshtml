@@ -1,0 +1,46 @@
+﻿@using  myResources = Econocom.Resource.Home.HomeLayout
+@using FooterResources= Econocom.Resource.Basic.Footer
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>        
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+       
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>   
+        
+            <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>   
+    </head>
+    <body style="background-color:#eeeeee; width:100%; margin-left:auto; margin-right:auto; margin-top:0px; margin-bottom:0px; padding:0px; height:100%">
+        <header>
+            <div id="headerDiv" style="background-color:#fff; border:solid 0px red;height:70px;width:1100px;">
+                <div style="border:solid 0px blue; width:200px; float:right;">
+                    <div id="test" style="border:solid 0px red; color:black;">
+                        <div style="border:solid 0px blue;float:right; margin-left:5px; margin-right: 5px;">                           
+                             @Html.ActionLink("Register", "Registration", "Client", null, new { @style = "color:blue;" })                                 
+                        </div>
+                         <div style="border:solid 0px black;float:right; margin-left:5px; margin-right: 5px;"> @Html.Partial("_LogOnPartial")</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div  style="width:1100px; height:100%; min-height:30px; background-color:white; margin-left:auto; margin-right:auto; margin-bottom:0px; margin-top:0px; padding:0px; border:solid 0px red;">                                   
+            <div style="float:right; min-height:30px; border:solid 0px red;">                                      
+                <div style="width:1027px; min-height:30px; background-color:#eeeeee;">   
+                    <a href="das" style="color: white; font-size:20px; text-decoration: none;" >dasd</a>
+                    <a href="das" style="color: white;">dasd</a>
+                    <a href="das" style="color: white;">dasd</a>
+                    <a href="das" style="color: white;">dasd</a>
+                    <a href="das" style="color: white;">dasd</a>
+                </div>                
+            </div> 
+        </div>              
+        @RenderBody()            
+    </body>
+</html>

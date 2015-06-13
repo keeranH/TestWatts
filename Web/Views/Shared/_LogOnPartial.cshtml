@@ -1,0 +1,167 @@
+﻿@using  myResources = Econocom.Resource.Home.HomeLayout
+@using HomeResources= Econocom.Resource.Home.Home
+
+@{
+    ViewBag.Title = "title";
+}
+
+
+@if (Request.IsAuthenticated)
+{
+    <text>Welcome <strong>@User.Identity.Name</strong>!
+        [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+}
+else
+{
+
+    <div id="commonMessage"></div>
+
+   
+
+
+    <div id="updateDialog" title="Login"></div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            document.getElementById("languages").style.display = "none";
+
+
+        });
+
+        var linkObj;
+        $(function () {
+            $(".editLink").button();           
+            $('#updateDialog').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Login": function () {
+                        $("#update-message").html(''); //make sure there is nothing on the message before we continue                         
+                        $("#updateCarForm").submit();
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $($("button", $("#updateDialog").parent())[1]).text("Connecter");
+            $($("button", $("#updateDialog").parent())[2]).text("Annuler");
+            //        $(".editLink").click(function () {
+            //            //change the title of the dialog
+            //            linkObj = $(this);
+            //            var dialogDiv = $('#updateDialog');
+            //            var viewUrl = linkObj.attr('href');
+            //            $.get(viewUrl, function (data) {
+            //                dialogDiv.html(data);
+            //                //validation
+            //                var $form = $("#updateCarForm");
+            //                // Unbind existing validation
+            //                $form.unbind();
+            //                $form.data("validator", null);
+            //                // Check document for changes
+            //                $.validator.unobtrusive.parse(document);
+            //                // Re add validation with changes
+            //                $form.validate($form.data("unobtrusiveValidation").options);
+            //                //open dialog
+            //                dialogDiv.dialog('open');
+            //            });
+            //            return false;
+            //        });
+
+            $(".editLink").click(function (e) {
+                //change the title of the dialog
+                linkObj = $(this);
+                var dialogDiv = $('#updateDialog');
+                var viewUrl = linkObj.attr('href');
+                $.get(viewUrl, function (data) {
+                    dialogDiv.html(data);
+                    //validation
+                    var $form = $("#updateCarForm");
+                    // Unbind existing validation
+                    $form.unbind();
+                    $form.data("validator", null);
+                    // Check document for changes
+                    $.validator.unobtrusive.parse(document);
+                    // Re add validation with changes
+                    $form.validate($form.data("unobtrusiveValidation").options);
+                    //open dialog
+                    dialogDiv.dialog('open');
+                    e.preventDefault();
+                });
+                return false;
+            });
+
+        });
+
+
+        function updateSuccess(data) {
+            var response = jQuery.parseJSON(data);
+            if (response.Success == true) {
+                //alert(response.Object.Username);
+                //we update the table's info
+                //var parent = linkObj.closest("tr");
+                //parent.find(".carName").html(data.Object.Name);
+                //parent.find(".carDescription").html(data.Object.Description);
+                //now we can close the dialog
+                $('#updateDialog').dialog('close');
+                $(".editLink").hide();
+                //twitter type notification
+                $('#commonMessage').html(response.Object.Username);
+                //$('#commonMessage').delay(400).slideDown(400).delay(3000).slideUp(400);
+            } else {
+                //alert(response.ErrorMessage);
+                $("#update-message").html(response.ErrorMessage);
+                $("#update-message").show();
+            }
+        }
+
+        function checkVisibility() {
+            if (document.getElementById("languages").style.display == "none") {
+                document.getElementById("languages").style.display = "block";
+            }
+
+            else {
+                document.getElementById("languages").style.display = "none";
+            }
+
+        }
+    </script>
+
+   @* <a href="#" id="simpledialog">@HomeResources.LogOn</a>*@
+    
+    <div style=" float: left">
+        <div id="loginDiv" align="left" style="width: 80px; float: left"> @Html.ActionLink(@HomeResources.LogOn, "Edit", "Home", new { id = 1 }, new { @class = "editLink", @id = "login" })</div>
+        <div id="registrationDiv" align="left" style="width: 80px; float: left; margin-left: 5px"> @Html.ActionLink(@HomeResources.Register, "Registration", "Client") </div>
+        
+        <div id="selectLanguage" align="left" style="float: left">
+             <img src="@HomeResources.CountryImage" width="25px" height="25px"  onclick="checkVisibility()" />
+            <div id="languages" style="background-color:#ffffff;" >
+                @foreach (var item in (IEnumerable<Econocom.Model.Models.CMS.Langue>)ViewBag.Langues)
+                {
+                    <div style="color:white;border-bottom:1px solid black;text-align:center; padding-bottom: 2px; ">
+                        @Html.ActionLink(item.Pays, "ChangeCulture", "Localisation",
+                                     new { language = item.Code, returnUrl = this.Request.RawUrl }, null) <br/>
+                    </div> 
+                }
+            </div>
+        </div>
+
+    </div>
+
+    }
+
+   @* <img src="@HomeResources.CountryImage" width="25px" height="25px"  onclick="checkVisibility()" />
+    <br /> *@
+    @*<div id="languages" style="background-color:#ffffff;  float:right;width:100px;" >
+        @foreach (var item in (IEnumerable<Econocom.Model.Models.CMS.Language>)ViewBag.LanguageList)
+        {
+            <div style="color:white;border-bottom:1px solid black;text-align:center; padding-bottom: 2px;">
+                 @Html.ActionLink(@item.Country, "Language", "Home", new { language = @item.Culture }, null)
+            </div> 
+        }
+    </div>*@
+
+

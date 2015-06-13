@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Econocom.Model.Models.Benchmark.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            RaisonSocial
+        </th>
+        <th>
+            Address1
+        </th>
+        <th>
+            ComplementAddress
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Group
+        </th>
+        <th>
+            Sector
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Forename
+        </th>
+        <th>
+            JobTitle
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Mobile
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaisonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplementAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sector.Label)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "EditCompany", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

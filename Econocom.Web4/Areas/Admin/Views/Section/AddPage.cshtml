@@ -1,0 +1,58 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.CMS.PageViewModel
+@{
+
+    ViewBag.Modeles = Model.Modeles;
+}
+
+@using (Ajax.BeginForm("AddPage", "Section", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace, 
+            HttpMethod = "POST",
+            OnSuccess = "updateSuccess"
+        }, new { @id = "updateCarForm" }))
+    {
+    @Html.ValidationSummary(true)
+    <div id="update-message" class="error" ></div>
+    <fieldset>
+        <legend>Page</legend>
+            @Html.HiddenFor(m => m.IdSection)
+            @Html.HiddenFor(m => m.IdPage)
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Nom)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Nom)
+                @Html.ValidationMessageFor(m => m.Nom)
+            </div>
+        
+            <div class="editor-label">
+                <br/>
+                @Html.LabelFor(m => m.LienRelatif)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.LienRelatif)
+                @Html.ValidationMessageFor(m => m.LienRelatif)
+            </div>
+        
+            <div class="editor-field">
+                <br/>
+                @Html.LabelFor(m => m.Actif): 
+                @Html.Label("True")
+                @Html.RadioButtonFor(x => x.Actif, true)
+                @Html.Label("False")
+                @Html.RadioButtonFor(x => x.Actif, false)
+                @Html.ValidationMessageFor(m => m.Actif)
+            </div>
+            
+            
+            <div class="editor-label">
+                <br/>
+                @Html.LabelFor(model => model.IdModele, "Modele")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("IdModele", new SelectList(ViewData["IdModele"] as IEnumerable, "IdModele", "Nom", Model.IdModele))
+                @Html.ValidationMessageFor(model => model.IdModele)
+            </div>
+    </fieldset>
+}

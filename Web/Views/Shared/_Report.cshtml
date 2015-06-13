@@ -1,0 +1,13 @@
+﻿@model IEnumerable<dynamic>
+
+@foreach (var family in Model) {
+   <div>
+       @(family.Name +"    "+ family.Quantity)   <br/>
+       @foreach (var category in family.Categories)
+       {
+       <text> @Html.Encode("       ") @category.Name @Html.Encode("                                          ")@category.Quantity </text> <br/>
+                                
+       }
+     
+   </div>
+}

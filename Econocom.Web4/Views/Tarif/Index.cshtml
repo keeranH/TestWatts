@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Econocom.Model.Models.Benchmark.Tarif>
+           
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUtilisateur.cshtml";
+}
+
+<script type="text/javascript">
+    function UpdateSuccess(data) {
+        alert(data);
+        document.getElementById('d1').innerHTML = data;
+    }
+</script>
+    
+<div style="height: 100px; border-style: solid; border-bottom-style: none; border-color: black">
+    Bienvenue dans notre simulateur green IT <br/>
+    Merci de remplir les informations suivantes
+</div>
+
+<div style="height: 300px; border-style: solid; border-bottom-style: none; border-color: black">
+    <h3>1) Mon Tarif</h3>
+    <br/>
+    <table>
+        <tr>
+            <th>
+                Tranches de collaborateurs
+            </th>
+            <th>
+                Abonnement annuel
+            </th>
+            <th>
+            </th>
+        </tr>
+        
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LibelleTarif)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TarifAnnuel)
+                </td>
+                <td>
+                    @Html.RadioButtonFor(modelItem => item.TarifAnnuel, item.TarifAnnuel, new { @onclick = "UpdateSuccess('" + item.TarifAnnuel + "')" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div style="height: 200px; border-style: solid; border-bottom-style: none; border-color: black">
+    
+    <h3>2) Mon Formulaire de commande</h3>
+    <br/>
+    Formulaire de commande n° : @ViewBag.IdFormulaire
+    Monsieur @ViewBag.Nom, @ViewBag.Prenom, représentant la Société @ViewBag.RaisonSociale
+    a passé commande d’un abonnement DD le @ViewBag.Date pour un montant annuel de 
+    <span id="d1">5 880</span>€.
+    
+    <br/>
+    <br/>
+
+    <div>
+        @Html.ActionLink("Telechargez en pdf", "Index")
+        @Html.ActionLink("Accepter", "Index")
+        @Html.ActionLink("Refuser", "Index")
+    </div>
+</div>
+
+<div style="height: 100px; border-style: solid; border-color: black">
+    @Html.ActionLink("Suivant", "Index")
+</div>

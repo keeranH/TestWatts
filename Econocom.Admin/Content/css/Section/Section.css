@@ -1,0 +1,117 @@
+﻿/* ---------------- CSS OF Popup ---------------------*/
+
+
+/********* MODULE ADDPAGE *************/
+/*DIV*/
+
+div .TitleContenuDiv 
+{
+    width: 100%; height: 50px;
+}
+
+div .ContainerOne{
+    width: 110px; float: left; height: 40px; margin-top:10px
+}
+
+/**SECTION RADIO BUTTON **/
+
+div .ContainerTwo {
+    width:110px; height: 30px; float: left
+}
+
+div .RadioSectionContent {
+    width: 50px; height: 30px; float: left
+}
+
+/*** LABELS AND TEXTBOXES ***/
+
+.ContainerLabel {
+    
+font-family:sans-serif; font-size:16px
+}
+
+.NameTextBox {
+    width:200px
+}
+
+.LienRelatifTextBox {
+    width: 200px;
+}
+
+.RadioContent {
+    width:40px
+}
+
+
+.grid {
+    
+}
+
+.table {
+table-layout:fixed;
+width:100%;
+overflow:hidden;
+word-wrap:break-word;
+}
+
+.gridHeader 
+{
+    font-family: sans-serif;
+    font-size: 0.9em;  
+    border-right: solid 1px #535353;
+    padding-left: 10px;
+    background-color: yellowgreen;
+    padding-right: 10px;
+    height: 20px;
+}
+
+.gridHeader:last-child {
+    border-right: none;
+}
+
+.gridRow {
+     font-family: sans-serif;
+    font-size: 0.9em;   
+}
+
+.gridRow:nth-child(odd) {
+     background-color:#eee;     
+}
+
+.gridRow:nth-child(even) {
+     background-color:#fff;      
+}
+
+altGridRow {
+      background-color:#eee;     
+}
+.gridCell{
+    padding-right: 10px;
+    border-right: solid 1px #535353;
+    padding-left: 10px;
+}
+
+.gridCell:last-child{
+    border-right: none;
+}
+
+.HeaderTexteH2 
+{
+    font-family: sans-serif;
+    color: #535353;
+    border-bottom: solid 1px yellowgreen;
+}
+
+.EconocomButton {
+    background-color: yellowgreen!important;
+    font-family: sans-serif;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+span.NormalText {
+    font-family: sans-serif;
+}

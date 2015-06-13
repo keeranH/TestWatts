@@ -1,0 +1,90 @@
+﻿/* ---------------- CSS OF Evaluation ---------------------*/
+
+
+/* SPAN */
+
+.EvaluationTitreLabel {
+    font-family: sans-serif
+}
+
+/*DIV*/
+
+div #mainDiv1 {
+    width: 440px;
+}
+
+div #mainDiv2 {
+     margin-left: 85px; border-right-style: solid; border-right-color: gainsboro; border-right-width: 1px;
+}
+
+div #titleDiv {
+    margin-top: 30px;
+}
+
+div #BoutonDiv {
+    width:320px; height:60px; background-color: #83b81A; text-align: center; float: right; margin-right: 34px;
+}
+
+div #infoDiv {
+    margin-top: 40px;
+}
+
+div #pourVotreInfoDiv {
+    width: 450px; height: 1200px
+}
+
+/*SPAN*/
+
+.titre1Span {
+    font-size:25px
+}
+
+.titre2Span {
+    font-size:18px
+}
+
+.erreurSpan {
+    color: red
+}
+
+.asterisqueSpan {
+    color: #82B81A
+}
+
+.bouton1Span {
+    background-image: url('~/Content/images/Button/b_vert1_small.png'); display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-left:100px; margin-top:30px; float: right; margin-right: 75px
+}
+
+.boutonText {
+    background-color: transparent; color: white; margin-top: 0px
+}
+
+.infoEquipment {
+    float: right; margin-right: 33px
+}
+
+.infoSites {
+    float: right;margin-right: 33px; 
+}
+
+.BoutonValidationSpan {
+     display:block; width:172px; height:27px; border-radius:5px; padding-top:5px; margin-left:100px; margin-top:14px; float: right; margin-right: 75px;
+}
+
+
+input[type="submit"] 
+{
+     color: white; margin-top: 0px;background-color: transparent;   
+}
+
+
+/*TEXTBOX */
+
+.fieldTxt {
+    width:320px;
+}
+
+.dropDown {
+    width: 320px;
+    height:30px
+}

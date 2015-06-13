@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/pageTemplates/mainTemplate.cshtml";
+}
+@section HeaderSection
+{
+    @RenderSection("HeaderSection", required:false)
+}
+
+
+@section MainPageSection {
+@RenderBody()
+
+
+<table border=1 width=100%>
+
+<tr>
+<td align="center">
+
+<div>
+ @RenderSection("ImageSection", required: false)
+</div>
+
+
+</td>
+
+
+<td align="center">
+<div>
+ @RenderSection("TextSection", required: false)
+</div>
+
+</td>
+</tr>
+
+</table>
+
+}
+
+@section FooterSection
+{
+    @RenderSection("FooterSection", required:false)
+}

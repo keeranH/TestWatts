@@ -1,0 +1,43 @@
+﻿@model Econocom.Model.ViewModel.ListeUtilisateurViewModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+    
+    <style type="text/css">
+        input{
+            width: 300px !important;
+        }
+    </style>
+}
+
+<div style="padding-top: 5px; padding-bottom: 20px;">
+    <h2 class="HeaderTexteH2">Contact client</h2>
+</div>
+
+@using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+{
+    
+        @Html.HiddenFor(model => model.Administrateur.Id) 
+        @Html.HiddenFor(model => model.Administrateur.MotDePasse) 
+        @Html.HiddenFor(model => model.Administrateur.Authorization)       
+        @Html.HiddenFor(model => model.Administrateur.DateDebut)       
+        @Html.HiddenFor(model => model.Administrateur.DateModification)   
+        @Html.HiddenFor(model => model.Administrateur.DateFin)       
+        <span style="width:120px">@Html.Label("Administrateur")</span>
+         <span style="width:120px">Adresse Mail </span><span style="margin-left: 20px;">@Html.EditorFor(model => model.Administrateur.Email)</span>
+        <br />  <br />
+         @Html.HiddenFor(model => model.Commercial.Id)      
+        @Html.HiddenFor(model => model.Commercial.MotDePasse)   
+        @Html.HiddenFor(model => model.Commercial.Authorization)       
+        @Html.HiddenFor(model => model.Commercial.DateDebut)       
+        @Html.HiddenFor(model => model.Commercial.DateModification) 
+        @Html.HiddenFor(model => model.Commercial.DateFin)   
+        <span style="width:120px">@Html.Label("Commercial")</span>
+        <span style="width:120px">Adresse Mail </span><span style="margin-left: 20px;">@Html.EditorFor(model => model.Commercial.Email)</span>
+        <br />
+    
+    
+    <p>
+        <input type="submit" value="Sauvegarder" class="EconocomButton" style="width:140px!important;"/>
+    </p>
+}

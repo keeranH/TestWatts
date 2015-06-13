@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="23e2a07b-3392-4389-9088-0826698e2dcc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:57313/EconocomService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EconocomService62.xsd" MetadataType="Schema" ID="68bc7b7f-b599-48da-b6d8-5a65ecc4bf4e" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd8" />
+    <MetadataFile FileName="EconocomService.xsd" MetadataType="Schema" ID="f0b58e49-d34c-4764-808a-41ba81548ef0" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EconocomService1.xsd" MetadataType="Schema" ID="c7c9bc23-aff5-4dea-910f-adf85e7c201e" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EconocomService.wsdl" MetadataType="Wsdl" ID="bcbdc700-66bd-4d45-949e-33c6a14f8350" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?wsdl" />
+    <MetadataFile FileName="EconocomService2.xsd" MetadataType="Schema" ID="fec56371-3cf9-47ae-a7a8-5e6aa0f62d19" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EconocomService4.xsd" MetadataType="Schema" ID="1a4c1e4b-d54e-45bd-8d8c-39abf0821c6e" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd5" />
+    <MetadataFile FileName="EconocomService5.xsd" MetadataType="Schema" ID="f9a8f6b7-ad69-4297-ab86-bc0ec1e1a897" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd6" />
+    <MetadataFile FileName="EconocomService61.xsd" MetadataType="Schema" ID="2f834e3a-3d90-493f-a630-4dfb23378b6f" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd7" />
+    <MetadataFile FileName="EconocomService41.xsd" MetadataType="Schema" ID="9d0dff26-25eb-4785-a82e-39fe3587d7f9" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd4" />
+    <MetadataFile FileName="EconocomService.disco" MetadataType="Disco" ID="d12effe9-6fcf-4285-b49d-45dc2fd1d6e5" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?disco" />
+    <MetadataFile FileName="EconocomService3.xsd" MetadataType="Schema" ID="a2f7b55e-fb80-4e27-88f0-91bf2e67e96d" SourceId="1" SourceUrl="http://localhost:57313/EconocomService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,128 @@
+﻿/* ---------------- CSS DE BARRE_MENU ---------------------*/
+
+/*DIV*/
+
+div .topMenu {
+    height: 20px; width: 900px;
+}
+
+div .topMenuContentDiv {
+    width: 870px; float: left;
+}
+
+div .bottomMenu {
+    width: 870px; height: 40px; background-color: #404040;
+}
+
+div .AccueilMenu {
+    width: 90px;float: left; margin-top:10px
+}
+
+div .barNavSeparateurDiv {
+    width:10px; float:left; margin-top: 10px
+}
+
+div .NavTitleDiv {
+    float:center;margin-top:10px
+}
+
+div.AccueilMenuImage {
+    margin-top: 10px;
+}
+
+/****** SIMPLE MENU *******/
+
+div .SimpleMenuOne {
+     width: 100px;  float: left; height: 40px;
+}
+
+div .SimpleMenuTwo {
+    width: 120px;  float: left; height: 40px;
+}
+
+/****** INFO MENU *******/
+
+div .InfoMenuOne {
+    width: 103px;  float: left; height: 40px;
+}
+
+div .InfoMenuTwo {
+    width: 107px;  float: left; height: 40px;
+}
+
+div .InfoMenuThree {
+    width: 207px;  float: left; height: 40px
+}
+
+div .InfoMenuFour {
+    width: 219px;  float: left; height: 40px
+}
+
+div .InfoMenuFive {
+    width:140px;  float: left; height: 40px
+}
+
+
+/****** EVALUATION MENU *******/
+
+div .EvaluationMenuOne {
+    width: 195px;  float: left; height: 40px;
+}
+
+div .EvaluationMenuTwo {
+    width: 195px;  float: left; height: 40px;
+}
+
+div .EvaluationMenuThree {
+    width: 195px;  float: left; height: 40px
+}
+
+div .EvaluationMenuFour {
+     width: 195px;  float: left; height: 40px
+}
+
+
+/****** CLIENT MENU *******/
+
+div .ClientMenuOne {
+    width: 290px;  float: left; height: 40px;
+}
+
+div .ClientMenuTwo {
+    width: 290px;  float: left; height: 40px
+}
+
+div .ClientMenuThree {
+    width: 290px;  float: left; height: 40px
+}
+
+
+/*ANCHOR */
+a.TopMenuAnchor {
+    text-decoration: none;
+}
+
+a.NavTitle 
+{
+    color: white; font-size: 1.0279em; font-weight: bold; padding: 5px;font-family: sans-serif;text-decoration: none;text-align: center;
+}
+
+a.NavTitle:hover {
+     border-bottom: 2px solid green
+}
+
+a.NavTitle_Choisi
+{
+
+    color: #83b81a; font-size: 1.0279em; font-weight: bold; padding: 5px; text-decoration: none;font-family: sans-serif
+}
+
+.NavTitleGrise {
+    color: grey !important; font-size: 1.08em; font-weight: bold; padding: 5px; text-decoration: none !important;font-family: sans-serif
+}
+
+/* SPAN */
+.topMenuContent {
+    font-weight:bold; font-family: sans-serif;font-size: 1.1em;margin-right:10px
+}
+

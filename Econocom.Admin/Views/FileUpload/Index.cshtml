@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "File Upload";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="height:300px; margin-top:40px; margin-left:40px;">
+@if(ViewBag.Error!=null)
+{
+    <h4 style="color:red;">@ViewBag.Error</h4>
+}
+else if (ViewBag.Success != null)
+{
+    <h4 style="color:green;">@ViewBag.Success</h4>
+}
+
+@using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        Select file
+        <input type="file" name="file" />&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="Upload file" name="Command" /><br />
+    </div>
+    <div>
+    </div>
+}
+</div>

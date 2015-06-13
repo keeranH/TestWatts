@@ -1,0 +1,19 @@
+﻿@model Econocom.Model.ViewModel.RegistrationClientModel
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
+}
+
+@section HeaderSection{
+New Client
+}
+
+<link href="@Url.Content("~/Content/CompanyCss.css")" rel="stylesheet" type="text/css" />
+
+<a href="#popupDialog" data-rel="popup">Rules and Regulations</a>
+        <div data-role="popup" data-transition="pop" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+	        @Html.Partial("_PopupLayout")
+        </div>
+
+
+ @Html.Partial("RegistrationPartial",Model)

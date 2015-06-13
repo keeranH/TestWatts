@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "_MonSILayout";
+}
+@RenderBody()
+
+<div>
+    <div  style="border:2px solid cyan; float:left; width:15%; height:95%">
+        <div style=" ">@RenderSection("TopImage", required: false)</div>
+        <div style="">@RenderSection("KwhImage", required: false)</div>
+    
+        <div style=" background-color:#e0e1e3">
+                       <center><font size="5"> <b>@RenderSection("KwhValue", required: false)</b> kwh</font></center>
+                 </div>
+        <div style="background-color:#e0e1e3; margin-top:6px">
+                       <center><font size="5"> <b>@RenderSection("PercentageValue", required: false)</b> %</font></center>
+                 </div>
+
+    </div>
+    
+</div>
+

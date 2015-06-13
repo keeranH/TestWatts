@@ -1,0 +1,25 @@
+﻿@model Econocom.Model.Models.Common.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">LoginName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoginName)
+    </div>
+
+    <div class="display-label">Password</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

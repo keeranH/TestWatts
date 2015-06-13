@@ -1,0 +1,67 @@
+﻿@using Econocom.Admin.Controllers.GestionClient
+@using Econocom.Resource
+@using Omu.Awesome.Mvc.Helpers
+@model dynamic
+
+@{
+    ViewBag.Title = "Gestion import données client";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        //        $('#btnCharger').click(function () {
+        //            if (confirm("Êtes-vous sûr de vouloir annuler le config actuel?"))
+        //                return true;
+        //            else {
+        //                event.preventDefault();
+        //                return false;
+        //            }
+        //        });
+
+        $("#btnCharger").click(function () {
+            var ans = prompt("Êtes-vous sûr de vouloir annuler le config actuel?");
+            
+            if (ans == null) {
+                event.preventDefault();
+                return false;
+            }
+            
+            if (ans.toLowerCase() == "oui") {
+                return true;
+            }
+            else {
+                event.preventDefault();
+                return false;   
+            }
+
+        });
+    });
+</script>
+
+<div style="border:solid 1px white; height:600px; width:870px;">
+
+    <h2 style="margin-left:20px" class="HeaderTexteH2">Import données client</h2>
+    <div style="min-height:200px; margin-left:40px;">
+        <br />        
+        @if (ViewBag.Error != null)
+        {
+            <h4 style="color:red;">@ViewBag.Error</h4>
+        }
+        else if (ViewBag.Success != null)
+        {
+            <h4 style="color:green;">@ViewBag.Success</h4>
+        }
+        
+        <span class="NormalText">Sélectionner le fichier de création</span><br/>
+        @using (Html.BeginForm("Import", "Client", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div>            
+                <input type="file" name="file" style="width:300px;"/>&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="@Econocom.Resource.Traduction.Charger_Fichier" name="Command" id="btnCharger" class="EconocomButton"/><br />
+            </div>           
+        }
+       
+    </div>    
+</div>

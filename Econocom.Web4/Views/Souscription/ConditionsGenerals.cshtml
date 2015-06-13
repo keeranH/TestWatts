@@ -1,0 +1,75 @@
+﻿@model Econocom.Model.ViewModel.CMS.ContenuModereViewModel
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgTermesEtConditions;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+    
+    <link href="@Url.Content("~/Content/css/TermesEtConditions/TermesEtConditions.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/Souscription/ConditionsGenerals.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/Souscription/Souscription_Two.css")" rel="stylesheet" type="text/css"/>
+    
+    <style>
+        .ui-widget-header {background-color: transparent !important;background-image: none !important;border: none; color: #83B81A !important;}
+        .ui-icon {background-image: url('@Url.Content("~/Content/images/Button/b_close.png")')!important; display: block !important}
+        .ui-icon-closethick {background-position: 0, 0;}
+        .ui-widget-content {background-color: white !important;background-image: none !important;}
+        .ui-state-error {color: black !important}
+    </style>
+    
+    <script type="text/javascript">
+        function printDiv() {
+            var printer = window.open('', '', 'width=500,height=500');
+            printer.document.open("text/html");
+            printer.document.write(document.getElementById('news_contents').innerHTML);
+            printer.print();
+        }
+
+        function AfficherPopup() {
+            $('#dialog').dialog({
+                width: 300,
+                height: 150,
+                resizable: false
+            });
+        }
+
+        function ClosePopup() {
+            $('#dialog').dialog("close");
+        }
+    </script>
+}
+
+<div id="dialog" style="display:none">
+    <span>@Traduction.RedirigerPageAccueil</span>
+    
+    <br/>
+    
+    <span style="background-image: url('@Url.Content("~/Content/images/Button/b_gris_small.png")'); display:block; width:85px; height:27px; border-radius:5px; padding-top:5px; margin-left:40px; margin-top:15px; float: left;">
+        <a href="@Url.Action("RefuserConditions", "Souscription")" style="text-decoration:none;color:white;font-family: sans-serif; font-size: 1.2em; font-weight: bold">@Traduction.Oui</a>
+    </span>
+    
+    <span style="background-image: url('@Url.Content("~/Content/images/Button/b_gris_small.png")'); display:block; width:85px; height:27px; border-radius:5px; padding-top:5px; margin-left:20px; margin-top:15px; float: left;">
+        <a onclick="ClosePopup();" style="cursor: pointer;text-decoration:none;color:white;font-family: sans-serif; font-size: 1.2em; font-weight: bold">@Traduction.Non</a>
+    </span>
+</div>
+
+<div id="d1" style="border: solid 1px white">
+    <div align="left" id="mainDiv">
+    
+        <span class="titre1Span">@Traduction.Titre12</span><span class="titre1Span" style="font-weight: bold"> @Traduction.TitreWattsGreen</span><br/>
+       @* <span class="titre2Span">@Traduction.Titre22</span><br/>*@
+    
+        <br/>
+
+        <div id="news_contents">
+            @Html.Raw(@Model.Contenu)
+        </div>
+
+    </div> 
+    
+    <div>
+        <span class="boutonGris" style="padding: 0px !important; cursor: pointer; display:block; width:210px; height:27px; border-radius:5px; padding-top:5px; margin-left:65px; margin-top:15px; float: left; text-decoration:none;color:white !important;font-family: sans-serif; font-size: 1.2em; font-weight: bold"><a href="@Url.Action("ConditionsGeneralsPartial", "Souscription")" target="_blank" style="color: white !important">@Traduction.Telecharger</a></span>
+        <span class="boutonGris" style="padding: 0px !important; cursor: pointer; display:block; width:210px; height:27px; border-radius:5px; padding-top:5px; margin-left:50px; margin-top:15px; float: left; text-decoration:none;color:white !important;font-family: sans-serif; font-size: 1.2em; font-weight: bold"><a href="#" onclick="printDiv();" style="color:white !important">@Traduction.Imprimer</a></span>    
+    </div>
+</div>
+

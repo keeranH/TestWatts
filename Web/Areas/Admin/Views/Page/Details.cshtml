@@ -1,0 +1,40 @@
+﻿@model Econocom.Model.Models.CMS.Page
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Page</legend>
+
+    <div class="display-label">Template</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => Model.Models.CMS.Template.name)
+    </div>
+
+    <div class="display-label">Section</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => Model.Models.CMS.Section.name)
+    </div>
+
+    <div class="display-label">relative_path</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => Model.Models.CMS.relative_path)
+    </div>
+
+    <div class="display-label">enabled</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => Model.Models.CMS.enabled)
+    </div>
+
+    <div class="display-label">unpublished_template_id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => Model.Models.CMS.unpublished_template_id)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Models.CMS.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

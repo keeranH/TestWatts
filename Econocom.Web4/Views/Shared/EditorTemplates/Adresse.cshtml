@@ -1,0 +1,63 @@
+﻿@using  Econocom.Web4.Extension
+@model Econocom.Model.ViewModel.AdresseViewModel
+        
+
+<div id="majorDiv" align="left" style="width:1150px;min-height:300px;">
+    <div style="float: left;min-width:450px;min-height:200px; margin-left: 40px">
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ListPays)
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse1) 
+           
+        </div>
+
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse2)
+           
+        </div>
+
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse3)
+          
+        </div>
+
+    </div>
+     
+             <div  style="float: left;min-width:420px;min-height:200px;">
+                    
+                    
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CodePostal)
+                       
+                    </div>
+
+                    
+                 <div class="editor-field">
+                     @Html.EditorFor(model => model.Region)
+                    
+                 </div>
+                 
+                 
+                 
+                    
+                 <div class="editor-field">
+                     @Html.EditorFor(model => model.Ville)
+                    
+                 </div>
+                 
+                 <div class="editor-field">
+                    Pays:
+                   @Html.DropDownListFor(m => m.PaysId, new SelectList(Model.ListPays, "Id", "LibellePays", Model.ListPays.First().Id)) 
+                    
+                </div>
+
+             </div>
+
+</div>
+
+   
+       
+

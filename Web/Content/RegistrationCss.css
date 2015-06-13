@@ -1,0 +1,137 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 300px;
+}
+
+.ui-btn
+{
+    width:300px;
+}
+
+table#addCustomerAccountInfoTable td
+{
+    border: 0px !important;
+}
+
+table#addCustomerAccountInfoTable
+{
+    border:0px !important;
+}
+
+table#addCustomerPersonalInfoTable td
+{
+    border: 0px !important;
+}
+
+table#addCustomerPersonalInfoTable
+{
+    border:0px !important;
+}
+
+
+div#headerDiv
+{
+    width:1150px;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#logo
+{
+    float:left;
+    min-width:60%; 
+    height:110px
+}
+
+div#credentials
+{
+    float:right;
+    min-width:39%;
+    height:110px;
+    text-align: right;
+}
+
+div#bodyDiv
+{
+    width:1150px;
+    min-height:500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+div#targetOne, div#targetThree
+{
+    border:1px solid;
+    float:left;
+    min-width:571px;
+    height:300px;
+    font-size:20px;
+
+}
+
+
+
+div#targetTwo, div#targetFour
+{
+    border:1px solid;
+    float:right;
+    min-width:575px;
+    height:300px;
+    font-size:20px;
+
+}
+
+#greenItDiv, #demoDiv, #informationDiv, #registrationDiv
+{
+    line-height:200px;
+    float: right;
+   font-size :25pt;
+}
+
+
+
+#targetOne
+{
+     background-color:#e7eae8
+}
+#targetTwo
+{
+     background-color:#e7eae8
+}
+#targetThree
+{
+     background-color:#e7eae8
+}
+#targetFour
+{
+     background-color:#e7eae8
+}
+
+
+
+div#footerDiv
+{
+    width:1150px;
+    min-height:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+    
+

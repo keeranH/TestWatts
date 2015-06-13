@@ -1,0 +1,61 @@
+﻿@*@model Econocom.Model.ViewModel.SouscriptionViewModel*@
+@using Econocom.Resource;
+
+@{
+    ViewBag.Title = @Traduction.TitrePgSouscription;
+    Layout = "~/Views/Shared/Maquette/_Layout_Info.cshtml";
+    
+    <script type="text/javascript">
+      function printDiv() {
+          var printer = window.open('', '', 'width=700,height=700');
+          printer.document.open("text/html");
+          printer.document.write(document.getElementById('news_contents').innerHTML);
+          printer.print();
+      }
+    </script>
+}
+
+<div>
+    <div align="left" >
+        <div align="left" style="margin-left: 100px; margin-right: 20px; border: 1px solid transparent ">
+            <div style="margin-top: 40px">
+                <span style="font-size: 2.1em">@Traduction.DemandeSouscription <b>@Traduction.TitreWattsGreen</b></span><br/>
+                <span style="font-size:1.5em">
+                    @Traduction.DemandeRecapitulatif<br/>
+                    @Traduction.ValidationCodeAcces
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div align="left" style=" width: 700px;  margin-left:100px; margin-top: 40px">
+    
+        <div style="width: 700px; height: 60px">
+            <div style="float: left; width: 50px"><img src="~/Content/images/Numero_Rond/rond_8.png" width="40px" height="40px"/></div>
+            <div style="float: left; width: 500px; margin-top: 10px" align="left"><span style="font-size: 1.5em">@Traduction.FichierDemandeSouscription</span></div>
+        </div>
+        
+        <div style="height: 100px; margin-left: 50px">
+            <div style="width: 100px; float: left "><img src="~/Content/images/others/Souscription/Souscription_Telecharger.png"/> </div>
+            <div style="height: 90px;width: 500px; float: left">
+                <div style="height: 30px; width: 400px; margin-top: 30px">
+                    <img src="~/Content/images/Header/fleche_small.png"/>
+                    <span style="font-weight: bold"><a href="@Url.Action("Souscription_Pdf", "Souscription")" target="_blank">@Traduction.TelechargerDemande</a></span>
+                    @*<div id="news_contents" style="visibility: hidden">
+                        <div>@Html.EditorFor(model => Model.SocieteSouscriptionViewModel)</div>
+                        <div>@Html.EditorFor(model => Model.SouscripteurSouscriptionViewModel)</div>
+                        <div>@Html.EditorFor(model => Model.AdministrationSouscriptionViewModel)</div> 
+                       <div>@Html.EditorFor(model => Model.UtilisateurSouscriptionViewModel)</div>  
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div style="border: 1px solid #82B81A; background-color: #82B81A; width: 870px; height: 120px; margin-top: 20px; margin-bottom: 20px;">
+        <div style=" margin-top: 30px">
+            <input class="boutonPayant link" type="button" value="@Traduction.Suivant" onclick="location.href='index_three'" style="width:200px; margin-top:10px; padding: 0px !important; border: 1px solid #518e01 !important;"/>
+        </div>
+    </div>
+
+</div>

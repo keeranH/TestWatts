@@ -1,0 +1,21 @@
+﻿@model Econocom.Model.Models.CMS.Section
+
+@{
+
+    WebGrid grid = new WebGrid(Model.Sections);
+
+}
+
+<div>
+    <li>
+        @Model.Nom
+        @Html.ActionLink("Add Section", "Edit", "Section", new {id = @Model.IdSection}, new {@class = "editLink", @id = "login"})
+        @Html.ActionLink("Add Page", "AddPage", "Section", new { id = @Model.IdSection }, new { @class = "editLink", @id = "login" })
+    </li>
+
+    @if (Model.Pages != null)
+    {
+        @Html.Partial("PagesPartial", Model.Pages)
+        
+    }
+</div>

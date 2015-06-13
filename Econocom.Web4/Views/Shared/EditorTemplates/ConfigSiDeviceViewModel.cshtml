@@ -1,0 +1,266 @@
+﻿@using Econocom.Model.Enum
+@using Econocom.Web4.Controllers
+@using Omu.Awesome.Mvc.Helpers
+@model Econocom.Model.ViewModel.ConfigSiDeviceViewModel
+@using Calc = Econocom.Resource.Traduction
+@using Conso = Econocom.Resource.Traduction
+
+<link href="@Url.Content("~/Content/css/Tooltip/Tooltip.css")" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            //$(".inputQty").attr("title", @Conso.BulleModifQty);
+
+            $("#@Model.Guid").parent().find("a.trigger").attr("title", "@Html.Raw(Model.LibelleDevice)");
+
+            var cusid_ele = document.getElementsByClassName('inputQty');
+            for (var i = 0; i < cusid_ele.length; ++i) {
+                var item = cusid_ele[i];
+                item.title = "<font style='color:white'>@Conso.BulleModifQty</font>";
+            }
+
+            changePosition();
+        });
+
+
+        function compute(val, idClasse, idAge, objetType, guid) {
+            var userType= @Html.Raw(Json.Encode(@ViewBag.UserType));
+            val = val.replace(/\s+/g, '');
+            $.ajax({
+                url: '/@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName/Consommation/SetQuantity',
+                type: 'POST',
+                contentType: 'application/json;',
+                async: false,
+                data: JSON.stringify({ quantiter: val, idClasse: idClasse, idAge: idAge, objetType: objetType, guid: guid }),
+                success: function (data) {
+                    if (data == "true") {
+                        var idDiv = "#" + guid;
+                        if (userType == "Simulation") {
+                            jQuery(idDiv).attr("class", "faitSimulation");
+                        } else {
+                            jQuery(idDiv).attr("class", "fait");   
+                        }
+                        //jQuery(idDiv).html('<img src="~/Content/images/Consommation/b_fait.png" style="margin-top: 6px;"/>');
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        }
+
+        function changePosition() {
+            jQuery('.inputQty').tooltip({
+                position: "top"
+            });
+        }
+
+</script>
+
+<style>
+    span.heading {
+        width: 300px;
+        border: solid 1px;
+        display: block;
+    }
+    
+    table {
+        margin-top: 0px
+    }
+    
+    td {
+        padding: 0px !important;
+    }
+</style>
+ 
+	<img src="/Content/images/Consommation/b_fait.png" style="display: none;"/>
+	
+    @if (@ViewBag.UserType == "Demo")
+    {
+        <table width="600px" style="margin-right: 20px; margin-left: 20px" class="editor" >
+            <col width="30px" />
+            <col width="340px" />
+            <col width="100px" />
+            <col width="20px" />
+            <col width="60px" />
+
+        <tr style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray">
+            <td>
+                <img src="~/Content/images/Consommation/b_pasfait.png"/>
+            </td>
+            
+            <td style="font-family: sans-serif; font-size: 12px; color:#000; text-align: left;">
+                 @Model.LibelleAffiche
+            </td>
+            
+            <td id="@Model.Id">
+                @Html.TextBoxFor(m => m.Quantite, "{0:### ###}", new { @class="inputQty", @style = "border:solid 1px gainsboro; height:20px; width:100px; margin-right: 10px;text-align:right;", @readonly = true })
+            </td>
+            
+            <td>
+                <img src="~/Content/images/Autres/v_attributs_small.png"/>
+            </td>
+            
+            <td>
+                <span style="color: gray; font-family: sans-serif; font-size: 12px !important">@Conso.Attributs</span>
+            </td>
+            
+            <td>
+                <img src="~/Content/images/Consommation/b_plus.png"/>
+            </td>
+
+        </tr>  
+        </table>
+    }
+    else
+    {
+        @*<tr style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray">
+        
+            <td valign="middle">*@
+                <div class="alternate" style="margin-right: 20px; margin-left: 20px;width:620px;">
+                    <h4>
+                        <div style="height: 10px; width: 10px; margin-bottom: -10px; margin-left: -20px;">
+                            @if (Model.IsModified || Model.EstNouveau)
+                            {
+                                if (@ViewBag.UserType == "Payant")
+                                {
+                                    <div id="@Model.Guid" class="fait" />
+                                }
+                                else
+                                {
+                                    <div id="@Model.Guid" class="faitSimulation" />
+                                }
+                            }
+                            else
+                            {
+                                <div id="@Model.Guid" class="pasfait"/>
+                            }
+                        </div>
+                        
+                        @Model.LibelleAffiche
+                        
+                        <div>
+                            <span>
+                                @if (@ViewBag.TypeClient == TypeClient.ECSchange)
+                                {
+                                    if (@ViewBag.UserType == "Payant")
+                                    {
+                                        //Non modifiable
+                                        @Html.TextBoxFor(
+                                            m => m.Quantite, "{0:### ### ###}",
+                                            new
+                                            {
+                                                id = Model.Id,
+                                                style = "border:solid 1px gainsboro; height:20px; width:100px;text-align:right;",
+                                                @readonly = true
+                                            }
+                                        )
+                                    }
+                                    else if (@ViewBag.TypeContact == "Admin" && @ViewBag.UserType == "Simulation")
+                                    {
+                                        //Modifiable
+                                        if (Model.Quantite >= 0)
+                                        {
+                                            var c = String.Format("{0:### ### ###}", Model.Quantite);
+                                            @Html.TextBox(Model.Guid.ToString(), c, new
+                                       {
+                                           id = Model.Id,
+                                           onblur = "compute(this.value,0,0,1,'" + Model.Guid + "');",
+                                           style = "text-align:right;",
+                                           @class = "inputQuantite"
+                                       })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(
+                                                m => m.Quantite, "{0:### ### ###}",
+                                                new
+                                                {
+                                                    id = Model.Id,
+                                                    onblur = "compute(this.value,0,0,1,'" + Model.Guid + "');",
+                                                    style = "border:solid 1px red; height:20px; width:100px; text-align:right;"
+                                                }
+                                            )
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (@ViewBag.TypeContact == "Admin")
+                                    {
+                                        //Modifiable
+                                        if (Model.Quantite >= 0)
+                                        {
+                                            var c = String.Format("{0:### ### ###}", Model.Quantite);
+                                            @Html.TextBox(Model.Guid.ToString(), c, new
+                                       {
+                                           id = Model.Id,
+                                           onblur = "compute(this.value,0,0,1,'" + Model.Guid + "');",
+                                           style = "text-align:right;",
+                                           @class = "inputQuantite"
+                                       })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBoxFor(
+                                                m => m.Quantite, "{0:### ### ###}",
+                                                new
+                                                {
+                                                    id = Model.Id,
+                                                    onblur = "compute(this.value,0,0,1,'" + Model.Guid + "');",
+                                                    style = "border:solid 1px red; height:20px; width:100px; text-align:right;"
+                                                }
+                                            )
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //Non modifiable
+                                        @Html.TextBoxFor(
+                                            m => m.Quantite, "{0:### ### ###}",
+                                            new
+                                            {
+                                                id = Model.Id,
+                                                style = "border:solid 1px gainsboro; height:20px; width:100px;text-align:right;",
+                                                @readonly = true
+                                            }
+                                        )
+                                    }
+                                }
+                            </span>   
+                            
+                            @*<span>@(Html.PopupFormActionLink<ConsommationController>(o => o.ModificationAttributes(Model.TypeDeviceId, Model.LibelleDevice), Conso.Attributs, new { @class = "abtn", @style = "color: black !important" }))</span>*@
+                            <span>@(Html.PopupFormActionLink<ConsommationController>(o => o.ModificationAttributes(Model.Guid), Conso.Attributs, new { @class = "abtn", @style = "color: black !important" }))</span>
+                            
+
+                            @if (!Model.EstNouveau && @ViewBag.TypeContact == "Admin")
+                            {
+                                if ((@ViewBag.UserType == "Payant" && @ViewBag.TypeClient != TypeClient.ECSchange) || (@ViewBag.UserType == "Simulation"))
+                                {
+                                    <span>@(Html.PopupFormActionLink<ConsommationController>(o => o.CreationConfigSiDevice(Model.TypeDeviceId, Model.LibelleDevice), Conso.Ajouter, new { @class = "abtn", @style = "color: black !important" }))</span>
+                                }
+                            }
+                            else
+                            {
+                                <span style="display: inline-block;width: 52px;height: 10px;"></span>
+                            }
+                        </div>   
+                        
+                         @*@if (Model.Source.Equals(ConfigSiDeviceType.Benchmark))
+                         {
+                            <div style="margin-top: -25px;">
+                                <span>@(Html.PopupFormActionLink<ConsommationController>(o => o.ModificationAttributes(Model.TypeDeviceId), "Attributs", new { @class = "abtn", disabled = true, @style = "color: black !important" }))</span>
+                                <span style="margin-left: 100px">@(Html.PopupFormActionLink<ConsommationController>(o => o.CreationConfigSiDevice(Model.TypeDeviceId), "Ajouter", new {@class = "abtn", disabled = true, @style = "color: black !important"}))</span>
+                            </div>
+                         }*@
+                    </h4>
+
+                    <div class="inner alternate" style="width:620px; border:solid 0px green; margin-left: -26px">
+                        @Html.EditorFor(model => model.Gammes)
+                    </div>
+                </div>
+          @*  </td>
+        </tr>*@
+    }
+@*</table>*@
+    
+    

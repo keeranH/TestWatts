@@ -1,0 +1,160 @@
+﻿@using Econocom.Admin.Controllers.GestionPolitique
+@using Econocom.Model.Models.Benchmark
+@using Econocom.Resource
+@using Omu.Awesome.Mvc.Helpers
+@model IEnumerable<Econocom.Model.Models.Benchmark.Politique>
+@using Econocom.Resource
+
+@{
+    ViewBag.Title = "Politique";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Navigation {
+    <nav style="float: left; background-color: #404040; width: 100%; font-size: 12px; height: 40px">
+        <div style="height: 40px; margin-top: 10px; font-family: sans-serif;">@{ Html.RenderAction("Langue", "Nav"); }</div> 
+    </nav>     
+}
+
+<script type="text/javascript">
+    function ajouteSuccess() {
+        location.reload();
+    }
+    
+    function ConfirmerSuppressionPolitique() {
+        var x = confirm("Êtes-vous sûr de vouloir supprimer cette politique?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+
+<style>
+    .webgrid {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .webgrid-header th
+    {
+        font-family:"sans-serif";         
+        font-size:15px;
+        padding-right: 10px;   
+        padding: 0px;
+        padding-bottom: 10px;
+        font-family: sans-serif;   
+        font-weight: normal;
+        font-variant: normal;
+        font-style: normal;   
+        border-right: solid 1px #535353;
+        padding-left: 10px;
+        background-color: yellowgreen;   
+        height: 20px;
+        font-weight: bold;
+    }
+
+    .webgrid-row-style td, .webgrid-alternating-style td {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .webgrid-alternating-row td{   
+         padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    .webgrid-alternating-row 
+    {
+        background-color: #eeeeee;        
+    }
+
+    .webgrid-row-style {
+        background-color: white;     
+    }
+
+    .webgrid-footer {
+        padding-top: 30px;
+        border-top: solid 1px black;
+    }
+
+    .webgrid-footer td{
+        padding-top: 10px;
+    }
+
+    .headerSpacingActive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActive.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingActiveUp {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowActiveUp.png') no-repeat 9px 0px;
+    }
+
+    .headerSpacingInactive {
+        display:inline-block; 
+        width:35px;
+        height: 10px;
+        background: url('/Content/images/arrowInactive.png') no-repeat 9px 0px;
+    }
+    
+    .ui-widget-header 
+    {
+        background-image: none !important;
+        background-color: yellowgreen !important;
+    }
+</style>
+
+@*@(Html.MakePopupForm("AjoutePolitique", controller: "Politique", title: Traduction.CreationPolitique, okText: Traduction.Valider, successFunction: "ajouteSuccess",refreshOnSuccess: true, height: 400, width: 400, resizable: true))
+@(Html.MakePopupForm("ModificationPolitique", new[] { "id" }, controller: "Politique", title: Traduction.ModificationPolitique, okText: Traduction.Valider, successFunction: "ajouteSuccess", height: 400, width: 400, resizable: true))*@
+
+<div id="mainDiv" class="mainDiv" style="width:100%; float:left; height:100%; min-height:1200px;">
+    @using (Ajax.BeginForm("Index", "Politique", FormMethod.Post, new AjaxOptions { UpdateTargetId = "resultat" }))
+    {
+        <h2 class="HeaderTexteH2" style="margin-top: 20px">@Traduction.Politique</h2>
+        
+        <div style="margin-top: 10px">
+            @*<span>@(Html.PopupFormActionLink<PolitiqueController>(o => o.AjoutePolitique(), Traduction.Ajouter, new { @class = "EconocomButton" }))</span>*@
+            @Html.ActionLink(Traduction.Ajouter, "AjoutePolitique", "Politique", new { @class = "EconocomButton" })
+        </div>
+        
+        <div id="resultat" style="width: 100%;  padding: 5px;">
+            @{
+                var grid = new WebGrid(canPage: true, rowsPerPage: 10, canSort: true, ajaxUpdateContainerId: "grid");
+                grid.Bind(Model, rowCount: @ViewBag.Total, autoSortAndPage: false);
+                grid.Pager(WebGridPagerModes.All);
+                @grid.GetHtml(htmlAttributes: new { id = "grid" },
+                              columns: grid.Columns(
+                               grid.Column(columnName: "Id", style: "gridCell"),
+                               grid.Column(header: string.Format("LibellePolitique{0}", grid.SortColumn == "LibellePolitique" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : ""), columnName: "LibellePolitique", style: "gridCell"),
+                               grid.Column(columnName: "Device", style: "gridCell"),
+                               grid.Column(columnName: "Objectif", style: "gridCell"),
+                               grid.Column(columnName: "Benefice", style: "gridCell"),
+                               grid.Column(header: string.Format("DateDebut{0}", grid.SortColumn == "DateDebut" ? grid.SortDirection == SortDirection.Ascending ? "▼" : "▲" : ""), columnName: "DateDebut", style: "gridCell"),
+                               grid.Column(columnName: "DateModification", style: "gridCell"),
+                               grid.Column(columnName: "DateFin", style: "gridCell"),
+                              @* grid.Column(format: @<text>@(Html.PopupFormActionLink<PolitiqueController>(o => o.ModificationPolitique(1), "Modifier", new { @class = "EconocomButton" }))</text>),*@
+                               grid.Column(format: @<text>@Html.ActionLink(Traduction.Modifier, "ModificationPolitique", "Politique", new { id = item.Id }, new { @class = "EconocomButton" })  </text>),
+                               @*grid.Column(format: @<text>@Html.ActionLink(Traduction.Supprimer, "SupprimerPolitique", "Politique", new { id = item.Id }, new { @class = "EconocomButton", onclick = "ConfirmerSuppressionPolitique();" })  </text>)*@
+                               grid.Column(format: @<text> @Ajax.ActionLink("Supprimer", "SupprimerPolitique", new { id = item.Id },
+                                    new AjaxOptions() { Confirm = "Êtes-vous sûr de vouloir supprimer cette politique?", OnSuccess = "ajouteSuccess();" }, new { @class = "EconocomButton" })  </text>)),
+                               tableStyle: "webgrid",
+                               headerStyle: "webgrid-header",
+                               footerStyle: "webgrid-footer",
+                               alternatingRowStyle: "webgrid-alternating-row",
+                               selectedRowStyle: "webgrid-selected-row",
+                               rowStyle: "webgrid-row-style");
+            }
+        </div>
+    }
+</div>
+

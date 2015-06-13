@@ -1,0 +1,680 @@
+﻿@using System.Collections
+@model Econocom.Model.ViewModel.ClientDeviceTypeViewModel
+@using Econocom.Model.Enum
+@using Calc = Econocom.Resource.Traduction
+@using Conso = Econocom.Resource.Traduction
+
+<link href="@Url.Content("~/Content/tooltip/easyui.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/tooltip/icon.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/tooltip/demo.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+
+@{
+    Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    Response.AppendHeader("Pragma", "no-cache");
+    Response.AppendHeader("Expires", "0");     
+}
+
+<style>
+    .ui-state-active 
+    { 
+      background-color: transparent !important;
+      background-image: none !important;
+      color: white !important;
+      border: none !important;
+    }
+    
+    .ui-state-active a:link, .ui-state-active a:visited 
+    {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .ui-icon {
+        background-image: url('/Content/images/Button/croix.png')!important;
+        display: block !important
+    }
+    
+    .ui-icon-closethick {
+        background-position: 0, 0;
+    }     
+    
+   .ui-dialog {
+        position: absolute !important;
+        top: 0px !important;
+        max-width: 650px;
+       
+    }
+    
+    table.editor:nth-child(odd)
+    {
+        background: #EFEEEF;
+    }
+    table.editor:nth-child(even)
+    {
+        background: white;
+    }
+    
+    div.alternate:nth-child(odd)
+    {
+        /*background: #EFEEEF;*/
+    }
+    div.alternate:nth-child(even)
+    {
+        background: white;
+    }
+    
+    div.alternating:nth-child(odd)
+    {
+        background: white;
+    }
+    div.alternating:nth-child(even)
+    {
+       background: #EFEEEF;
+    }
+    
+    div.inner:nth-child(odd)
+    {
+         background: #EFEEEF;
+    }
+    div.inner:nth-child(even)
+    {
+        background: #fff;
+    }
+   
+</style>
+
+<style type="text/css" media="screen">
+    .noPrint{ display: block; }
+    .yesPrint{ display: block !important; }
+    .ouiPrint{ display: none;}
+    
+    .divBackground {
+        background-color: #EEEEEE !important;
+    }
+</style> 
+
+<style type="text/css" media="print">
+    .noPrint{ display: none; }
+    .yesPrint{ display: block !important; }
+    .ouiPrint{ display: block !important;}
+    
+    .divBackground {
+        background-color: transparent !important;
+    }
+</style>
+
+<script type="text/javascript">
+    if ($.browser.mozilla) {
+        console.log("ff");
+        if ($('.ui-widget-content').css('display') == 'block') {
+            $('.ui-widget-content').attr("style", "top:0px !important;");
+        }
+    }
+    
+    $(document).ready(function () {
+
+        if ($('.currentCategorie')) {
+            var currentCategorieid = $(".currentCategorie").attr('id');
+            //alert(currentCategorieid);
+
+            var categoriesid = $('.currentCategorie').parent("ul").attr('id');
+            //alert(categoriesid);
+
+            var familleid = $('.currentCategorie').parent("ul").parent("li").attr('id');
+            // alert(familleid);
+
+            $('.currentCategorie').parent("ul").addClass('currentCategories');
+            $('.currentCategorie').parent().parent().addClass('currentFamily');
+
+            $('#selectedid').val(currentCategorieid);
+            $('#parentid').val(familleid);
+        }
+
+        $('#menuvertical ul').bind('mouseenter', function () {
+            // alert("mouseneter ul 1");
+            //alert("atr id = "+$(this).html());
+            //alert("get parent id = "+$('#parentid').attr('value'));
+            if ($(this).attr('id') != $('#parentid').attr('value')) {
+                $(".currentFamily").removeClass("currentFamily");
+                $(".currentCategorie").parent().removeClass("currentCategories");
+                $(".currentCategorie").removeClass("currentCategorie");
+                $(".selected").removeClass("selected");
+            }
+        });
+
+        $('#menuvertical ul li').bind('mouseleave', function () {
+            //alert("2 x="+$('#selectedid').attr('value'));
+        });
+
+
+        $('#menuvertical li').bind('mouseleave', function () {
+            //alert("mouseleave1");
+            var parent = $('#parentid').attr('value');
+            var selected = $('#selectedid').attr('value');
+            var current = $(this).attr('id');
+            //alert(current + "=c -- s=" + selected + "-- p="+parent);
+            if (current && current.indexOf("famille") > -1) {
+                //alert("l x="+$('#selectedid').attr('value'));
+                var x = $('#selectedid').attr('value');
+
+                //$('#test').val(x);
+
+                var sa = "#" + x;
+                $(sa).addClass("currentCategorie");
+                $(sa).children("ul").first().addClass("selected");
+
+                $(sa).parent().addClass("currentCategories");
+                //$('#test').val($(sa).parent().attr("id"));
+
+
+                var parentLi = "#" + parent;
+                $(parentLi).addClass("currentFamily");
+            }
+        });
+
+
+        $('#menuvertical li').bind('mouseenter', function () {
+            //alert("mouseenter 2");
+            //alert("3 get parent id = "+$('#parentid').attr('value'));
+            var dd = $(this).find("ul").attr('id');
+
+            // $('#test').val(dd);
+
+            //alert("dd"+dd);
+            if (dd != $('#parentid').attr('value')) {
+                $(".currentFamily").removeClass("currentFamily");
+                $(".currentCategorie").parent().removeClass("currentCategories");
+                $(".currentCategorie").removeClass("currentCategorie");
+                $(".selected").removeClass("selected");
+            }
+        });
+
+        $('.link').click(function () {
+          //  console.log("MQDP link click");
+            showLoading();
+        });
+
+        $('.linkDisplay').click(function () {
+          //  console.log("MQDP linkDisplay click");
+            showLoading();
+
+            var currentCategorieid1 = $(this).parent("li").attr('id');
+            //alert(currentCategorieid1);
+
+            $(this).parent("li").addClass("currentCategorie");
+            $('#selectedid').val(currentCategorieid1);
+            $(this).parent("li").parent("ul").addClass("currentCategories");
+            // alert($(this).parent("li").parent("ul").attr('id'));
+            $(this).parent("li").parent("ul").parent("li").addClass("currentFamily");
+            var familleid1 = $(this).parent("li").parent("ul").parent("li").attr('id');
+            // alert(familleid1);
+
+            $('#parentid').val(familleid1);
+        });
+
+        $('#actionLink').click(function () {
+            $('#actionMenu').toggle();
+        });
+    });
+   
+    
+    $("html").addClass("js");
+    $(function() {
+
+        $("#menuDiv").accordion({
+            objID: "#acc2",
+            obj: "div",
+            wrapper: "div",
+            el: ".h",
+            iconTrigger: false,
+            head: "h4, h5, span.acid",
+            next: "div",
+            initShow: "",
+            speed: 1000,
+            standardExpansible: true,
+            expTxt: '', // the text of the switch for expanding
+            cllpsTxt: '', // the text of the switch for collapsing
+            switchPosition: 'after'
+        });            
+        $("html").removeClass("js");
+    });
+    
+
+    function closePopUp() {
+        $(this).dialog('close');
+    }
+
+    function ShowDivZeroListe() {
+        var divZero = document.getElementById("divZeroListe");
+        if (divZero.style.display == 'none') {
+            divZero.style.display = 'block';
+        }
+        else if (divZero.style.display == 'block') {
+            divZero.style.display = 'none';
+        }
+    }
+
+    $("#actionLink").click(function () {
+        $(this).toggleClass("actionLinkActive");
+        console.log('logger');
+    });
+</script>
+
+<style>
+    p { background:transparent; font-weight:bold; cursor:pointer;
+        padding:5px; }
+    p.over { background: #ccc; }
+    span { color:black; }
+
+    .sf-menu a 
+    {
+        border-left:none;
+        border-top:none;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .sf-vertical {
+        width: 90px;
+        height: 90px;
+    }
+
+    .sf-menu li {
+        background: #4EB4B6;
+        border-bottom:solid 1px white;		
+        border-left:solid 1px white;	
+         padding-top: 10px;		
+        height:80px;
+        width:90px;
+    }
+
+    .sf-menu li:hover
+    {
+        background: #434343 !important;
+        -webkit-transition: none;
+        transition: none;
+    }
+    .sf-menu ul {
+        box-shadow: none;
+        min-width: 10px;
+    }
+
+    .sf-menu ul li {
+        background: #4EB4B6;
+        border-bottom:solid 1px white;		
+        height:80px;
+        width:90px;
+    }
+
+    .sf-menu ul li:hover
+    {
+        background: #434343 !important;
+        -webkit-transition: none;
+        transition: none;
+    }
+
+    .sf-menu ul li ul li:hover
+    {
+        background: none !important;
+        -webkit-transition: none;
+        transition: none;
+    }
+   
+    .sf-menu ul li.selected
+    {
+        background: blue !important;
+        -webkit-transition: none;
+        transition: none;
+    }
+
+    ul.selected
+    {
+        display:block;
+    }
+
+    ul>li.currentFamily {
+        background: #434343 !important;
+        border-bottom:solid 1px white;		
+        border-left:solid 1px white;
+        height:80px;
+        width:90px;
+    }
+
+    ul.currentCategories {
+        background: #434343 !important;
+        display:block;
+    }
+
+    ul>li.currentCategorie {
+        background: #434343 !important;
+        border-bottom:solid 1px white;		
+        border-left:solid 1px white;
+        height:80px;
+        width:90px;
+    }
+   
+    .selected
+    {
+        display:block; 
+    }
+
+   @* a:link,a:visited
+    {
+        color:#FFFFFF;
+        text-align:center;
+        text-decoration:none;
+    }*@
+    
+    a:hover,a:active
+    {
+	
+    }
+
+    .secondarrow
+    {
+        float:left;
+        margin-top:25px;
+        width:1px;
+        height:1px;
+        border-top:solid 10px #eeeeee;
+        border-bottom:solid 10px #eeeeee;
+        border-left:solid 10px #434343;
+        border-right:solid 0px white;
+    }
+
+    .icon
+    {
+        margin-top:20px;
+    }
+
+    .mainsecondicon
+    {	
+        margin-top:20px;
+        margin-left:auto;
+        margin-right:auto;	
+    }
+    .secondicon
+    {	
+        margin-top:20px;
+        margin-left:20px;
+    }
+
+    .center
+    {
+        text-align:center;
+    }
+
+    .linkDisplay
+    {
+        font-size: 12px;
+        color: white !important;
+        text-decoration:none;
+        text-align:center!important;
+        width: 90px!important;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: normal;
+        line-height: 116%;
+    }
+</style>
+
+<div style="border:solid 1px white; overflow:hidden;">
+    <div>
+        <!-- boutons actions start-->
+        <div id="actionContainer" style="float:left;width:250px;border:solid 0px red; z-index:1002;  position:relative;height:auto">               
+            <div style="border:solid 0px red">
+                @Html.Partial("MenuPartial/_ActionPartialModification", new ViewDataDictionary(this.ViewData) { { "imprimer", false } })                   
+            </div>
+        </div>
+        <!-- boutons actions end-->
+        <!-- information start-->
+        <div id="infoContainer" class="yesPrint" style="float:left; width:450px;border:solid 0px black;">
+        <div style="border-bottom: solid 1px gainsboro; height:auto"> 
+            @if (@ViewBag.TypeAffichage == "ShowPrix")
+            {
+                if (@ViewBag.TypeClient == @Econocom.Model.Enum.TypeClient.ECSchange)
+                {
+                    <span style="font-size: 25px; margin-top: -8px; width: 350px; text-align: center;">@Conso.CoutEnergetiqueEstime</span>
+                }
+                else
+                {
+                    <span style="font-size: 25px; margin-top: -8px; width: 350px; text-align: center;">@Conso.CoutEnergetique</span>
+                }
+                <br/>                
+            }
+            else
+            {
+                if (@ViewBag.TypeClient == @Econocom.Model.Enum.TypeClient.ECSchange)
+                {
+                    <span style="font-size: 25px; margin-top: -8px; width: 350px;text-align: center; ">@Conso.ConsoEnergetiqueEstime</span>
+                }
+                else
+                {
+                    <span style="font-size: 25px; margin-top: -8px; width: 350px;text-align: center; ">@Conso.ConsoEnergetique</span>
+                }<br/>               
+            }
+            <span style="display: inline-block;">
+                @if (@ViewBag.UserType == "Demo")
+                {
+                    <span style="float: left; font-size: 25px; color: #4EB4B6;"> @ViewBag.CurrentFamilleLibelle </span>
+                    <span style="float: left; font-size: 25px; color: black; font-family: comic sans ms; margin-left: 5px; margin-right: 5px"> . </span>
+                    <span style="float: left; font-size: 25px; color: #4EB4B6;"> @ViewBag.CurrentCategorieLibelle </span><br/>
+                }
+                @if (@ViewBag.UserType == "Payant")
+                {
+                    <span style="font-size: 25px; color: #83B81A;"> @ViewBag.CurrentFamilleLibelle </span>
+                    <span style="font-size: 25px; color: black; font-family: comic sans ms; margin-left: 5px; margin-right: 5px"> . </span>
+                    <span style="font-size: 25px; color: #83B81A;"> @ViewBag.CurrentCategorieLibelle </span><br/>
+                }    
+                @if (@ViewBag.UserType == "Simulation")
+                {
+                    <span style="float: left; font-size: 25px; color: #377A37;"> @ViewBag.CurrentFamilleLibelle </span>
+                    <span style="float: left; font-size: 25px; color: black; font-family: comic sans ms; margin-left: 5px; margin-right: 5px"> . </span>
+                    <span style="float: left; font-size: 25px; color: #377A37;"> @ViewBag.CurrentCategorieLibelle </span><br/>
+                }
+            </span>
+        </div>                 
+        
+        <div style="border-bottom: solid 1px gainsboro; height:50px;padding-bottom:10px;">                    
+            @if (@ViewBag.UserType == "Demo")
+            {
+                <span style="color: #000; font-size: 40px; display: inline-block; text-align: center; background-repeat: no-repeat; ">@ViewBag.TotalConsoEnergetique @Conso.ParAn</span>                        
+            }
+            @if (@ViewBag.UserType == "Payant")
+            {
+                <span style="color: #000; font-size: 40px; display: inline-block;text-align: center; background-repeat: no-repeat; ">@ViewBag.TotalConsoEnergetique @Conso.ParAn</span>
+            }
+            @if (@ViewBag.UserType == "Simulation")
+            {
+                <span style="color: #000; font-size: 40px;display: inline-block;  text-align: center; background-repeat: no-repeat; ">@ViewBag.TotalConsoEnergetique @Conso.ParAn</span>
+            }
+        </div>
+           
+       @* @if (@ViewBag.UserType == "Simulation")
+        {                
+            <div style="margin-top: 0px;font-size: 2.0em;color: #377A37;">@ViewBag.NomSimulation</div>
+        }*@
+                       
+        <div style="width: 450px; height: 40px;padding-bottom:10px;">                     
+            <div id="detailsSi">
+                @if (@ViewBag.TypeClient == @Econocom.Model.Enum.TypeClient.ECSchange)
+                {
+                    <div align="left">
+                        @if (@ViewBag.UserType == "Payant")
+                        {
+                            <span style = "font-weight: bold; font-size: 20px; color: #83B81A" > @ViewBag.DateModifier </span>
+                        }
+                        else
+                        {
+                            <span style = "font-weight: bold; font-size: 20px; color: #377A37" > @ViewBag.DateModifier </span>
+                        }
+                        <span style = "margin-left: 40px; font-size: 20px;" > @Conso.NumeroContrat: @ViewBag.NumeroContrat </span>
+                    </div>
+                }
+                else
+                {
+                    if (@ViewBag.UserType == "Demo")
+                    {
+                        <div style = "text-align: center; font-weight: bold; font-size: 20px; color: #4EB4B6" > @ViewBag.DateModifier </div>
+                    }
+                    else if (@ViewBag.UserType == "Payant")
+                    {
+                        <div style = "text-align: center; font-weight: bold; font-size: 20px; color: #83B81A" > @ViewBag.DateModifier </div>
+                    }
+                    else if (@ViewBag.UserType == "Simulation")
+                    {
+                        <div style = "text-align: center; font-weight: bold; font-size: 20px; color: #377A37" > @ViewBag.DateModifier </div>    
+                    }
+                }
+            </div>                         
+        </div>                                   
+    </div>
+        <!-- information end -->
+        
+        <div class="noPrint" style="height: 80px;">
+            <div style="float: right;">
+                @Html.Partial("MenuPartial/_MesurePartial", new ViewDataDictionary(this.ViewData) { { "modification", true } })  
+            </div>            
+            <div style="float: right;">
+                @if (@ViewBag.UserType == "Simulation")
+                {
+                    <div style="border: 1px; height: 40px"><a href="@ViewBag.WikiLink" target="blank"><img src="/Content/images/bnt_wiki_3.png" style="float: right; margin-right: 5px; margin-top: 20px;" /></a></div>
+                }
+                else
+                {
+                    <div style="border: 1px; height: 40px"><a href="@ViewBag.WikiLink" target="blank"><img src="/Content/images/bnt_wiki_2.png" style="float: right; margin-right: 5px; margin-top: 20px;" /></a></div>
+                }
+            </div>
+        </div>
+    </div>    
+    <div id="content">
+        <div id="container" style="margin-right: 0px !important">
+            <div id="menuDiv">
+                <div class="divBackground" style="width: 870px; height: 1020px;">
+                    <div id="examples" class="noPrint" style="width:175px; height:100%; min-height:100%;float:left;margin-top:10px; padding-left: 10px;">  
+                        <div id="samples"  style="float:left;width:6em; min-width:6em; border-top:solid 0px black; height:24.5em;">                   	
+                            <input type="hidden" id="selectedid"/>
+                            <input type="hidden" id="parentid"/>
+                            <div id="sample3" class="sampleTabContent"  style="float:left;width:6em; min-width:6em;">			
+                                <ul id="menuvertical" class="sf-menu sf-vertical">
+                                    @foreach (var item in (IEnumerable<Econocom.Model.ViewModel.DetailConsommationViewModel>)ViewBag.detailConsommations)
+                                    {
+                                        <li id="famille@(Convert.ToInt32(item.IdFamille))" class="@(ViewBag.IdFamille == (Convert.ToInt32(item.IdFamille)) ? "currentFamily center" : "center")" style="@(ViewBag.UserType == "Demo" ? "background: #4EB4B6" : (@ViewBag.UserType == "Payant" ? "background: #83B81A" : "background: #377A37;"))">                                                                    
+                                            <a  id="anchorfamille@(Convert.ToInt32(item.IdFamille))" 
+                                               href="@Url.Action("Naviguer", "Consommation", new { idFamille = @item.IdFamille, idClient = @item.IdClient })"
+                                               class="linkDisplay link" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial" >                                                       
+                                                <div class="famille@(item.IdFamille)"></div>@item.Libeller
+                                            </a>  
+                                            <ul id="categories@(Convert.ToInt32(item.IdFamille))" class="@(ViewBag.IdFamille == (Convert.ToInt32(item.IdFamille)) ? "currentCategories center" : "center")">
+                                                @foreach (var item1 in item.SubObjet.DetailConsommations)
+                                                {
+                                                    <li id="categorie@(Convert.ToInt32(item1.IdCategorie))" class="@(Convert.ToInt32(ViewBag.IdParent) == (Convert.ToInt32(item1.IdCategorie)) ? "currentCategorie center" : "center")" style="@(ViewBag.UserType == "Demo" ? "background: #4EB4B6" : (@ViewBag.UserType == "Payant" ? "background: #83B81A" : "background: #377A37;"))">
+                                                        <a id="anchorcategorie@(Convert.ToInt32(item1.IdCategorie))" class="linkDisplay link"
+                                                           href="@Url.Action("AfficherQuantiteDevice", "Consommation", new { idCategorie = @item1.IdCategorie, typeAffichage = @ViewBag.TypeAffichage })"
+                                                           data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentDivPartial">
+                                                            <div class="categorie@(item1.IdCategorie)"></div>@item1.Libeller
+                                                        </a>                                            
+                                                        <ul id="categorieArrow@(Convert.ToInt32(item1.IdCategorie))" class="@(Convert.ToInt32(ViewBag.IdParent) == (Convert.ToInt32(item1.IdCategorie)) ? "selected" : "")">
+                                                            <li style="width: 10px; background: none; border: none;">
+                                                                <span class="secondarrow"></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>				
+                            </div>          
+                        </div>  
+
+                        <div style="height:254px; float:right;">
+                            <div style="height:254px; border-right:solid 0px #82b81a;float:right">
+					 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="yesPrint" style="float: left; width: 650px; min-height:1000px; height: auto; margin-top: 10px; background-color: white; margin-left: 25px">                                                
+                        @if (@ViewBag.UserType == "Demo")
+                        {
+                            <div style="height: 80px" align="center">
+                                <span style="color: #4EB4B6; font-family: sans-serif; font-size: 20px">
+                                    @Conso.TxtAcceder
+                                    <br />
+                                    @Conso.TxtSouscriver </span>
+                                <span style="color: #4EB4B6; font-family: sans-serif; font-weight: bold; font-size: 20px">
+                                    WATT'S GREEN !
+                                </span>
+                            </div>
+                        }
+                       @if (@ViewBag.TypeContact == "Admin")
+                       {
+                        <div style="height: 100px;margin: 10px; background-color: #eeeeee; text-align: center; margin-bottom: 30px; position: relative;">
+                            <div style="padding-top: 20px;">
+                                <span style="font-size: 18px; display:block;text-align: center">@Conso.EnregistrerModifs</span>
+                                <span style="font-size: 18px; display:block; text-align: center">@Conso.OuvrantMenuAction (<img src="/Content/images/Button/picto_interrupteur_rouge.gif" style="vertical-align: bottom;" />)</span>
+                            </div>
+                        </div>                                  
+                       }
+                        @if (@ViewBag.UserType == "Demo")
+                        {
+                            <div style="height: 50px; margin-left: 10px;text-align: left;">
+                                @if (@ViewBag.IdParent == 7)
+                                {
+                                    <span style="font-size: 16px; font-family: sans-serif; font-weight: bold">@Conso.ModifierDataCenter</span>
+                                }
+                                else
+                                {
+                                    <span style="font-size: 16px; font-family: sans-serif; font-weight: bold">@Conso.ModifierQuantiteDevices</span>
+                                }
+                            </div>
+
+                            <div style="margin-bottom: 20px">
+                                @Html.EditorFor(modelItem => Model.ConfigSiDevice)
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="height: 50px; margin-left: 10px;text-align: left;">
+                                @if (@ViewBag.IdParent == 7)
+                                {
+                                    <span style="font-size: 16px; font-family: sans-serif; font-weight: bold">@Conso.ModifierDataCenter</span>
+                                }
+                                else
+                                {
+                                    <span style="font-size: 16px; font-family: sans-serif; font-weight: bold">@Conso.ModifierQuantiteDevices</span>
+                                }
+                                
+                                <br/>
+                                @*<span style="color: red; float: left">@ViewBag.ErreurTarif</span>*@ 
+                                <span style="color: red; float: left">@ViewBag.ErreurQuantiteNegative</span>
+                            </div>
+                            
+                            <div style="height: 410px; overflow-x: auto; overflow-y: scroll; border: solid 0px gainsboro; padding:5px;">
+                                <div class="accordion alternate" id="acc2">
+                                    @Html.EditorFor(modelItem => Model.ConfigSiDevicesNonZero)
+                                </div>
+                            </div>
+                            
+                                if (@ViewBag.TypeClient != TypeClient.ECSchange)
+                                {
+                                <div style="height: 50px; margin-left: 20px; margin-top: 20px; text-align: left;">
+                                    <a href="#" onclick=" ShowDivZeroListe(); return false; " style="font-size: 16px; font-family: sans-serif; font-weight: bold; color: black !important">@Conso.AutresDevices</a>
+                                </div>
+                                }
+
+                            <div id="divZeroListe" style="height: 300px; overflow-x: auto; overflow-y: scroll; padding:5px; border: solid 0px gainsboro; display: none; margin-bottom: 10px;">
+                                <div class="accordion" id="acc2">
+                                    @Html.EditorFor(modelItem => Model.ConfigSiDevicesZero)
+                                </div>
+                            </div>                                
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
